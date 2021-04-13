@@ -10,7 +10,9 @@ namespace PasswordManagerTest
         [TestMethod]
         public void CreateUser()
         {
-            User profile = new User();
+            string password = "admin";
+
+            User profile = new User(password);
             Assert.IsNotNull(profile);
         }
     }
