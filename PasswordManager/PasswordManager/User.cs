@@ -2,8 +2,10 @@
 {
     public class User
     {
-        public User() { 
-        
+        public string Password {get; set;}
+
+        public User(string password) {
+            this.Password = password;
         }
     }
 }
