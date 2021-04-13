@@ -7,20 +7,24 @@ namespace PasswordManagerTest
     [TestClass]
     public class UserTest
     {
+        private User profile;
+        private string password = "admin";
+
+        [TestInitialize]
+        public void setup()
+        {
+            profile = new User(password);
+        }
+
         [TestMethod]
         public void CreateUser()
         {
-            string password = "admin";
-
-            User profile = new User(password);
             Assert.IsNotNull(profile);
         }
 
         [TestMethod]
         public void validatePasswordParameterOnUserCreation()
         {
-            string password = "admin";
-            User profile = new User(password);
             Assert.AreEqual(profile.Password, password);
         }
     }
