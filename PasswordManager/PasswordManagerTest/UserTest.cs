@@ -15,5 +15,13 @@ namespace PasswordManagerTest
             User profile = new User(password);
             Assert.IsNotNull(profile);
         }
+
+        [TestMethod]
+        public void validatePasswordParameterOnUserCreation()
+        {
+            string password = "admin";
+            User profile = new User(password);
+            Assert.AreEqual(profile.Password, password);
+        }
     }
 }
