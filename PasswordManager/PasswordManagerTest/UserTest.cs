@@ -11,7 +11,7 @@ namespace PasswordManagerTest
         private string validPassword = "admin";
 
         [TestInitialize]
-        public void setup()
+        public void Setup()
         {
             profile = new User(validPassword);
         }
@@ -23,7 +23,7 @@ namespace PasswordManagerTest
         }
 
         [TestMethod]
-        public void validatePasswordParameterOnUserCreation()
+        public void ValidatePasswordParameterOnUserCreation()
         {
             Assert.AreEqual(profile.SystemPassword, validPassword);
         }
