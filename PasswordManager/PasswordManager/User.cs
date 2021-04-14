@@ -7,5 +7,10 @@
         public User(string password) {
             this.SystemPassword = password;
         }
+
+        public bool Login(string password) 
+        {
+            return password.Equals(SystemPassword);
+        }
     }
 }

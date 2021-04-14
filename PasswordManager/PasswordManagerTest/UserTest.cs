@@ -31,7 +31,7 @@ namespace PasswordManagerTest
         [TestMethod]
         public void ValidateCorrectPasswordLogin() 
         {
-            Assert.IsTrue(profile.Login(correctPassword));
+            Assert.IsTrue(profile.Login(validPassword));
         }
     }
 }
