@@ -1,4 +1,4 @@
-﻿vusing System;
+﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace PasswordManagerTest
@@ -7,8 +7,10 @@ namespace PasswordManagerTest
     public class PasswordTest
     {
         [TestMethod]
-        public void TestMethod1()
+        public void CreatePassword()
         {
+            Password passwordTest = new Password();
+            Assert.IsNotNull(passwordTest);
         }
     }
 }
