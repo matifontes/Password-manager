@@ -27,5 +27,11 @@ namespace PasswordManagerTest
         {
             Assert.AreEqual(profile.SystemPassword, validPassword);
         }
+
+        [TestMethod]
+        public void ValidateCorrectLoginOnTheSystem() 
+        {
+            Assert.IsTrue(profile.Login(correctPassword));
+        }
     }
 }
