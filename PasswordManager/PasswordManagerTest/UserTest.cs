@@ -29,9 +29,24 @@ namespace PasswordManagerTest
         }
 
         [TestMethod]
-        public void ValidateCorrectPasswordLogin() 
+        public void LoginWithValidPassword()
         {
             Assert.IsTrue(profile.Login(validPassword));
         }
+
+        [TestMethod]
+        public void LoginWithIncorrectPassword() 
+        {
+            string invalidPassword = "";
+            const int STRING_LENGHT = 12;
+
+            for (int count = 0; count <= STRING_LENGHT; count++) 
+            {
+                invalidPassword += "A";
+            }
+
+            Assert.IsFalse(profile.Login(invalidPassword));
+        }
+
     }
 }
