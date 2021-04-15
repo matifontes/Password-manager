@@ -5,42 +5,42 @@ using PasswordManager;
 namespace PasswordManagerTest
 {
     [TestClass]
-    public class UserTest
+    public class SystemTest
     {
-        private User profile;
-        private User profileWithSpecialCharactersOnPassword;
+        private PasswordManager.System systemProfile;
+        private PasswordManager.System systemProfileWithSpecialCharactersOnPassword;
         private string validPassword = "admin";
         private string specialCharacterPsw = "3123#@@12";
 
         [TestInitialize]
         public void Setup()
         {
-            profile = new User(validPassword);
-            profileWithSpecialCharactersOnPassword = new User(specialCharacterPsw);
+            systemProfile = new PasswordManager.System(validPassword);
+            systemProfileWithSpecialCharactersOnPassword = new PasswordManager.System(specialCharacterPsw);
         }
 
         [TestMethod]
         public void CreateUser()
         {
-            Assert.IsNotNull(profile);
+            Assert.IsNotNull(systemProfile);
         }
 
         [TestMethod]
         public void ValidatePasswordParameterOnUserCreation()
         {
-            Assert.AreEqual(profile.SystemPassword, validPassword);
+            Assert.AreEqual(systemProfile.SystemPassword, validPassword);
         }
 
         [TestMethod]
         public void CreateUserWithAPasswordUsingSpecialCharacters() 
         {
-            Assert.AreEqual(profileWithSpecialCharactersOnPassword.SystemPassword, specialCharacterPsw);
+            Assert.AreEqual(systemProfileWithSpecialCharactersOnPassword.SystemPassword, specialCharacterPsw);
         }
 
         [TestMethod]
         public void LoginWithValidPassword()
         {
-            Assert.IsTrue(profile.Login(validPassword));
+            Assert.IsTrue(systemProfile.Login(validPassword));
         }
 
         [TestMethod]
@@ -54,13 +54,13 @@ namespace PasswordManagerTest
                 invalidPassword += "A";
             }
 
-            Assert.IsFalse(profile.Login(invalidPassword));
+            Assert.IsFalse(systemProfile.Login(invalidPassword));
         }
 
         [TestMethod]
         public void LoginHavingAPasswordWithSpecialSimbols() 
         {
-            Assert.IsTrue(profileWithSpecialCharactersOnPassword.Login(specialCharacterPsw));       
+            Assert.IsTrue(systemProfileWithSpecialCharactersOnPassword.Login(specialCharacterPsw));       
         }
     }
 }
