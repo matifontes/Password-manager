@@ -1,10 +1,10 @@
 ﻿namespace PasswordManager
 {
-    public class User
+    public class System
     {
         public string SystemPassword {get; set;}
 
-        public User(string password) {
+        public System(string password) {
             this.SystemPassword = password;
         }
 
