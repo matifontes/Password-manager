@@ -62,5 +62,14 @@ namespace PasswordManagerTest
         {
             Assert.IsTrue(systemProfileWithSpecialCharactersOnPassword.Login(specialCharacterPsw));       
         }
+
+        [TestMethod]
+        public void AddNewCategorie() 
+        {
+            string categorieName = "Work";
+            Categorie categorie = new Categorie(categorieName);
+            systemProfile.AddCategorie(categorie);
+            Assert.IsTrue(systemProfile.categories.Contains(categorie));
+        }
     }
 }
