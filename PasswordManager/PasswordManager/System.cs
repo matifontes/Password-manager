@@ -21,5 +21,10 @@ namespace PasswordManager
         {
 
         }
+
+        public bool CategoryExists(Categorie category) 
+        {
+            return true;
+        }
     }
 }
