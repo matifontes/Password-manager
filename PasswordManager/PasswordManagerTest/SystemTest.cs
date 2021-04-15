@@ -64,12 +64,12 @@ namespace PasswordManagerTest
         }
 
         [TestMethod]
-        public void AddNewCategorie() 
+        public void AddNewCategory() 
         {
-            string categorieName = "Work";
-            Categorie categorie = new Categorie(categorieName);
-            systemProfile.AddCategorie(categorie);
-            Assert.IsTrue(systemProfile.categories.Contains(categorie));
+            string categoryName = "Work";
+            Categorie category = new Categorie(categoryName);
+            bool wasAdded = systemProfile.CategoryExists(systemProfile.AddCategorie(category));
+            Assert.IsTrue(wasAdded);
         }
     }
 }

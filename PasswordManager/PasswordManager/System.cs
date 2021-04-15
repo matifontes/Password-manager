@@ -17,7 +17,7 @@ namespace PasswordManager
             return password.Equals(SystemPassword);
         }
 
-        public void AddCategorie(Categorie categorie) 
+        public void AddCategory(Categorie category) 
         {
 
         }
