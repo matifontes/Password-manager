@@ -5,18 +5,25 @@ using PasswordManager;
 namespace PasswordManagerTest
 {
     [TestClass]
-    public class SystemTest
+    public class SystemProfileTest
     {
-        private PasswordManager.System systemProfile;
-        private PasswordManager.System systemProfileWithSpecialCharactersOnPassword;
+        private SystemProfile systemProfile;
+        private SystemProfile systemProfileWithSpecialCharactersOnPassword;
         private string validPassword = "admin";
         private string specialCharacterPsw = "3123#@@12";
 
         [TestInitialize]
         public void Setup()
         {
-            systemProfile = new PasswordManager.System(validPassword);
-            systemProfileWithSpecialCharactersOnPassword = new PasswordManager.System(specialCharacterPsw);
+            systemProfile = new PasswordManager.SystemProfile(validPassword);
+            systemProfileWithSpecialCharactersOnPassword = new PasswordManager.SystemProfile(specialCharacterPsw);
+        }
+
+        [TestCleanup]
+        public void Cleanup() 
+        {
+            systemProfile = null;
+            systemProfileWithSpecialCharactersOnPassword = null;
         }
 
         [TestMethod]
@@ -61,6 +68,23 @@ namespace PasswordManagerTest
         public void LoginHavingAPasswordWithSpecialSimbols() 
         {
             Assert.IsTrue(systemProfileWithSpecialCharactersOnPassword.Login(specialCharacterPsw));       
+        }
+
+        [TestMethod]
+        public void AddedNewCategoryExists() 
+        {
+            string categoryName = "Work";
+            Categorie category = new Categorie(categoryName);
+            systemProfile.AddCategory(category);
+            bool wasAdded = systemProfile.CategoryExists(category);
+            Assert.IsTrue(wasAdded);
+        }
+
+        [TestMethod]
+        public void CategoryThatWasntAddedDoesNotExists() 
+        {
+            Categorie categoryThatDoesntExists = new Categorie("Work");
+            Assert.IsFalse(systemProfile.CategoryExists(categoryThatDoesntExists));
         }
     }
 }
