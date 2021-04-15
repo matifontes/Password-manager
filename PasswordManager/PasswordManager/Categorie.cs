@@ -8,5 +8,11 @@ namespace PasswordManager
 {
     public class Categorie
     {
+        public string Name {get; set;}
+        
+        public Categorie(string name)
+        {
+            this.Name = name;
+        }
     }
 }
