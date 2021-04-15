@@ -19,12 +19,12 @@ namespace PasswordManager
 
         public void AddCategory(Categorie category) 
         {
-
+            this.categories.Add(category);
         }
 
         public bool CategoryExists(Categorie category) 
         {
-            return true;
+            return this.categories.Contains(category);
         }
     }
 }
