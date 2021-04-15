@@ -1,15 +1,15 @@
-﻿using System.Collections;
+﻿using System.Collections.Generic;
 
 namespace PasswordManager
 {
     public class System
     {
         public string SystemPassword {get; set;}
-        private ArrayList categories;
+        private List<Categorie> categories;
 
         public System(string password) {
             this.SystemPassword = password;
-            categories = new ArrayList();
+            categories = new List<Categorie>();
         }
 
         public bool Login(string password) 
