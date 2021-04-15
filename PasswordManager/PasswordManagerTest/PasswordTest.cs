@@ -22,7 +22,7 @@ namespace PasswordManagerTest
         [TestMethod]
         public void CreatePassword()
         {
-            Password passwordTest = new Password();
+            Password passwordTest = new Password(personal, password, site, user, note);
             Assert.IsNotNull(passwordTest);
         }
     }
