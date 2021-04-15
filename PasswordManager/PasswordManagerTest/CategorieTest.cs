@@ -10,7 +10,8 @@ namespace PasswordManagerTest
         [TestMethod]
         public void CreateCategorie()
         {
-            Categorie personal = new Categorie();
+            string name = "Personal";
+            Categorie personal = new Categorie(name);
             Assert.IsNotNull(personal);
         }
     }
