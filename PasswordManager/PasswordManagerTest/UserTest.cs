@@ -8,12 +8,15 @@ namespace PasswordManagerTest
     public class UserTest
     {
         private User profile;
-        private string password = "admin";
+        private User profileWithSpecialCharactersOnPassword;
+        private string validPassword = "admin";
+        private string specialCharacterPsw = "3123#@@12";
 
         [TestInitialize]
-        public void setup()
+        public void Setup()
         {
-            profile = new User(password);
+            profile = new User(validPassword);
+            profileWithSpecialCharactersOnPassword = new User(specialCharacterPsw);
         }
 
         [TestMethod]
@@ -23,9 +26,41 @@ namespace PasswordManagerTest
         }
 
         [TestMethod]
-        public void validatePasswordParameterOnUserCreation()
+        public void ValidatePasswordParameterOnUserCreation()
         {
-            Assert.AreEqual(profile.Password, password);
+            Assert.AreEqual(profile.SystemPassword, validPassword);
+        }
+
+        [TestMethod]
+        public void CreateUserWithAPasswordUsingSpecialCharacters() 
+        {
+            Assert.AreEqual(profileWithSpecialCharactersOnPassword.SystemPassword, specialCharacterPsw);
+        }
+
+        [TestMethod]
+        public void LoginWithValidPassword()
+        {
+            Assert.IsTrue(profile.Login(validPassword));
+        }
+
+        [TestMethod]
+        public void LoginWithIncorrectPassword() 
+        {
+            string invalidPassword = "";
+            const int STRING_LENGHT = 12;
+
+            for (int count = 0; count <= STRING_LENGHT; count++) 
+            {
+                invalidPassword += "A";
+            }
+
+            Assert.IsFalse(profile.Login(invalidPassword));
+        }
+
+        [TestMethod]
+        public void LoginHavingAPasswordWithSpecialSimbols() 
+        {
+            Assert.IsTrue(profileWithSpecialCharactersOnPassword.Login(specialCharacterPsw));       
         }
     }
 }
