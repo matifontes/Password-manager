@@ -68,7 +68,8 @@ namespace PasswordManagerTest
         {
             string categoryName = "Work";
             Categorie category = new Categorie(categoryName);
-            bool wasAdded = systemProfile.CategoryExists(systemProfile.AddCategorie(category));
+            systemProfile.AddCategory(category);
+            bool wasAdded = systemProfile.CategoryExists(category);
             Assert.IsTrue(wasAdded);
         }
     }
