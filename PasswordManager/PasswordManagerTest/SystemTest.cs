@@ -7,16 +7,16 @@ namespace PasswordManagerTest
     [TestClass]
     public class SystemTest
     {
-        private PasswordManager.System systemProfile;
-        private PasswordManager.System systemProfileWithSpecialCharactersOnPassword;
+        private SystemProfile systemProfile;
+        private SystemProfile systemProfileWithSpecialCharactersOnPassword;
         private string validPassword = "admin";
         private string specialCharacterPsw = "3123#@@12";
 
         [TestInitialize]
         public void Setup()
         {
-            systemProfile = new PasswordManager.System(validPassword);
-            systemProfileWithSpecialCharactersOnPassword = new PasswordManager.System(specialCharacterPsw);
+            systemProfile = new PasswordManager.SystemProfile(validPassword);
+            systemProfileWithSpecialCharactersOnPassword = new PasswordManager.SystemProfile(specialCharacterPsw);
         }
 
         [TestCleanup]

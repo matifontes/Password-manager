@@ -2,12 +2,12 @@
 
 namespace PasswordManager
 {
-    public class System
+    public class SystemProfile
     {
         public string SystemPassword {get; set;}
         private List<Categorie> categories;
 
-        public System(string password) {
+        public SystemProfile(string password) {
             this.SystemPassword = password;
             categories = new List<Categorie>();
         }
