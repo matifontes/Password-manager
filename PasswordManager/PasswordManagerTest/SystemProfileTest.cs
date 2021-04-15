@@ -5,7 +5,7 @@ using PasswordManager;
 namespace PasswordManagerTest
 {
     [TestClass]
-    public class SystemTest
+    public class SystemProfileTest
     {
         private SystemProfile systemProfile;
         private SystemProfile systemProfileWithSpecialCharactersOnPassword;
