@@ -8,8 +8,10 @@ namespace PasswordManagerTest
     public class CategorieTest
     {
         [TestMethod]
-        public void TestMethod1()
+        public void CreateCategorie()
         {
+            Categorie personal = new Categorie();
+            Assert.IsNotNull(personal);
         }
     }
 }
