@@ -48,6 +48,8 @@ en algún data breach.
 
 ### Diagrama de clases UML
 
+![UML.png](/Documentacion/UML.png)
+
 ## Pruebas unitarias
 
 ## Bibliografía
