@@ -46,6 +46,8 @@ en algún data breach.
 
 ### Diagrama de paquetes
 
+![UML.png](/Documentacion/DiagramaDePaquetes.png)
+
 ### Diagrama de clases UML
 
 ![UML.png](/Documentacion/UML.png)
