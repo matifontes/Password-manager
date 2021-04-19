@@ -100,5 +100,17 @@ namespace PasswordManagerTest
             Assert.IsTrue(wasAdded);
         }
 
+        [TestMethod]
+        public void PasswordThatWasntAddedDoesNotExists()
+        {
+            Category category = new Category("Work");
+            string pass = "user123";
+            string site = "aulas.ort.edu.uy";
+            string user = "Liza";
+            string note = "";
+            Password password = new Password(category, pass, site, user, note);
+            Assert.IsFalse(systemProfile.PasswordExists(password));
+        }
+
     }
 }
