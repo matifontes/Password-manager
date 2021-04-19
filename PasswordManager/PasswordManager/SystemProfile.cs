@@ -5,11 +5,11 @@ namespace PasswordManager
     public class SystemProfile
     {
         public string SystemPassword {get; set;}
-        private List<Categorie> categories;
+        private List<Category> categories;
 
         public SystemProfile(string password) {
             this.SystemPassword = password;
-            categories = new List<Categorie>();
+            categories = new List<Category>();
         }
 
         public bool Login(string password) 
@@ -17,12 +17,12 @@ namespace PasswordManager
             return password.Equals(SystemPassword);
         }
 
-        public void AddCategory(Categorie category) 
+        public void AddCategory(Category category) 
         {
             this.categories.Add(category);
         }
 
-        public bool CategoryExists(Categorie category) 
+        public bool CategoryExists(Category category) 
         {
             return this.categories.Contains(category);
         }

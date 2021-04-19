@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace PasswordManager
 {
-    public class Categorie
+    public class Category
     {
         public string Name {get; set;}
         
-        public Categorie(string name)
+        public Category(string name)
         {
             this.Name = name;
         }
