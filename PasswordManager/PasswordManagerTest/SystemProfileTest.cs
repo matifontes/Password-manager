@@ -74,7 +74,7 @@ namespace PasswordManagerTest
         public void AddedNewCategoryExists() 
         {
             string categoryName = "Work";
-            Categorie category = new Categorie(categoryName);
+            Category category = new Category(categoryName);
             systemProfile.AddCategory(category);
             bool wasAdded = systemProfile.CategoryExists(category);
             Assert.IsTrue(wasAdded);
@@ -83,7 +83,7 @@ namespace PasswordManagerTest
         [TestMethod]
         public void CategoryThatWasntAddedDoesNotExists() 
         {
-            Categorie categoryThatDoesntExists = new Categorie("Work");
+            Category categoryThatDoesntExists = new Category("Work");
             Assert.IsFalse(systemProfile.CategoryExists(categoryThatDoesntExists));
         }
     }
