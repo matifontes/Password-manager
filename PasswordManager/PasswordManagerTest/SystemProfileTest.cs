@@ -86,5 +86,17 @@ namespace PasswordManagerTest
             Category categoryThatDoesntExists = new Category("Work");
             Assert.IsFalse(systemProfile.CategoryExists(categoryThatDoesntExists));
         }
+        [TestMethod]
+        public void AddedNewPasswordExists()
+        {
+            Category category = new Category("Work");
+            string pass = "admin";
+            string site = "aulas.ort.edu.uy";
+            string user = "Ralph";
+            string note = "";
+            Password password = new Password(category, pass, site, user, note);
+            systemProfile.AddPassword(password);
+        }
+
     }
 }
