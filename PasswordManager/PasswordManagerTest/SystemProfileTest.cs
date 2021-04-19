@@ -11,12 +11,14 @@ namespace PasswordManagerTest
         private SystemProfile systemProfileWithSpecialCharactersOnPassword;
         private string validPassword = "admin";
         private string specialCharacterPsw = "3123#@@12";
+        private Category category;
 
         [TestInitialize]
         public void Setup()
         {
             systemProfile = new PasswordManager.SystemProfile(validPassword);
             systemProfileWithSpecialCharactersOnPassword = new PasswordManager.SystemProfile(specialCharacterPsw);
+            category = new Category("Work");
         }
 
         [TestCleanup]
@@ -24,6 +26,7 @@ namespace PasswordManagerTest
         {
             systemProfile = null;
             systemProfileWithSpecialCharactersOnPassword = null;
+            category = null;
         }
 
         [TestMethod]
@@ -73,8 +76,6 @@ namespace PasswordManagerTest
         [TestMethod]
         public void AddedNewCategoryExists() 
         {
-            string categoryName = "Work";
-            Category category = new Category(categoryName);
             systemProfile.AddCategory(category);
             bool wasAdded = systemProfile.CategoryExists(category);
             Assert.IsTrue(wasAdded);
@@ -83,13 +84,11 @@ namespace PasswordManagerTest
         [TestMethod]
         public void CategoryThatWasntAddedDoesNotExists() 
         {
-            Category categoryThatDoesntExists = new Category("Work");
-            Assert.IsFalse(systemProfile.CategoryExists(categoryThatDoesntExists));
+            Assert.IsFalse(systemProfile.CategoryExists(category));
         }
         [TestMethod]
         public void AddedNewPasswordExists()
         {
-            Category category = new Category("Work");
             string pass = "admin";
             string site = "aulas.ort.edu.uy";
             string user = "Ralph";
@@ -103,7 +102,6 @@ namespace PasswordManagerTest
         [TestMethod]
         public void PasswordThatWasntAddedDoesNotExists()
         {
-            Category category = new Category("Work");
             string pass = "user123";
             string site = "aulas.ort.edu.uy";
             string user = "Liza";
