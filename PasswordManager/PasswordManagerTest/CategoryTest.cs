@@ -5,10 +5,10 @@ using PasswordManager;
 namespace PasswordManagerTest
 {
     [TestClass]
-    public class CategorieTest
+    public class CategoryTest
     {
         [TestMethod]
-        public void CreateCategorie()
+        public void CreateCategory()
         {
             string name = "Personal";
             Category personal = new Category(name);
