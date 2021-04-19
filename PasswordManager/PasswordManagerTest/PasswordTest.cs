@@ -27,36 +27,5 @@ namespace PasswordManagerTest
             Assert.IsNotNull(passwordTest);
         }
 
-        [TestMethod]
-        public void checkPasswordCategorie()
-        {
-            Assert.AreEqual(passwordTest.Category, personal);
-        }
-
-        [TestMethod]
-        public void checkPassword()
-        {
-            Assert.AreEqual(passwordTest.Pass, password);
-        }
-
-        [TestMethod]
-        public void checkPasswordSite()
-        {
-            Assert.AreEqual(passwordTest.Site, site);
-        }
-
-        [TestMethod]
-        public void checkPasswordUser()
-        {
-            Assert.AreEqual(passwordTest.User, user);
-        }
-
-        [TestMethod]
-        public void checkPasswordNote()
-        {
-            Assert.AreEqual(passwordTest.Note, note);
-        }
-
-
     }
 }
