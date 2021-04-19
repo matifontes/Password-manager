@@ -9,7 +9,16 @@ Estudiantes:
 
 La siguiente es una lista de los diferentes elementos incluidos en este documento:
 
-1 - [Descipción general](#descripción-general)
+1. [Descipción general](#descripción-general)
+2. [Diseño](#diseño)
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2.1. [Diagrama de paquetes](#diagrama-de-paquetes)
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2.2. [Diagrama de clases UML](#diagrama-de-clases-uml) 
+
+3. [Pruebas unitarias](#pruebas-unitarias)
+4. [Bibliografía](#bibliografía)
+5. [Anexos](#anexos)
 
 ## Descripción general
 
@@ -32,3 +41,15 @@ específicas.
 en algún data breach.
 
 6 - Se debe ver un reporte que indique el nivel de seguridad de las contraseñas guardadas.
+
+## Diseño
+
+### Diagrama de paquetes
+
+### Diagrama de clases UML
+
+## Pruebas unitarias
+
+## Bibliografía
+
+## Anexos
