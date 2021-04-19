@@ -96,6 +96,8 @@ namespace PasswordManagerTest
             string note = "";
             Password password = new Password(category, pass, site, user, note);
             systemProfile.AddPassword(password);
+            bool wasAdded = systemProfile.PasswordExists(password);
+            Assert.IsTrue(wasAdded);
         }
 
     }
