@@ -11,7 +11,7 @@ namespace PasswordManagerTest
         public void CreateCategorie()
         {
             string name = "Personal";
-            Categorie personal = new Categorie(name);
+            Category personal = new Category(name);
             Assert.IsNotNull(personal);
         }
     }
