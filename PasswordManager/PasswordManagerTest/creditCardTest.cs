@@ -5,12 +5,12 @@ using System;
 namespace PasswordManagerTest
 {
     [TestClass]
-    public class creditCardTest
+    public class CreditCardTest
     {
         [TestMethod]
         public void CreateCreditCard()
         {
-            creditCard card = new creditCard();
+            CreditCard card = new CreditCard();
             Assert.IsNotNull(card);
         }
     }

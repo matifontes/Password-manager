@@ -1,9 +1,9 @@
 ﻿namespace PasswordManager
 {
-    public class creditCard
+    public class CreditCard
     {
 
-        public creditCard() { 
+        public CreditCard() { 
             
         }
     }
