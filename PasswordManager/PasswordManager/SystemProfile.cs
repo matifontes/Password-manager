@@ -34,9 +34,16 @@ namespace PasswordManager
             this.passwords.Add(pass);
         }
 
-        public bool PasswordExists(Password pass)
+        public bool PasswordExists(string pass)
         {
-            return this.passwords.Contains(pass);
+            foreach (Password passAux in passwords)
+            {
+                if (passAux.Pass.Equals(pass))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }
