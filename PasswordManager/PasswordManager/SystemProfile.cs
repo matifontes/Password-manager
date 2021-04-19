@@ -31,12 +31,12 @@ namespace PasswordManager
 
         public void AddPassword(Password pass)
         {
-            
+            this.passwords.Add(pass);
         }
 
         public bool PasswordExists(Password pass)
         {
-            return true;
+            return this.passwords.Contains(pass);
         }
     }
 }
