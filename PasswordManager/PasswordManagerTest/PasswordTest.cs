@@ -8,7 +8,7 @@ namespace PasswordManagerTest
     public class PasswordTest
     {
         Password passwordTest;
-        private Categorie personal;
+        private Category personal;
         private string password = "admin";
         private string site = "aulas.ort.edu.uy";
         private string user = "Ralph";
@@ -17,7 +17,7 @@ namespace PasswordManagerTest
         [TestInitialize]
         public void setup()
         {
-            personal = new Categorie("Personal");
+            personal = new Category("Personal");
             passwordTest = new Password(personal, password, site, user, note);
         }
 
@@ -30,7 +30,7 @@ namespace PasswordManagerTest
         [TestMethod]
         public void checkPasswordCategorie()
         {
-            Assert.AreEqual(passwordTest.Categorie, personal);
+            Assert.AreEqual(passwordTest.Category, personal);
         }
 
         [TestMethod]
