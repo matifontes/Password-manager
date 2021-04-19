@@ -5,7 +5,13 @@ Estudiantes:
 * Renzo Matonti	230829
 * Matias Fontes	248142
 
-## Descripción
+## Índice
+
+La siguiente es una lista de los diferentes elementos incluidos en este documento:
+
+1 - [Descipción general](#descripción-general)
+
+## Descripción general
 
 Repositorio para el desarrollo del Obligatorio de Diseño de Aplicaciones.
 
