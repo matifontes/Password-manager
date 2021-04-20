@@ -50,7 +50,7 @@ namespace PasswordManager
 
         public void AddCreditCard(CreditCard card)
         {
-
+            this.cards.Add(card);
         }
 
         public bool CreditCardExists(long cardNumber)
