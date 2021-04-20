@@ -7,11 +7,13 @@ namespace PasswordManager
         public string SystemPassword {get; set;}
         private List<Category> categories;
         private List<Password> passwords;
+        private List<CreditCard> cards;
 
         public SystemProfile(string password) {
             this.SystemPassword = password;
             categories = new List<Category>();
             passwords = new List<Password>();
+            cards = new List<CreditCard>();
         }
 
         public bool Login(string password) 
@@ -44,6 +46,11 @@ namespace PasswordManager
                 }
             }
             return false;
+        }
+
+        public void AddCreditCard(CreditCard card)
+        {
+
         }
     }
 }
