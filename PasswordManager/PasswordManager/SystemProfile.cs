@@ -52,5 +52,17 @@ namespace PasswordManager
         {
 
         }
+
+        public bool CreditCardExists(long cardNumber)
+        {
+            foreach (CreditCard cardAux in cards)
+            {
+                if (cardAux.Number.Equals(cardNumber))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }
