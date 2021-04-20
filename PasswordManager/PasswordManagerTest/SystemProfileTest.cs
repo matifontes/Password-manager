@@ -115,12 +115,14 @@ namespace PasswordManagerTest
         {
             string name = "Visa Gold";
             string type = "Visa";
-            long creaditCardNumber = 2323321323212321;
+            long creditCardNumber = 2323321323212321;
             short ccvCode = 080;
             DateTime expDate = new DateTime(2021, 5, 1);
             string note = "Limit 15K";
-            CreditCard card = new CreditCard(category, name, type, creaditCardNumber, ccvCode, expDate, note);
+            CreditCard card = new CreditCard(category, name, type, creditCardNumber, ccvCode, expDate, note);
             systemProfile.AddCreditCard(card);
+            bool wasAdded = systemProfile.CreditCardExists(creditCardNumber);
+            Assert.IsTrue(wasAdded);
         }
 
     }
