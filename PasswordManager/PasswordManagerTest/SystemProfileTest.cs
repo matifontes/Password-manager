@@ -110,5 +110,18 @@ namespace PasswordManagerTest
             Assert.IsFalse(systemProfile.PasswordExists(pass));
         }
 
+        [TestMethod]
+        public void AddedNewCreditCardExists()
+        {
+            string name = "Visa Gold";
+            string type = "Visa";
+            long creaditCardNumber = 2323321323212321;
+            short ccvCode = 080;
+            DateTime expDate = new DateTime(2021, 5, 1);
+            string note = "Limit 15K";
+            CreditCard card = new CreditCard(category, name, type, creaditCardNumber, ccvCode, expDate, note);
+            systemProfile.AddCreditCard(card);
+        }
+
     }
 }
