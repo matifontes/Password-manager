@@ -21,6 +21,14 @@ namespace PasswordManager
             return password.Equals(SystemPassword);
         }
 
+        public void ChangePassword(string actualPassword, string newPassword)
+        {
+            if (ValidateSystemPassword(actualPassword))
+            {
+                this.SystemPassword = newPassword;
+            }
+        }
+
         public void AddCategory(Category category) 
         {
             this.categories.Add(category);
