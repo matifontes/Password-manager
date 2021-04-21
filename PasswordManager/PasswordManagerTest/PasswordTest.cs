@@ -8,6 +8,7 @@ namespace PasswordManagerTest
     public class PasswordTest
     {
         Password passwordTest;
+        Password passwordCreatedYesterday;
         private Category personal;
         private string password = "admin";
         private string site = "aulas.ort.edu.uy";
@@ -19,6 +20,8 @@ namespace PasswordManagerTest
         {
             personal = new Category("Personal");
             passwordTest = new Password(personal, password, site, user, note);
+            passwordCreatedYesterday = new Password(personal, password, site, user, note);
+            passwordCreatedYesterday.LastModificationDate = DateTime.Today.AddDays(-1);
         }
 
         [TestMethod]
@@ -32,6 +35,23 @@ namespace PasswordManagerTest
         {
             DateTime currentDate = DateTime.Today;
             Assert.AreEqual(passwordTest.LastModificationDate,currentDate);
+        }
+
+        [TestMethod]
+        public void ValidateSetPassword() 
+        {
+            Assert.AreEqual(passwordTest.Pass, password);
+        }
+
+        [TestMethod]
+        public void ValidateLastModificationDateAfterChangingPassword() 
+        {
+            DateTime currentDate = DateTime.Today;
+            string newPassword = "tableTop5E";
+
+            passwordCreatedYesterday.Pass = newPassword;
+
+            Assert.AreEqual(passwordCreatedYesterday.LastModificationDate, currentDate);    
         }
 
     }
