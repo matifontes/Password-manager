@@ -26,14 +26,18 @@ namespace PasswordManager
             this.categories.Add(category);
         }
 
-        public bool CategoryExists(Category category) 
-        {
-            return this.categories.Contains(category);
-        }
-
         public void AddPassword(Password pass)
         {
             this.passwords.Add(pass);
+        }
+        public void AddCreditCard(CreditCard card)
+        {
+            this.cards.Add(card);
+        }
+
+        public bool CategoryExists(Category category) 
+        {
+            return this.categories.Contains(category);
         }
 
         public bool PasswordExists(string pass)
@@ -46,11 +50,6 @@ namespace PasswordManager
                 }
             }
             return false;
-        }
-
-        public void AddCreditCard(CreditCard card)
-        {
-            this.cards.Add(card);
         }
 
         public bool CreditCardExists(long cardNumber)
