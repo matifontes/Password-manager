@@ -125,5 +125,22 @@ namespace PasswordManagerTest
             Assert.IsTrue(wasAdded);
         }
 
+        [TestMethod]
+        public void CorrectChangePassword()
+        {
+            string newPassword = "test123";
+            ChangePassword(validPassword, newPassword);
+            Assert.IsTrue(systemProfile.ValidateSystemPassword(newPassword));
+        }
+
+        [TestMethod]
+        public void ChangePasswordUsingInvalidAcutalPassword()
+        {
+            string newPassword = "test123";
+            string invalidActualPassword = "adm123";
+            ChangePassword(invalidActualPassword, newPassword);
+            Assert.IsFalse(systemProfile.ValidateSystemPassword(newPassword));
+        }
+
     }
 }
