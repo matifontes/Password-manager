@@ -16,7 +16,7 @@ namespace PasswordManager
             cards = new List<CreditCard>();
         }
 
-        public bool Login(string password) 
+        public bool ValidateSystemPassword(string password) 
         {
             return password.Equals(SystemPassword);
         }
