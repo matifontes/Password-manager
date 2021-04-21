@@ -7,7 +7,7 @@ namespace PasswordManagerTest
     [TestClass]
     public class PasswordTest
     {
-        Password passwordTest;
+        Password passwordCreatedToday;
         Password passwordCreatedYesterday;
         private Category personal;
         private string password = "admin";
@@ -19,7 +19,7 @@ namespace PasswordManagerTest
         public void setup()
         {
             personal = new Category("Personal");
-            passwordTest = new Password(personal, password, site, user, note);
+            passwordCreatedToday = new Password(personal, password, site, user, note);
             passwordCreatedYesterday = new Password(personal, password, site, user, note);
             passwordCreatedYesterday.LastModificationDate = DateTime.Today.AddDays(-1);
         }
@@ -27,20 +27,20 @@ namespace PasswordManagerTest
         [TestMethod]
         public void CreatePassword()
         {
-            Assert.IsNotNull(passwordTest);
+            Assert.IsNotNull(passwordCreatedToday);
         }
 
         [TestMethod]
         public void VerifyLastModificationDateAfterCreatingPassword() 
         {
             DateTime currentDate = DateTime.Today;
-            Assert.AreEqual(passwordTest.LastModificationDate,currentDate);
+            Assert.AreEqual(passwordCreatedToday.LastModificationDate,currentDate);
         }
 
         [TestMethod]
         public void ValidateSetPassword() 
         {
-            Assert.AreEqual(passwordTest.Pass, password);
+            Assert.AreEqual(passwordCreatedToday.Pass, password);
         }
 
         [TestMethod]
