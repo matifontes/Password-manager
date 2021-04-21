@@ -27,5 +27,12 @@ namespace PasswordManagerTest
             Assert.IsNotNull(passwordTest);
         }
 
+        [TestMethod]
+        public void VerifyLastModificationDateAfterCreatingPassword() 
+        {
+            DateTime currentDate = DateTime.Today;
+            Assert.AreEqual(passwordTest.LastModificationDate,currentDate);
+        }
+
     }
 }
