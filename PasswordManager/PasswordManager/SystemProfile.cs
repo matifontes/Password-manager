@@ -4,7 +4,7 @@ namespace PasswordManager
 {
     public class SystemProfile
     {
-        public string SystemPassword {get; set;}
+        public string SystemPassword {get; private set;}
         private List<Category> categories;
         private List<Password> passwords;
         private List<CreditCard> cards;
