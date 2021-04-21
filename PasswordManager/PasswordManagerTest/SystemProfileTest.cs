@@ -129,7 +129,7 @@ namespace PasswordManagerTest
         public void CorrectChangePassword()
         {
             string newPassword = "test123";
-            ChangePassword(validPassword, newPassword);
+            systemProfile.ChangePassword(validPassword, newPassword);
             Assert.IsTrue(systemProfile.ValidateSystemPassword(newPassword));
         }
 
@@ -138,7 +138,7 @@ namespace PasswordManagerTest
         {
             string newPassword = "test123";
             string invalidActualPassword = "adm123";
-            ChangePassword(invalidActualPassword, newPassword);
+            systemProfile.ChangePassword(invalidActualPassword, newPassword);
             Assert.IsFalse(systemProfile.ValidateSystemPassword(newPassword));
         }
 
