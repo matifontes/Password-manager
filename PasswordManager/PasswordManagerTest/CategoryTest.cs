@@ -17,9 +17,18 @@ namespace PasswordManagerTest
 
         [TestMethod]
         [ExpectedException(typeof(InvalidCategoryNameException))]
-        public void CreateCategoryWithInvalidName()
+        public void CreateCategoryWithNameOfLenghtLessThanThree()
         {
             string invalidName = "NA";
+            Category personal = new Category(invalidName);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidCategoryNameException))]
+        public void CreateCategoryWithNameOfLenghtLongerThanFifteen()
+        {
+            string invalidName = "0123456789ABCDEF";
+
             Category personal = new Category(invalidName);
         }
     }
