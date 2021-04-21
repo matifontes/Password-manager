@@ -20,7 +20,8 @@ namespace PasswordManager
                 {
                     throw new InvalidCategoryNameException();
                 }
-                else {
+                else 
+                {
                     this._name = value;
                 }
             } 
