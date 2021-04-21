@@ -50,7 +50,7 @@ namespace PasswordManagerTest
         [TestMethod]
         public void LoginWithValidPassword()
         {
-            Assert.IsTrue(systemProfile.Login(validPassword));
+            Assert.IsTrue(systemProfile.ValidateSystemPassword(validPassword));
         }
 
         [TestMethod]
@@ -64,13 +64,13 @@ namespace PasswordManagerTest
                 invalidPassword += "A";
             }
 
-            Assert.IsFalse(systemProfile.Login(invalidPassword));
+            Assert.IsFalse(systemProfile.ValidateSystemPassword(invalidPassword));
         }
 
         [TestMethod]
         public void LoginHavingAPasswordWithSpecialSimbols() 
         {
-            Assert.IsTrue(systemProfileWithSpecialCharactersOnPassword.Login(specialCharacterPsw));       
+            Assert.IsTrue(systemProfileWithSpecialCharactersOnPassword.ValidateSystemPassword(specialCharacterPsw));       
         }
 
         [TestMethod]
