@@ -8,11 +8,28 @@ namespace PasswordManagerTest
     public class CategoryTest
     {
         [TestMethod]
-        public void CreateCategory()
+        public void CreateCategoryWithValidName()
         {
-            string name = "Personal";
-            Category personal = new Category(name);
+            string validName = "Personal";
+            Category personal = new Category(validName);
             Assert.IsNotNull(personal);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidCategoryNameException))]
+        public void CreateCategoryWithNameShorterThanTheMinimumValidLength()
+        {
+            string invalidName = "NA";
+            Category personal = new Category(invalidName);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidCategoryNameException))]
+        public void CreateCategoryWithNameLongerThanTheMaximumValidLength()
+        {
+            string invalidName = "0123456789ABCDEF";
+
+            Category personal = new Category(invalidName);
         }
     }
 }
