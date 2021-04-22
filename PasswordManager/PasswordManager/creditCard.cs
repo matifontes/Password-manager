@@ -8,9 +8,10 @@ namespace PasswordManager
         public Category CreditCardCategory { get; set; }
         public string Name { get; set; }
         public string Type { get; set; }
+        private long _number;
         public long Number
         {
-            get { return Number; }
+            get { return _number; }
             private set
             {
                 if (!IsValidNumber(value))
@@ -19,7 +20,7 @@ namespace PasswordManager
                 }
                 else
                 {
-                    this.Number = value;
+                    this._number = value;
                 }
             }
         }
@@ -38,10 +39,10 @@ namespace PasswordManager
             this.Note = note;
         }
 
-        public bool IsValidNumber(long value)
+        private bool IsValidNumber(long creditCardNumber)
         {
-            return false;
+            int digitos = (int)Math.Floor(Math.Log10(creditCardNumber) + 1);
+            return (digitos == LENGTH_FOR_VALID_NAME);
         }
-
     }
 }
