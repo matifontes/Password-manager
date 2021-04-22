@@ -7,6 +7,7 @@ namespace PasswordManagerTest
     [TestClass]
     public class CreditCardTest
     {
+        private SystemProfile systemProfile;
         private CreditCard card;
         private Category category = new Category("Work");
         private string name = "Visa Gold";
@@ -20,6 +21,7 @@ namespace PasswordManagerTest
         public void setup()
         {
             card = new CreditCard(category, name, type, creditCardNumber, ccvCode, expDate, note);
+            systemProfile = null;
         }
 
         [TestMethod]
@@ -27,5 +29,23 @@ namespace PasswordManagerTest
         {
             Assert.IsNotNull(card);
         }
+
+        [TestMethod]
+        public void CreateCreditCardWitNumberLenghtLessThanSixteen()
+        {
+            long creditCardShortNumber = 12345;
+            CreditCard invalidCard = new CreditCard(category, name, type, creditCardShortNumber, ccvCode, expDate, note);
+            Assert.IsFalse(systemProfile.CreditCardExists(creditCardShortNumber));
+        }
+
+        [TestMethod]
+        public void CreateCreditCardWitNumberLenghtLongerThanSixteen()
+        {
+            long creditCardLongNumber = 123451234512345123;
+            CreditCard invalidCard = new CreditCard(category, name, type, creditCardLongNumber, ccvCode, expDate, note);
+            Assert.IsFalse(systemProfile.CreditCardExists(creditCardLongNumber));
+        }
+
+
     }
 }
