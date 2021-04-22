@@ -31,19 +31,19 @@ namespace PasswordManagerTest
         }
 
         [TestMethod]
+        [ExpectedException(typeof(InvalidCreditCardNumberException))]
         public void CreateCreditCardWitNumberLenghtLessThanSixteen()
         {
             long creditCardShortNumber = 12345;
             CreditCard invalidCard = new CreditCard(category, name, type, creditCardShortNumber, ccvCode, expDate, note);
-            Assert.IsFalse(systemProfile.CreditCardExists(creditCardShortNumber));
         }
 
         [TestMethod]
+        [ExpectedException(typeof(InvalidCreditCardNumberException))]
         public void CreateCreditCardWitNumberLenghtLongerThanSixteen()
         {
             long creditCardLongNumber = 123451234512345123;
             CreditCard invalidCard = new CreditCard(category, name, type, creditCardLongNumber, ccvCode, expDate, note);
-            Assert.IsFalse(systemProfile.CreditCardExists(creditCardLongNumber));
         }
 
 
