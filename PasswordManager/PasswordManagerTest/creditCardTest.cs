@@ -7,7 +7,6 @@ namespace PasswordManagerTest
     [TestClass]
     public class CreditCardTest
     {
-        private SystemProfile systemProfile;
         private CreditCard card;
         private Category category = new Category("Work");
         private string name = "Visa Gold";
@@ -18,10 +17,14 @@ namespace PasswordManagerTest
         private string note = "card for USA";
 
         [TestInitialize]
-        public void setup()
+        public void Setup()
         {
             card = new CreditCard(category, name, type, creditCardNumber, ccvCode, expDate, note);
-            systemProfile = null;
+        }
+        [TestCleanup]
+        public void Cleanup()
+        {
+            card = null;
         }
 
         [TestMethod]
@@ -32,7 +35,7 @@ namespace PasswordManagerTest
 
         [TestMethod]
         [ExpectedException(typeof(InvalidCreditCardNumberException))]
-        public void CreateCreditCardWitNumberLenghtLessThanSixteen()
+        public void CreateCreditCardWithNumberLenghtLessThanSixteen()
         {
             long creditCardShortNumber = 12345;
             CreditCard invalidCard = new CreditCard(category, name, type, creditCardShortNumber, ccvCode, expDate, note);
@@ -40,7 +43,7 @@ namespace PasswordManagerTest
 
         [TestMethod]
         [ExpectedException(typeof(InvalidCreditCardNumberException))]
-        public void CreateCreditCardWitNumberLenghtLongerThanSixteen()
+        public void CreateCreditCardWithNumberLenghtLongerThanSixteen()
         {
             long creditCardLongNumber = 123451234512345123;
             CreditCard invalidCard = new CreditCard(category, name, type, creditCardLongNumber, ccvCode, expDate, note);
