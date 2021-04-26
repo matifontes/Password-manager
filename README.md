@@ -44,6 +44,8 @@ en algún data breach.
 
 ## Diseño
 
+Observando los diagramas de clases reconocemos que la clase SystemProfile viola Single Responsability Principle ya que ademas de administrar la contraseña del sistema, tambien administra la lista de contraseñas y tarjetas de creditos asociadas al perfil
+
 ### Diagrama de paquetes
 
 ![UML.png](/Documentacion/DiagramaDePaquetes.png)
