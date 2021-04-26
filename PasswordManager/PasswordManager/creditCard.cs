@@ -41,8 +41,13 @@ namespace PasswordManager
 
         private bool IsValidNumber(long creditCardNumber)
         {
-            int digitos = (int)Math.Floor(Math.Log10(creditCardNumber) + 1);
-            return (digitos == LENGTH_FOR_VALID_NAME);
+            int digits = AmountOfDigitsOnCreditCard(creditCardNumber);
+            return (digits == LENGTH_FOR_VALID_NAME);
+        }
+
+        private int AmountOfDigitsOnCreditCard(long creditCardNumber) 
+        { 
+            return (int)Math.Floor(Math.Log10(creditCardNumber) + 1);
         }
     }
 }
