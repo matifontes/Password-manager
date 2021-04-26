@@ -41,8 +41,7 @@ namespace PasswordManager
 
         private bool IsValidNumber(long creditCardNumber)
         {
-            int digits = AmountOfDigitsOnCreditCard(creditCardNumber);
-            return (digits == LENGTH_FOR_VALID_NAME);
+            return (AmountOfDigitsOnCreditCard(creditCardNumber) == LENGTH_FOR_VALID_NAME);
         }
 
         private int AmountOfDigitsOnCreditCard(long creditCardNumber) 
