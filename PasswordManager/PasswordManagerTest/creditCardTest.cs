@@ -7,19 +7,48 @@ namespace PasswordManagerTest
     [TestClass]
     public class CreditCardTest
     {
+        private CreditCard card;
+        private Category category = new Category("Work");
+        private string name = "Visa Gold";
+        private string type = "Visa";
+        private long creditCardNumber = 2323321323212321;
+        private short ccvCode = 080;
+        private DateTime expDate = new DateTime(2021, 5, 1);
+        private string note = "card for USA";
+
+        [TestInitialize]
+        public void Setup()
+        {
+            card = new CreditCard(category, name, type, creditCardNumber, ccvCode, expDate, note);
+        }
+        [TestCleanup]
+        public void Cleanup()
+        {
+            card = null;
+        }
+
         [TestMethod]
         public void CreateCreditCard()
         {
-            Category category = new Category("Work");
-            string name = "Visa Gold";
-            string type = "Visa";
-            long creaditCardNumber = 2323321323212321;
-            short ccvCode = 080;
-            DateTime expDate = new DateTime(2021, 5, 1);
-            string note = "card for USA";
-
-            CreditCard card = new CreditCard(category,name,type, creaditCardNumber, ccvCode,expDate,note);
             Assert.IsNotNull(card);
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidCreditCardNumberException))]
+        public void CreateCreditCardWithNumberLenghtLessThanSixteen()
+        {
+            long creditCardShortNumber = 12345;
+            CreditCard invalidCard = new CreditCard(category, name, type, creditCardShortNumber, ccvCode, expDate, note);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidCreditCardNumberException))]
+        public void CreateCreditCardWithNumberLenghtLongerThanSixteen()
+        {
+            long creditCardLongNumber = 123451234512345123;
+            CreditCard invalidCard = new CreditCard(category, name, type, creditCardLongNumber, ccvCode, expDate, note);
+        }
+
+
     }
 }

@@ -11,12 +11,14 @@ namespace PasswordManagerTest
         private SystemProfile systemProfileWithSpecialCharactersOnPassword;
         private string validPassword = "admin";
         private string specialCharacterPsw = "3123#@@12";
+        private Category category;
 
         [TestInitialize]
         public void Setup()
         {
             systemProfile = new PasswordManager.SystemProfile(validPassword);
             systemProfileWithSpecialCharactersOnPassword = new PasswordManager.SystemProfile(specialCharacterPsw);
+            category = new Category("Work");
         }
 
         [TestCleanup]
@@ -24,6 +26,7 @@ namespace PasswordManagerTest
         {
             systemProfile = null;
             systemProfileWithSpecialCharactersOnPassword = null;
+            category = null;
         }
 
         [TestMethod]
@@ -47,7 +50,7 @@ namespace PasswordManagerTest
         [TestMethod]
         public void LoginWithValidPassword()
         {
-            Assert.IsTrue(systemProfile.Login(validPassword));
+            Assert.IsTrue(systemProfile.ValidateSystemPassword(validPassword));
         }
 
         [TestMethod]
@@ -61,20 +64,18 @@ namespace PasswordManagerTest
                 invalidPassword += "A";
             }
 
-            Assert.IsFalse(systemProfile.Login(invalidPassword));
+            Assert.IsFalse(systemProfile.ValidateSystemPassword(invalidPassword));
         }
 
         [TestMethod]
         public void LoginHavingAPasswordWithSpecialSimbols() 
         {
-            Assert.IsTrue(systemProfileWithSpecialCharactersOnPassword.Login(specialCharacterPsw));       
+            Assert.IsTrue(systemProfileWithSpecialCharactersOnPassword.ValidateSystemPassword(specialCharacterPsw));       
         }
 
         [TestMethod]
         public void AddedNewCategoryExists() 
         {
-            string categoryName = "Work";
-            Category category = new Category(categoryName);
             systemProfile.AddCategory(category);
             bool wasAdded = systemProfile.CategoryExists(category);
             Assert.IsTrue(wasAdded);
@@ -83,8 +84,63 @@ namespace PasswordManagerTest
         [TestMethod]
         public void CategoryThatWasntAddedDoesNotExists() 
         {
-            Category categoryThatDoesntExists = new Category("Work");
-            Assert.IsFalse(systemProfile.CategoryExists(categoryThatDoesntExists));
+            Assert.IsFalse(systemProfile.CategoryExists(category));
         }
+        [TestMethod]
+        public void AddedNewPasswordExists()
+        {
+            string pass = "admin";
+            string site = "aulas.ort.edu.uy";
+            string user = "Ralph";
+            string note = "";
+            Password password = new Password(category, pass, site, user, note);
+            systemProfile.AddPassword(password);
+            bool wasAdded = systemProfile.PasswordExists(pass);
+            Assert.IsTrue(wasAdded);
+        }
+
+        [TestMethod]
+        public void PasswordThatWasntAddedDoesNotExists()
+        {
+            string pass = "user123";
+            string site = "aulas.ort.edu.uy";
+            string user = "Liza";
+            string note = "";
+            Password password = new Password(category, pass, site, user, note);
+            Assert.IsFalse(systemProfile.PasswordExists(pass));
+        }
+
+        [TestMethod]
+        public void AddedNewCreditCardExists()
+        {
+            string name = "Visa Gold";
+            string type = "Visa";
+            long creditCardNumber = 2323321323212321;
+            short ccvCode = 080;
+            DateTime expDate = new DateTime(2021, 5, 1);
+            string note = "Limit 15K";
+            CreditCard card = new CreditCard(category, name, type, creditCardNumber, ccvCode, expDate, note);
+            systemProfile.AddCreditCard(card);
+            bool wasAdded = systemProfile.CreditCardExists(creditCardNumber);
+            Assert.IsTrue(wasAdded);
+        }
+
+        [TestMethod]
+        public void CorrectChangePassword()
+        {
+            string newPassword = "test123";
+            systemProfile.ChangePassword(validPassword, newPassword);
+            Assert.IsTrue(systemProfile.ValidateSystemPassword(newPassword));
+        }
+
+        [TestMethod]
+        public void ChangePasswordUsingInvalidAcutalPassword()
+        {
+            string newPassword = "test123";
+            string invalidActualPassword = "adm123";
+            systemProfile.ChangePassword(invalidActualPassword, newPassword);
+            Assert.IsFalse(systemProfile.ValidateSystemPassword(newPassword));
+        }
+
     }
 }
