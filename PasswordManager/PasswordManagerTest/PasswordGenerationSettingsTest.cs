@@ -67,6 +67,16 @@ namespace PasswordManagerTest
             Assert.IsFalse(settingsAllFalse.CharacterSet.Contains(UPPERCASE_CHARACTERS));
         }
 
+        [TestMethod]
+        public void VerifyCharacterSetWithNumbersIsGenerated()
+        {
+            Assert.IsTrue(settingsAllTrue.CharacterSet.Contains(NUMERIC_CHARACTERS));
+        }
 
+        [TestMethod]
+        public void VerifyCharacterSetWithoutNumbersIsGenerated()
+        {
+            Assert.IsFalse(settingsAllFalse.CharacterSet.Contains(NUMERIC_CHARACTERS));
+        }
     }
 }
