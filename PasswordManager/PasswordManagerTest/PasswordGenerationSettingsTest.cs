@@ -7,29 +7,40 @@ namespace PasswordManagerTest
     [TestClass]
     public class PasswordGenerationSettingsTest
     {
-        private GeneratePasswordSettings settings;
+        const string LOWERCASE_CHARACTERS = "abcdefghijklmnopqrstuvwxyz";
+        const string UPPERCASE_CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        const string NUMERIC_CHARACTERS = "0123456789";
+        const string SPECIAL_CHARACTERS = @"!#$%&*@\";
+        private GeneratePasswordSettings settingsAllTrue;
+        private GeneratePasswordSettings settingsAllFalse;
         int passwordLength = 10;
         bool includeLowerCase = true;
         bool includeUpperCase = true;
         bool includeNumbers = true;
         bool includeSpecialCharacters = true;
+        bool notIncludeLowerCase = false;
+        bool notIncludeUpperCase = false;
+        bool notIncludeNumbers = false;
+        bool notIncludeSpecialCharacters = false;
 
         [TestInitialize]
         public void Setup()
         {
-            settings = new PasswordManager.GeneratePasswordSettings(passwordLength, includeLowerCase, includeUpperCase, includeNumbers, includeSpecialCharacters);
+            settingsAllTrue = new PasswordManager.GeneratePasswordSettings(passwordLength, includeLowerCase, includeUpperCase, includeNumbers, includeSpecialCharacters);
+            settingsAllFalse = new PasswordManager.GeneratePasswordSettings(passwordLength, notIncludeLowerCase, notIncludeUpperCase, notIncludeNumbers, notIncludeSpecialCharacters);
         }
 
         [TestCleanup]
         public void Cleanup()
         {
-            settings = null;
+            settingsAllTrue = null;
+            settingsAllFalse = null;
         }
 
         [TestMethod]
         public void GeneratePasswordSettings()
         {   
-            Assert.IsNotNull(settings);
+            Assert.IsNotNull(settingsAllTrue);
         }
 
 
