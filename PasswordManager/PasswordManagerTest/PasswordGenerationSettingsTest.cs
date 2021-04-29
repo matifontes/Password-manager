@@ -10,7 +10,12 @@ namespace PasswordManagerTest
         [TestMethod]
         public void GeneratePasswordSettings()
         {
-            GeneratePasswordSettings settings = new GeneratePasswordSettings();
+            int passwordLength = 10;
+            bool includeLowerCase = true;
+            bool includeUpperCase = true;
+            bool includeNumbers = true;
+            bool includeSpecialCharacters = true;
+            GeneratePasswordSettings settings = new GeneratePasswordSettings(passwordLength, includeLowerCase, includeUpperCase, includeNumbers, includeSpecialCharacters);
             Assert.IsNotNull(settings);
         }
     }
