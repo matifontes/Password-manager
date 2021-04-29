@@ -8,6 +8,10 @@ namespace PasswordManager
 {
     public class GeneratePasswordSettings
     {
+        const string LOWERCASE_CHARACTERS = "abcdefghijklmnopqrstuvwxyz";
+        const string UPPERCASE_CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        const string NUMERIC_CHARACTERS = "0123456789";
+        const string SPECIAL_CHARACTERS = @"!#$%&*@\";
         public int PasswordLength { get; set; }
         public bool IncludeLowerCase { get; set; }
         public bool IncludeUpperCase { get; set; }
@@ -27,22 +31,22 @@ namespace PasswordManager
 
             if (includeLowerCase)
             {
-                characterSet.Append("abcdefghijklmnopqrstuvwxyz");
+                characterSet.Append(LOWERCASE_CHARACTERS);
             }
 
             if (includeUpperCase)
             {
-                characterSet.Append("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+                characterSet.Append(UPPERCASE_CHARACTERS);
             }
 
             if (includeNumbers)
             {
-                characterSet.Append("0123456789");
+                characterSet.Append(NUMERIC_CHARACTERS);
             }
 
             if (includeSpecialCharacters)
             {
-                characterSet.Append(@"!#$%&*@\");
+                characterSet.Append(SPECIAL_CHARACTERS);
             }
 
             this.CharacterSet = characterSet.ToString();
