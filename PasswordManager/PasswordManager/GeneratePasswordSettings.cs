@@ -13,6 +13,7 @@ namespace PasswordManager
         public bool IncludeUpperCase { get; set; }
         public bool IncludeNumbers { get; set; }
         public bool IncludeSpecialCharacters { get; set; }
+        public string CharacterSet { get; set; }
         
         public GeneratePasswordSettings(int passLength, bool includeLowerCase, bool includeUpperCase, bool includeNumbers, bool includeSpecialCharacters)
         {
@@ -21,6 +22,30 @@ namespace PasswordManager
             this.IncludeUpperCase = includeUpperCase;
             this.IncludeNumbers = includeNumbers;
             this.IncludeSpecialCharacters = includeSpecialCharacters;
+
+            StringBuilder characterSet = new StringBuilder();
+
+            if (includeLowerCase)
+            {
+                characterSet.Append("abcdefghijklmnopqrstuvwxyz");
+            }
+
+            if (includeUpperCase)
+            {
+                characterSet.Append("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+            }
+
+            if (includeNumbers)
+            {
+                characterSet.Append("0123456789");
+            }
+
+            if (includeSpecialCharacters)
+            {
+                characterSet.Append(@"!#$%&*@\");
+            }
+
+            this.CharacterSet = characterSet.ToString();
         }
     }
 }
