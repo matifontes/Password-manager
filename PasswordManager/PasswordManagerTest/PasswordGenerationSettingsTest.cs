@@ -43,6 +43,17 @@ namespace PasswordManagerTest
             Assert.IsNotNull(settingsAllTrue);
         }
 
+        [TestMethod]
+        public void VerifyCharacterSetWithLowerCaseIsGenerated()
+        {
+            Assert.IsTrue(settingsAllTrue.CharacterSet.Contains(LOWERCASE_CHARACTERS));
+        }
+
+        [TestMethod]
+        public void VerifyCharacterSetWithoutLowerCaseIsGenerated()
+        {
+            Assert.IsFalse(settingsAllFalse.CharacterSet.Contains(LOWERCASE_CHARACTERS));
+        }
 
     }
 }
