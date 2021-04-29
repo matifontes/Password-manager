@@ -31,16 +31,16 @@ namespace PasswordManagerTest
         }
 
         [TestMethod]
+        public void ValidateSetPassword()
+        {
+            Assert.AreEqual(passwordCreatedToday.Pass, password);
+        }
+
+        [TestMethod]
         public void VerifyLastModificationDateAfterCreatingPassword() 
         {
             DateTime currentDate = DateTime.Today;
             Assert.AreEqual(passwordCreatedToday.LastModificationDate,currentDate);
-        }
-
-        [TestMethod]
-        public void ValidateSetPassword() 
-        {
-            Assert.AreEqual(passwordCreatedToday.Pass, password);
         }
 
         [TestMethod]
