@@ -55,5 +55,18 @@ namespace PasswordManagerTest
             Assert.IsFalse(settingsAllFalse.CharacterSet.Contains(LOWERCASE_CHARACTERS));
         }
 
+        [TestMethod]
+        public void VerifyCharacterSetWithUpperCaseIsGenerated()
+        {
+            Assert.IsTrue(settingsAllTrue.CharacterSet.Contains(UPPERCASE_CHARACTERS));
+        }
+
+        [TestMethod]
+        public void VerifyCharacterSetWithoutUpperCaseIsGenerated()
+        {
+            Assert.IsFalse(settingsAllFalse.CharacterSet.Contains(UPPERCASE_CHARACTERS));
+        }
+
+
     }
 }
