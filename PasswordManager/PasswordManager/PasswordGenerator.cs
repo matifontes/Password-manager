@@ -9,7 +9,7 @@ namespace PasswordManager
     public static class PasswordGenerator
     {
 
-        public static string GeneratePassword()
+        public static string GeneratePassword(GeneratePasswordSettings settings)
         {
             return "";
         }
