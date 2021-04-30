@@ -23,8 +23,9 @@ namespace PasswordManagerTest
         [TestMethod]
         public void GeneratePassword()
         {
-            string password = PasswordGenerator.GeneratePassword();
+            string password = PasswordGenerator.GeneratePassword(settingsAllTrue);
             Assert.IsNotNull(password);
         }
+
     }
 }
