@@ -27,5 +27,11 @@ namespace PasswordManagerTest
             Assert.IsNotNull(password);
         }
 
+        [TestMethod]
+        public void VerifyPasswordGeneratedLength()
+        {
+            string password = PasswordGenerator.GeneratePassword(settingsAllTrue);
+            Assert.AreEqual(password.Length, settingsAllTrue.PasswordLength);
+        }
     }
 }
