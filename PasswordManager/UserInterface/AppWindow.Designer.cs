@@ -36,14 +36,14 @@ namespace UserInterface
             // 
             this.startPanel.Location = new System.Drawing.Point(-1, 1);
             this.startPanel.Name = "startPanel";
-            this.startPanel.Size = new System.Drawing.Size(606, 190);
+            this.startPanel.Size = new System.Drawing.Size(669, 325);
             this.startPanel.TabIndex = 0;
             // 
             // AppWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(605, 193);
+            this.ClientSize = new System.Drawing.Size(669, 329);
             this.Controls.Add(this.startPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "AppWindow";

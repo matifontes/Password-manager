@@ -18,11 +18,18 @@ namespace UserInterface
         public AppWindow()
         {
             InitializeComponent();
+            this.profile = null;
         }
 
         private void AppWindowLoader(object sender, EventArgs e)
         {
-            CreateRegisterPanel();
+            if (this.profile != null)
+            {
+                CreateLoginPanel();
+            }
+            else {
+                CreateRegisterPanel();
+            }
         }
 
         private void CreateRegisterPanel() {
@@ -38,8 +45,9 @@ namespace UserInterface
         }
 
         private void ReSizeForm(int width, int height) {
+            int BORDER_MARGIN = 20;
             startPanel.Size = new Size(width, height);
-            this.Size = new Size(width, height + 20);
+            this.Size = new Size(width + BORDER_MARGIN, height + BORDER_MARGIN);
         }
     }
 }
