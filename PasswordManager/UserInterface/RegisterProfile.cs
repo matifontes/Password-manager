@@ -17,5 +17,14 @@ namespace UserInterface
             InitializeComponent();
         }
 
+        private void RegisterProfile_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCreateProfile_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

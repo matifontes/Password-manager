@@ -1,7 +1,7 @@
 ﻿
 namespace UserInterface
 {
-    partial class Form1
+    partial class AppWindow
     {
         /// <summary>
         /// Required designer variable.
@@ -29,20 +29,32 @@ namespace UserInterface
         /// </summary>
         private void InitializeComponent()
         {
+            this.startPanel = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
-            // Form1
+            // startPanel
+            // 
+            this.startPanel.Location = new System.Drawing.Point(-1, 1);
+            this.startPanel.Name = "startPanel";
+            this.startPanel.Size = new System.Drawing.Size(606, 190);
+            this.startPanel.TabIndex = 0;
+            // 
+            // AppWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(605, 193);
+            this.Controls.Add(this.startPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "Form1";
+            this.Name = "AppWindow";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.AppWindowLoader);
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private System.Windows.Forms.Panel startPanel;
     }
 }

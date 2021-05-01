@@ -40,7 +40,7 @@ namespace UserInterface
             // 
             this.lblNewPassword.AutoSize = true;
             this.lblNewPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNewPassword.Location = new System.Drawing.Point(38, 44);
+            this.lblNewPassword.Location = new System.Drawing.Point(26, 43);
             this.lblNewPassword.Name = "lblNewPassword";
             this.lblNewPassword.Size = new System.Drawing.Size(262, 26);
             this.lblNewPassword.TabIndex = 0;
@@ -50,7 +50,7 @@ namespace UserInterface
             // 
             this.lblRepeatPassword.AutoSize = true;
             this.lblRepeatPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRepeatPassword.Location = new System.Drawing.Point(38, 127);
+            this.lblRepeatPassword.Location = new System.Drawing.Point(26, 127);
             this.lblRepeatPassword.Name = "lblRepeatPassword";
             this.lblRepeatPassword.Size = new System.Drawing.Size(346, 26);
             this.lblRepeatPassword.TabIndex = 1;
@@ -58,26 +58,27 @@ namespace UserInterface
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(42, 86);
+            this.textBox1.Location = new System.Drawing.Point(31, 86);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(353, 20);
             this.textBox1.TabIndex = 2;
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(42, 167);
+            this.textBox2.Location = new System.Drawing.Point(31, 166);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(353, 20);
             this.textBox2.TabIndex = 3;
             // 
             // btnCreateProfile
             // 
-            this.btnCreateProfile.Location = new System.Drawing.Point(261, 205);
+            this.btnCreateProfile.Location = new System.Drawing.Point(250, 204);
             this.btnCreateProfile.Name = "btnCreateProfile";
             this.btnCreateProfile.Size = new System.Drawing.Size(134, 58);
             this.btnCreateProfile.TabIndex = 4;
             this.btnCreateProfile.Text = "Crear";
             this.btnCreateProfile.UseVisualStyleBackColor = true;
+            this.btnCreateProfile.Click += new System.EventHandler(this.btnCreateProfile_Click);
             // 
             // RegisterProfile
             // 
@@ -89,7 +90,8 @@ namespace UserInterface
             this.Controls.Add(this.lblRepeatPassword);
             this.Controls.Add(this.lblNewPassword);
             this.Name = "RegisterProfile";
-            this.Size = new System.Drawing.Size(437, 300);
+            this.Size = new System.Drawing.Size(425, 300);
+            this.Load += new System.EventHandler(this.RegisterProfile_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
