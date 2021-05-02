@@ -11,14 +11,22 @@ namespace PasswordManager
 
         public static string GeneratePassword(GeneratePasswordSettings settings)
         {
-            char[] password = new char[settings.PasswordLength];
+            char[] pass = new char[settings.PasswordLength];
             int characterSetLength = settings.CharacterSet.Length;
+            string password = "";
+            int attemps = 0;
+            System.Random random = new System.Random();
 
-            for(int charPosition = 0; charPosition<settings.PasswordLength; charPosition++)
+            while (!PasswordIsValid(settings, password) && attemps < 1000)
             {
-                password[charPosition] = 'a';
+                for (int charPosition = 0; charPosition < settings.PasswordLength; charPosition++)
+                {
+                    pass[charPosition] = settings.CharacterSet[random.Next(characterSetLength -1)];
+                }
+                attemps++;
+                password = string.Join(null, pass);
             }
-            return string.Join(null, password);
+            return password;
         }
 
         public static bool PasswordIsValid(GeneratePasswordSettings settings, string password)
