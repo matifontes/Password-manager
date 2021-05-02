@@ -51,8 +51,6 @@ namespace UserInterface
             this.txtPasswordInput.Name = "txtPasswordInput";
             this.txtPasswordInput.Size = new System.Drawing.Size(317, 20);
             this.txtPasswordInput.TabIndex = 1;
-            this.txtPasswordInput.TextChanged += new System.EventHandler(this.txtPasswordInput_TextChanged);
-            // 
             // lblLogin
             // 
             this.lblLogin.AutoSize = true;

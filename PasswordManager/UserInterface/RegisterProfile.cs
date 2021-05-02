@@ -11,18 +11,18 @@ using PasswordManager;
 
 namespace UserInterface
 {
-    public delegate void HandleCreation();
+    public delegate void HandleRegister();
     public partial class RegisterProfile : UserControl
     {
         private SystemProfile profile;
-        private event HandleCreation PostRegisterEvent;
+        private event HandleRegister PostRegisterEvent;
 
         public RegisterProfile()
         {
             InitializeComponent();
         }
 
-        public void AddListener(HandleCreation del) {
+        public void AddListener(HandleRegister del) {
             PostRegisterEvent += del;
         }
 

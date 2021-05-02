@@ -13,12 +13,12 @@ namespace UserInterface
 {
     public partial class AppWindow : Form
     {
-        private SystemProfile profile;
+        //harcoded profile
+        private SystemProfile profile = new SystemProfile("1234");
 
         public AppWindow()
         {
             InitializeComponent();
-            this.profile = null;
         }
 
         private void AppWindowLoader(object sender, EventArgs e)
@@ -34,14 +34,19 @@ namespace UserInterface
 
         private void CreateRegisterPanel() {
             RegisterProfile registerPanel = new RegisterProfile();
+            registerPanel.AddListener(PostLogin);
             startPanel.Controls.Add(registerPanel);
             ReSizeForm(registerPanel.Width, registerPanel.Height);
         }
 
         private void CreateLoginPanel() {
-            LoginPanel loginPanel = new LoginPanel();
+            LoginPanel loginPanel = new LoginPanel(this.profile);
             startPanel.Controls.Add(loginPanel);
             ReSizeForm(loginPanel.Width, loginPanel.Height);
+        }
+
+        private void PostLogin() { 
+        
         }
 
         private void ReSizeForm(int width, int height) {
