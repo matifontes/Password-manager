@@ -34,19 +34,24 @@ namespace UserInterface
 
         private void CreateRegisterPanel() {
             RegisterProfile registerPanel = new RegisterProfile();
-            registerPanel.AddListener(PostLogin);
+            registerPanel.AddListener(PostRegister);
             startPanel.Controls.Add(registerPanel);
             ReSizeForm(registerPanel.Width, registerPanel.Height);
         }
 
         private void CreateLoginPanel() {
             LoginPanel loginPanel = new LoginPanel(this.profile);
+            loginPanel.AddListener(PostLogin);
             startPanel.Controls.Add(loginPanel);
             ReSizeForm(loginPanel.Width, loginPanel.Height);
         }
 
         private void PostLogin() { 
         
+        }
+
+        private void PostRegister() {
+            
         }
 
         private void ReSizeForm(int width, int height) {
