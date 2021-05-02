@@ -11,7 +11,14 @@ namespace PasswordManager
 
         public static string GeneratePassword(GeneratePasswordSettings settings)
         {
-            return "";
+            char[] password = new char[settings.PasswordLength];
+            int characterSetLength = settings.CharacterSet.Length;
+
+            for(int charPosition = 0; charPosition<settings.PasswordLength; charPosition++)
+            {
+                password[charPosition] = 'a';
+            }
+            return string.Join(null, password);
         }
     }
 }
