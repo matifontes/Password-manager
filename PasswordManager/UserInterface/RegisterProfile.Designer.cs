@@ -31,8 +31,8 @@ namespace UserInterface
         {
             this.lblNewPassword = new System.Windows.Forms.Label();
             this.lblRepeatPassword = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.txtRepeatPassword = new System.Windows.Forms.TextBox();
             this.btnCreateProfile = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -45,6 +45,7 @@ namespace UserInterface
             this.lblNewPassword.Size = new System.Drawing.Size(262, 26);
             this.lblNewPassword.TabIndex = 0;
             this.lblNewPassword.Text = "Ingrese nueva contraseña";
+            this.lblNewPassword.Click += new System.EventHandler(this.lblNewPassword_Click);
             // 
             // lblRepeatPassword
             // 
@@ -56,19 +57,19 @@ namespace UserInterface
             this.lblRepeatPassword.TabIndex = 1;
             this.lblRepeatPassword.Text = "Ingrese nuevamente la contraseña";
             // 
-            // textBox1
+            // txtPassword
             // 
-            this.textBox1.Location = new System.Drawing.Point(31, 86);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(353, 20);
-            this.textBox1.TabIndex = 2;
+            this.txtPassword.Location = new System.Drawing.Point(31, 86);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Size = new System.Drawing.Size(353, 20);
+            this.txtPassword.TabIndex = 2;
             // 
-            // textBox2
+            // txtRepeatPassword
             // 
-            this.textBox2.Location = new System.Drawing.Point(31, 166);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(353, 20);
-            this.textBox2.TabIndex = 3;
+            this.txtRepeatPassword.Location = new System.Drawing.Point(31, 166);
+            this.txtRepeatPassword.Name = "txtRepeatPassword";
+            this.txtRepeatPassword.Size = new System.Drawing.Size(353, 20);
+            this.txtRepeatPassword.TabIndex = 3;
             // 
             // btnCreateProfile
             // 
@@ -78,15 +79,15 @@ namespace UserInterface
             this.btnCreateProfile.TabIndex = 4;
             this.btnCreateProfile.Text = "Crear";
             this.btnCreateProfile.UseVisualStyleBackColor = true;
-            this.btnCreateProfile.Click += new System.EventHandler(this.btnCreateProfile_Click);
+            this.btnCreateProfile.Click += new System.EventHandler(this.BtnCreateProfile_Click);
             // 
             // RegisterProfile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.btnCreateProfile);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtRepeatPassword);
+            this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.lblRepeatPassword);
             this.Controls.Add(this.lblNewPassword);
             this.Name = "RegisterProfile";
@@ -101,8 +102,8 @@ namespace UserInterface
 
         private System.Windows.Forms.Label lblNewPassword;
         private System.Windows.Forms.Label lblRepeatPassword;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtPassword;
+        private System.Windows.Forms.TextBox txtRepeatPassword;
         private System.Windows.Forms.Button btnCreateProfile;
     }
 }

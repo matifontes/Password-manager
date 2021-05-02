@@ -14,7 +14,7 @@ namespace UserInterface
     public partial class AppWindow : Form
     {
         //harcoded profile
-        private SystemProfile profile = new SystemProfile("1234");
+        private SystemProfile profile = null;
 
         public AppWindow()
         {
@@ -50,14 +50,20 @@ namespace UserInterface
         
         }
 
-        private void PostRegister() {
-            
+        private void PostRegister(SystemProfile profile) {
+            this.profile = profile;
+            ClearPanel();
+            CreateLoginPanel();
         }
 
         private void ReSizeForm(int width, int height) {
             int BORDER_MARGIN = 20;
             startPanel.Size = new Size(width, height);
             this.Size = new Size(width + BORDER_MARGIN, height + BORDER_MARGIN);
+        }
+
+        private void ClearPanel() {
+            startPanel.Controls.Clear();
         }
     }
 }

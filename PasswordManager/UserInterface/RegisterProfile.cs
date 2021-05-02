@@ -11,10 +11,9 @@ using PasswordManager;
 
 namespace UserInterface
 {
-    public delegate void HandleRegister();
+    public delegate void HandleRegister(SystemProfile profile);
     public partial class RegisterProfile : UserControl
     {
-        private SystemProfile profile;
         private event HandleRegister PostRegisterEvent;
 
         public RegisterProfile()
@@ -31,10 +30,15 @@ namespace UserInterface
 
         }
 
-        private void btnCreateProfile_Click(object sender, EventArgs e)
+        private void BtnCreateProfile_Click(object sender, EventArgs e)
+        {
+            SystemProfile profile = new SystemProfile(txtPassword.Text);
+            PostRegisterEvent(profile);
+        }
+
+        private void lblNewPassword_Click(object sender, EventArgs e)
         {
 
         }
-
     }
 }
