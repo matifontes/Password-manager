@@ -33,5 +33,18 @@ namespace PasswordManagerTest
             string password = PasswordGenerator.GeneratePassword(settingsAllTrue);
             Assert.AreEqual(password.Length, settingsAllTrue.PasswordLength);
         }
+
+        [TestMethod]
+        public void ValidPasswordVerify()
+        {
+            string passMMNS = "MjLqr1.";
+            Assert.IsTrue(PasswordGenerator.PasswordIsValid(settingsAllTrue, passMMNS));
+        }
+
+        public void InvalidPasswordVerify()
+        {
+            string passMMnS = "MjLqr.";
+            Assert.IsFalse(PasswordGenerator.PasswordIsValid(settingsAllTrue, passMMnS));
+        }
     }
 }
