@@ -45,7 +45,6 @@ namespace UserInterface
             this.lblNewPassword.Size = new System.Drawing.Size(262, 26);
             this.lblNewPassword.TabIndex = 0;
             this.lblNewPassword.Text = "Ingrese nueva contraseña";
-            this.lblNewPassword.Click += new System.EventHandler(this.lblNewPassword_Click);
             // 
             // lblRepeatPassword
             // 

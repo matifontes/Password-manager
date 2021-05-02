@@ -36,9 +36,5 @@ namespace UserInterface
             PostRegisterEvent(profile);
         }
 
-        private void lblNewPassword_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
