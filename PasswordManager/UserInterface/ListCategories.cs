@@ -3,9 +3,9 @@ using System.Windows.Forms;
 
 namespace UserInterface
 {
-    public partial class CategoriesPanel : UserControl
+    public partial class ListCategoriesPanel : UserControl
     {
-        public CategoriesPanel()
+        public ListCategoriesPanel()
         {
             InitializeComponent();
         }
