@@ -90,5 +90,18 @@ namespace PasswordManagerTest
         {
             Assert.IsFalse(settingsAllFalse.CharacterSet.Contains(SPECIAL_CHARACTERS));
         }
+
+        [TestMethod]
+        public void VerifyCharSetOptionsWithLowerCaseIsGenerated()
+        {
+            Assert.AreEqual(LOWERCASE_CHARACTERS, settingsAllTrue.CharSetOptions[0]);
+        }
+
+        [TestMethod]
+        public void VerifyCharSetOptionsWithoutLowerCaseIsGenerated()
+        {
+            Assert.AreEqual("", settingsAllFalse.CharSetOptions[0]);
+        }
+
     }
 }
