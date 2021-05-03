@@ -38,7 +38,7 @@ namespace UserInterface
                 PostRegisterEvent(profile);
             }
             else {
-                ShowErrorMSG();
+                ShowErrorMSGPasswordsArentEqual();
             }         
         }
 
@@ -47,7 +47,7 @@ namespace UserInterface
             return txtPassword.Text.Equals(txtRepeatPassword.Text);
         }
 
-        private void ShowErrorMSG() 
+        private void ShowErrorMSGPasswordsArentEqual() 
         {
             string ERROR_MSG_PASSWORDS_ARENT_EQUAL = "Las contraseñas no coinciden";
             lblErrorMsg.Text = ERROR_MSG_PASSWORDS_ARENT_EQUAL;
