@@ -27,8 +27,7 @@ namespace PasswordManager
             this.IncludeUpperCase = includeUpperCase;
             this.IncludeNumbers = includeNumbers;
             this.IncludeSpecialCharacters = includeSpecialCharacters;
-            CharSetOptions = new string[4];
-
+            this.CharSetOptions = InitializeCharSetOptionsWithEmptyString();
             StringBuilder characterSet = new StringBuilder();
 
             if (includeLowerCase)
@@ -36,45 +35,37 @@ namespace PasswordManager
                 characterSet.Append(LOWERCASE_CHARACTERS);
                 CharSetOptions[0] = LOWERCASE_CHARACTERS;
             }
-            else
-            {
-                CharSetOptions[0] = "";
-            }
 
             if (includeUpperCase)
             {
                 characterSet.Append(UPPERCASE_CHARACTERS);
                 CharSetOptions[1] = UPPERCASE_CHARACTERS;
             }
-            else
-            {
-                CharSetOptions[1] = "";
-            }
-
 
             if (includeNumbers)
             {
                 characterSet.Append(NUMERIC_CHARACTERS);
                 CharSetOptions[2] = NUMERIC_CHARACTERS;
             }
-            else
-            {
-                CharSetOptions[2] = "";
-            }
-
 
             if (includeSpecialCharacters)
             {
                 characterSet.Append(SPECIAL_CHARACTERS);
                 CharSetOptions[3] = SPECIAL_CHARACTERS;
             }
-            else
-            {
-                CharSetOptions[3] = "";
-            }
-
 
             this.CharacterSet = characterSet.ToString();
         }
+
+        public string[] InitializeCharSetOptionsWithEmptyString()
+        {
+            this.CharSetOptions = CharSetOptions = new string[4];
+            for (int i = 0; i < CharSetOptions.Length; i++)
+            {
+                this.CharSetOptions[i] = "";
+            }
+            return this.CharSetOptions;
+        }
+
     }
 }
