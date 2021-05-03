@@ -127,5 +127,16 @@ namespace PasswordManagerTest
             Assert.AreEqual("", settingsAllFalse.CharSetOptions[2]);
         }
 
+        [TestMethod]
+        public void VerifyCharSetOptionsWithSpecialCharactersIsGenerated()
+        {
+            Assert.AreEqual(SPECIAL_CHARACTERS, settingsAllTrue.CharSetOptions[3]);
+        }
+
+        [TestMethod]
+        public void VerifyCharSetOptionsWithoutSpecialCharactersIsGenerated()
+        {
+            Assert.AreEqual("", settingsAllFalse.CharSetOptions[3]);
+        }
     }
 }
