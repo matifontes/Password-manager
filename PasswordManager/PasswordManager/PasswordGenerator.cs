@@ -20,7 +20,7 @@ namespace PasswordManager
 
             for (int charPosition = 0; charPosition < settings.PasswordLength; charPosition++)
             {
-                if (indexOptions < charSetOptionsLength && settings.CharSetOptions[indexOptions].Length > 0)
+                if (CheckRange(indexOptions, charSetOptionsLength) && !IsEmptyCharSetOptionOnPos(indexOptions, settings))
                 {
                     pass[charPosition] = settings.CharSetOptions[indexOptions][random.Next(charSetOptionsLength - 1)];
                 }
@@ -34,19 +34,51 @@ namespace PasswordManager
             return password;
         }
 
+        public static bool CheckRange(int indexOptions, int CharSetOptionsLength)
+        {
+            return indexOptions < CharSetOptionsLength;
+        }
+
+        public static bool IsEmptyCharSetOptionOnPos(int indexOptions, GeneratePasswordSettings settings)
+        {
+            return settings.CharSetOptions[indexOptions].Length == 0;
+        }
         public static bool PasswordIsValid(GeneratePasswordSettings settings, string password)
         {
+            bool isValid = true;
+            isValid = isValid && ValidateLowerCase(settings, password);
+            isValid = isValid && ValidateUpperCase(settings, password);
+            isValid = isValid && ValidateNumbers(settings, password);
+            isValid = isValid && ValidateSpecialCharacters(settings, password);
+            return isValid;
+        }
+
+        private static bool ValidateLowerCase(GeneratePasswordSettings settings, string password)
+        {
             const string LOWERCASE = @"[a-z]";
+            bool isValid = !settings.IncludeLowerCase || (settings.IncludeLowerCase && System.Text.RegularExpressions.Regex.IsMatch(password, LOWERCASE));
+            return isValid;
+        }
+
+        private static bool ValidateUpperCase(GeneratePasswordSettings settings, string password)
+        {
             const string UPPERCASE = @"[A-Z]";
+            bool isValid = !settings.IncludeUpperCase || (settings.IncludeUpperCase && System.Text.RegularExpressions.Regex.IsMatch(password, UPPERCASE));
+            return isValid;
+        }
+
+        private static bool ValidateNumbers(GeneratePasswordSettings settings, string password)
+        {
             const string NUMERIC = @"[\d]";
+            bool isValid = !settings.IncludeNumbers || (settings.IncludeNumbers && System.Text.RegularExpressions.Regex.IsMatch(password, NUMERIC));
+            return isValid;
+        }
+
+        private static bool ValidateSpecialCharacters(GeneratePasswordSettings settings, string password)
+        {
             const string SPECIAL = @"([!#$%&.*@\\])+";
-
-            bool lowerCaseIsValid = !settings.IncludeLowerCase || (settings.IncludeLowerCase && System.Text.RegularExpressions.Regex.IsMatch(password, LOWERCASE));
-            bool upperCaseIsValid = !settings.IncludeUpperCase|| (settings.IncludeUpperCase && System.Text.RegularExpressions.Regex.IsMatch(password, UPPERCASE));
-            bool numericIsValid = !settings.IncludeNumbers || (settings.IncludeNumbers && System.Text.RegularExpressions.Regex.IsMatch(password, NUMERIC));
-            bool specialIsValid = !settings.IncludeSpecialCharacters || (settings.IncludeSpecialCharacters && System.Text.RegularExpressions.Regex.IsMatch(password, SPECIAL));
-
-            return (lowerCaseIsValid && upperCaseIsValid && numericIsValid && specialIsValid);
+            bool isValid = !settings.IncludeSpecialCharacters || (settings.IncludeSpecialCharacters && System.Text.RegularExpressions.Regex.IsMatch(password, SPECIAL));
+            return isValid;
         }
     }
 }
