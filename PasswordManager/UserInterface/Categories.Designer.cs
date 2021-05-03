@@ -1,7 +1,7 @@
 ﻿
 namespace UserInterface
 {
-    partial class Categories
+    partial class CategoriesPanel
     {
         /// <summary> 
         /// Variable del diseñador necesaria.
