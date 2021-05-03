@@ -103,5 +103,17 @@ namespace PasswordManagerTest
             Assert.AreEqual("", settingsAllFalse.CharSetOptions[0]);
         }
 
+        [TestMethod]
+        public void VerifyCharSetOptionsWithUpperCaseIsGenerated()
+        {
+            Assert.AreEqual(LOWERCASE_CHARACTERS, settingsAllTrue.CharSetOptions[1]);
+        }
+
+        [TestMethod]
+        public void VerifyCharSetOptionsWithoutUpperCaseIsGenerated()
+        {
+            Assert.AreEqual("", settingsAllFalse.CharSetOptions[1]);
+        }
+
     }
 }
