@@ -7,14 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PasswordManager;
 
 namespace UserInterface
 {
-    public partial class Menu : UserControl
+    public partial class MenuPanel : UserControl
     {
-        public Menu()
+        private SystemProfile profile;
+        public MenuPanel(SystemProfile profile)
         {
             InitializeComponent();
+            this.profile = profile;
         }
 
         private void BtnCategories_Click(object sender, EventArgs e)
@@ -24,7 +27,7 @@ namespace UserInterface
 
         private void BtnPasswords_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("de click");
+
         }
 
         private void BtnCreditCards_Click(object sender, EventArgs e)

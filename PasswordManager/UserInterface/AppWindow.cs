@@ -46,8 +46,16 @@ namespace UserInterface
             ReSizeForm(loginPanel.Width, loginPanel.Height);
         }
 
-        private void PostLogin() { 
-        
+        private void CreateMenuPanel()
+        {
+            MenuPanel menuPanel = new MenuPanel(this.profile);
+            startPanel.Controls.Add(menuPanel);
+            ReSizeForm(menuPanel.Width, menuPanel.Height);
+        }
+
+        private void PostLogin() {
+            ClearPanel();
+            CreateMenuPanel();
         }
 
         private void PostRegister(SystemProfile profile) {

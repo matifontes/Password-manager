@@ -1,7 +1,7 @@
 ﻿
 namespace UserInterface
 {
-    partial class Menu
+    partial class MenuPanel
     {
         /// <summary> 
         /// Variable del diseñador necesaria.

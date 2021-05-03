@@ -28,7 +28,7 @@ namespace UserInterface
         {
             if (profile.ValidateSystemPassword(txtPasswordInput.Text))
             {
-                Console.WriteLine("Valido");
+                PostLoginEvent();
             }
             else {
                 Console.WriteLine("No Valido");
