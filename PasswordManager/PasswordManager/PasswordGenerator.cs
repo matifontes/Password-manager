@@ -13,19 +13,24 @@ namespace PasswordManager
         {
             char[] pass = new char[settings.PasswordLength];
             int characterSetLength = settings.CharacterSet.Length;
+            int charSetOptionsLength = settings.CharSetOptions.Length;
             string password = "";
-            int attemps = 0;
+            int indexOptions = 0;
             System.Random random = new System.Random();
 
-            while (!PasswordIsValid(settings, password) && attemps < 1000)
+            for (int charPosition = 0; charPosition < settings.PasswordLength; charPosition++)
             {
-                for (int charPosition = 0; charPosition < settings.PasswordLength; charPosition++)
+                if (indexOptions < charSetOptionsLength && settings.CharSetOptions[indexOptions].Length > 0)
                 {
-                    pass[charPosition] = settings.CharacterSet[random.Next(characterSetLength -1)];
+                    pass[charPosition] = settings.CharSetOptions[indexOptions][random.Next(charSetOptionsLength - 1)];
                 }
-                attemps++;
-                password = string.Join(null, pass);
+                else
+                {
+                    pass[charPosition] = settings.CharacterSet[random.Next(characterSetLength - 1)];
+                }
+                indexOptions++;
             }
+            password = string.Join(null, pass);
             return password;
         }
 
