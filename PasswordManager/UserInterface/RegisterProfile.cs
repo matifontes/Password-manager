@@ -25,11 +25,6 @@ namespace UserInterface
             PostRegisterEvent += del;
         }
 
-        private void RegisterProfile_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void BtnCreateProfile_Click(object sender, EventArgs e)
         {
             if (VerifyNewPassword())

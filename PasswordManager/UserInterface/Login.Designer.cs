@@ -43,7 +43,7 @@ namespace UserInterface
             this.btnLogin.TabIndex = 0;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = true;
-            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+            this.btnLogin.Click += new System.EventHandler(this.BtnLogin_Click);
             // 
             // txtPasswordInput
             // 
@@ -70,7 +70,6 @@ namespace UserInterface
             this.Controls.Add(this.btnLogin);
             this.Name = "LoginPanel";
             this.Size = new System.Drawing.Size(473, 145);
-            this.Load += new System.EventHandler(this.LoginPanelLoad);
             this.ResumeLayout(false);
             this.PerformLayout();
 

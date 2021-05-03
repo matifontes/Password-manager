@@ -52,11 +52,23 @@
     <Compile Include="AppWindow.Designer.cs">
       <DependentUpon>AppWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="ListCategories.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ListCategories.Designer.cs">
+      <DependentUpon>ListCategories.cs</DependentUpon>
+    </Compile>
     <Compile Include="Menu.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Menu.Designer.cs">
       <DependentUpon>Menu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ListPasswords.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ListPasswords.Designer.cs">
+      <DependentUpon>ListPasswords.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -72,11 +84,26 @@
     <Compile Include="RegisterProfile.Designer.cs">
       <DependentUpon>RegisterProfile.cs</DependentUpon>
     </Compile>
+    <Compile Include="ListCreditCards.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ListCreditCards.Designer.cs">
+      <DependentUpon>ListCreditCards.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AppWindow.resx">
       <DependentUpon>AppWindow.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ListCategories.resx">
+      <DependentUpon>ListCategories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListCreditCards.resx">
+      <DependentUpon>ListCreditCards.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListPasswords.resx">
+      <DependentUpon>ListPasswords.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

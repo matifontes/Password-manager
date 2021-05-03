@@ -57,25 +57,25 @@ namespace UserInterface
             // 
             // lbxCategories
             // 
-            this.lbxCategories.Font = new System.Drawing.Font("Microsoft Sans Serif", 21F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbxCategories.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbxCategories.FormattingEnabled = true;
-            this.lbxCategories.ItemHeight = 32;
+            this.lbxCategories.ItemHeight = 25;
             this.lbxCategories.Location = new System.Drawing.Point(17, 59);
             this.lbxCategories.Name = "lbxCategories";
-            this.lbxCategories.Size = new System.Drawing.Size(333, 164);
+            this.lbxCategories.Size = new System.Drawing.Size(333, 154);
             this.lbxCategories.TabIndex = 2;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(74, 0);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(9, 10);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(213, 46);
+            this.label1.Size = new System.Drawing.Size(181, 25);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Categorias";
+            this.label1.Text = "Lista de categorias:";
             // 
-            // Categories
+            // ListCategoriesPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -83,7 +83,7 @@ namespace UserInterface
             this.Controls.Add(this.lbxCategories);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Name = "Categories";
+            this.Name = "ListCategoriesPanel";
             this.Size = new System.Drawing.Size(369, 299);
             this.ResumeLayout(false);
             this.PerformLayout();

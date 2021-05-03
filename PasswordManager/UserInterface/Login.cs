@@ -15,16 +15,11 @@ namespace UserInterface
             this.profile = systemProfile;
         }
 
-        private void LoginPanelLoad(object sender, EventArgs e)
-        {
-
-        }
-
         public void AddListener(HandleLogin del) {
             PostLoginEvent += del;
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
+        private void BtnLogin_Click(object sender, EventArgs e)
         {
             if (profile.ValidateSystemPassword(txtPasswordInput.Text))
             {
