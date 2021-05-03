@@ -8,16 +8,19 @@ namespace PasswordManagerTest
     public class PasswordGenerateTest
     {
         private GeneratePasswordSettings settingsAllTrue;
-        int passwordLength = 10;
-        bool includeLowerCase = true;
-        bool includeUpperCase = true;
-        bool includeNumbers = true;
-        bool includeSpecialCharacters = true;
+        private GeneratePasswordSettings settingsMmNS;
+        private int passwordLength = 10;
+        private bool includeLowerCase = true;
+        private bool includeUpperCase = true;
+        private bool includeUpperCaseFalse = false;
+        private bool includeNumbers = true;
+        private bool includeSpecialCharacters = true;
 
         [TestInitialize]
         public void Setup()
         {
             settingsAllTrue = new GeneratePasswordSettings(passwordLength, includeLowerCase, includeUpperCase, includeNumbers, includeSpecialCharacters);
+            settingsMmNS = new GeneratePasswordSettings(passwordLength, includeLowerCase, includeUpperCaseFalse, includeNumbers, includeSpecialCharacters);
         }
 
         [TestMethod]
@@ -48,10 +51,17 @@ namespace PasswordManagerTest
         }
 
         [TestMethod]
-        public void CheckIfPasswordGeneratedIsValid()
+        public void CheckIfAllTruePasswordGeneratedIsValid()
         {
             string password = PasswordGenerator.GeneratePassword(settingsAllTrue);
             Assert.IsTrue(PasswordGenerator.PasswordIsValid(settingsAllTrue, password));
+        }
+
+        [TestMethod]
+        public void CheckIfNotAllTruePasswordGeneratedIsValid()
+        {
+            string password = PasswordGenerator.GeneratePassword(settingsMmNS);
+            Assert.IsTrue(PasswordGenerator.PasswordIsValid(settingsMmNS, password));
         }
     }
 }
