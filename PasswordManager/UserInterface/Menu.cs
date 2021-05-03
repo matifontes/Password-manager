@@ -15,7 +15,8 @@ namespace UserInterface
     public partial class MenuPanel : UserControl
     {
         private SystemProfile profile;
-        private event HandleWindowChange WindowChange;
+        private event HandleWindowChange ChangeWindow;
+
         public MenuPanel(SystemProfile profile)
         {
             InitializeComponent();
@@ -24,30 +25,36 @@ namespace UserInterface
 
         public void AddListener(HandleWindowChange del) 
         {
-            WindowChange += del;
+            ChangeWindow += del;
         }
 
         private void BtnCategories_Click(object sender, EventArgs e)
         {
             ListCategoriesPanel categories = new ListCategoriesPanel();
-            WindowChange(categories);
+            ChangeWindow(categories);
         }
 
         private void BtnPasswords_Click(object sender, EventArgs e)
         {
             ListPasswordsPanel passwords = new ListPasswordsPanel();
-            WindowChange(passwords);
+            passwords.AddListener(ReturnToMenu);
+            ChangeWindow(passwords);
         }
 
         private void BtnCreditCards_Click(object sender, EventArgs e)
         {
             ListCreditCards creditCards = new ListCreditCards();
-            WindowChange(creditCards);
+            ChangeWindow(creditCards);
         }
 
         private void BtnBreaches_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void ReturnToMenu() 
+        {
+            ChangeWindow(this);
         }
 
     }

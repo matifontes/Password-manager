@@ -7,20 +7,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PasswordManager;
 
 namespace UserInterface
 {
     public delegate void HandleBackToMenu();
     public partial class ListPasswordsPanel : UserControl
     {
+
+        private SystemProfile profile;
+        private event HandleBackToMenu ChangeToMenu;
         public ListPasswordsPanel()
         {
             InitializeComponent();
         }
 
-        public void AddListener() 
-        { 
-
+        public void AddListener(HandleBackToMenu del) 
+        {
+            ChangeToMenu += del;
         }
 
         private void BtnAddPassword_Click(object sender, EventArgs e)
@@ -40,7 +44,7 @@ namespace UserInterface
 
         private void BtnVolver_Click(object sender, EventArgs e)
         {
-
+            ChangeToMenu();
         }
     }
 }
