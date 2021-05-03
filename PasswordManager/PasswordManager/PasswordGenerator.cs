@@ -20,7 +20,7 @@ namespace PasswordManager
 
             for (int charPosition = 0; charPosition < settings.PasswordLength; charPosition++)
             {
-                if (CheckRange(indexOptions, charSetOptionsLength) && !IsEmptyCharSetOptionOnPos(indexOptions, settings))
+                if (PickOfCharSetOptions(indexOptions, settings))
                 {
                     pass[charPosition] = settings.CharSetOptions[indexOptions][random.Next(charSetOptionsLength - 1)];
                 }
@@ -34,15 +34,22 @@ namespace PasswordManager
             return password;
         }
 
-        public static bool CheckRange(int indexOptions, int CharSetOptionsLength)
+        public static bool PickOfCharSetOptions(int indexOptions, GeneratePasswordSettings settings)
         {
-            return indexOptions < CharSetOptionsLength;
+            bool ret = CheckRange(indexOptions, settings) && IsEmptyCharSetOptionOnPos(indexOptions, settings);
+            return ret;
+        }
+
+        public static bool CheckRange(int indexOptions, GeneratePasswordSettings settings)
+        {
+            return indexOptions < settings.CharSetOptions.Length;
         }
 
         public static bool IsEmptyCharSetOptionOnPos(int indexOptions, GeneratePasswordSettings settings)
         {
             return settings.CharSetOptions[indexOptions].Length == 0;
         }
+
         public static bool PasswordIsValid(GeneratePasswordSettings settings, string password)
         {
             bool isValid = true;
