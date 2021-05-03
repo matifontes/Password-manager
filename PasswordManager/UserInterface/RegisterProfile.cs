@@ -32,8 +32,26 @@ namespace UserInterface
 
         private void BtnCreateProfile_Click(object sender, EventArgs e)
         {
-            SystemProfile profile = new SystemProfile(txtPassword.Text);
-            PostRegisterEvent(profile);
+            if (VerifyNewPassword())
+            {
+                SystemProfile profile = new SystemProfile(txtPassword.Text);
+                PostRegisterEvent(profile);
+            }
+            else {
+                ShowErrorMSG();
+            }         
+        }
+
+        private bool VerifyNewPassword() 
+        {
+            return txtPassword.Text.Equals(txtRepeatPassword.Text);
+        }
+
+        private void ShowErrorMSG() 
+        {
+            string ERROR_MSG_PASSWORDS_ARENT_EQUAL = "Las contraseñas no coinciden";
+            lblErrorMsg.Text = ERROR_MSG_PASSWORDS_ARENT_EQUAL;
+            lblErrorMsg.ForeColor = System.Drawing.Color.Red;
         }
 
     }
