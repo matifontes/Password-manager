@@ -36,7 +36,7 @@ namespace PasswordManager
 
         public static bool PickOfCharSetOptions(int indexOptions, GeneratePasswordSettings settings)
         {
-            bool ret = CheckRange(indexOptions, settings) && IsEmptyCharSetOptionOnPos(indexOptions, settings);
+            bool ret = CheckRange(indexOptions, settings) && !IsEmptyCharSetOptionOnPos(indexOptions, settings);
             return ret;
         }
 
