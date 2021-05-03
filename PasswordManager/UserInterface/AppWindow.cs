@@ -49,8 +49,15 @@ namespace UserInterface
         private void CreateMenuPanel()
         {
             MenuPanel menuPanel = new MenuPanel(this.profile);
+            menuPanel.AddListener(ChangeWindow);
             startPanel.Controls.Add(menuPanel);
             ReSizeForm(menuPanel.Width, menuPanel.Height);
+        }
+
+        private void ChangeWindow(UserControl panel) {
+            ClearPanel();
+            startPanel.Controls.Add(panel);
+            ReSizeForm(panel.Width, panel.Height);
         }
 
         private void PostLogin() {

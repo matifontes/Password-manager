@@ -34,20 +34,21 @@ namespace UserInterface
             this.btnModify = new System.Windows.Forms.Button();
             this.btnRemove = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPasswords)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvPasswords
             // 
             this.dgvPasswords.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPasswords.Location = new System.Drawing.Point(19, 48);
+            this.dgvPasswords.Location = new System.Drawing.Point(19, 116);
             this.dgvPasswords.Name = "dgvPasswords";
             this.dgvPasswords.Size = new System.Drawing.Size(483, 199);
             this.dgvPasswords.TabIndex = 0;
             // 
             // btnAddPassword
             // 
-            this.btnAddPassword.Location = new System.Drawing.Point(381, 253);
+            this.btnAddPassword.Location = new System.Drawing.Point(381, 321);
             this.btnAddPassword.Name = "btnAddPassword";
             this.btnAddPassword.Size = new System.Drawing.Size(121, 32);
             this.btnAddPassword.TabIndex = 1;
@@ -57,7 +58,7 @@ namespace UserInterface
             // 
             // btnModify
             // 
-            this.btnModify.Location = new System.Drawing.Point(254, 255);
+            this.btnModify.Location = new System.Drawing.Point(254, 321);
             this.btnModify.Name = "btnModify";
             this.btnModify.Size = new System.Drawing.Size(121, 30);
             this.btnModify.TabIndex = 2;
@@ -67,7 +68,7 @@ namespace UserInterface
             // 
             // btnRemove
             // 
-            this.btnRemove.Location = new System.Drawing.Point(127, 255);
+            this.btnRemove.Location = new System.Drawing.Point(127, 321);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(121, 30);
             this.btnRemove.TabIndex = 3;
@@ -79,23 +80,35 @@ namespace UserInterface
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(14, 11);
+            this.label1.Location = new System.Drawing.Point(18, 73);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(219, 25);
             this.label1.TabIndex = 4;
             this.label1.Text = "Listado de Contraseñas";
             // 
-            // Passwords
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(23, 15);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(104, 34);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Volver";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.BtnVolver_Click);
+            // 
+            // ListPasswordsPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.btnModify);
             this.Controls.Add(this.btnAddPassword);
             this.Controls.Add(this.dgvPasswords);
-            this.Name = "Passwords";
-            this.Size = new System.Drawing.Size(527, 316);
+            this.Name = "ListPasswordsPanel";
+            this.Size = new System.Drawing.Size(527, 384);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPasswords)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -109,5 +122,6 @@ namespace UserInterface
         private System.Windows.Forms.Button btnModify;
         private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button1;
     }
 }

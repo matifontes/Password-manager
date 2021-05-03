@@ -10,11 +10,17 @@ using System.Windows.Forms;
 
 namespace UserInterface
 {
+    public delegate void HandleBackToMenu();
     public partial class ListPasswordsPanel : UserControl
     {
         public ListPasswordsPanel()
         {
             InitializeComponent();
+        }
+
+        public void AddListener() 
+        { 
+
         }
 
         private void BtnAddPassword_Click(object sender, EventArgs e)
@@ -28,6 +34,11 @@ namespace UserInterface
         }
 
         private void BtnRemove_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnVolver_Click(object sender, EventArgs e)
         {
 
         }
