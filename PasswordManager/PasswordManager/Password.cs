@@ -63,5 +63,11 @@ namespace PasswordManager
             return (amountOfDigits >= 5 && amountOfDigits <= 25);
         }
 
+        private bool IsValidSiteLength(string site)
+        {
+            int amountOfDigits = site.Length;
+            return (amountOfDigits >= 3 && amountOfDigits <= 25);
+        }
+
     }
 }
