@@ -5,10 +5,10 @@ using PasswordManager;
 namespace PasswordManagerTest
 {
     [TestClass]
-    public class SystemProfileTest
+    public class ProfileTest
     {
-        private SystemProfile systemProfile;
-        private SystemProfile systemProfileWithSpecialCharactersOnPassword;
+        private Profile systemProfile;
+        private Profile systemProfileWithSpecialCharactersOnPassword;
         private string validPassword = "admin";
         private string specialCharacterPsw = "3123#@@12";
         private Category category;
@@ -16,8 +16,8 @@ namespace PasswordManagerTest
         [TestInitialize]
         public void Setup()
         {
-            systemProfile = new PasswordManager.SystemProfile(validPassword);
-            systemProfileWithSpecialCharactersOnPassword = new PasswordManager.SystemProfile(specialCharacterPsw);
+            systemProfile = new PasswordManager.Profile(validPassword);
+            systemProfileWithSpecialCharactersOnPassword = new PasswordManager.Profile(specialCharacterPsw);
             category = new Category("Work");
         }
 
