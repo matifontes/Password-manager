@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using PasswordManager;
 using System;
 
 namespace PasswordManagerTest
@@ -18,8 +19,8 @@ namespace PasswordManagerTest
         {
             string password = "1234Hi@";
             string wrongPassword = "1234";
-            ProfileControllerTest profileController = new ProfileController(password);
-            Assert.IsFalse(profileController.ValidateWithWrongPassword(wrongPassword));
+            ProfileController profileController = new ProfileController(password);
+            Assert.IsFalse(profileController.ValidatePassword(wrongPassword));
         }
     }
 }
