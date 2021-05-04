@@ -17,8 +17,15 @@ namespace PasswordManager
             get { return _pass; }
             set 
             {
-                this._pass = value;
-                this.LastModificationDate = DateTime.Today;
+                if (!IsValidLength(value))
+                {
+                    throw new InvalidPasswordException();
+                }
+                else
+                {
+                    this._pass = value;
+                    this.LastModificationDate = DateTime.Today;
+                }
             }
         }
 
