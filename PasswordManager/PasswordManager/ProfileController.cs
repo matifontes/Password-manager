@@ -1,4 +1,6 @@
-﻿namespace PasswordManager
+﻿using System;
+
+namespace PasswordManager
 {
     public class ProfileController
     {
@@ -12,6 +14,11 @@
         public bool ValidatePassword(string password)
         {
             return this.profile.ValidateSystemPassword(password);
+        }
+
+        public void ChangePassword(string actualpassword, string newpassword)
+        {
+            this.profile.ChangePassword(actualpassword, newpassword);
         }
     }
 }
