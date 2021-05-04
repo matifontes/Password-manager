@@ -17,64 +17,23 @@ namespace PasswordManager
         public string Pass 
         {
             get { return _pass; }
-            set 
-            {
-                if (!IsValidLength(value))
-                {
-                    throw new InvalidPasswordException();
-                }
-                else
-                {
-                    this._pass = value;
-                    this.LastModificationDate = DateTime.Today;
-                }
-            }
+            set => setPassword(value);
         }
 
         public string Site {
             get { return _site; }
-            set
-            {
-                if (!IsValidSiteLength(value))
-                {
-                    throw new InvalidPasswordSiteException();
-                }
-                else
-                {
-                    this._site = value;
-                }
-            }
+            set => setSite(value);
         }
 
         public string User
         {
             get { return _user; }
-            private set
-            {
-                if (!IsValidLength(value))
-                {
-                    throw new InvalidPasswordUserException();
-                }
-                else
-                {
-                    this._user = value;
-                }
-            }
+            private set => setUser(value); 
         }
         public string Note 
         { 
             get { return _note; }
-            private set
-            {
-                if (!IsValidNoteLength(value))
-                {
-                    throw new InvalidPasswordNoteException();
-                }
-                else
-                {
-                    this._note = value;
-                }
-            }
+            private set => setNote(value);
         }
         public DateTime LastModificationDate { get; set; }
 
@@ -85,6 +44,54 @@ namespace PasswordManager
             this.Site = site;
             this.User = user;
             this.Note = note;
+        }
+
+        private void setPassword(string value)
+        {
+            if (!IsValidLength(value))
+            {
+                throw new InvalidPasswordException();
+            }
+            else
+            {
+                this._pass = value;
+                this.LastModificationDate = DateTime.Today;
+            }
+        }
+        private void setUser(string value)
+        {
+            if (!IsValidLength(value))
+            {
+                throw new InvalidPasswordUserException();
+            }
+            else
+            {
+                this._user = value;
+            }
+        }
+
+        private void setSite(string value)
+        {
+            if (!IsValidSiteLength(value))
+            {
+                throw new InvalidPasswordSiteException();
+            }
+            else
+            {
+                this._site = value;
+            }
+        }
+
+        private void setNote(string value)
+        {
+            if (!IsValidNoteLength(value))
+            {
+                throw new InvalidPasswordNoteException();
+            }
+            else
+            {
+                this._note = value;
+            }
         }
 
         private bool IsValidLength(string toCheck)
