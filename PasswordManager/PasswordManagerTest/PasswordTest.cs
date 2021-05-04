@@ -7,6 +7,7 @@ namespace PasswordManagerTest
     [TestClass]
     public class PasswordTest
     {
+        Profile profile;
         Password passwordCreatedToday;
         Password passwordCreatedYesterday;
         private Category personal;
@@ -18,6 +19,7 @@ namespace PasswordManagerTest
         [TestInitialize]
         public void setup()
         {
+            profile = new Profile("test123");
             personal = new Category("Personal");
             passwordCreatedToday = new Password(personal, password, site, user, note);
             passwordCreatedYesterday = new Password(personal, password, site, user, note);
@@ -30,7 +32,6 @@ namespace PasswordManagerTest
             personal = null;
             passwordCreatedToday = null;
             passwordCreatedYesterday = null;
-            passwordCreatedYesterday.LastModificationDate = null;
         }
 
         [TestMethod]
@@ -64,6 +65,28 @@ namespace PasswordManagerTest
         }
 
 
+        [TestMethod]
+        public void CreatePasswordWithUserLenghtLessThanFive()
+        {
+            string invalidUser = "Leo";
+            string passTest = "TestInvalidUser";
+            Password passInvalid = new Password(personal, passTest, site, invalidUser, note);
+            profile.AddPassword(passInvalid);
+
+            Assert.IsFalse(profile.PasswordExists(passTest));
+        }
+
+
+        [TestMethod]
+        public void CreatePasswordWithUserLenghtLongerThanTwentyFive()
+        {
+            string invalidUser = "Leo123456789123456789123456789";
+            string passTest = "TestInvalidUser";
+            Password passInvalid = new Password(personal, passTest, site, invalidUser, note);
+            profile.AddPassword(passInvalid);
+
+            Assert.IsFalse(profile.PasswordExists(passTest));
+        }
 
     }
 }
