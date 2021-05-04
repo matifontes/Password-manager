@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PasswordManager;
+using PasswordManager.Exceptions;
 
 namespace PasswordManagerTest
 {
@@ -64,28 +65,24 @@ namespace PasswordManagerTest
             Assert.AreEqual(passwordCreatedYesterday.LastModificationDate, currentDate);    
         }
 
-
         [TestMethod]
+        [ExpectedException(typeof(InvalidPasswordUserException))]
         public void CreatePasswordWithUserLenghtLessThanFive()
         {
             string invalidUser = "Leo";
             string passTest = "TestInvalidUser";
-            Password passInvalid = new Password(personal, passTest, site, invalidUser, note);
-            profile.AddPassword(passInvalid);
 
-            Assert.IsFalse(profile.PasswordExists(passTest));
+            Password passInvalid = new Password(personal, passTest, site, invalidUser, note);
         }
 
-
         [TestMethod]
+        [ExpectedException(typeof(InvalidPasswordUserException))]
         public void CreatePasswordWithUserLenghtLongerThanTwentyFive()
         {
             string invalidUser = "Leo123456789123456789123456789";
             string passTest = "TestInvalidUser";
-            Password passInvalid = new Password(personal, passTest, site, invalidUser, note);
-            profile.AddPassword(passInvalid);
 
-            Assert.IsFalse(profile.PasswordExists(passTest));
+            Password passInvalid = new Password(personal, passTest, site, invalidUser, note);
         }
 
     }

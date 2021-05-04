@@ -104,7 +104,7 @@ namespace PasswordManagerTest
         {
             string pass = "user123";
             string site = "aulas.ort.edu.uy";
-            string user = "Liza";
+            string user = "Liza123";
             string note = "";
             Password password = new Password(category, pass, site, user, note);
             Assert.IsFalse(systemProfile.PasswordExists(pass));
