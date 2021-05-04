@@ -118,5 +118,18 @@ namespace PasswordManagerTest
             Password passInvalid = new Password(personal, password, site, user, note);
         }
 
+        [TestMethod]
+        [ExpectedException(typeof(InvalidPasswordNoteException))]
+        public void CreatePasswordNoteWithLenghtLongerThanTwoHundredFiftyFive()
+        {
+            string invalidNote = "";
+            for(int i =0; i < 260; i++)
+            {
+                invalidNote += "a";
+            }
+
+            Password passInvalid = new Password(personal, password, site, user, invalidNote);
+        }
+
     }
 }
