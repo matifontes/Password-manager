@@ -85,5 +85,24 @@ namespace PasswordManagerTest
             Password passInvalid = new Password(personal, passTest, site, invalidUser, note);
         }
 
+
+
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidPasswordException))]
+        public void CreatePasswordWithLenghtLessThanFive()
+        {
+            string passTest = "1234";
+            Password passInvalid = new Password(personal, passTest, site, user, note);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidPasswordException))]
+        public void CreatePasswordWithLenghtLongerThanTwentyFive()
+        {
+            string passTest = "TestInvalid123456789123456789123456789";
+            Password passInvalid = new Password(personal, passTest, site, user, note);
+        }
+
     }
 }
