@@ -15,6 +15,7 @@ namespace PasswordManagerTest
             Assert.IsTrue(profileController.ValidatePassword(password));
         }
 
+        [TestMethod]
         public void ValidateWithWrongPassword() 
         {
             string password = "1234Hi@";
