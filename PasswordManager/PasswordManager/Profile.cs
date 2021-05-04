@@ -2,14 +2,14 @@
 
 namespace PasswordManager
 {
-    public class SystemProfile
+    public class Profile
     {
         public string SystemPassword {get; private set;}
         private List<Category> categories;
         private List<Password> passwords;
         private List<CreditCard> cards;
 
-        public SystemProfile(string password) {
+        public Profile(string password) {
             this.SystemPassword = password;
             categories = new List<Category>();
             passwords = new List<Password>();
