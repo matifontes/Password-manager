@@ -86,8 +86,6 @@ namespace PasswordManagerTest
         }
 
 
-
-
         [TestMethod]
         [ExpectedException(typeof(InvalidPasswordException))]
         public void CreatePasswordWithLenghtLessThanFive()
@@ -102,6 +100,22 @@ namespace PasswordManagerTest
         {
             string passTest = "TestInvalid123456789123456789123456789";
             Password passInvalid = new Password(personal, passTest, site, user, note);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidPasswordSiteException))]
+        public void CreatePasswordSiteWithLenghtLessThanThree()
+        {
+            string site = "ww";
+            Password passInvalid = new Password(personal, password, site, user, note);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidPasswordSiteException))]
+        public void CreatePasswordSiteWithLenghtLongerThanTwentyFive()
+        {
+            string site = "www.TestInvalid123124124124124124124.com";
+            Password passInvalid = new Password(personal, password, site, user, note);
         }
 
     }
