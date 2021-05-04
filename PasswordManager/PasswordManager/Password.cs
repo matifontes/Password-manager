@@ -11,6 +11,7 @@ namespace PasswordManager
     {
         private string _user;
         private string _pass;
+        private string _site;
         public Category Category { get; set; }
         public string Pass 
         {
@@ -29,7 +30,21 @@ namespace PasswordManager
             }
         }
 
-        public string Site { get; set; }
+        public string Site {
+            get { return _site; }
+            set
+            {
+                if (!IsValidSiteLength(value))
+                {
+                    throw new InvalidPasswordSiteException();
+                }
+                else
+                {
+                    this._site = value;
+                }
+            }
+        }
+
         public string User
         {
             get { return _user; }
