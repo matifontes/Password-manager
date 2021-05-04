@@ -75,7 +75,7 @@ namespace UserInterface
             this.btnBreaches.UseVisualStyleBackColor = true;
             this.btnBreaches.Click += new System.EventHandler(this.BtnBreaches_Click);
             // 
-            // Menu
+            // MenuPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -83,8 +83,8 @@ namespace UserInterface
             this.Controls.Add(this.btnPasswords);
             this.Controls.Add(this.btnCreditCards);
             this.Controls.Add(this.btnCategories);
-            this.Name = "Menu";
-            this.Size = new System.Drawing.Size(265, 234);
+            this.Name = "MenuPanel";
+            this.Size = new System.Drawing.Size(265, 246);
             this.ResumeLayout(false);
 
         }

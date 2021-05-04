@@ -51,6 +51,7 @@ namespace UserInterface
             this.txtPasswordInput.Name = "txtPasswordInput";
             this.txtPasswordInput.Size = new System.Drawing.Size(317, 20);
             this.txtPasswordInput.TabIndex = 1;
+            // 
             // lblLogin
             // 
             this.lblLogin.AutoSize = true;
@@ -69,7 +70,7 @@ namespace UserInterface
             this.Controls.Add(this.txtPasswordInput);
             this.Controls.Add(this.btnLogin);
             this.Name = "LoginPanel";
-            this.Size = new System.Drawing.Size(473, 145);
+            this.Size = new System.Drawing.Size(473, 156);
             this.ResumeLayout(false);
             this.PerformLayout();
 

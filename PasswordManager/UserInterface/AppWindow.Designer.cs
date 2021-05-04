@@ -47,7 +47,7 @@ namespace UserInterface
             this.Controls.Add(this.startPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "AppWindow";
-            this.Text = "Form1";
+            this.Text = "Password Manager";
             this.Load += new System.EventHandler(this.AppWindowLoader);
             this.ResumeLayout(false);
 

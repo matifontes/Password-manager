@@ -12,6 +12,7 @@ using PasswordManager;
 namespace UserInterface
 {
     public delegate void HandleWindowChange(UserControl panel);
+    public delegate void HandleBackToMenu();
     public partial class MenuPanel : UserControl
     {
         private SystemProfile profile;
@@ -31,6 +32,7 @@ namespace UserInterface
         private void BtnCategories_Click(object sender, EventArgs e)
         {
             ListCategoriesPanel categories = new ListCategoriesPanel();
+            categories.AddListener(ReturnToMenu);
             ChangeWindow(categories);
         }
 
@@ -44,6 +46,7 @@ namespace UserInterface
         private void BtnCreditCards_Click(object sender, EventArgs e)
         {
             ListCreditCards creditCards = new ListCreditCards();
+            creditCards.AddListener(ReturnToMenu);
             ChangeWindow(creditCards);
         }
 

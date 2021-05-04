@@ -100,7 +100,7 @@ namespace UserInterface
             this.Controls.Add(this.lblRepeatPassword);
             this.Controls.Add(this.lblNewPassword);
             this.Name = "RegisterProfile";
-            this.Size = new System.Drawing.Size(420, 280);
+            this.Size = new System.Drawing.Size(420, 276);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -7,14 +7,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PasswordManager;
 
 namespace UserInterface
 {
     public partial class ListCreditCards : UserControl
     {
+        private SystemProfile profile;
+        private event HandleBackToMenu ChangeToMenu;
         public ListCreditCards()
         {
             InitializeComponent();
+        }
+
+        public void AddListener(HandleBackToMenu del) 
+        {
+            ChangeToMenu += del;
+        }
+
+        private void BtnBack_Click(object sender, EventArgs e)
+        {
+            ChangeToMenu();
         }
     }
 }

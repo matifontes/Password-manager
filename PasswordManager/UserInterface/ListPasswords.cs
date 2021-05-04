@@ -11,7 +11,6 @@ using PasswordManager;
 
 namespace UserInterface
 {
-    public delegate void HandleBackToMenu();
     public partial class ListPasswordsPanel : UserControl
     {
 
@@ -42,7 +41,7 @@ namespace UserInterface
 
         }
 
-        private void BtnVolver_Click(object sender, EventArgs e)
+        private void BtnBack_Click(object sender, EventArgs e)
         {
             ChangeToMenu();
         }
