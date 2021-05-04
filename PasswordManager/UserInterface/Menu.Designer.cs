@@ -33,6 +33,7 @@ namespace UserInterface
             this.btnCreditCards = new System.Windows.Forms.Button();
             this.btnPasswords = new System.Windows.Forms.Button();
             this.btnBreaches = new System.Windows.Forms.Button();
+            this.btnPasswordStrangth = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnCategories
@@ -75,16 +76,27 @@ namespace UserInterface
             this.btnBreaches.UseVisualStyleBackColor = true;
             this.btnBreaches.Click += new System.EventHandler(this.BtnBreaches_Click);
             // 
+            // btnPasswordStrangth
+            // 
+            this.btnPasswordStrangth.Location = new System.Drawing.Point(18, 212);
+            this.btnPasswordStrangth.Name = "btnPasswordStrangth";
+            this.btnPasswordStrangth.Size = new System.Drawing.Size(228, 42);
+            this.btnPasswordStrangth.TabIndex = 4;
+            this.btnPasswordStrangth.Text = "Fortaleza de Contraseñas";
+            this.btnPasswordStrangth.UseVisualStyleBackColor = true;
+            this.btnPasswordStrangth.Click += new System.EventHandler(this.BtnPasswordStrangth_Click);
+            // 
             // MenuPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnPasswordStrangth);
             this.Controls.Add(this.btnBreaches);
             this.Controls.Add(this.btnPasswords);
             this.Controls.Add(this.btnCreditCards);
             this.Controls.Add(this.btnCategories);
             this.Name = "MenuPanel";
-            this.Size = new System.Drawing.Size(265, 246);
+            this.Size = new System.Drawing.Size(265, 287);
             this.ResumeLayout(false);
 
         }
@@ -95,5 +107,6 @@ namespace UserInterface
         private System.Windows.Forms.Button btnCreditCards;
         private System.Windows.Forms.Button btnPasswords;
         private System.Windows.Forms.Button btnBreaches;
+        private System.Windows.Forms.Button btnPasswordStrangth;
     }
 }

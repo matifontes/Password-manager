@@ -55,6 +55,11 @@ namespace UserInterface
 
         }
 
+        private void BtnPasswordStrangth_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void ReturnToMenu() 
         {
             ChangeWindow(this);
