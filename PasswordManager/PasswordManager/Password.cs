@@ -12,6 +12,7 @@ namespace PasswordManager
         private string _user;
         private string _pass;
         private string _site;
+        private string _note;
         public Category Category { get; set; }
         public string Pass 
         {
@@ -60,7 +61,21 @@ namespace PasswordManager
                 }
             }
         }
-        public string Note { get; set; }
+        public string Note 
+        { 
+            get { return _note; }
+            private set
+            {
+                if (!IsValidNoteLength(value))
+                {
+                    throw new InvalidPasswordNoteException();
+                }
+                else
+                {
+                    this._note = value;
+                }
+            }
+        }
         public DateTime LastModificationDate { get; set; }
 
         public Password(Category category, string password, string site, string user, string note)
@@ -82,6 +97,12 @@ namespace PasswordManager
         {
             int amountOfDigits = site.Length;
             return (amountOfDigits >= 3 && amountOfDigits <= 25);
+        }
+
+        private bool IsValidNoteLength(string note)
+        {
+            int amountOfDigits = note.Length;
+            return (amountOfDigits <= 250);
         }
 
     }
