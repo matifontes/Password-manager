@@ -23,5 +23,16 @@ namespace PasswordManagerTest
             ProfileController profileController = new ProfileController(password);
             Assert.IsFalse(profileController.ValidatePassword(wrongPassword));
         }
+
+        [TestMethod]
+        public void ChangePasswordOfAProfile() 
+        {
+            string password = "1234Hi@";
+            string newpassword = "Barto@1234";
+            ProfileController profileController = new ProfileController(password);
+
+            profileController.ChangePassword(password, newpassword);
+            Assert.IsTrue(profileController.ValidatePassword(newpassword));
+        }
     }
 }
