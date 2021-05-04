@@ -24,6 +24,15 @@ namespace PasswordManagerTest
             passwordCreatedYesterday.LastModificationDate = DateTime.Today.AddDays(-1);
         }
 
+        [TestCleanup]
+        public void Cleanup()
+        {
+            personal = null;
+            passwordCreatedToday = null;
+            passwordCreatedYesterday = null;
+            passwordCreatedYesterday.LastModificationDate = null;
+        }
+
         [TestMethod]
         public void CreatePassword()
         {
@@ -53,6 +62,8 @@ namespace PasswordManagerTest
 
             Assert.AreEqual(passwordCreatedYesterday.LastModificationDate, currentDate);    
         }
+
+
 
     }
 }
