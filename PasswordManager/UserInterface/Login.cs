@@ -7,12 +7,12 @@ namespace UserInterface
     public delegate void HandleLogin();
     public partial class LoginPanel : UserControl
     {
-        private SystemProfile profile;
+        private Profile profile;
         private event HandleLogin PostLoginEvent;
-        public LoginPanel(SystemProfile systemProfile)
+        public LoginPanel(Profile profile)
         {
             InitializeComponent();
-            this.profile = systemProfile;
+            this.profile = profile;
         }
 
         public void AddListener(HandleLogin del) {

@@ -14,7 +14,7 @@ namespace UserInterface
     public partial class ListPasswordsPanel : UserControl
     {
 
-        private SystemProfile profile;
+        private Profile profile;
         private event HandleBackToMenu ChangeToMenu;
         public ListPasswordsPanel()
         {

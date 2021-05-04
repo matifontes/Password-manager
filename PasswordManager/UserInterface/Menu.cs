@@ -15,10 +15,10 @@ namespace UserInterface
     public delegate void HandleBackToMenu();
     public partial class MenuPanel : UserControl
     {
-        private SystemProfile profile;
+        private Profile profile;
         private event HandleWindowChange ChangeWindow;
 
-        public MenuPanel(SystemProfile profile)
+        public MenuPanel(Profile profile)
         {
             InitializeComponent();
             this.profile = profile;

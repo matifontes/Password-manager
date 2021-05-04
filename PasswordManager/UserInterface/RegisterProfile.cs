@@ -11,7 +11,7 @@ using PasswordManager;
 
 namespace UserInterface
 {
-    public delegate void HandleRegister(SystemProfile profile);
+    public delegate void HandleRegister(Profile profile);
     public partial class RegisterProfile : UserControl
     {
         private event HandleRegister PostRegisterEvent;
@@ -29,7 +29,7 @@ namespace UserInterface
         {
             if (VerifyNewPassword())
             {
-                SystemProfile profile = new SystemProfile(txtPassword.Text);
+                Profile profile = new Profile(txtPassword.Text);
                 PostRegisterEvent(profile);
             }
             else {
