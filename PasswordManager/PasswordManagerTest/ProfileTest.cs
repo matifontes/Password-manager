@@ -74,21 +74,6 @@ namespace PasswordManagerTest
         }
 
         [TestMethod]
-        public void AddedNewCreditCardExists()
-        {
-            string name = "Visa Gold";
-            string type = "Visa";
-            long creditCardNumber = 2323321323212321;
-            short ccvCode = 080;
-            DateTime expDate = new DateTime(2021, 5, 1);
-            string note = "Limit 15K";
-            CreditCard card = new CreditCard(category, name, type, creditCardNumber, ccvCode, expDate, note);
-            systemProfile.AddCreditCard(card);
-            bool wasAdded = systemProfile.CreditCardExists(creditCardNumber);
-            Assert.IsTrue(wasAdded);
-        }
-
-        [TestMethod]
         public void ChangePassword()
         {
             string newPassword = "test123";
