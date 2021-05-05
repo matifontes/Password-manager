@@ -7,13 +7,13 @@ namespace PasswordManager
         public string SystemPassword {get; private set;}
         private CategoryRepository categories;
         private PasswordRepository passwords;
-        private List<CreditCard> cards;
+        private CreditCardRepository creditCards;
 
         public Profile(string password) {
             this.SystemPassword = password;
             categories = new CategoryRepository();
             passwords = new PasswordRepository();
-            cards = new List<CreditCard>();
+            creditCards = new CreditCardRepository();
         }
 
         public bool ValidateSystemPassword(string password) 
@@ -27,23 +27,6 @@ namespace PasswordManager
             {
                 this.SystemPassword = newPassword;
             }
-        }
-
-        public void AddCreditCard(CreditCard card)
-        {
-            this.cards.Add(card);
-        }
-
-        public bool CreditCardExists(long cardNumber)
-        {
-            foreach (CreditCard cardAux in cards)
-            {
-                if (cardAux.Number.Equals(cardNumber))
-                {
-                    return true;
-                }
-            }
-            return false;
         }
     }
 }
