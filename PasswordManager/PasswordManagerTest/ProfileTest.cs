@@ -103,7 +103,7 @@ namespace PasswordManagerTest
         }
 
         [TestMethod]
-        public void CorrectChangePassword()
+        public void ChangePassword()
         {
             string newPassword = "test123";
             systemProfile.ChangePassword(validPassword, newPassword);
