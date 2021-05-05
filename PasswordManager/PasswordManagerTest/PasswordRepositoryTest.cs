@@ -28,7 +28,7 @@ namespace PasswordManagerTest
 
             passwordRepository.AddPassword(password);
 
-            Assert.AreEqual(passwordRepository.passwords.count(), 1);
+            Assert.AreEqual(passwordRepository.Count(), 1);
         }
 
         [TestMethod]
@@ -45,9 +45,9 @@ namespace PasswordManagerTest
 
             passwordRepository.AddPassword(password);
 
-            passwordRepository.Remove(password);
+            passwordRepository.RemovePassword(password);
 
-            Assert.AreEqual(passwordRepository.passwords.count(), 0);
+            Assert.AreEqual(passwordRepository.Count(), 0);
         }
     }
 }
