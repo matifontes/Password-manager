@@ -14,17 +14,7 @@ namespace PasswordManager
 
         public string Name {
             get { return _name; }
-            private set 
-            {
-                if (!IsValidName(value))
-                {
-                    throw new InvalidCategoryNameException();
-                }
-                else 
-                {
-                    this._name = value;
-                }
-            } 
+            private set => SetName(value);
         }
         
         public Category(string name)
@@ -32,6 +22,17 @@ namespace PasswordManager
             this.Name = name;
         }
 
+        private void SetName(string name)
+        {
+            if (!IsValidName(name))
+            {
+                throw new InvalidCategoryNameException();
+            }
+            else
+            {
+                this._name = name;
+            }
+        }
         private bool IsValidName(string name) 
         {
             return (name.Length <= MAX_LENGTH_FOR_VALID_NAME) && (name.Length >= MIN_LENGTH_FOR_VALID_NAME);

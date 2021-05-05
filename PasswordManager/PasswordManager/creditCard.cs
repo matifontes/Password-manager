@@ -12,17 +12,7 @@ namespace PasswordManager
         public long Number
         {
             get { return _number; }
-            private set
-            {
-                if (!IsValidNumber(value))
-                {
-                    throw new InvalidCreditCardNumberException();
-                }
-                else
-                {
-                    this._number = value;
-                }
-            }
+            private set => SetNumber(value);
         }
         public short CCVCode { get; set; }
         public DateTime ExpiryDate { get; set; }
@@ -37,6 +27,18 @@ namespace PasswordManager
             this.CCVCode = ccvCode;
             this.ExpiryDate = expDate;
             this.Note = note;
+        }
+
+        private void SetNumber(long num)
+        {
+            if (!IsValidNumber(num))
+            {
+                throw new InvalidCreditCardNumberException();
+            }
+            else
+            {
+                this._number = num;
+            }
         }
 
         private bool IsValidNumber(long creditCardNumber)
