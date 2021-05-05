@@ -50,7 +50,7 @@ namespace PasswordManager
         {
             if (!IsValidLength(value))
             {
-                throw new InvalidPasswordException();
+                throw new InvalidPasswordException("Largo de contraseña incorrecto");
             }
             else
             {
@@ -62,7 +62,7 @@ namespace PasswordManager
         {
             if (!IsValidLength(value))
             {
-                throw new InvalidPasswordUserException();
+                throw new InvalidPasswordUserException("Largo de usuario incorrecto");
             }
             else
             {
@@ -74,7 +74,7 @@ namespace PasswordManager
         {
             if (!IsValidSiteLength(value))
             {
-                throw new InvalidPasswordSiteException();
+                throw new InvalidPasswordSiteException("Largo de sitio incorrecto");
             }
             else
             {
@@ -86,7 +86,7 @@ namespace PasswordManager
         {
             if (!IsValidNoteLength(value))
             {
-                throw new InvalidPasswordNoteException();
+                throw new InvalidPasswordNoteException("Largo de nota incorrecto");
             }
             else
             {

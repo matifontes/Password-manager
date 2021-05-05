@@ -8,10 +8,6 @@ namespace PasswordManager.Exceptions
 {
     public class InvalidPasswordUserException : Exception
     {
-        public InvalidPasswordUserException()
-        {
-
-        }
         public InvalidPasswordUserException(string message)
             : base(message)
         {
