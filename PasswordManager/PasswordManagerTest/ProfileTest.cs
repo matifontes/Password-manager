@@ -74,20 +74,6 @@ namespace PasswordManagerTest
         }
 
         [TestMethod]
-        public void AddedNewCategoryExists() 
-        {
-            systemProfile.AddCategory(category);
-            bool wasAdded = systemProfile.CategoryExists(category);
-            Assert.IsTrue(wasAdded);
-        }
-
-        [TestMethod]
-        public void CategoryThatWasntAddedDoesNotExists() 
-        {
-            Assert.IsFalse(systemProfile.CategoryExists(category));
-        }
-
-        [TestMethod]
         public void AddedNewCreditCardExists()
         {
             string name = "Visa Gold";
