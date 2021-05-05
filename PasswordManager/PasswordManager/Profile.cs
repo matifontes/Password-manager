@@ -4,13 +4,13 @@ namespace PasswordManager
 {
     public class Profile
     {
-        public string SystemPassword {get; private set;}
+        public string password {get; private set;}
         private CategoryRepository categories;
         private PasswordRepository passwords;
         private CreditCardRepository creditCards;
 
         public Profile(string password) {
-            this.SystemPassword = password;
+            this.password = password;
             categories = new CategoryRepository();
             passwords = new PasswordRepository();
             creditCards = new CreditCardRepository();
@@ -18,14 +18,14 @@ namespace PasswordManager
 
         public bool ValidateSystemPassword(string password) 
         {
-            return password.Equals(SystemPassword);
+            return password.Equals(this.password);
         }
 
         public void ChangePassword(string actualPassword, string newPassword)
         {
             if (ValidateSystemPassword(actualPassword))
             {
-                this.SystemPassword = newPassword;
+                this.password = newPassword;
             }
         }
     }

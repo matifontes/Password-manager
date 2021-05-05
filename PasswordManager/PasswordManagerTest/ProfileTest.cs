@@ -7,50 +7,47 @@ namespace PasswordManagerTest
     [TestClass]
     public class ProfileTest
     {
-        private Profile systemProfile;
-        private Profile systemProfileWithSpecialCharactersOnPassword;
+        private Profile profile;
+        private Profile profileWithSpecialCharactersOnPassword;
         private string validPassword = "admin";
         private string specialCharacterPsw = "3123#@@12";
-        private Category category;
 
         [TestInitialize]
         public void Setup()
         {
-            systemProfile = new PasswordManager.Profile(validPassword);
-            systemProfileWithSpecialCharactersOnPassword = new PasswordManager.Profile(specialCharacterPsw);
-            category = new Category("Work");
+            profile = new PasswordManager.Profile(validPassword);
+            profileWithSpecialCharactersOnPassword = new PasswordManager.Profile(specialCharacterPsw);
         }
 
         [TestCleanup]
         public void Cleanup() 
         {
-            systemProfile = null;
-            systemProfileWithSpecialCharactersOnPassword = null;
-            category = null;
+            profile = null;
+            profileWithSpecialCharactersOnPassword = null;
         }
 
         [TestMethod]
         public void CreateUser()
         {
-            Assert.IsNotNull(systemProfile);
+            Assert.IsNotNull(profile);
         }
 
         [TestMethod]
         public void ValidatePasswordParameterOnUserCreation()
         {
-            Assert.AreEqual(systemProfile.SystemPassword, validPassword);
+            Assert.AreEqual(profile.password, validPassword);
         }
 
         [TestMethod]
         public void CreateUserWithAPasswordUsingSpecialCharacters() 
         {
-            Assert.AreEqual(systemProfileWithSpecialCharactersOnPassword.SystemPassword, specialCharacterPsw);
+            Assert.AreEqual(profileWithSpecialCharactersOnPassword.password, specialCharacterPsw);
         }
 
         [TestMethod]
         public void LoginWithValidPassword()
         {
-            Assert.IsTrue(systemProfile.ValidateSystemPassword(validPassword));
+            Assert.IsTrue(profile.ValidateSystemPassword(validPassword));
         }
 
         [TestMethod]
@@ -64,21 +61,21 @@ namespace PasswordManagerTest
                 invalidPassword += "A";
             }
 
-            Assert.IsFalse(systemProfile.ValidateSystemPassword(invalidPassword));
+            Assert.IsFalse(profile.ValidateSystemPassword(invalidPassword));
         }
 
         [TestMethod]
         public void LoginHavingAPasswordWithSpecialSimbols() 
         {
-            Assert.IsTrue(systemProfileWithSpecialCharactersOnPassword.ValidateSystemPassword(specialCharacterPsw));       
+            Assert.IsTrue(profileWithSpecialCharactersOnPassword.ValidateSystemPassword(specialCharacterPsw));       
         }
 
         [TestMethod]
         public void ChangePassword()
         {
             string newPassword = "test123";
-            systemProfile.ChangePassword(validPassword, newPassword);
-            Assert.IsTrue(systemProfile.ValidateSystemPassword(newPassword));
+            profile.ChangePassword(validPassword, newPassword);
+            Assert.IsTrue(profile.ValidateSystemPassword(newPassword));
         }
 
         [TestMethod]
@@ -86,8 +83,8 @@ namespace PasswordManagerTest
         {
             string newPassword = "test123";
             string invalidActualPassword = "adm123";
-            systemProfile.ChangePassword(invalidActualPassword, newPassword);
-            Assert.IsFalse(systemProfile.ValidateSystemPassword(newPassword));
+            profile.ChangePassword(invalidActualPassword, newPassword);
+            Assert.IsFalse(profile.ValidateSystemPassword(newPassword));
         }
 
     }
