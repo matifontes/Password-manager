@@ -34,6 +34,12 @@ namespace PasswordManagerTest
         }
 
         [TestMethod]
+        public void CreateCreditCardWithValidNumber() 
+        {
+            Assert.AreEqual(card.Number,creditCardNumber);
+        }
+
+        [TestMethod]
         [ExpectedException(typeof(InvalidCreditCardNumberException))]
         public void CreateCreditCardWithNumberLenghtLessThanSixteen()
         {
