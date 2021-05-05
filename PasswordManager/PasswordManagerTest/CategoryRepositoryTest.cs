@@ -38,6 +38,7 @@ namespace PasswordManagerTest
             Assert.AreEqual(categoryRepository.Count(), 1);
         }
 
+        [TestMethod]
         public void RemoveCategory() 
         {
             categoryRepository.AddCategory(category);
