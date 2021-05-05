@@ -86,29 +86,6 @@ namespace PasswordManagerTest
         {
             Assert.IsFalse(systemProfile.CategoryExists(category));
         }
-        [TestMethod]
-        public void AddedNewPasswordExists()
-        {
-            string pass = "admin";
-            string site = "aulas.ort.edu.uy";
-            string user = "Ralph";
-            string note = "";
-            Password password = new Password(category, pass, site, user, note);
-            systemProfile.AddPassword(password);
-            bool wasAdded = systemProfile.PasswordExists(pass);
-            Assert.IsTrue(wasAdded);
-        }
-
-        [TestMethod]
-        public void PasswordThatWasntAddedDoesNotExists()
-        {
-            string pass = "user123";
-            string site = "aulas.ort.edu.uy";
-            string user = "Liza";
-            string note = "";
-            Password password = new Password(category, pass, site, user, note);
-            Assert.IsFalse(systemProfile.PasswordExists(pass));
-        }
 
         [TestMethod]
         public void AddedNewCreditCardExists()
@@ -126,7 +103,7 @@ namespace PasswordManagerTest
         }
 
         [TestMethod]
-        public void CorrectChangePassword()
+        public void ChangePassword()
         {
             string newPassword = "test123";
             systemProfile.ChangePassword(validPassword, newPassword);

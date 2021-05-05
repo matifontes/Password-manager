@@ -6,13 +6,13 @@ namespace PasswordManager
     {
         public string SystemPassword {get; private set;}
         private List<Category> categories;
-        private List<Password> passwords;
+        private PasswordRepository passwords;
         private List<CreditCard> cards;
 
         public Profile(string password) {
             this.SystemPassword = password;
             categories = new List<Category>();
-            passwords = new List<Password>();
+            passwords = new PasswordRepository();
             cards = new List<CreditCard>();
         }
 
@@ -34,10 +34,6 @@ namespace PasswordManager
             this.categories.Add(category);
         }
 
-        public void AddPassword(Password pass)
-        {
-            this.passwords.Add(pass);
-        }
         public void AddCreditCard(CreditCard card)
         {
             this.cards.Add(card);
@@ -46,18 +42,6 @@ namespace PasswordManager
         public bool CategoryExists(Category category) 
         {
             return this.categories.Contains(category);
-        }
-
-        public bool PasswordExists(string pass)
-        {
-            foreach (Password passAux in passwords)
-            {
-                if (passAux.Pass.Equals(pass))
-                {
-                    return true;
-                }
-            }
-            return false;
         }
 
         public bool CreditCardExists(long cardNumber)
