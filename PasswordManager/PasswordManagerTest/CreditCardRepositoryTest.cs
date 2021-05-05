@@ -53,5 +53,21 @@ namespace PasswordManagerTest
             creditCardRepository.RemoveCreditCard(creditCard);
             Assert.AreEqual(creditCardRepository.Count(), 0);
         }
+
+        [TestMethod]
+        public void RemoveCreaditCardThatDoesntExistOnRepository() 
+        {
+            creditCardRepository.AddCreditCard(creditCard);
+            string name = "Visa";
+            string type = "Visa Black";
+            long creditCardNumber = 5665321232123124;
+            short ccvCode = 120;
+            DateTime expDate = new DateTime(2021, 5, 1);
+            string note = "Note";
+            CreditCard otherCreditCard = new CreditCard(category, name, type, creditCardNumber, ccvCode, expDate, note);
+            
+            creditCardRepository.RemoveCreditCard(otherCreditCard);
+            Assert.AreEqual(creditCardRepository.Count(), 1);
+        }
     }
 }
