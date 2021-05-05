@@ -21,6 +21,7 @@ namespace PasswordManagerTest
         {
             card = new CreditCard(category, name, type, creditCardNumber, ccvCode, expDate, note);
         }
+
         [TestCleanup]
         public void Cleanup()
         {
@@ -54,7 +55,6 @@ namespace PasswordManagerTest
             long creditCardLongNumber = 123451234512345123;
             CreditCard invalidCard = new CreditCard(category, name, type, creditCardLongNumber, ccvCode, expDate, note);
         }
-
 
     }
 }

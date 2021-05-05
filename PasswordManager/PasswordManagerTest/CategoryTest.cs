@@ -12,7 +12,7 @@ namespace PasswordManagerTest
         {
             string validName = "Personal";
             Category personal = new Category(validName);
-            Assert.IsNotNull(personal);
+            Assert.AreEqual(personal.Name,validName);
         }
 
         [TestMethod]
