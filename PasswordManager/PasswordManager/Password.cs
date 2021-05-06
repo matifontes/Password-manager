@@ -118,5 +118,11 @@ namespace PasswordManager
         {
             return password.Length < 8;
 
+        }
+
+        private bool PasswordIsOrange(string password)
+        {
+            return password.Length >= 8 && password.Length <= 14
+        }
     }
 }
