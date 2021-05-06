@@ -48,7 +48,7 @@ namespace PasswordManager
             this.Note = note;
         }
 
-        private void setPassword(string value)
+        private void SetPassword(string value)
         {
             if (!IsValidLength(value))
             {
@@ -60,7 +60,7 @@ namespace PasswordManager
                 this.LastModificationDate = DateTime.Today;
             }
         }
-        private void setUser(string value)
+        private void SetUser(string value)
         {
             if (!IsValidLength(value))
             {
@@ -72,7 +72,7 @@ namespace PasswordManager
             }
         }
 
-        private void setSite(string value)
+        private void SetSite(string value)
         {
             if (!IsValidSiteLength(value))
             {
@@ -84,7 +84,7 @@ namespace PasswordManager
             }
         }
 
-        private void setNote(string value)
+        private void SetNote(string value)
         {
             if (!IsValidNoteLength(value))
             {
