@@ -118,6 +118,37 @@ namespace PasswordManager
             return (amountOfDigits <= 250);
         }
 
+        private string PasswordStrength(string password)
+        {
+            string strength = "";
+           
+            if (PasswordIsRed(password))
+            {
+                strength = "Red";
+            }
+
+            if (PasswordIsOrange(password))
+            {
+                strength = "Orange";
+            }
+
+            if (PasswordIsYellow(password))
+            {
+                strength = "Yellow";
+            }
+
+            if (PasswordIsLightGreen(password))
+            {
+                strength = "LightGreen";
+            }
+
+            if (PasswordIsDarkGreen(password))
+            {
+                strength = "DarkGreen";
+            }
+            return strength;
+        }
+
         private bool PasswordIsRed(string password)
         {
             return password.Length < 8;
