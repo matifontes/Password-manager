@@ -33,7 +33,7 @@ namespace PasswordManager
         {
             if (!IsValidNumber(num))
             {
-                throw new InvalidCreditCardNumberException();
+                throw new InvalidCreditCardNumberException("Largo del numero de tarjeta incorrecto");
             }
             else
             {

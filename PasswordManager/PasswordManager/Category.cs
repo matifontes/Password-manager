@@ -26,7 +26,7 @@ namespace PasswordManager
         {
             if (!IsValidName(name))
             {
-                throw new InvalidCategoryNameException();
+                throw new InvalidCategoryNameException("Largo del nombre de categoria incorrecto");
             }
             else
             {
