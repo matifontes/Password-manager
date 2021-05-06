@@ -1,4 +1,5 @@
 ﻿using System;
+using PasswordManager.Exceptions;
 
 namespace PasswordManager
 {

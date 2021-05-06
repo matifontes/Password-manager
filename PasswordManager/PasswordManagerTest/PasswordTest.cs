@@ -1,12 +1,14 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PasswordManager;
+using PasswordManager.Exceptions;
 
 namespace PasswordManagerTest
 {
     [TestClass]
     public class PasswordTest
     {
+        Profile profile;
         Password passwordCreatedToday;
         Password passwordCreatedYesterday;
         private Category personal;
@@ -18,10 +20,19 @@ namespace PasswordManagerTest
         [TestInitialize]
         public void setup()
         {
+            profile = new Profile("test123");
             personal = new Category("Personal");
             passwordCreatedToday = new Password(personal, password, site, user, note);
             passwordCreatedYesterday = new Password(personal, password, site, user, note);
             passwordCreatedYesterday.LastModificationDate = DateTime.Today.AddDays(-1);
+        }
+
+        [TestCleanup]
+        public void Cleanup()
+        {
+            personal = null;
+            passwordCreatedToday = null;
+            passwordCreatedYesterday = null;
         }
 
         [TestMethod]
@@ -52,6 +63,72 @@ namespace PasswordManagerTest
             passwordCreatedYesterday.Pass = newPassword;
 
             Assert.AreEqual(passwordCreatedYesterday.LastModificationDate, currentDate);    
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidPasswordUserException))]
+        public void CreatePasswordWithUserLenghtLessThanFive()
+        {
+            string invalidUser = "Leo";
+            string passTest = "TestInvalidUser";
+
+            Password passInvalid = new Password(personal, passTest, site, invalidUser, note);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidPasswordUserException))]
+        public void CreatePasswordWithUserLenghtLongerThanTwentyFive()
+        {
+            string invalidUser = "Leo123456789123456789123456789";
+            string passTest = "TestInvalidUser";
+
+            Password passInvalid = new Password(personal, passTest, site, invalidUser, note);
+        }
+
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidPasswordException))]
+        public void CreatePasswordWithLenghtLessThanFive()
+        {
+            string passTest = "1234";
+            Password passInvalid = new Password(personal, passTest, site, user, note);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidPasswordException))]
+        public void CreatePasswordWithLenghtLongerThanTwentyFive()
+        {
+            string passTest = "TestInvalid123456789123456789123456789";
+            Password passInvalid = new Password(personal, passTest, site, user, note);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidPasswordSiteException))]
+        public void CreatePasswordSiteWithLenghtLessThanThree()
+        {
+            string site = "ww";
+            Password passInvalid = new Password(personal, password, site, user, note);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidPasswordSiteException))]
+        public void CreatePasswordSiteWithLenghtLongerThanTwentyFive()
+        {
+            string site = "www.TestInvalid123124124124124124124.com";
+            Password passInvalid = new Password(personal, password, site, user, note);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidPasswordNoteException))]
+        public void CreatePasswordNoteWithLenghtLongerThanTwoHundredFiftyFive()
+        {
+            string invalidNote = "";
+            for(int i =0; i < 260; i++)
+            {
+                invalidNote += "a";
+            }
+
+            Password passInvalid = new Password(personal, password, site, user, invalidNote);
         }
 
     }

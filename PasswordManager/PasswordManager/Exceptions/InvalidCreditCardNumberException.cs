@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PasswordManager
+namespace PasswordManager.Exceptions
 {
     public class InvalidCreditCardNumberException : Exception
     {
