@@ -156,6 +156,19 @@ namespace PasswordManager
             return ret;
         }
 
+        private bool PasswordIsDarkGreen(string password)
+        {
+            bool ret = false;
+            if (password.Length > 14)
+            {
+                ret = PasswordIncludeLowerCase(password);
+                ret = ret && PasswordIncludeUpperCase(password);
+                ret = ret && PasswordIncludeNumbers(password);
+                ret = ret && PasswordIncludeSpecialCharacters(password);
+            }
+            return ret;
+        }
+
 
         private bool PasswordIncludeSpecialCharacters(string password)
         {
