@@ -59,11 +59,15 @@ namespace UserInterface
         {
 
         }
-
+        private void BtnChangePassword_Click(object sender, EventArgs e)
+        {
+            ChangePassword changePassword = new ChangePassword();
+            changePassword.AddListener(ReturnToMenu);
+            ChangeWindow(changePassword);
+        }
         private void ReturnToMenu() 
         {
             ChangeWindow(this);
         }
-
     }
 }

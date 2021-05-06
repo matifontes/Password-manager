@@ -52,6 +52,12 @@
     <Compile Include="AppWindow.Designer.cs">
       <DependentUpon>AppWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="ChangePassword.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ChangePassword.Designer.cs">
+      <DependentUpon>ChangePassword.cs</DependentUpon>
+    </Compile>
     <Compile Include="ListCategories.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -92,6 +98,9 @@
     </Compile>
     <EmbeddedResource Include="AppWindow.resx">
       <DependentUpon>AppWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangePassword.resx">
+      <DependentUpon>ChangePassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ListCategories.resx">
       <DependentUpon>ListCategories.cs</DependentUpon>

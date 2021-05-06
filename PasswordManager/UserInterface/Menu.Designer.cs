@@ -34,6 +34,7 @@ namespace UserInterface
             this.btnPasswords = new System.Windows.Forms.Button();
             this.btnBreaches = new System.Windows.Forms.Button();
             this.btnPasswordStrangth = new System.Windows.Forms.Button();
+            this.btnChangePassword = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnCategories
@@ -86,17 +87,28 @@ namespace UserInterface
             this.btnPasswordStrangth.UseVisualStyleBackColor = true;
             this.btnPasswordStrangth.Click += new System.EventHandler(this.BtnPasswordStrangth_Click);
             // 
+            // btnChangePassword
+            // 
+            this.btnChangePassword.Location = new System.Drawing.Point(18, 260);
+            this.btnChangePassword.Name = "btnChangePassword";
+            this.btnChangePassword.Size = new System.Drawing.Size(228, 42);
+            this.btnChangePassword.TabIndex = 5;
+            this.btnChangePassword.Text = "Cambiar Contraseña";
+            this.btnChangePassword.UseVisualStyleBackColor = true;
+            this.btnChangePassword.Click += new System.EventHandler(this.BtnChangePassword_Click);
+            // 
             // MenuPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnChangePassword);
             this.Controls.Add(this.btnPasswordStrangth);
             this.Controls.Add(this.btnBreaches);
             this.Controls.Add(this.btnPasswords);
             this.Controls.Add(this.btnCreditCards);
             this.Controls.Add(this.btnCategories);
             this.Name = "MenuPanel";
-            this.Size = new System.Drawing.Size(265, 287);
+            this.Size = new System.Drawing.Size(265, 354);
             this.ResumeLayout(false);
 
         }
@@ -108,5 +120,6 @@ namespace UserInterface
         private System.Windows.Forms.Button btnPasswords;
         private System.Windows.Forms.Button btnBreaches;
         private System.Windows.Forms.Button btnPasswordStrangth;
+        private System.Windows.Forms.Button btnChangePassword;
     }
 }
