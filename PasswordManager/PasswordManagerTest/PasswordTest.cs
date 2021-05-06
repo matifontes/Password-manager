@@ -131,5 +131,14 @@ namespace PasswordManagerTest
             Password passInvalid = new Password(personal, password, site, user, invalidNote);
         }
 
+        [TestMethod]
+        public void VerifyRedPassword()
+        {
+            string passR = "testR";
+            Password passRed = new Password(personal, passR, site, user, note);
+
+            Assert.AreEqual(passRed.Strength, "Red");
+        }
+
     }
 }
