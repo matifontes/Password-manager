@@ -9,6 +9,10 @@ namespace PasswordManager
 {
     public class Password
     {
+        const string LOWERCASE_CHARACTERS = "abcdefghijklmnopqrstuvwxyz";
+        const string UPPERCASE_CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        const string NUMERIC_CHARACTERS = "0123456789";
+        const string SPECIAL_CHARACTERS = @"!#$%&.*@\";
         private string _user;
         private string _pass;
         private string _site;
@@ -17,23 +21,23 @@ namespace PasswordManager
         public string Pass 
         {
             get { return _pass; }
-            set => setPassword(value);
+            set => SetPassword(value);
         }
 
         public string Site {
             get { return _site; }
-            set => setSite(value);
+            set => SetSite(value);
         }
 
         public string User
         {
             get { return _user; }
-            private set => setUser(value); 
+            private set => SetUser(value); 
         }
         public string Note 
         { 
             get { return _note; }
-            private set => setNote(value);
+            private set => SetNote(value);
         }
         
         public string Strength { get; set; }
@@ -122,7 +126,40 @@ namespace PasswordManager
 
         private bool PasswordIsOrange(string password)
         {
-            return password.Length >= 8 && password.Length <= 14
+            return password.Length >= 8 && password.Length <= 14;
         }
+
+        private bool PasswordIsYellow(string password)
+        {
+            bool ret = false;
+            if (password.Length > 14)
+            {
+                if(!PasswordIncludeSpecialCharacters(password) && !PasswordIncludeNumbers(password))
+                {
+                    ret = (PasswordIncludeLowerCase(password) && !PasswordIncludeUpperCase(password));
+                    ret = ret || (!PasswordIncludeLowerCase(password) && PasswordIncludeUpperCase(password));
+                }
+            }
+            return ret;
+        }
+
+        private bool PasswordIncludeSpecialCharacters(string password)
+        {
+           return System.Text.RegularExpressions.Regex.IsMatch(password, SPECIAL_CHARACTERS);
+        }
+        private bool PasswordIncludeNumbers(string password)
+        {
+            return System.Text.RegularExpressions.Regex.IsMatch(password, NUMERIC_CHARACTERS);
+        }
+        private bool PasswordIncludeUpperCase(string password)
+        {
+            return System.Text.RegularExpressions.Regex.IsMatch(password, UPPERCASE_CHARACTERS);
+        }
+
+        private bool PasswordIncludeLowerCase(string password)
+        {
+            return System.Text.RegularExpressions.Regex.IsMatch(password, LOWERCASE_CHARACTERS);
+        }
+
     }
 }
