@@ -50,6 +50,7 @@ namespace PasswordManager
             this.Site = site;
             this.User = user;
             this.Note = note;
+            this.Strength = PasswordStrength(password);
         }
 
         private void SetPassword(string value)
