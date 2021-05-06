@@ -114,5 +114,9 @@ namespace PasswordManager
             return (amountOfDigits <= 250);
         }
 
+        private bool PasswordIsRed(string password)
+        {
+            return password.Length < 8;
+
     }
 }
