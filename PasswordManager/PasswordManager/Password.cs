@@ -35,6 +35,8 @@ namespace PasswordManager
             get { return _note; }
             private set => setNote(value);
         }
+        
+        public string Strength { get; set; }
         public DateTime LastModificationDate { get; set; }
 
         public Password(Category category, string password, string site, string user, string note)
