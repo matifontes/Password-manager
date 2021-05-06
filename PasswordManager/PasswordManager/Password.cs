@@ -143,6 +143,20 @@ namespace PasswordManager
             return ret;
         }
 
+        private bool PasswordIsLightGreen(string password)
+        {
+            bool ret = false;
+            if (password.Length > 14)
+            {
+                if (!PasswordIncludeSpecialCharacters(password) && !PasswordIncludeNumbers(password))
+                {
+                    ret = (PasswordIncludeLowerCase(password) && PasswordIncludeUpperCase(password));
+                }
+            }
+            return ret;
+        }
+
+
         private bool PasswordIncludeSpecialCharacters(string password)
         {
            return System.Text.RegularExpressions.Regex.IsMatch(password, SPECIAL_CHARACTERS);
