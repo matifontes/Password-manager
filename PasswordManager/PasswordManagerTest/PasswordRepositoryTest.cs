@@ -13,7 +13,7 @@ namespace PasswordManagerTest
         private string categoryName = "Personal";
         private string pass = "Admin";
         string site = "site";
-        string user = "root";
+        string user = "Admin";
         string note = "note";
 
         [TestInitialize]
