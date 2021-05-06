@@ -140,5 +140,14 @@ namespace PasswordManagerTest
             Assert.AreEqual(passRed.Strength, "Red");
         }
 
+        [TestMethod]
+        public void VerifyOrangePassword()
+        {
+            string passOr = "testOrange";
+            Password passOrange = new Password(personal, passOr, site, user, note);
+
+            Assert.AreEqual(passOrange.Strength, "Orange");
+        }
+
     }
 }
