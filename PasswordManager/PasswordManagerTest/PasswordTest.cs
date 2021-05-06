@@ -167,5 +167,14 @@ namespace PasswordManagerTest
             Assert.AreEqual(passLGreen.Strength, "LightGreen");
         }
 
+        [TestMethod]
+        public void VeifyDarkGreenPassword()
+        {
+            string passDG = "testGreenGreen.13";
+            Password passLGreen = new Password(personal, passDG, site, user, note);
+
+            Assert.AreEqual(passLGreen.Strength, "DarkGreen");
+        }
+
     }
 }
