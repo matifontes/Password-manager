@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using PasswordManager;
+using System.Collections.Generic;
 
 namespace PasswordManagerTest
 {
@@ -46,6 +47,23 @@ namespace PasswordManagerTest
             categoryRepository.RemoveCategory(category);
 
             Assert.AreEqual(categoryRepository.Count(), 0);
+        }
+
+        [TestMethod]
+        public void ListCategories() 
+        {
+
+            Category category2 = new Category("Trabajo");
+            Category category3 = new Category("Gaming");
+            categoryRepository.AddCategory(category);
+            categoryRepository.AddCategory(category2);
+            categoryRepository.AddCategory(category3);
+
+            List<Category> orderedCategories = categoryRepository.ListCategories();
+
+            Assert.AreEqual(orderedCategories[0],category3);
+            Assert.AreEqual(orderedCategories[1],category2);
+            Assert.AreEqual(orderedCategories[2],category);
         }
     }
 }
