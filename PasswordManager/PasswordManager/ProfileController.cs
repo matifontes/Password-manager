@@ -20,5 +20,18 @@ namespace PasswordManager
         {
             this.profile.ChangePassword(actualpassword, newpassword);
         }
+
+        public CategoryRepository GetCategoryRepository() 
+        {
+            return this.profile.GetCategoryRepository();
+        }
+        public PasswordRepository GetPasswordRepository()
+        {
+            return this.profile.GetPasswordRepository();
+        }
+        public CreditCardRepository GetCreditCardRepository()
+        {
+            return this.profile.GetCreditCardRepository();
+        }
     }
 }
