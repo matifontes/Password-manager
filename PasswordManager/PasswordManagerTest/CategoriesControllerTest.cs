@@ -12,7 +12,7 @@ namespace PasswordManagerTest
         public void CreateNewCategoriesController()
         {
             CategoriesController categoriesController = new CategoriesController();
-            Assert.IsNotNull(categoriesController.Count(),0);
+            Assert.AreEqual(categoriesController.Count(),0);
         }
        
         [TestMethod]
@@ -22,7 +22,7 @@ namespace PasswordManagerTest
             Category category = new Category("Personal");
 
             categoriesController.AddCategory(category);
-            Assert.IsNotNull(categoriesController.Count(),1);
+            Assert.AreEqual(categoriesController.Count(),1);
         }
 
         [TestMethod]
@@ -33,7 +33,7 @@ namespace PasswordManagerTest
             categoriesController.AddCategory(category);
 
             categoriesController.RemoveCategory(category);
-            Assert.IsNotNull(categoriesController.Count(), 0);
+            Assert.AreEqual(categoriesController.Count(), 0);
         }
 
         [TestMethod]
