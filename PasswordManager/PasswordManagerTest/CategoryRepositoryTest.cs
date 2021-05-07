@@ -50,7 +50,7 @@ namespace PasswordManagerTest
         }
 
         [TestMethod]
-        public void ListCategories() 
+        public void ListCategoriesOrdered() 
         {
 
             Category category2 = new Category("Trabajo");
