@@ -152,7 +152,7 @@ namespace PasswordManagerTest
         [TestMethod]
         public void VerifyYellowPassword()
         {
-            string passY = "testyellowyellow";
+            string passY = "testyellowyellowwwww";
             Password passYellow = new Password(personal, passY, site, user, note);
 
             Assert.AreEqual(passYellow.Strength, "Yellow");
