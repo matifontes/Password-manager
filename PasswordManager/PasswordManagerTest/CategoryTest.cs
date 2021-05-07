@@ -31,5 +31,13 @@ namespace PasswordManagerTest
 
             Category personal = new Category(invalidName);
         }
+
+        [TestMethod]
+        public void CategoryObjectToStringShouldSayItsName() 
+        {
+            string validName = "Personal";
+            Category personal = new Category(validName);
+            Assert.AreEqual(personal.ToString(), validName);
+        }
     }
 }

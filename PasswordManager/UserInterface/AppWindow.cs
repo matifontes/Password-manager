@@ -13,7 +13,8 @@ namespace UserInterface
 {
     public partial class AppWindow : Form
     {
-        private ProfileController profile = null;
+        private ProfileController profile;
+        private CategoriesController categories;
 
         public AppWindow()
         {
@@ -47,7 +48,7 @@ namespace UserInterface
 
         private void CreateMenuPanel()
         {
-            MenuPanel menuPanel = new MenuPanel(this.profile);
+            MenuPanel menuPanel = new MenuPanel(this.profile,this.categories);
             menuPanel.AddListener(ChangeWindow);
             startPanel.Controls.Add(menuPanel);
             ReSizeForm(menuPanel.Width, menuPanel.Height);
@@ -66,6 +67,7 @@ namespace UserInterface
 
         private void PostRegister(ProfileController profile) {
             this.profile = profile;
+            this.categories = new CategoriesController(profile.GetCategoryRepository());
             ClearPanel();
             CreateLoginPanel();
         }

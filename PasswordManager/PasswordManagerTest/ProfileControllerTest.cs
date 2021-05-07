@@ -52,5 +52,23 @@ namespace PasswordManagerTest
 
             profileController.ChangePassword(invalidActualPassword, newpassword);
         }
+
+        [TestMethod]
+        public void GetCategoryRepository() 
+        {
+            Assert.IsNotNull(profileController.GetCategoryRepository());
+        }
+
+        [TestMethod]
+        public void GetPasswordRepository()
+        {
+            Assert.IsNotNull(profileController.GetPasswordRepository());
+        }
+
+        [TestMethod]
+        public void GetCreditCardRepository()
+        {
+            Assert.IsNotNull(profileController.GetCreditCardRepository());
+        }
     }
 }
