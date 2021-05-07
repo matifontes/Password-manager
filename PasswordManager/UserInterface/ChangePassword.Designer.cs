@@ -37,11 +37,12 @@ namespace UserInterface
             this.lblActualPassword = new System.Windows.Forms.Label();
             this.lblNewPassword = new System.Windows.Forms.Label();
             this.lblRepeatNewPassword = new System.Windows.Forms.Label();
+            this.lblErrorMsg = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnChangePassword
             // 
-            this.btnChangePassword.Location = new System.Drawing.Point(156, 176);
+            this.btnChangePassword.Location = new System.Drawing.Point(156, 190);
             this.btnChangePassword.Name = "btnChangePassword";
             this.btnChangePassword.Size = new System.Drawing.Size(124, 45);
             this.btnChangePassword.TabIndex = 0;
@@ -51,7 +52,7 @@ namespace UserInterface
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(26, 176);
+            this.btnCancel.Location = new System.Drawing.Point(26, 190);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(124, 45);
             this.btnCancel.TabIndex = 1;
@@ -110,10 +111,19 @@ namespace UserInterface
             this.lblRepeatNewPassword.TabIndex = 7;
             this.lblRepeatNewPassword.Text = "Repetir Nueva Contraseña:";
             // 
+            // lblErrorMsg
+            // 
+            this.lblErrorMsg.AutoSize = true;
+            this.lblErrorMsg.Location = new System.Drawing.Point(23, 160);
+            this.lblErrorMsg.Name = "lblErrorMsg";
+            this.lblErrorMsg.Size = new System.Drawing.Size(0, 13);
+            this.lblErrorMsg.TabIndex = 8;
+            // 
             // ChangePassword
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lblErrorMsg);
             this.Controls.Add(this.lblRepeatNewPassword);
             this.Controls.Add(this.lblNewPassword);
             this.Controls.Add(this.lblActualPassword);
@@ -139,5 +149,6 @@ namespace UserInterface
         private System.Windows.Forms.Label lblActualPassword;
         private System.Windows.Forms.Label lblNewPassword;
         private System.Windows.Forms.Label lblRepeatNewPassword;
+        private System.Windows.Forms.Label lblErrorMsg;
     }
 }
