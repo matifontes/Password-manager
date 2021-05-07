@@ -13,7 +13,6 @@ namespace UserInterface
 {
     public partial class ListCreditCards : UserControl
     {
-        private Profile profile;
         private event HandleBackToMenu ChangeToMenu;
         public ListCreditCards()
         {

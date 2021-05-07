@@ -14,7 +14,7 @@ namespace UserInterface
     public partial class AppWindow : Form
     {
         //harcoded profile
-        private Profile profile = null;
+        private ProfileController profile = null;
 
         public AppWindow()
         {
@@ -65,7 +65,7 @@ namespace UserInterface
             CreateMenuPanel();
         }
 
-        private void PostRegister(Profile profile) {
+        private void PostRegister(ProfileController profile) {
             this.profile = profile;
             ClearPanel();
             CreateLoginPanel();

@@ -7,7 +7,6 @@ namespace UserInterface
     public partial class ListCategoriesPanel : UserControl
     {
         private event HandleBackToMenu ChangeToMenu;
-        private Profile profile;
         public ListCategoriesPanel()
         {
             InitializeComponent();
