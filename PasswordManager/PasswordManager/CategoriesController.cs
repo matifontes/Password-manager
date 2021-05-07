@@ -6,9 +6,9 @@ namespace PasswordManager
     {
         private CategoryRepository categories;
 
-        public CategoriesController() 
+        public CategoriesController(CategoryRepository categories) 
         {
-            categories = new CategoryRepository();
+            this.categories = categories;
         }
 
         public void AddCategory(Category category) 
