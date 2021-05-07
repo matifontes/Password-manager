@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using PasswordManager;
 
@@ -12,6 +13,10 @@ namespace UserInterface
         {
             InitializeComponent();
             this.categories = categories;
+            //Categorys Added Hardcoded
+            this.categories.AddCategory(new Category("Personal"));
+            this.categories.AddCategory(new Category("Trabajo"));
+            this.categories.AddCategory(new Category("Gaming"));
         }
 
         public void AddListener(HandleBackToMenu del) 
@@ -32,6 +37,11 @@ namespace UserInterface
         private void BtnBack_Click(object sender, EventArgs e)
         {
             ChangeToMenu();
+        }
+
+        private void ListCategoriesPanel_Load(object sender, EventArgs e)
+        {
+            lbxCategories.DataSource = this.categories.ListCategories();
         }
     }
 }

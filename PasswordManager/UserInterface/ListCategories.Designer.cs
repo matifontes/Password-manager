@@ -97,6 +97,7 @@ namespace UserInterface
             this.Controls.Add(this.button1);
             this.Name = "ListCategoriesPanel";
             this.Size = new System.Drawing.Size(369, 359);
+            this.Load += new System.EventHandler(this.ListCategoriesPanel_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

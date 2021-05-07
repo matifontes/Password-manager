@@ -48,7 +48,7 @@ namespace UserInterface
 
         private void CreateMenuPanel()
         {
-            MenuPanel menuPanel = new MenuPanel(this.profile);
+            MenuPanel menuPanel = new MenuPanel(this.profile,this.categories);
             menuPanel.AddListener(ChangeWindow);
             startPanel.Controls.Add(menuPanel);
             ReSizeForm(menuPanel.Width, menuPanel.Height);
