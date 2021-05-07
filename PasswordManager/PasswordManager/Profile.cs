@@ -32,5 +32,20 @@ namespace PasswordManager
                 throw new FailToValidatePasswordException("Error al validar la contraseña actual");
             }
         }
+
+        public CategoryRepository GetCategoryRepository() 
+        {
+            return this.categories;
+        }
+
+        public PasswordRepository GetPasswordRepository() 
+        {
+            return this.passwords;
+        }
+
+        public CreditCardRepository GetCreditCardRepository() 
+        {
+            return this.creditCards;
+        }
     }
 }
