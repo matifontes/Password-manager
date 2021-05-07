@@ -30,7 +30,7 @@ namespace UserInterface
         private void InitializeComponent()
         {
             this.btnChangePassword = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnBack = new System.Windows.Forms.Button();
             this.txtActualPassword = new System.Windows.Forms.TextBox();
             this.txtNewPassword = new System.Windows.Forms.TextBox();
             this.txtRepeatNewPassword = new System.Windows.Forms.TextBox();
@@ -42,41 +42,41 @@ namespace UserInterface
             // 
             // btnChangePassword
             // 
-            this.btnChangePassword.Location = new System.Drawing.Point(156, 190);
+            this.btnChangePassword.Location = new System.Drawing.Point(23, 251);
             this.btnChangePassword.Name = "btnChangePassword";
-            this.btnChangePassword.Size = new System.Drawing.Size(124, 45);
+            this.btnChangePassword.Size = new System.Drawing.Size(256, 45);
             this.btnChangePassword.TabIndex = 0;
             this.btnChangePassword.Text = "Cambiar";
             this.btnChangePassword.UseVisualStyleBackColor = true;
             this.btnChangePassword.Click += new System.EventHandler(this.BtnChangePassword_Click);
             // 
-            // btnCancel
+            // btnBack
             // 
-            this.btnCancel.Location = new System.Drawing.Point(26, 190);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(124, 45);
-            this.btnCancel.TabIndex = 1;
-            this.btnCancel.Text = "Cancelar";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
+            this.btnBack.Location = new System.Drawing.Point(23, 19);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(124, 45);
+            this.btnBack.TabIndex = 1;
+            this.btnBack.Text = "Volver";
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.BtnBack_Click);
             // 
             // txtActualPassword
             // 
-            this.txtActualPassword.Location = new System.Drawing.Point(26, 45);
+            this.txtActualPassword.Location = new System.Drawing.Point(24, 104);
             this.txtActualPassword.Name = "txtActualPassword";
             this.txtActualPassword.Size = new System.Drawing.Size(254, 20);
             this.txtActualPassword.TabIndex = 2;
             // 
             // txtNewPassword
             // 
-            this.txtNewPassword.Location = new System.Drawing.Point(26, 91);
+            this.txtNewPassword.Location = new System.Drawing.Point(24, 150);
             this.txtNewPassword.Name = "txtNewPassword";
             this.txtNewPassword.Size = new System.Drawing.Size(254, 20);
             this.txtNewPassword.TabIndex = 3;
             // 
             // txtRepeatNewPassword
             // 
-            this.txtRepeatNewPassword.Location = new System.Drawing.Point(26, 137);
+            this.txtRepeatNewPassword.Location = new System.Drawing.Point(24, 196);
             this.txtRepeatNewPassword.Name = "txtRepeatNewPassword";
             this.txtRepeatNewPassword.Size = new System.Drawing.Size(253, 20);
             this.txtRepeatNewPassword.TabIndex = 4;
@@ -85,7 +85,7 @@ namespace UserInterface
             // 
             this.lblActualPassword.AutoSize = true;
             this.lblActualPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblActualPassword.Location = new System.Drawing.Point(20, 22);
+            this.lblActualPassword.Location = new System.Drawing.Point(17, 81);
             this.lblActualPassword.Name = "lblActualPassword";
             this.lblActualPassword.Size = new System.Drawing.Size(145, 20);
             this.lblActualPassword.TabIndex = 5;
@@ -95,7 +95,7 @@ namespace UserInterface
             // 
             this.lblNewPassword.AutoSize = true;
             this.lblNewPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNewPassword.Location = new System.Drawing.Point(21, 68);
+            this.lblNewPassword.Location = new System.Drawing.Point(17, 127);
             this.lblNewPassword.Name = "lblNewPassword";
             this.lblNewPassword.Size = new System.Drawing.Size(145, 20);
             this.lblNewPassword.TabIndex = 6;
@@ -105,7 +105,7 @@ namespace UserInterface
             // 
             this.lblRepeatNewPassword.AutoSize = true;
             this.lblRepeatNewPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRepeatNewPassword.Location = new System.Drawing.Point(19, 114);
+            this.lblRepeatNewPassword.Location = new System.Drawing.Point(17, 173);
             this.lblRepeatNewPassword.Name = "lblRepeatNewPassword";
             this.lblRepeatNewPassword.Size = new System.Drawing.Size(201, 20);
             this.lblRepeatNewPassword.TabIndex = 7;
@@ -114,7 +114,7 @@ namespace UserInterface
             // lblErrorMsg
             // 
             this.lblErrorMsg.AutoSize = true;
-            this.lblErrorMsg.Location = new System.Drawing.Point(23, 160);
+            this.lblErrorMsg.Location = new System.Drawing.Point(21, 229);
             this.lblErrorMsg.Name = "lblErrorMsg";
             this.lblErrorMsg.Size = new System.Drawing.Size(0, 13);
             this.lblErrorMsg.TabIndex = 8;
@@ -130,10 +130,10 @@ namespace UserInterface
             this.Controls.Add(this.txtRepeatNewPassword);
             this.Controls.Add(this.txtNewPassword);
             this.Controls.Add(this.txtActualPassword);
-            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnChangePassword);
             this.Name = "ChangePassword";
-            this.Size = new System.Drawing.Size(299, 264);
+            this.Size = new System.Drawing.Size(299, 333);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -142,7 +142,7 @@ namespace UserInterface
         #endregion
 
         private System.Windows.Forms.Button btnChangePassword;
-        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.TextBox txtActualPassword;
         private System.Windows.Forms.TextBox txtNewPassword;
         private System.Windows.Forms.TextBox txtRepeatNewPassword;

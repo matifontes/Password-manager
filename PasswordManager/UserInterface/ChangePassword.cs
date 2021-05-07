@@ -39,19 +39,15 @@ namespace UserInterface
                 else 
                 {
                     lblErrorMsg.Text = "La contraseña nueva no coinciden";
+                    lblErrorMsg.ForeColor = System.Drawing.Color.Red;
                 }
 
             }
         }
 
-        private void BtnCancel_Click(object sender, EventArgs e)
+        private void BtnBack_Click(object sender, EventArgs e)
         {
-            const string DIALOG_MSG = "Esta seguro de cancelar?";
-            const string DIALOG_ACTION = "Cancelar cambio de contraseña";
-            if (ConfirmDialog(DIALOG_MSG, DIALOG_ACTION)) 
-            {
-                ChangeToMenu();
-            }
+            ChangeToMenu();
         }
 
         private bool ConfirmDialog(string message, string action) 

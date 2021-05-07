@@ -108,7 +108,7 @@ namespace UserInterface
             this.Controls.Add(this.btnCreditCards);
             this.Controls.Add(this.btnCategories);
             this.Name = "MenuPanel";
-            this.Size = new System.Drawing.Size(265, 354);
+            this.Size = new System.Drawing.Size(265, 345);
             this.ResumeLayout(false);
 
         }

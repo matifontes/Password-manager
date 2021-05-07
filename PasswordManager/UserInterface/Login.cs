@@ -9,7 +9,7 @@ namespace UserInterface
     {
         private ProfileController profile;
         private event HandleLogin PostLoginEvent;
-        public LoginPanel(Profile profile)
+        public LoginPanel(ProfileController profile)
         {
             InitializeComponent();
             this.profile = profile;

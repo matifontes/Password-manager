@@ -13,7 +13,6 @@ namespace UserInterface
 {
     public partial class AppWindow : Form
     {
-        //harcoded profile
         private ProfileController profile = null;
 
         public AppWindow()
