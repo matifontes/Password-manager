@@ -11,14 +11,16 @@ namespace PasswordManagerTest
         [TestMethod]
         public void CreateNewCategoriesController()
         {
-            CategoriesController categoriesController = new CategoriesController();
+            CategoryRepository categories = new CategoryRepository();
+            CategoriesController categoriesController = new CategoriesController(categories);
             Assert.AreEqual(categoriesController.Count(),0);
         }
        
         [TestMethod]
         public void AddCategory() 
         {
-            CategoriesController categoriesController = new CategoriesController();
+            CategoryRepository categories = new CategoryRepository();
+            CategoriesController categoriesController = new CategoriesController(categories);
             Category category = new Category("Personal");
 
             categoriesController.AddCategory(category);
@@ -28,7 +30,8 @@ namespace PasswordManagerTest
         [TestMethod]
         public void RemoveCategory()
         {
-            CategoriesController categoriesController = new CategoriesController();
+            CategoryRepository categories = new CategoryRepository();
+            CategoriesController categoriesController = new CategoriesController(categories);
             Category category = new Category("Personal");
             categoriesController.AddCategory(category);
 
@@ -39,7 +42,8 @@ namespace PasswordManagerTest
         [TestMethod]
         public void ListCategoriesOrderByName()
         {
-            CategoriesController categoriesController = new CategoriesController();
+            CategoryRepository categories = new CategoryRepository();
+            CategoriesController categoriesController = new CategoriesController(categories);
             Category category1 = new Category("Personal");
             Category category2 = new Category("Trabajo");
             Category category3 = new Category("Gaming");
