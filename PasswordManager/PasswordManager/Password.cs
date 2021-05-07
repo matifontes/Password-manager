@@ -201,7 +201,6 @@ namespace PasswordManager
             return ret;
         }
 
-
         private bool PasswordIncludeSpecialCharacters(string password)
         {
            return System.Text.RegularExpressions.Regex.IsMatch(password, SPECIAL_CHARACTERS);
@@ -214,11 +213,9 @@ namespace PasswordManager
         {
             return System.Text.RegularExpressions.Regex.IsMatch(password, UPPERCASE_CHARACTERS);
         }
-
         private bool PasswordIncludeLowerCase(string password)
         {
             return System.Text.RegularExpressions.Regex.IsMatch(password, LOWERCASE_CHARACTERS);
         }
-
     }
 }
