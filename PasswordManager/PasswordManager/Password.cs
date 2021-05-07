@@ -9,6 +9,10 @@ namespace PasswordManager
 {
     public class Password
     {
+        const string LOWERCASE_CHARACTERS = "abcdefghijklmnopqrstuvwxyz";
+        const string UPPERCASE_CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        const string NUMERIC_CHARACTERS = "0123456789";
+        const string SPECIAL_CHARACTERS = @"!#$%&.*@\";
         private string _user;
         private string _pass;
         private string _site;
@@ -17,24 +21,26 @@ namespace PasswordManager
         public string Pass 
         {
             get { return _pass; }
-            set => setPassword(value);
+            set => SetPassword(value);
         }
 
         public string Site {
             get { return _site; }
-            set => setSite(value);
+            set => SetSite(value);
         }
 
         public string User
         {
             get { return _user; }
-            private set => setUser(value); 
+            private set => SetUser(value); 
         }
         public string Note 
         { 
             get { return _note; }
-            private set => setNote(value);
+            private set => SetNote(value);
         }
+        
+        public string Strength { get; set; }
         public DateTime LastModificationDate { get; set; }
 
         public Password(Category category, string password, string site, string user, string note)
@@ -44,9 +50,10 @@ namespace PasswordManager
             this.Site = site;
             this.User = user;
             this.Note = note;
+            this.Strength = PasswordStrength(password);
         }
 
-        private void setPassword(string value)
+        private void SetPassword(string value)
         {
             if (!IsValidLength(value))
             {
@@ -58,7 +65,7 @@ namespace PasswordManager
                 this.LastModificationDate = DateTime.Today;
             }
         }
-        private void setUser(string value)
+        private void SetUser(string value)
         {
             if (!IsValidLength(value))
             {
@@ -70,7 +77,7 @@ namespace PasswordManager
             }
         }
 
-        private void setSite(string value)
+        private void SetSite(string value)
         {
             if (!IsValidSiteLength(value))
             {
@@ -82,7 +89,7 @@ namespace PasswordManager
             }
         }
 
-        private void setNote(string value)
+        private void SetNote(string value)
         {
             if (!IsValidNoteLength(value))
             {
@@ -112,5 +119,103 @@ namespace PasswordManager
             return (amountOfDigits <= 250);
         }
 
+        private string PasswordStrength(string password)
+        {
+            string strength = "";
+           
+            if (PasswordIsRed(password))
+            {
+                strength = "Red";
+            }
+
+            if (PasswordIsOrange(password))
+            {
+                strength = "Orange";
+            }
+
+            if (PasswordIsYellow(password))
+            {
+                strength = "Yellow";
+            }
+
+            if (PasswordIsLightGreen(password))
+            {
+                strength = "LightGreen";
+            }
+
+            if (PasswordIsDarkGreen(password))
+            {
+                strength = "DarkGreen";
+            }
+            return strength;
+        }
+
+        private bool PasswordIsRed(string password)
+        {
+            return password.Length < 8;
+
+        }
+
+        private bool PasswordIsOrange(string password)
+        {
+            return password.Length >= 8 && password.Length <= 14;
+        }
+
+        private bool PasswordIsYellow(string password)
+        {
+            bool ret = false;
+            if (password.Length > 14)
+            {
+                if(!PasswordIncludeSpecialCharacters(password) && !PasswordIncludeNumbers(password))
+                {
+                    ret = (PasswordIncludeLowerCase(password) && !PasswordIncludeUpperCase(password));
+                    ret = ret || (!PasswordIncludeLowerCase(password) && PasswordIncludeUpperCase(password));
+                }
+            }
+            return ret;
+        }
+
+        private bool PasswordIsLightGreen(string password)
+        {
+            bool ret = false;
+            if (password.Length > 14)
+            {
+                if (!PasswordIncludeSpecialCharacters(password) && !PasswordIncludeNumbers(password))
+                {
+                    ret = (PasswordIncludeLowerCase(password) && PasswordIncludeUpperCase(password));
+                }
+            }
+            return ret;
+        }
+
+        private bool PasswordIsDarkGreen(string password)
+        {
+            bool ret = false;
+            if (password.Length > 14)
+            {
+                ret = PasswordIncludeLowerCase(password);
+                ret = ret && PasswordIncludeUpperCase(password);
+                ret = ret && PasswordIncludeNumbers(password);
+                ret = ret && PasswordIncludeSpecialCharacters(password);
+            }
+            return ret;
+        }
+
+        private bool PasswordIncludeSpecialCharacters(string password)
+        {
+           return System.Text.RegularExpressions.Regex.IsMatch(password, SPECIAL_CHARACTERS);
+        }
+        private bool PasswordIncludeNumbers(string password)
+        {
+            return System.Text.RegularExpressions.Regex.IsMatch(password, NUMERIC_CHARACTERS);
+        }
+        private bool PasswordIncludeUpperCase(string password)
+        {
+            return System.Text.RegularExpressions.Regex.IsMatch(password, UPPERCASE_CHARACTERS);
+        }
+        private bool PasswordIncludeLowerCase(string password)
+        {
+            return System.Text.RegularExpressions.Regex.IsMatch(password, LOWERCASE_CHARACTERS);
+        }
     }
 }

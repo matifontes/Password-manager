@@ -131,5 +131,50 @@ namespace PasswordManagerTest
             Password passInvalid = new Password(personal, password, site, user, invalidNote);
         }
 
+        [TestMethod]
+        public void VerifyRedPassword()
+        {
+            string passR = "testR";
+            Password passRed = new Password(personal, passR, site, user, note);
+
+            Assert.AreEqual(passRed.Strength, "Red");
+        }
+
+        [TestMethod]
+        public void VerifyOrangePassword()
+        {
+            string passOr = "testOrange";
+            Password passOrange = new Password(personal, passOr, site, user, note);
+
+            Assert.AreEqual(passOrange.Strength, "Orange");
+        }
+
+        [TestMethod]
+        public void VerifyYellowPassword()
+        {
+            string passY = "testyellowyellow";
+            Password passYellow = new Password(personal, passY, site, user, note);
+
+            Assert.AreEqual(passYellow.Strength, "Yellow");
+        }
+
+        [TestMethod]
+        public void VeifyLightGreenPassword()
+        {
+            string passLG = "testGreenGreenGR";
+            Password passLGreen = new Password(personal, passLG, site, user, note);
+
+            Assert.AreEqual(passLGreen.Strength, "LightGreen");
+        }
+
+        [TestMethod]
+        public void VeifyDarkGreenPassword()
+        {
+            string passDG = "testGreenGreen.13";
+            Password passLGreen = new Password(personal, passDG, site, user, note);
+
+            Assert.AreEqual(passLGreen.Strength, "DarkGreen");
+        }
+
     }
 }
