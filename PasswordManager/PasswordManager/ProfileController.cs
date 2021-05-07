@@ -13,7 +13,7 @@ namespace PasswordManager
 
         public bool ValidatePassword(string password)
         {
-            return this.profile.ValidateSystemPassword(password);
+            return this.profile.ValidatePassword(password);
         }
 
         public void ChangePassword(string actualpassword, string newpassword)
