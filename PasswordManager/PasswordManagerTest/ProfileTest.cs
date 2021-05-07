@@ -79,12 +79,12 @@ namespace PasswordManagerTest
         }
 
         [TestMethod]
-        public void ChangePasswordUsingInvalidAcutalPassword()
+        [ExpectedException(typeof(FailToValidatePasswordException))] 
+        public void ChangePasswordUsingInvalidAcutalPasswordThrowsException()
         {
             string newPassword = "test123";
             string invalidActualPassword = "adm123";
             profile.ChangePassword(invalidActualPassword, newPassword);
-            Assert.IsFalse(profile.ValidateSystemPassword(newPassword));
         }
 
     }
