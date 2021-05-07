@@ -34,12 +34,18 @@ namespace UserInterface
             {
                 if (txtNewPassword.Text.Equals(txtRepeatNewPassword.Text))
                 {
-                    profile.ChangePassword(txtActualPassword.Text, txtNewPassword.Text);
+                    try
+                    {
+                        profile.ChangePassword(txtActualPassword.Text, txtNewPassword.Text);
+                    }
+                    catch (FailToValidatePasswordException exp) 
+                    {
+                        lblErrorMsg.Text = exp.Message;
+                    }
                 }
                 else 
                 {
                     lblErrorMsg.Text = "La contraseña nueva no coinciden";
-                    lblErrorMsg.ForeColor = System.Drawing.Color.Red;
                 }
 
             }

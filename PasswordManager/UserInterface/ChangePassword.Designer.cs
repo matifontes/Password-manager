@@ -114,6 +114,7 @@ namespace UserInterface
             // lblErrorMsg
             // 
             this.lblErrorMsg.AutoSize = true;
+            this.lblErrorMsg.ForeColor = System.Drawing.Color.Red;
             this.lblErrorMsg.Location = new System.Drawing.Point(21, 229);
             this.lblErrorMsg.Name = "lblErrorMsg";
             this.lblErrorMsg.Size = new System.Drawing.Size(0, 13);
