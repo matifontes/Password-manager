@@ -37,14 +37,19 @@ namespace UserInterface
                     try
                     {
                         profile.ChangePassword(txtActualPassword.Text, txtNewPassword.Text);
+                        lblErrorMsg.Text = "Contraseña cambiada correctamente";
+                        lblErrorMsg.ForeColor = System.Drawing.Color.Green;
+
                     }
                     catch (FailToValidatePasswordException exp) 
                     {
+                        lblErrorMsg.ForeColor = System.Drawing.Color.Red;
                         lblErrorMsg.Text = exp.Message;
                     }
                 }
                 else 
                 {
+                    lblErrorMsg.ForeColor = System.Drawing.Color.Red;
                     lblErrorMsg.Text = "La contraseña nueva no coinciden";
                 }
 
