@@ -50,7 +50,7 @@ namespace PasswordManagerTest
         }
 
         [TestMethod]
-        public void ListCategoriesOrdered() 
+        public void ListCategoriesOrderByName() 
         {
 
             Category category2 = new Category("Trabajo");
@@ -61,9 +61,9 @@ namespace PasswordManagerTest
 
             List<Category> orderedCategories = categoryRepository.ListCategories();
 
-            Assert.AreEqual(orderedCategories[0],category3);
-            Assert.AreEqual(orderedCategories[1],category2);
-            Assert.AreEqual(orderedCategories[2],category);
+            Assert.AreEqual(orderedCategories[0].Name,category3.Name);
+            Assert.AreEqual(orderedCategories[1].Name,category.Name);
+            Assert.AreEqual(orderedCategories[2].Name,category2.Name);
         }
     }
 }
