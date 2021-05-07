@@ -16,16 +16,20 @@ namespace PasswordManager
             creditCards = new CreditCardRepository();
         }
 
-        public bool ValidateSystemPassword(string password) 
+        public bool ValidatePassword(string password) 
         {
             return password.Equals(this.password);
         }
 
         public void ChangePassword(string actualPassword, string newPassword)
         {
-            if (ValidateSystemPassword(actualPassword))
+            if (ValidatePassword(actualPassword))
             {
                 this.password = newPassword;
+            }
+            else 
+            {
+                throw new FailToValidatePasswordException("Error al validar la contraseña actual");
             }
         }
     }

@@ -7,9 +7,9 @@ namespace UserInterface
     public delegate void HandleLogin();
     public partial class LoginPanel : UserControl
     {
-        private Profile profile;
+        private ProfileController profile;
         private event HandleLogin PostLoginEvent;
-        public LoginPanel(Profile profile)
+        public LoginPanel(ProfileController profile)
         {
             InitializeComponent();
             this.profile = profile;
@@ -21,7 +21,7 @@ namespace UserInterface
 
         private void BtnLogin_Click(object sender, EventArgs e)
         {
-            if (profile.ValidateSystemPassword(txtPasswordInput.Text))
+            if (profile.ValidatePassword(txtPasswordInput.Text))
             {
                 PostLoginEvent();
             }

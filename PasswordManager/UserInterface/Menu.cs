@@ -15,10 +15,10 @@ namespace UserInterface
     public delegate void HandleBackToMenu();
     public partial class MenuPanel : UserControl
     {
-        private Profile profile;
+        private ProfileController profile;
         private event HandleWindowChange ChangeWindow;
 
-        public MenuPanel(Profile profile)
+        public MenuPanel(ProfileController profile)
         {
             InitializeComponent();
             this.profile = profile;
@@ -61,7 +61,7 @@ namespace UserInterface
         }
         private void BtnChangePassword_Click(object sender, EventArgs e)
         {
-            ChangePassword changePassword = new ChangePassword();
+            ChangePassword changePassword = new ChangePassword(profile);
             changePassword.AddListener(ReturnToMenu);
             ChangeWindow(changePassword);
         }

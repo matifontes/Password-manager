@@ -44,13 +44,13 @@ namespace PasswordManagerTest
         }
 
         [TestMethod]
+        [ExpectedException(typeof(FailToValidatePasswordException))]
         public void ChangePasswordOfAProfileUsingWrongActualPassword() 
         {
             string invalidActualPassword = "1234";
             string newpassword = "Barto@1234";
 
             profileController.ChangePassword(invalidActualPassword, newpassword);
-            Assert.IsFalse(profileController.ValidatePassword(newpassword));
         }
     }
 }
