@@ -13,7 +13,8 @@ namespace UserInterface
 {
     public partial class AppWindow : Form
     {
-        private ProfileController profile = null;
+        private ProfileController profile;
+        private CategoriesController categories;
 
         public AppWindow()
         {
@@ -66,6 +67,7 @@ namespace UserInterface
 
         private void PostRegister(ProfileController profile) {
             this.profile = profile;
+            this.categories = new CategoriesController(profile.GetCategoryRepository());
             ClearPanel();
             CreateLoginPanel();
         }

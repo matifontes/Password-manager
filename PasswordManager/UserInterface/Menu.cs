@@ -16,12 +16,14 @@ namespace UserInterface
     public partial class MenuPanel : UserControl
     {
         private ProfileController profile;
+        private CategoriesController categories;
         private event HandleWindowChange ChangeWindow;
 
-        public MenuPanel(ProfileController profile)
+        public MenuPanel(ProfileController profile,CategoriesController categories)
         {
             InitializeComponent();
             this.profile = profile;
+            this.categories = categories;
         }
 
         public void AddListener(HandleWindowChange del) 
@@ -31,7 +33,7 @@ namespace UserInterface
 
         private void BtnCategories_Click(object sender, EventArgs e)
         {
-            ListCategoriesPanel categories = new ListCategoriesPanel();
+            ListCategoriesPanel categories = new ListCategoriesPanel(this.categories);
             categories.AddListener(ReturnToMenu);
             ChangeWindow(categories);
         }

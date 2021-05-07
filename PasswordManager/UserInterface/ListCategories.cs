@@ -7,9 +7,11 @@ namespace UserInterface
     public partial class ListCategoriesPanel : UserControl
     {
         private event HandleBackToMenu ChangeToMenu;
-        public ListCategoriesPanel()
+        private CategoriesController categories;
+        public ListCategoriesPanel(CategoriesController categories)
         {
             InitializeComponent();
+            this.categories = categories;
         }
 
         public void AddListener(HandleBackToMenu del) 
