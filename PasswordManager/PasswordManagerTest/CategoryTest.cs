@@ -28,7 +28,6 @@ namespace PasswordManagerTest
         public void CreateCategoryWithNameLongerThanTheMaximumValidLength()
         {
             string invalidName = "0123456789ABCDEF";
-
             Category personal = new Category(invalidName);
         }
 
@@ -51,7 +50,7 @@ namespace PasswordManagerTest
 
         [TestMethod]
         [ExpectedException(typeof(InvalidCategoryNameException))]
-        public void ChangeCategoryNameWithValidName()
+        public void ChangeCategoryNameWithInvalidName()
         {
             Category category = new Category("Personal");
             string invalidNewName = "PC";
