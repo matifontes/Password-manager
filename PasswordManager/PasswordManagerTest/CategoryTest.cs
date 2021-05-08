@@ -28,7 +28,6 @@ namespace PasswordManagerTest
         public void CreateCategoryWithNameLongerThanTheMaximumValidLength()
         {
             string invalidName = "0123456789ABCDEF";
-
             Category personal = new Category(invalidName);
         }
 
@@ -38,6 +37,24 @@ namespace PasswordManagerTest
             string validName = "Personal";
             Category personal = new Category(validName);
             Assert.AreEqual(personal.ToString(), validName);
+        }
+
+        [TestMethod]
+        public void ChangeCategoryNameWithValidName() 
+        {
+            Category category = new Category("Personal");
+            string newName = "Trabajo";
+            category.ChangeName(newName);
+            Assert.AreEqual(category.Name, newName);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidCategoryNameException))]
+        public void ChangeCategoryNameWithInvalidName()
+        {
+            Category category = new Category("Personal");
+            string invalidNewName = "PC";
+            category.ChangeName(invalidNewName);
         }
     }
 }

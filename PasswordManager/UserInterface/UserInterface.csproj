@@ -58,6 +58,18 @@
     <Compile Include="ChangePassword.Designer.cs">
       <DependentUpon>ChangePassword.cs</DependentUpon>
     </Compile>
+    <Compile Include="CreateCategory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CreateCategory.Designer.cs">
+      <DependentUpon>CreateCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CreateModifyCategoryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateModifyCategoryForm.Designer.cs">
+      <DependentUpon>CreateModifyCategoryForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ListCategories.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -96,11 +108,23 @@
     <Compile Include="ListCreditCards.Designer.cs">
       <DependentUpon>ListCreditCards.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModifyCategory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ModifyCategory.Designer.cs">
+      <DependentUpon>ModifyCategory.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AppWindow.resx">
       <DependentUpon>AppWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ChangePassword.resx">
       <DependentUpon>ChangePassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateCategory.resx">
+      <DependentUpon>CreateCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateModifyCategoryForm.resx">
+      <DependentUpon>CreateModifyCategoryForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ListCategories.resx">
       <DependentUpon>ListCategories.cs</DependentUpon>
@@ -128,6 +152,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RegisterProfile.resx">
       <DependentUpon>RegisterProfile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModifyCategory.resx">
+      <DependentUpon>ModifyCategory.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
