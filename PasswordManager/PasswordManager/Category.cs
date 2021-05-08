@@ -14,7 +14,7 @@ namespace PasswordManager
 
         public string Name {
             get { return _name; }
-            private set => SetName(value);
+            private set => ChangeName(value);
         }
         
         public Category(string name)
@@ -22,7 +22,7 @@ namespace PasswordManager
             this.Name = name;
         }
 
-        private void SetName(string name)
+        public void ChangeName(string name)
         {
             if (!IsValidName(name))
             {
