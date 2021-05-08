@@ -39,5 +39,23 @@ namespace PasswordManagerTest
             Category personal = new Category(validName);
             Assert.AreEqual(personal.ToString(), validName);
         }
+
+        [TestMethod]
+        public void ChangeCategoryNameWithValidName() 
+        {
+            Category category = new Category("Personal");
+            string newName = "Trabajo";
+            category.ChangeName(newName);
+            Assert.AreEqual(category.Name, newName);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidCategoryNameException))]
+        public void ChangeCategoryNameWithValidName()
+        {
+            Category category = new Category("Personal");
+            string invalidNewName = "PC";
+            category.ChangeName(invalidNewName);
+        }
     }
 }
