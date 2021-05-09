@@ -2,6 +2,7 @@
 using System;
 using PasswordManager;
 using PasswordManager.Exceptions;
+using System.Collections.Generic;
 
 namespace PasswordManagerTest
 {
@@ -68,7 +69,7 @@ namespace PasswordManagerTest
             passwordsController.AddPassword(password2);
             passwordsController.AddPassword(password3);
 
-            List<Password> orderdedPassword = passwordsController.ListPasswords();
+            List<Password> orderedPassword = passwordsController.ListPasswords();
             Assert.AreEqual(orderedPassword[0].Category,category3);
             Assert.AreEqual(orderedPassword[1].Category, category);
             Assert.AreEqual(orderedPassword[2].Category, category2);
