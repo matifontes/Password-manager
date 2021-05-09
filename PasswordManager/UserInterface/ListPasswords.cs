@@ -19,11 +19,48 @@ namespace UserInterface
         {
             InitializeComponent();
             this.passwords = passwords;
+            //hardcoded passwords
+            if (passwords.Count() == 0) 
+            {
+                passwords.AddPassword(new Password(new Category("Personal"), "admin", "sitioweb", "administrador", ""));
+                passwords.AddPassword(new Password(new Category("Trabajo"), "admin", "sitioweb", "administrador", ""));
+                passwords.AddPassword(new Password(new Category("Gaming"), "admin", "sitioweb", "administrador", ""));
+            }
+
+            LoadListPasswords();
         }
 
         public void AddListener(HandleBackToMenu del) 
         {
             ChangeToMenu += del;
+        }
+
+        private void LoadListPasswords() 
+        {
+            List<Password> orderedPasswords = passwords.ListPasswords();
+            DataTable dataTable = InitilizeTable();
+
+            foreach (Password password in orderedPasswords) 
+            {
+                DataRow row = dataTable.NewRow();
+                row["Categoría"] = password.Category;
+                row["Sitio"] = password.Site;
+                row["Usuario"] = password;
+                row["Última Modificación"] = password.LastModificationDate;
+                dataTable.Rows.Add(row);
+            }
+
+            dgvPasswords.DataSource = dataTable;
+        }
+
+        private DataTable InitilizeTable() 
+        {
+            DataTable dataTable = new DataTable();
+            dataTable.Columns.Add("Categoría", typeof(object));
+            dataTable.Columns.Add("Sitio", typeof(string));
+            dataTable.Columns.Add("Usuario", typeof(Password));
+            dataTable.Columns.Add("Última Modificación", typeof(DateTime));
+            return dataTable;
         }
 
         private void BtnAddPassword_Click(object sender, EventArgs e)

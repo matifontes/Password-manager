@@ -40,9 +40,18 @@ namespace UserInterface
             // 
             // dgvPasswords
             // 
+            this.dgvPasswords.AllowUserToAddRows = false;
+            this.dgvPasswords.AllowUserToDeleteRows = false;
+            this.dgvPasswords.AllowUserToResizeColumns = false;
+            this.dgvPasswords.AllowUserToResizeRows = false;
             this.dgvPasswords.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPasswords.EnableHeadersVisualStyles = false;
             this.dgvPasswords.Location = new System.Drawing.Point(19, 116);
+            this.dgvPasswords.MultiSelect = false;
             this.dgvPasswords.Name = "dgvPasswords";
+            this.dgvPasswords.ReadOnly = true;
+            this.dgvPasswords.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvPasswords.ShowEditingIcon = false;
             this.dgvPasswords.Size = new System.Drawing.Size(483, 199);
             this.dgvPasswords.TabIndex = 0;
             // 
