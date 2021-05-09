@@ -11,14 +11,18 @@ using PasswordManager;
 
 namespace UserInterface
 {
+    public delegate void HandlePostModification();
     public partial class ListPasswordsPanel : UserControl
     {
         private PasswordsController passwords;
+        private CategoriesController categories;
         private event HandleBackToMenu ChangeToMenu;
-        public ListPasswordsPanel(PasswordsController passwords)
+        private CreateModifyPassword passwordForm;
+        public ListPasswordsPanel(PasswordsController passwords, CategoriesController categories)
         {
             InitializeComponent();
             this.passwords = passwords;
+            this.categories = categories;
             //hardcoded passwords
             if (passwords.Count() == 0) 
             {
@@ -26,13 +30,38 @@ namespace UserInterface
                 passwords.AddPassword(new Password(new Category("Trabajo"), "admin", "sitioweb", "administrador", ""));
                 passwords.AddPassword(new Password(new Category("Gaming"), "admin", "sitioweb", "administrador", ""));
             }
-
+            EnableOptions();
             LoadListPasswords();
         }
 
         public void AddListener(HandleBackToMenu del) 
         {
             ChangeToMenu += del;
+        }
+
+        private void EnableOptions() 
+        {
+            if (passwords.Count() == 0)
+            {
+                btnModify.Enabled = false;
+                btnRemove.Enabled = false;
+            }
+            else
+            {
+                btnModify.Enabled = true;
+                btnRemove.Enabled = true;
+            }
+
+            if (categories.Count() == 0)
+            {
+                btnAddPassword.Enabled = false;
+                btnModify.Enabled = false;
+            }
+            else
+            {
+                btnAddPassword.Enabled = true;
+                btnModify.Enabled = true;
+            }
         }
 
         private void LoadListPasswords() 
@@ -65,12 +94,27 @@ namespace UserInterface
 
         private void BtnAddPassword_Click(object sender, EventArgs e)
         {
-
+            DisposeChildForms();
+            this.passwordForm = new CreateModifyPassword(this.passwords,this.categories);
+            passwordForm.AddListener(LoadListPasswords);
+            passwordForm.Show();
         }
 
         private void BtnModify_Click(object sender, EventArgs e)
         {
+            DisposeChildForms();
+            Password password = (Password)dgvPasswords.SelectedRows[0].Cells[2].Value;
+            this.passwordForm = new CreateModifyPassword(this.passwords, this.categories, password);
+            passwordForm.AddListener(LoadListPasswords);
+            passwordForm.Show();
+        }
 
+        private void DisposeChildForms() 
+        {
+            if (this.passwordForm != null)
+            {
+                this.passwordForm.Dispose();
+            }
         }
 
         private void BtnRemove_Click(object sender, EventArgs e)

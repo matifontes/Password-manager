@@ -9,7 +9,7 @@ namespace UserInterface
     {
         private event HandleBackToMenu ChangeToMenu;
         private CategoriesController categories;
-        private CreateModifyCategoryForm categoryForm;
+        private CreateModifyCategory categoryForm;
         public ListCategoriesPanel(CategoriesController categories)
         {
             InitializeComponent();
@@ -55,13 +55,13 @@ namespace UserInterface
 
         private void CreateModifyCategoryForm() 
         {
-            categoryForm = new CreateModifyCategoryForm(categories, LoadCategoriesList);
+            categoryForm = new CreateModifyCategory(categories, LoadCategoriesList);
             categoryForm.Show();
         }
 
         private void CreateModifyCategoryForm(Category category)
         {
-            categoryForm = new CreateModifyCategoryForm(categories, category, LoadCategoriesList);
+            categoryForm = new CreateModifyCategory(categories, category, LoadCategoriesList);
             categoryForm.Show();
         }
 

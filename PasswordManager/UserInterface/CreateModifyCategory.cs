@@ -11,12 +11,12 @@ using PasswordManager;
 
 namespace UserInterface
 {
-    public partial class CreateModifyCategoryForm : Form
+    public partial class CreateModifyCategory : Form
     {
         private event HandleModification PostModified;
         private CategoriesController categories;
         private Category category;
-        public CreateModifyCategoryForm(CategoriesController categories, HandleModification del)
+        public CreateModifyCategory(CategoriesController categories, HandleModification del)
         {
             InitializeComponent();
             this.categories = categories;
@@ -24,7 +24,7 @@ namespace UserInterface
             CreateCategoryPanel();
         }
 
-        public CreateModifyCategoryForm(CategoriesController categories, Category category, HandleModification del)
+        public CreateModifyCategory(CategoriesController categories, Category category, HandleModification del)
         {
             InitializeComponent();
             this.categories = categories;
