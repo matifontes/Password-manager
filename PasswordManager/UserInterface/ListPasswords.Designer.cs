@@ -44,6 +44,7 @@ namespace UserInterface
             this.dgvPasswords.AllowUserToDeleteRows = false;
             this.dgvPasswords.AllowUserToResizeColumns = false;
             this.dgvPasswords.AllowUserToResizeRows = false;
+            this.dgvPasswords.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvPasswords.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPasswords.EnableHeadersVisualStyles = false;
             this.dgvPasswords.Location = new System.Drawing.Point(19, 116);
