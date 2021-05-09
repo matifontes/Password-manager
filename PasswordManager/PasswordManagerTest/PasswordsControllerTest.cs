@@ -20,7 +20,7 @@ namespace PasswordManagerTest
         [TestInitialize]
         public void Setup() 
         {
-            passwords = new PasswordRepository;
+            passwords = new PasswordRepository();
             category = new Category("Personal");
             password = new Password(category, pass, site, user, note);
             passwordsController = new PasswordsController(passwords);
