@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using PasswordManager;
+using System.Collections.Generic;
 
 namespace PasswordManagerTest
 {
@@ -65,7 +66,7 @@ namespace PasswordManagerTest
             passwordRepository.AddPassword(password2);
             passwordRepository.AddPassword(password3);
 
-            List<Password> orderdedPassword = passwordRepository.ListPasswords();
+            List<Password> orderedPassword = passwordRepository.ListPasswords();
             Assert.AreEqual(orderedPassword[0].Category, category3);
             Assert.AreEqual(orderedPassword[1].Category, category);
             Assert.AreEqual(orderedPassword[2].Category, category2);
