@@ -17,13 +17,15 @@ namespace UserInterface
     {
         private ProfileController profile;
         private CategoriesController categories;
+        private PasswordsController passwords;
         private event HandleWindowChange ChangeWindow;
 
-        public MenuPanel(ProfileController profile,CategoriesController categories)
+        public MenuPanel(ProfileController profile,CategoriesController categories, PasswordsController passwords)
         {
             InitializeComponent();
             this.profile = profile;
             this.categories = categories;
+            this.passwords = passwords;
         }
 
         public void AddListener(HandleWindowChange del) 
@@ -40,7 +42,7 @@ namespace UserInterface
 
         private void BtnPasswords_Click(object sender, EventArgs e)
         {
-            ListPasswordsPanel passwords = new ListPasswordsPanel();
+            ListPasswordsPanel passwords = new ListPasswordsPanel(this.passwords);
             passwords.AddListener(ReturnToMenu);
             ChangeWindow(passwords);
         }
