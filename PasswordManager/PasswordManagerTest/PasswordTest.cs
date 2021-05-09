@@ -179,7 +179,7 @@ namespace PasswordManagerTest
         [TestMethod]
         public void PasswordToStringShowTheUser() 
         {
-            Assert.AreEqual(password.ToString(), user);
+            Assert.AreEqual(passwordCreatedToday.ToString(), user);
         }
 
     }
