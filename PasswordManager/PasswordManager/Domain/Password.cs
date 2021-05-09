@@ -53,7 +53,7 @@ namespace PasswordManager
             this.Strength = PasswordStrength(password);
         }
 
-        private void SetPassword(string value)
+        public void SetPassword(string value)
         {
             if (!IsValidLength(value))
             {
@@ -65,7 +65,7 @@ namespace PasswordManager
                 this.LastModificationDate = DateTime.Today;
             }
         }
-        private void SetUser(string value)
+        public void SetUser(string value)
         {
             if (!IsValidLength(value))
             {
@@ -77,7 +77,7 @@ namespace PasswordManager
             }
         }
 
-        private void SetSite(string value)
+        public void SetSite(string value)
         {
             if (!IsValidSiteLength(value))
             {
@@ -89,7 +89,7 @@ namespace PasswordManager
             }
         }
 
-        private void SetNote(string value)
+        public void SetNote(string value)
         {
             if (!IsValidNoteLength(value))
             {
@@ -99,6 +99,11 @@ namespace PasswordManager
             {
                 this._note = value;
             }
+        }
+
+        public override string ToString()
+        {
+            return this.User;
         }
 
         private bool IsValidLength(string toCheck)
@@ -216,6 +221,6 @@ namespace PasswordManager
         private bool PasswordIncludeLowerCase(string password)
         {
             return System.Text.RegularExpressions.Regex.IsMatch(password, LOWERCASE_CHARACTERS);
-        }
+        }      
     }
 }
