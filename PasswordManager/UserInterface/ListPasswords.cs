@@ -75,7 +75,12 @@ namespace UserInterface
 
         private void BtnRemove_Click(object sender, EventArgs e)
         {
-
+            Password selectedPassword = (Password)dgvPasswords.SelectedRows[0].Cells[2].Value;
+            if (selectedPassword != null) 
+            {
+                passwords.RemovePassword(selectedPassword);
+                LoadListPasswords();
+            }
         }
 
         private void BtnBack_Click(object sender, EventArgs e)
