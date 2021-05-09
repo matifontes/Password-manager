@@ -13,11 +13,12 @@ namespace UserInterface
 {
     public partial class ListPasswordsPanel : UserControl
     {
-
+        private PasswordsController passwords;
         private event HandleBackToMenu ChangeToMenu;
-        public ListPasswordsPanel()
+        public ListPasswordsPanel(PasswordsController passwords)
         {
             InitializeComponent();
+            this.passwords = passwords;
         }
 
         public void AddListener(HandleBackToMenu del) 

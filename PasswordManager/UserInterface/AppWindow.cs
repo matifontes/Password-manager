@@ -15,6 +15,7 @@ namespace UserInterface
     {
         private ProfileController profile;
         private CategoriesController categories;
+        private PasswordsController passwords;
 
         public AppWindow()
         {
@@ -48,7 +49,7 @@ namespace UserInterface
 
         private void CreateMenuPanel()
         {
-            MenuPanel menuPanel = new MenuPanel(this.profile,this.categories);
+            MenuPanel menuPanel = new MenuPanel(this.profile,this.categories,this.passwords);
             menuPanel.AddListener(ChangeWindow);
             startPanel.Controls.Add(menuPanel);
             ReSizeForm(menuPanel.Width, menuPanel.Height);
@@ -67,7 +68,8 @@ namespace UserInterface
 
         private void PostRegister(ProfileController profile) {
             this.profile = profile;
-            this.categories = new CategoriesController(profile.GetCategoryRepository());
+            this.categories = new CategoriesController(this.profile.GetCategoryRepository());
+            this.passwords = new PasswordsController(this.profile.GetPasswordRepository());
             ClearPanel();
             CreateLoginPanel();
         }

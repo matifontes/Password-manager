@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace PasswordManager
 {
@@ -23,6 +24,11 @@ namespace PasswordManager
 
         public int Count() {
             return this.passwords.Count;
+        }
+
+        public List<Password> ListPasswords() 
+        {
+            return this.passwords.OrderBy(password => password.Category.Name).ToList();
         }
     }
 }
