@@ -176,5 +176,11 @@ namespace PasswordManagerTest
             Assert.AreEqual(passLGreen.Strength, "DarkGreen");
         }
 
+        [TestMethod]
+        public void PasswordToStringShowTheUser() 
+        {
+            Assert.AreEqual(password.ToString(), user);
+        }
+
     }
 }
