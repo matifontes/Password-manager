@@ -27,7 +27,7 @@ namespace PasswordManager.Controllers
 
         public bool IsEmpty()
         {
-            bool isEmpty = this.creditCards.Count() == 0;
+            bool isEmpty = this.Count() == 0;
             return isEmpty;
         }
 
