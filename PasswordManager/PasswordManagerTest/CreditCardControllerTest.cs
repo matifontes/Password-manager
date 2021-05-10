@@ -10,7 +10,7 @@ namespace PasswordManagerTest
         private CreditCardRepository creditCards;
         private CreditCardsController creditCardsController;
         private CreditCard card;
-        private Category category = new Category("Work");
+        private Category category = new Category("Personal");
         private string name = "Visa Gold";
         private string type = "Visa";
         private long creditCardNumber = 2323321323212321;
@@ -66,6 +66,20 @@ namespace PasswordManagerTest
             creditCardsController.RemoveCreditCard(card);
 
             Assert.AreEqual(creditCardsController.Count(), 0);
+        }
+
+        [TestMethod]
+        public void ListCreditCardssOrderByCategory()
+        {
+            Category category2 = new Category("Trabajo");
+            Category category3 = new Category("Gaming");
+            CreditCard card2 = new CreditCard(category2, name, type, creditCardNumber, ccvCode, expDate, note);
+            CreditCard card3 = new CreditCard(category3, name, type, creditCardNumber, ccvCode, expDate, note);
+
+            List<CreditCard> orderedCreditCards = creditCardsController.ListCreditCards();
+            Assert.AreEqual(orderedCreditCards[0].Category, category3);
+            Assert.AreEqual(orderedCreditCards[1].Category, category);
+            Assert.AreEqual(orderedCreditCards[2].Category, category2);
         }
 
     }
