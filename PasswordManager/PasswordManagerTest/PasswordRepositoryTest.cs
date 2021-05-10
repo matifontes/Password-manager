@@ -113,6 +113,16 @@ namespace PasswordManagerTest
             Assert.IsFalse(passwordRepository.IsEmptyList(yellowPasswords));
         }
 
+        [TestMethod]
+        public void ListPasswordsLightGreenStrength()
+        {
+            string passLG = "testGreenGreenGR";
+            Password passLGreen = new Password(category, passLG, site, user, note);
+            passwordRepository.AddPassword(passLGreen);
+            List<Password> lGreenPasswords = passwordRepository.ListLGreenPasswords();
+            Assert.IsFalse(passwordRepository.IsEmptyList(lGreenPasswords));
+        }
+
 
     }
 }
