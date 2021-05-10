@@ -83,13 +83,14 @@ namespace UserInterface
         {
             try
             {
+                const string SUCCESSFUL_MSG = "Contraseña creada con exito";
                 passwords.AddPassword(new Password((Category)cbxCategories.SelectedItem, txtPassword.Text, txtSite.Text, txtUser.Text, txtNote.Text));
+                ShowMSG(System.Drawing.Color.Green, SUCCESSFUL_MSG);
                 PostModification();
             }
             catch (Exception e) 
             {
-                lblMsg.ForeColor = System.Drawing.Color.Red;
-                lblMsg.Text = e.Message;
+                ShowMSG(System.Drawing.Color.Red,e.Message);
             }
                 
         }
@@ -97,6 +98,12 @@ namespace UserInterface
         private void ModifyPasswordEvent() 
         {
             PostModification();
+        }
+
+        private void ShowMSG(System.Drawing.Color color, string message)
+        {
+            lblMsg.ForeColor = color;
+            lblMsg.Text = message;
         }
 
         private void BtnAutoGenerate_Click(object sender, EventArgs e)
