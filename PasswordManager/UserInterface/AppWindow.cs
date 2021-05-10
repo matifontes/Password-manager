@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using PasswordManager.Controllers;
 using PasswordManager;
+using PasswordManager.Exceptions;
 
 namespace UserInterface
 {

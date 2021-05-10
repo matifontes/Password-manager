@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PasswordManager
+namespace PasswordManager.Controllers
 {
     public class ProfileController
     {

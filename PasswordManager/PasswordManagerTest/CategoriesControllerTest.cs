@@ -2,6 +2,7 @@
 using System;
 using PasswordManager;
 using System.Collections.Generic;
+using PasswordManager.Controllers;
 
 namespace PasswordManagerTest
 {
