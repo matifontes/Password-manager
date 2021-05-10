@@ -30,6 +30,12 @@ namespace PasswordManagerTest
             Assert.IsNotNull(creditCardsController);
         }
 
+        [TestMethod]
+        public void CreateNewCreditCardsControllerShouldBeEmpty()
+        {
+            Assert.IsTrue(creditCardsController.IsEmpty());
+        }
+
 
     }
 }
