@@ -48,6 +48,7 @@ namespace UserInterface
             this.lblNote = new System.Windows.Forms.Label();
             this.txtNote = new System.Windows.Forms.TextBox();
             this.lblMsg = new System.Windows.Forms.Label();
+            this.lblAutoGenerateError = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.nudLarge)).BeginInit();
             this.SuspendLayout();
             // 
@@ -71,7 +72,7 @@ namespace UserInterface
             // 
             // operationPanel
             // 
-            this.operationPanel.Location = new System.Drawing.Point(-6, 471);
+            this.operationPanel.Location = new System.Drawing.Point(2, 483);
             this.operationPanel.Name = "operationPanel";
             this.operationPanel.Size = new System.Drawing.Size(289, 39);
             this.operationPanel.TabIndex = 2;
@@ -129,9 +130,10 @@ namespace UserInterface
             // 
             // nudLarge
             // 
-            this.nudLarge.Location = new System.Drawing.Point(197, 180);
+            this.nudLarge.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nudLarge.Location = new System.Drawing.Point(197, 178);
             this.nudLarge.Name = "nudLarge";
-            this.nudLarge.Size = new System.Drawing.Size(81, 20);
+            this.nudLarge.Size = new System.Drawing.Size(81, 24);
             this.nudLarge.TabIndex = 9;
             // 
             // lblLarge
@@ -203,15 +205,15 @@ namespace UserInterface
             // 
             this.lblNote.AutoSize = true;
             this.lblNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNote.Location = new System.Drawing.Point(12, 365);
+            this.lblNote.Location = new System.Drawing.Point(12, 384);
             this.lblNote.Name = "lblNote";
-            this.lblNote.Size = new System.Drawing.Size(48, 18);
+            this.lblNote.Size = new System.Drawing.Size(44, 18);
             this.lblNote.TabIndex = 16;
-            this.lblNote.Text = "Notas";
+            this.lblNote.Text = "Note:";
             // 
             // txtNote
             // 
-            this.txtNote.Location = new System.Drawing.Point(109, 366);
+            this.txtNote.Location = new System.Drawing.Point(109, 385);
             this.txtNote.MaxLength = 250;
             this.txtNote.Multiline = true;
             this.txtNote.Name = "txtNote";
@@ -221,16 +223,25 @@ namespace UserInterface
             // lblMsg
             // 
             this.lblMsg.AutoSize = true;
-            this.lblMsg.Location = new System.Drawing.Point(12, 455);
+            this.lblMsg.Location = new System.Drawing.Point(12, 467);
             this.lblMsg.Name = "lblMsg";
             this.lblMsg.Size = new System.Drawing.Size(0, 13);
             this.lblMsg.TabIndex = 18;
+            // 
+            // lblAutoGenerateError
+            // 
+            this.lblAutoGenerateError.AutoSize = true;
+            this.lblAutoGenerateError.Location = new System.Drawing.Point(106, 360);
+            this.lblAutoGenerateError.Name = "lblAutoGenerateError";
+            this.lblAutoGenerateError.Size = new System.Drawing.Size(0, 13);
+            this.lblAutoGenerateError.TabIndex = 19;
             // 
             // CreateModifyPassword
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(303, 511);
+            this.ClientSize = new System.Drawing.Size(303, 534);
+            this.Controls.Add(this.lblAutoGenerateError);
             this.Controls.Add(this.lblMsg);
             this.Controls.Add(this.txtNote);
             this.Controls.Add(this.lblNote);
@@ -280,5 +291,6 @@ namespace UserInterface
         private System.Windows.Forms.Label lblNote;
         private System.Windows.Forms.TextBox txtNote;
         private System.Windows.Forms.Label lblMsg;
+        private System.Windows.Forms.Label lblAutoGenerateError;
     }
 }

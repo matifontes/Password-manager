@@ -109,14 +109,6 @@ namespace UserInterface
             passwordForm.Show();
         }
 
-        private void DisposeChildForms() 
-        {
-            if (this.passwordForm != null)
-            {
-                this.passwordForm.Dispose();
-            }
-        }
-
         private void BtnRemove_Click(object sender, EventArgs e)
         {
             Password selectedPassword = (Password)dgvPasswords.SelectedRows[0].Cells[2].Value;
@@ -129,7 +121,16 @@ namespace UserInterface
 
         private void BtnBack_Click(object sender, EventArgs e)
         {
+            DisposeChildForms();
             ChangeToMenu();
         }
+        private void DisposeChildForms()
+        {
+            if (this.passwordForm != null)
+            {
+                this.passwordForm.Dispose();
+            }
+        }
+
     }
 }

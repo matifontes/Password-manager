@@ -32,12 +32,12 @@ namespace PasswordManager
         public string User
         {
             get { return _user; }
-            private set => SetUser(value); 
+            set => SetUser(value); 
         }
         public string Note 
         { 
             get { return _note; }
-            private set => SetNote(value);
+            set => SetNote(value);
         }
         
         public string Strength { get; set; }

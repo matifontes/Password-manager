@@ -97,7 +97,21 @@ namespace UserInterface
 
         private void ModifyPasswordEvent() 
         {
-            PostModification();
+            try
+            {
+                const string SUCCESSFUL_MSG = "Contraseña modificada con exito";
+                password.Category = (Category)cbxCategories.SelectedItem;
+                password.Site = txtSite.Text;
+                password.User = txtUser.Text;
+                password.Pass = txtPassword.Text;
+                password.Note = txtNote.Text;
+                ShowMSG(System.Drawing.Color.Green, SUCCESSFUL_MSG);
+                PostModification();
+            }
+            catch (Exception e) 
+            {
+                ShowMSG(System.Drawing.Color.Red,e.Message);
+            }
         }
 
         private void ShowMSG(System.Drawing.Color color, string message)
@@ -108,10 +122,18 @@ namespace UserInterface
 
         private void BtnAutoGenerate_Click(object sender, EventArgs e)
         {
-            int large = Convert.ToInt32(nudLarge.Value);
-            GeneratePasswordSettings settings = new GeneratePasswordSettings(large,cbxMinus.Checked,cbxMayus.Checked,cbxDigits.Checked,cbxSpecialChar.Checked);
-            string password = PasswordGenerator.GeneratePassword(settings);
-            txtPassword.Text = password;
+            try
+            {
+                int large = Convert.ToInt32(nudLarge.Value);
+                GeneratePasswordSettings settings = new GeneratePasswordSettings(large, cbxMinus.Checked, cbxMayus.Checked, cbxDigits.Checked, cbxSpecialChar.Checked);
+                string password = PasswordGenerator.GeneratePassword(settings);
+                txtPassword.Text = password;
+            }
+            catch (Exception exp) 
+            {
+                lblAutoGenerateError.ForeColor = System.Drawing.Color.Red;
+                lblAutoGenerateError.Text = "Ninguna opcion elegida";
+            }
         }
     }
 }
