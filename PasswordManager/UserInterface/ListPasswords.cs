@@ -11,7 +11,6 @@ using PasswordManager;
 
 namespace UserInterface
 {
-    public delegate void HandlePostModification();
     public partial class ListPasswordsPanel : UserControl
     {
         private PasswordsController passwords;

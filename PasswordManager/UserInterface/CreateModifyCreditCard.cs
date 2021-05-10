@@ -7,11 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PasswordManager;
 
 namespace UserInterface
 {
     public partial class CreateModifyCreditCard : Form
     {
+        private CategoriesController categories;
+        private event HandlePostModification PostModification;
         public CreateModifyCreditCard()
         {
             InitializeComponent();

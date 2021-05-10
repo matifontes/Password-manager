@@ -13,6 +13,7 @@ namespace UserInterface
 {
     public delegate void HandleWindowChange(UserControl panel);
     public delegate void HandleBackToMenu();
+    public delegate void HandlePostModification();
     public partial class MenuPanel : UserControl
     {
         private ProfileController profile;

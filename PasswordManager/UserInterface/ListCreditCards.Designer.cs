@@ -43,7 +43,7 @@ namespace UserInterface
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(14, 111);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(493, 272);
+            this.dataGridView1.Size = new System.Drawing.Size(493, 247);
             this.dataGridView1.TabIndex = 0;
             // 
             // label1
@@ -58,7 +58,7 @@ namespace UserInterface
             // 
             // btnAddCreditCard
             // 
-            this.btnAddCreditCard.Location = new System.Drawing.Point(388, 401);
+            this.btnAddCreditCard.Location = new System.Drawing.Point(389, 364);
             this.btnAddCreditCard.Name = "btnAddCreditCard";
             this.btnAddCreditCard.Size = new System.Drawing.Size(118, 38);
             this.btnAddCreditCard.TabIndex = 2;
@@ -67,7 +67,7 @@ namespace UserInterface
             // 
             // btnModify
             // 
-            this.btnModify.Location = new System.Drawing.Point(264, 401);
+            this.btnModify.Location = new System.Drawing.Point(265, 364);
             this.btnModify.Name = "btnModify";
             this.btnModify.Size = new System.Drawing.Size(118, 38);
             this.btnModify.TabIndex = 3;
@@ -76,7 +76,7 @@ namespace UserInterface
             // 
             // btnRemove
             // 
-            this.btnRemove.Location = new System.Drawing.Point(140, 401);
+            this.btnRemove.Location = new System.Drawing.Point(141, 364);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(118, 37);
             this.btnRemove.TabIndex = 4;
@@ -104,7 +104,7 @@ namespace UserInterface
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridView1);
             this.Name = "ListCreditCards";
-            this.Size = new System.Drawing.Size(524, 471);
+            this.Size = new System.Drawing.Size(524, 424);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

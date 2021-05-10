@@ -70,6 +70,12 @@
     <Compile Include="CreateModifyCategory.Designer.cs">
       <DependentUpon>CreateModifyCategory.cs</DependentUpon>
     </Compile>
+    <Compile Include="CreateModifyCreditCard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateModifyCreditCard.Designer.cs">
+      <DependentUpon>CreateModifyCreditCard.cs</DependentUpon>
+    </Compile>
     <Compile Include="CreateModifyPassword.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -143,6 +149,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CreateModifyCategory.resx">
       <DependentUpon>CreateModifyCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateModifyCreditCard.resx">
+      <DependentUpon>CreateModifyCreditCard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CreateModifyPassword.resx">
       <DependentUpon>CreateModifyPassword.cs</DependentUpon>
