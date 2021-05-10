@@ -106,5 +106,10 @@ namespace PasswordManager
             return dGreenPasswords;
         }
 
+        public List<Password> SortListByCategoryName(List<Password> pass)
+        {
+            return pass.OrderBy(password => password.Category.Name).ToList();
+        }
+
     }
 }
