@@ -66,5 +66,18 @@ namespace PasswordManager
             }
             return orangePasswords;
         }
+
+        public List<Password> ListYellowPasswords()
+        {
+            List<Password> yellowPasswords = new List<Password>();
+            foreach (Password pass in this.passwords)
+            {
+                if (pass.Strength == "Yellow")
+                {
+                    yellowPasswords.Add(pass);
+                }
+            }
+            return yellowPasswords;
+        }
     }
 }
