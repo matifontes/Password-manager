@@ -92,5 +92,17 @@ namespace PasswordManagerTest
             List<Password> redPasswords = passwordRepository.ListRedPasswords();
             Assert.IsFalse(passwordRepository.IsEmptyList(redPasswords));
         }
+
+        [TestMethod]
+        public void ListPasswordsOrangeStrength()
+        {
+            string passOr = "testOrange";
+            Password passOrange = new Password(category, passOr, site, user, note);
+            passwordRepository.AddPassword(passOrange);
+            List<Password> orangePasswords = passwordRepository.ListOrangePasswords();
+            Assert.IsFalse(passwordRepository.IsEmptyList(orangePasswords));
+        }
+
+
     }
 }
