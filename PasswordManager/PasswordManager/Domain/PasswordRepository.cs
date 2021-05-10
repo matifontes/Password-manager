@@ -27,6 +27,11 @@ namespace PasswordManager
             return this.Count() == 0;
         }
 
+        public bool IsEmptyList(List<Password> listPass)
+        {
+            return listPass.Count == 0;
+        }
+
         public int Count() {
             return this.passwords.Count;
         }
@@ -34,6 +39,19 @@ namespace PasswordManager
         public List<Password> ListPasswords() 
         {
             return this.passwords.OrderBy(password => password.Category.Name).ToList();
+        }
+
+        public List<Password> ListRedPasswords()
+        {
+            List<Password> redPasswords = new List<Password>();
+            foreach (Password pass in this.passwords)
+            {
+                if (pass.Strength == "Red")
+                {
+                    redPasswords.Add(pass);
+                }
+            }
+            return redPasswords;
         }
     }
 }
