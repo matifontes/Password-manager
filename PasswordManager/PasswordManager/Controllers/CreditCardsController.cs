@@ -8,11 +8,17 @@ namespace PasswordManager.Controllers
 {
     public class CreditCardsController
     {
-        private CreditCardRepository CreditCards;
+        private CreditCardRepository creditCards;
 
         public CreditCardsController(CreditCardRepository creditCards)
         {
-            this.CreditCards = creditCards;
+            this.creditCards = creditCards;
+        }
+
+        public bool IsEmpty()
+        {
+            bool isEmpty = this.creditCards.Count() == 0;
+            return isEmpty;
         }
 
     }
