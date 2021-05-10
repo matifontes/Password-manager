@@ -41,10 +41,23 @@ namespace PasswordManagerTest
         }
 
         [TestMethod]
+        public void CreateNewCreditCardRepositoryShouldBeEmpty() 
+        {
+            Assert.IsTrue(creditCardRepository.IsEmpty());
+        }
+
+        [TestMethod]
         public void AddCreditCardToRepository() 
         {
             creditCardRepository.AddCreditCard(creditCard);
             Assert.AreEqual(creditCardRepository.Count(), 1);
+        }
+
+        [TestMethod]
+        public void AddCreditCardToRepositoryShouldntBeEmpty()
+        {
+            creditCardRepository.AddCreditCard(creditCard);
+            Assert.IsFalse(creditCardRepository.IsEmpty());
         }
 
         [TestMethod]
