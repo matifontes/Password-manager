@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using PasswordManager;
+using PasswordManager.Controllers;
 
 namespace UserInterface
 {
@@ -19,6 +20,7 @@ namespace UserInterface
         private ProfileController profile;
         private CategoriesController categories;
         private PasswordsController passwords;
+        private CreditCardsController creditCards;
         private event HandleWindowChange ChangeWindow;
 
         public MenuPanel(ProfileController profile,CategoriesController categories, PasswordsController passwords)
@@ -27,6 +29,7 @@ namespace UserInterface
             this.profile = profile;
             this.categories = categories;
             this.passwords = passwords;
+            this.creditCards = creditCards;
         }
 
         public void AddListener(HandleWindowChange del) 

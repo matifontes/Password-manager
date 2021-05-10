@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PasswordManager.Controllers;
 using PasswordManager;
 
 namespace UserInterface
@@ -16,6 +17,7 @@ namespace UserInterface
         private ProfileController profile;
         private CategoriesController categories;
         private PasswordsController passwords;
+        private CreditCardsController creditCards;
 
         public AppWindow()
         {
