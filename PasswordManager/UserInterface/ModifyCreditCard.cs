@@ -13,7 +13,7 @@ namespace UserInterface
     public delegate void HandleCreditCardModification();
     public partial class ModifyCreditCard : UserControl
     {
-        private event HandleCreditCardModification PostModification();
+        private event HandleCreditCardModification PostModification;
         public ModifyCreditCard()
         {
             InitializeComponent();

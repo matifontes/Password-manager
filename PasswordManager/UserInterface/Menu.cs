@@ -23,7 +23,7 @@ namespace UserInterface
         private CreditCardsController creditCards;
         private event HandleWindowChange ChangeWindow;
 
-        public MenuPanel(ProfileController profile,CategoriesController categories, PasswordsController passwords)
+        public MenuPanel(ProfileController profile,CategoriesController categories, PasswordsController passwords, CreditCardsController creditCards)
         {
             InitializeComponent();
             this.profile = profile;
@@ -53,7 +53,7 @@ namespace UserInterface
 
         private void BtnCreditCards_Click(object sender, EventArgs e)
         {
-            ListCreditCards creditCards = new ListCreditCards();
+            ListCreditCards creditCards = new ListCreditCards(this.creditCards,this.categories);
             creditCards.AddListener(ReturnToMenu);
             ChangeWindow(creditCards);
         }
