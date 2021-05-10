@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PasswordManager;
+using PasswordManager.Exceptions;
 
 namespace PasswordManagerTest
 {

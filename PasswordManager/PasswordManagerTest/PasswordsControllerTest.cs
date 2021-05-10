@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using PasswordManager;
+using PasswordManager.Controllers;
 using PasswordManager.Exceptions;
 using System.Collections.Generic;
 
