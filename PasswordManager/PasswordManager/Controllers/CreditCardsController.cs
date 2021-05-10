@@ -26,5 +26,10 @@ namespace PasswordManager.Controllers
             return isEmpty;
         }
 
+        public int Count()
+        {
+            return this.creditCards.Count();
+        }
+
     }
 }
