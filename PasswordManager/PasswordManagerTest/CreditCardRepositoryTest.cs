@@ -69,5 +69,19 @@ namespace PasswordManagerTest
             creditCardRepository.RemoveCreditCard(otherCreditCard);
             Assert.AreEqual(creditCardRepository.Count(), 1);
         }
+
+        [TestMethod]
+        public void ListCreditCardssOrderByCategory()
+        {
+            Category category2 = new Category("Trabajo");
+            Category category3 = new Category("Gaming");
+            CreditCard card2 = new CreditCard(category2, name, type, creditCardNumber, ccvCode, expDate, note);
+            CreditCard card3 = new CreditCard(category3, name, type, creditCardNumber, ccvCode, expDate, note);
+
+            List<CreditCard> orderedCreditCards = creditCardRepository.ListCreditCards();
+            Assert.AreEqual(orderedCreditCards[0].Category, category3);
+            Assert.AreEqual(orderedCreditCards[1].Category, category);
+            Assert.AreEqual(orderedCreditCards[2].Category, category2);
+        }
     }
 }

@@ -36,5 +36,10 @@ namespace PasswordManager.Controllers
             return this.creditCards.Count();
         }
 
+        public List<CreditCard> ListCreditCards()
+        {
+            return this.creditCards.ListCreditCards;
+        }
+
     }
 }
