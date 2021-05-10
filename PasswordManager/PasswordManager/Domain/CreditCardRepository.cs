@@ -26,6 +26,11 @@ namespace PasswordManager
             return this.creditCards.Count;
         }
 
+        public bool IsEmpty() 
+        {
+            return this.Count() == 0;
+        }
+
         public List<CreditCard> ListCreditCards()
         {
             return this.creditCards.OrderBy(creditCard => creditCard.Category.Name).ToList();
