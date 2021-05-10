@@ -61,7 +61,7 @@
             // 
             // btnAccept
             // 
-            this.btnAccept.Location = new System.Drawing.Point(367, 287);
+            this.btnAccept.Location = new System.Drawing.Point(343, 289);
             this.btnAccept.Name = "btnAccept";
             this.btnAccept.Size = new System.Drawing.Size(99, 35);
             this.btnAccept.TabIndex = 1;
@@ -191,6 +191,7 @@
             this.btnRedPassword.TabIndex = 15;
             this.btnRedPassword.Text = "Ver";
             this.btnRedPassword.UseVisualStyleBackColor = true;
+            this.btnRedPassword.Click += new System.EventHandler(this.btnRedPassword_Click);
             // 
             // btnOrangePassword
             // 
@@ -200,6 +201,7 @@
             this.btnOrangePassword.TabIndex = 16;
             this.btnOrangePassword.Text = "Ver";
             this.btnOrangePassword.UseVisualStyleBackColor = true;
+            this.btnOrangePassword.Click += new System.EventHandler(this.btnOrangePassword_Click);
             // 
             // btnYellowPassword
             // 
@@ -209,6 +211,7 @@
             this.btnYellowPassword.TabIndex = 17;
             this.btnYellowPassword.Text = "Ver";
             this.btnYellowPassword.UseVisualStyleBackColor = true;
+            this.btnYellowPassword.Click += new System.EventHandler(this.btnYellowPassword_Click);
             // 
             // btnLightGreenPassword
             // 
@@ -218,6 +221,7 @@
             this.btnLightGreenPassword.TabIndex = 18;
             this.btnLightGreenPassword.Text = "Ver";
             this.btnLightGreenPassword.UseVisualStyleBackColor = true;
+            this.btnLightGreenPassword.Click += new System.EventHandler(this.btnLightGreenPassword_Click);
             // 
             // btnDarkGreenPassword
             // 
@@ -227,6 +231,7 @@
             this.btnDarkGreenPassword.TabIndex = 19;
             this.btnDarkGreenPassword.Text = "Ver";
             this.btnDarkGreenPassword.UseVisualStyleBackColor = true;
+            this.btnDarkGreenPassword.Click += new System.EventHandler(this.btnDarkGreenPassword_Click);
             // 
             // StrengthPassword
             // 

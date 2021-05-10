@@ -138,6 +138,12 @@
     <Compile Include="StrengthPassword.Designer.cs">
       <DependentUpon>StrengthPassword.cs</DependentUpon>
     </Compile>
+    <Compile Include="ListStrengthPasswords.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ListStrengthPasswords.Designer.cs">
+      <DependentUpon>ListStrengthPasswords.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AppWindow.resx">
       <DependentUpon>AppWindow.cs</DependentUpon>
     </EmbeddedResource>
@@ -161,6 +167,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ListCreditCards.resx">
       <DependentUpon>ListCreditCards.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListStrengthPasswords.resx">
+      <DependentUpon>ListStrengthPasswords.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
