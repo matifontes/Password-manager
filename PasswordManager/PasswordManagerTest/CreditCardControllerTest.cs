@@ -77,11 +77,16 @@ namespace PasswordManagerTest
             Category category3 = new Category("Gaming");
             CreditCard card2 = new CreditCard(category2, name, type, creditCardNumber, ccvCode, expDate, note);
             CreditCard card3 = new CreditCard(category3, name, type, creditCardNumber, ccvCode, expDate, note);
+            creditCardsController.AddCreditCard(card3);
+            creditCardsController.AddCreditCard(card);
+            creditCardsController.AddCreditCard(card2);
 
             List<CreditCard> orderedCreditCards = creditCardsController.ListCreditCards();
             Assert.AreEqual(orderedCreditCards[0].CreditCardCategory, category3);
             Assert.AreEqual(orderedCreditCards[1].CreditCardCategory, category);
             Assert.AreEqual(orderedCreditCards[2].CreditCardCategory, category2);
+
+
         }
 
     }
