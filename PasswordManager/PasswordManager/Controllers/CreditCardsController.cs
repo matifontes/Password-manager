@@ -15,6 +15,11 @@ namespace PasswordManager.Controllers
             this.creditCards = creditCards;
         }
 
+        public void AddCreditCard(CreditCard creditCard)
+        {
+            this.creditCards.AddCreditCard(creditCard);
+        }
+
         public bool IsEmpty()
         {
             bool isEmpty = this.creditCards.Count() == 0;
