@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using PasswordManager.Controllers;
 using PasswordManager;
 namespace PasswordManagerTest
 {
@@ -10,7 +11,8 @@ namespace PasswordManagerTest
         public void CreateCreditCardController()
         {
             CreditCardRepository creditCards = new CreditCardRepository();
-            CreditCardController creditCardsController = new CreditCardsController(creditCards);
+            CreditCardsController creditCardsController = new CreditCardsController(creditCards);
+            
             Assert.IsNotNull(creditCardsController);
         }
     }
