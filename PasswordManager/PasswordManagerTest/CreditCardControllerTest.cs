@@ -49,7 +49,8 @@ namespace PasswordManagerTest
         public void AddCreditCard()
         {
             creditCardsController.AddCreditCard(card);
-            Assert.IsFalse(creditCardsController.IsEmpty());
+            Assert.AreEqual(creditCardsController.Count(), 1);
         }
+
     }
 }
