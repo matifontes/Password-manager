@@ -64,6 +64,7 @@ namespace UserInterface
             this.btnAddCreditCard.TabIndex = 2;
             this.btnAddCreditCard.Text = "Agregar";
             this.btnAddCreditCard.UseVisualStyleBackColor = true;
+            this.btnAddCreditCard.Click += new System.EventHandler(this.BtnAddCreditCard_Click);
             // 
             // btnModify
             // 
@@ -73,6 +74,7 @@ namespace UserInterface
             this.btnModify.TabIndex = 3;
             this.btnModify.Text = "Modificar";
             this.btnModify.UseVisualStyleBackColor = true;
+            this.btnModify.Click += new System.EventHandler(this.BtnModify_Click);
             // 
             // btnRemove
             // 
@@ -82,6 +84,7 @@ namespace UserInterface
             this.btnRemove.TabIndex = 4;
             this.btnRemove.Text = "Eliminar";
             this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // btnBack
             // 

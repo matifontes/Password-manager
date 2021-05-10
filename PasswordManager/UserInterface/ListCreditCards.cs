@@ -28,5 +28,20 @@ namespace UserInterface
         {
             ChangeToMenu();
         }
+
+        private void BtnAddCreditCard_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnModify_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnRemove_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
