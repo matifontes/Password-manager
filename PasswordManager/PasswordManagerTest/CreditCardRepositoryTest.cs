@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Collections.Generic;
 using PasswordManager;
 
 namespace PasswordManagerTest
@@ -68,6 +69,24 @@ namespace PasswordManagerTest
             
             creditCardRepository.RemoveCreditCard(otherCreditCard);
             Assert.AreEqual(creditCardRepository.Count(), 1);
+        }
+
+        [TestMethod]
+        public void ListCreditCardssOrderByCategory()
+        {
+            Category category2 = new Category("Trabajo");
+            Category category3 = new Category("Gaming");
+            CreditCard card2 = new CreditCard(category2, name, type, creditCardNumber, ccvCode, expDate, note);
+            CreditCard card3 = new CreditCard(category3, name, type, creditCardNumber, ccvCode, expDate, note);
+            creditCardRepository.AddCreditCard(card3);
+            creditCardRepository.AddCreditCard(creditCard);
+            creditCardRepository.AddCreditCard(card2);
+
+
+            List<CreditCard> orderedCreditCards = creditCardRepository.ListCreditCards();
+            Assert.AreEqual(orderedCreditCards[0].CreditCardCategory, category3);
+            Assert.AreEqual(orderedCreditCards[1].CreditCardCategory, category);
+            Assert.AreEqual(orderedCreditCards[2].CreditCardCategory, category2);
         }
     }
 }
