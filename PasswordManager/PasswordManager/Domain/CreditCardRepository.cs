@@ -28,7 +28,7 @@ namespace PasswordManager
 
         public List<CreditCard> ListCreditCards()
         {
-            return this.creditCards.OrderBy(creditCard => creditCard.CreditCardCategory.Name).ToList();
+            return this.creditCards.OrderBy(creditCard => creditCard.Category.Name).ToList();
         }
     }
 }
