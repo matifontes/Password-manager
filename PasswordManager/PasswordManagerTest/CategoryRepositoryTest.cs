@@ -32,11 +32,23 @@ namespace PasswordManagerTest
         }
 
         [TestMethod]
+        public void CreateNewCategoryRepositoryShouldBeEmpty() 
+        {
+            Assert.IsTrue(categoryRepository.IsEmpty());
+        }
+
+        [TestMethod]
         public void AddCategory() 
         {
             categoryRepository.AddCategory(category);
-
             Assert.AreEqual(categoryRepository.Count(), 1);
+        }
+
+        [TestMethod]
+        public void CategoryRepositoryWithACategoryShouldntBeEmpty()
+        {
+            categoryRepository.AddCategory(category);
+            Assert.IsFalse(categoryRepository.IsEmpty());
         }
 
         [TestMethod]

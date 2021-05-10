@@ -43,10 +43,23 @@ namespace PasswordManagerTest
         }
 
         [TestMethod]
+        public void CreateNewPasswordsControllerShouldBeEmpty() 
+        {
+            Assert.IsTrue(passwordsController.IsEmpty());
+        }
+
+        [TestMethod]
         public void AddPassword() 
         {
             passwordsController.AddPassword(password);
             Assert.AreEqual(passwordsController.Count(), 1);
+        }
+
+        [TestMethod]
+        public void PasswordsControllerWithAPasswordShouldntBeEmpty()
+        {
+            passwordsController.AddPassword(password);
+            Assert.IsFalse(passwordsController.IsEmpty());
         }
 
         [TestMethod]

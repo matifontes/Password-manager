@@ -40,10 +40,23 @@ namespace PasswordManagerTest
         }
 
         [TestMethod]
+        public void CreateNewPasswordsRepositoryShouldBeEmpty() 
+        {
+            Assert.IsTrue(password.IsEmpty());
+        }
+
+        [TestMethod]
         public void AddPasswordToRepository() 
         {
             passwordRepository.AddPassword(password);
             Assert.AreEqual(passwordRepository.Count(), 1);
+        }
+
+        [TestMethod]
+        public void PasswordRepositoryWithAPasswordShouldntBeEmpty()
+        {
+            passwordRepository.AddPassword(password);
+            Assert.AreEqual(passwordRepository.IsEmpty());
         }
 
         [TestMethod]

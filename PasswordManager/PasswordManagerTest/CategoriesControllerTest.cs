@@ -8,19 +8,37 @@ namespace PasswordManagerTest
     [TestClass]
     public class CategoriesControllerTest
     {
+        private CategoryRepository categories;
+        private CategoriesController categoriesController;
+        [TestInitialize]
+        public void Setup() 
+        {
+            categories = new CategoryRepository();
+            categoriesController = new CategoriesController(categories);
+        }
+
+        [TestCleanup]
+        public void Cleanup() 
+        {
+            categories = null;
+            categoriesController = null;
+        }
+            
         [TestMethod]
         public void CreateNewCategoriesController()
-        {
-            CategoryRepository categories = new CategoryRepository();
-            CategoriesController categoriesController = new CategoriesController(categories);
+        {          
             Assert.AreEqual(categoriesController.Count(),0);
         }
-       
+
+        [TestMethod]
+        public void CreateNewCategoriesControllerShouldBeEmpty()
+        {
+            Assert.IsTrue(categoriesController.IsEmpty());
+        }
+
         [TestMethod]
         public void AddCategory() 
         {
-            CategoryRepository categories = new CategoryRepository();
-            CategoriesController categoriesController = new CategoriesController(categories);
             Category category = new Category("Personal");
 
             categoriesController.AddCategory(category);
@@ -28,10 +46,17 @@ namespace PasswordManagerTest
         }
 
         [TestMethod]
+        public void CategoriesControllerWithACategoryShouldntBeEmpty()
+        {
+            Category category = new Category("Personal");
+
+            categoriesController.AddCategory(category);
+            Assert.IsFalse(categoriesController.IsEmpty());
+        }
+
+        [TestMethod]
         public void RemoveCategory()
         {
-            CategoryRepository categories = new CategoryRepository();
-            CategoriesController categoriesController = new CategoriesController(categories);
             Category category = new Category("Personal");
             categoriesController.AddCategory(category);
 
@@ -42,8 +67,6 @@ namespace PasswordManagerTest
         [TestMethod]
         public void ListCategoriesOrderByName()
         {
-            CategoryRepository categories = new CategoryRepository();
-            CategoriesController categoriesController = new CategoriesController(categories);
             Category category1 = new Category("Personal");
             Category category2 = new Category("Trabajo");
             Category category3 = new Category("Gaming");
