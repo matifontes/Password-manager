@@ -171,9 +171,9 @@ namespace PasswordManagerTest
         public void VeifyDarkGreenPassword()
         {
             string passDG = "testGreenGreen.13";
-            Password passLGreen = new Password(personal, passDG, site, user, note);
+            Password passDGreen = new Password(personal, passDG, site, user, note);
 
-            Assert.AreEqual(passLGreen.Strength, "DarkGreen");
+            Assert.AreEqual(passDGreen.Strength, "DarkGreen");
         }
 
         [TestMethod]
