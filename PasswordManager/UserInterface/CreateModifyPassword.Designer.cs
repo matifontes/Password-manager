@@ -127,14 +127,30 @@ namespace UserInterface
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(169, 20);
             this.txtPassword.TabIndex = 8;
+            this.txtPassword.UseSystemPasswordChar = true;
             // 
             // nudLarge
             // 
             this.nudLarge.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nudLarge.Location = new System.Drawing.Point(197, 178);
+            this.nudLarge.Maximum = new decimal(new int[] {
+            25,
+            0,
+            0,
+            0});
+            this.nudLarge.Minimum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
             this.nudLarge.Name = "nudLarge";
             this.nudLarge.Size = new System.Drawing.Size(81, 24);
             this.nudLarge.TabIndex = 9;
+            this.nudLarge.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
             // 
             // lblLarge
             // 
