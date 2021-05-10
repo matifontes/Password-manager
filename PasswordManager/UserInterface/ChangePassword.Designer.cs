@@ -66,6 +66,7 @@ namespace UserInterface
             this.txtActualPassword.Name = "txtActualPassword";
             this.txtActualPassword.Size = new System.Drawing.Size(254, 20);
             this.txtActualPassword.TabIndex = 2;
+            this.txtActualPassword.UseSystemPasswordChar = true;
             // 
             // txtNewPassword
             // 
@@ -73,6 +74,7 @@ namespace UserInterface
             this.txtNewPassword.Name = "txtNewPassword";
             this.txtNewPassword.Size = new System.Drawing.Size(254, 20);
             this.txtNewPassword.TabIndex = 3;
+            this.txtNewPassword.UseSystemPasswordChar = true;
             // 
             // txtRepeatNewPassword
             // 
@@ -80,6 +82,7 @@ namespace UserInterface
             this.txtRepeatNewPassword.Name = "txtRepeatNewPassword";
             this.txtRepeatNewPassword.Size = new System.Drawing.Size(253, 20);
             this.txtRepeatNewPassword.TabIndex = 4;
+            this.txtRepeatNewPassword.UseSystemPasswordChar = true;
             // 
             // lblActualPassword
             // 
