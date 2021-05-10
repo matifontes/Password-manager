@@ -132,6 +132,12 @@
     <Compile Include="ModifyCategory.Designer.cs">
       <DependentUpon>ModifyCategory.cs</DependentUpon>
     </Compile>
+    <Compile Include="StrengthPassword.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="StrengthPassword.Designer.cs">
+      <DependentUpon>StrengthPassword.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AppWindow.resx">
       <DependentUpon>AppWindow.cs</DependentUpon>
     </EmbeddedResource>
@@ -182,6 +188,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModifyCategory.resx">
       <DependentUpon>ModifyCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StrengthPassword.resx">
+      <DependentUpon>StrengthPassword.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
