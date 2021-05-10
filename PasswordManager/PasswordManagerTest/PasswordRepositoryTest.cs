@@ -89,7 +89,8 @@ namespace PasswordManagerTest
         public void ListPasswordsRedStrength()
         {
             passwordRepository.AddPassword(password);
-            Assert.IsFalse(passwordRepository.ListRedPasswords().isEmptyList());
+            List<Password> redPasswords = passwordRepository.ListRedPasswords();
+            Assert.IsFalse(passwordRepository.IsEmptyList(redPasswords));
         }
     }
 }
