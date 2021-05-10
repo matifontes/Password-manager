@@ -57,5 +57,11 @@ namespace PasswordManagerTest
             CreditCard invalidCard = new CreditCard(category, name, type, creditCardLongNumber, ccvCode, expDate, note);
         }
 
+        [TestMethod]
+        public void CreaditCardToStringShowItsName() 
+        {
+            Assert.AreEqual(card.ToString(), name);
+        }
+
     }
 }
