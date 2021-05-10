@@ -7,7 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using PasswordManager;
+using PasswordManager.Controllers;
+using PasswordManager.Exceptions;
 
 namespace UserInterface
 {

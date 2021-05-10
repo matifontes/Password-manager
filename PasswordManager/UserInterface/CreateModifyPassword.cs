@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using PasswordManager;
+using PasswordManager.Controllers;
 
 namespace UserInterface
 {
@@ -129,7 +130,7 @@ namespace UserInterface
                 string password = PasswordGenerator.GeneratePassword(settings);
                 txtPassword.Text = password;
             }
-            catch (Exception exp) 
+            catch (Exception) 
             {
                 lblAutoGenerateError.ForeColor = System.Drawing.Color.Red;
                 lblAutoGenerateError.Text = "Ninguna opcion elegida";

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using PasswordManager;
+using PasswordManager.Controllers;
 
 namespace UserInterface
 {
