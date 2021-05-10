@@ -92,11 +92,11 @@ namespace PasswordManagerTest
             Category category3 = new Category("Gaming");
             Password password2 = new Password(category2, pass, site, user, note);
             Password password3 = new Password(category3, pass, site, user, note);
-            List<Password> orderedPassword = passwordRepository.ListPasswords();
-            orderedPassword.Add(password);
-            orderedPassword.Add(password2);
-            orderedPassword.Add(password3);
-            passwordRepository.SortListByCategoryName(orderedPassword);
+            List<Password> passwords = passwordRepository.ListPasswords();
+            passwords.Add(password);
+            passwords.Add(password2);
+            passwords.Add(password3);
+            List<Password> orderedPassword= passwordRepository.SortListByCategoryName(passwords);
 
             Assert.AreEqual(orderedPassword[0].Category, category3);
             Assert.AreEqual(orderedPassword[1].Category, category);

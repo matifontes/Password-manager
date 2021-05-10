@@ -88,6 +88,7 @@ namespace PasswordManagerTest
             Assert.AreEqual(orderedPassword[1].Category, category);
             Assert.AreEqual(orderedPassword[2].Category, category2);
         }
+
         [TestMethod]
         public void ListRedPasswordsOrderByCategory()
         {
@@ -97,8 +98,8 @@ namespace PasswordManagerTest
             passwordsController.AddPassword(password2);
 
             List<Password> orderedRedPasswords = passwordsController.ListRedPasswords();
-            Assert.AreEqual(orderedRedPasswords[0].Category, category);
-            Assert.AreEqual(orderedRedPasswords[1].Category, category2);
+            Assert.AreEqual(orderedRedPasswords[0].Category, category2);
+            Assert.AreEqual(orderedRedPasswords[1].Category, category);
         }
 
         [TestMethod]
@@ -111,8 +112,8 @@ namespace PasswordManagerTest
             passwordsController.AddPassword(password2);
 
             List<Password> orderedOrangePasswords = passwordsController.ListOrangePasswords();
-            Assert.AreEqual(orderedOrangePasswords[0].Category, category);
-            Assert.AreEqual(orderedOrangePasswords[1].Category, category2);
+            Assert.AreEqual(orderedOrangePasswords[0].Category, category2);
+            Assert.AreEqual(orderedOrangePasswords[1].Category, category);
         }
 
         [TestMethod]
@@ -125,8 +126,8 @@ namespace PasswordManagerTest
             passwordsController.AddPassword(password2);
 
             List<Password> orderedYellowPasswords = passwordsController.ListYellowPasswords();
-            Assert.AreEqual(orderedYellowPasswords[0].Category, category);
-            Assert.AreEqual(orderedYellowPasswords[1].Category, category2);
+            Assert.AreEqual(orderedYellowPasswords[0].Category, category2);
+            Assert.AreEqual(orderedYellowPasswords[1].Category, category);
         }
 
         [TestMethod]
@@ -139,8 +140,8 @@ namespace PasswordManagerTest
             passwordsController.AddPassword(password2);
 
             List<Password> orderedLightGreenPasswords = passwordsController.ListLightGreenPasswords();
-            Assert.AreEqual(orderedLightGreenPasswords[0].Category, category);
-            Assert.AreEqual(orderedLightGreenPasswords[1].Category, category2);
+            Assert.AreEqual(orderedLightGreenPasswords[0].Category, category2);
+            Assert.AreEqual(orderedLightGreenPasswords[1].Category, category);
         }
 
         [TestMethod]
@@ -153,8 +154,8 @@ namespace PasswordManagerTest
             passwordsController.AddPassword(password2);
 
             List<Password> orderedDarkGreenPasswords = passwordsController.ListDarkGreenPasswords();
-            Assert.AreEqual(orderedDarkGreenPasswords[0].Category, category);
-            Assert.AreEqual(orderedDarkGreenPasswords[1].Category, category2);
+            Assert.AreEqual(orderedDarkGreenPasswords[0].Category, category2);
+            Assert.AreEqual(orderedDarkGreenPasswords[1].Category, category);
         }
     }
 }
