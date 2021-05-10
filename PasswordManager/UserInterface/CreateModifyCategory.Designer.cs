@@ -1,7 +1,7 @@
 ﻿
 namespace UserInterface
 {
-    partial class CreateModifyCategoryForm
+    partial class CreateModifyCategory
     {
         /// <summary>
         /// Required designer variable.

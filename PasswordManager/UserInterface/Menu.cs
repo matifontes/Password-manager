@@ -42,7 +42,7 @@ namespace UserInterface
 
         private void BtnPasswords_Click(object sender, EventArgs e)
         {
-            ListPasswordsPanel passwords = new ListPasswordsPanel(this.passwords);
+            ListPasswordsPanel passwords = new ListPasswordsPanel(this.passwords,this.categories);
             passwords.AddListener(ReturnToMenu);
             ChangeWindow(passwords);
         }

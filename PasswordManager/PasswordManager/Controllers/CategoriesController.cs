@@ -21,6 +21,11 @@ namespace PasswordManager
             this.categories.RemoveCategory(category);
         }
 
+        public bool IsEmpty() 
+        {
+            return this.categories.IsEmpty();
+        }
+
         public int Count() 
         {
            return this.categories.Count();

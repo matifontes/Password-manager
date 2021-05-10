@@ -64,11 +64,23 @@
     <Compile Include="CreateCategory.Designer.cs">
       <DependentUpon>CreateCategory.cs</DependentUpon>
     </Compile>
-    <Compile Include="CreateModifyCategoryForm.cs">
+    <Compile Include="CreateModifyCategory.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CreateModifyCategoryForm.Designer.cs">
-      <DependentUpon>CreateModifyCategoryForm.cs</DependentUpon>
+    <Compile Include="CreateModifyCategory.Designer.cs">
+      <DependentUpon>CreateModifyCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CreateModifyPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateModifyPassword.Designer.cs">
+      <DependentUpon>CreateModifyPassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CreatePassword.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CreatePassword.Designer.cs">
+      <DependentUpon>CreatePassword.cs</DependentUpon>
     </Compile>
     <Compile Include="ListCategories.cs">
       <SubType>UserControl</SubType>
@@ -87,6 +99,12 @@
     </Compile>
     <Compile Include="ListPasswords.Designer.cs">
       <DependentUpon>ListPasswords.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModifyPassword.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ModifyPassword.Designer.cs">
+      <DependentUpon>ModifyPassword.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -123,8 +141,14 @@
     <EmbeddedResource Include="CreateCategory.resx">
       <DependentUpon>CreateCategory.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CreateModifyCategoryForm.resx">
-      <DependentUpon>CreateModifyCategoryForm.cs</DependentUpon>
+    <EmbeddedResource Include="CreateModifyCategory.resx">
+      <DependentUpon>CreateModifyCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateModifyPassword.resx">
+      <DependentUpon>CreateModifyPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreatePassword.resx">
+      <DependentUpon>CreatePassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ListCategories.resx">
       <DependentUpon>ListCategories.cs</DependentUpon>
@@ -137,6 +161,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ListPasswords.resx">
       <DependentUpon>ListPasswords.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModifyPassword.resx">
+      <DependentUpon>ModifyPassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

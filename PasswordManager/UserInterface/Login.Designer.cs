@@ -37,7 +37,7 @@ namespace UserInterface
             // btnLogin
             // 
             this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogin.Location = new System.Drawing.Point(323, 79);
+            this.btnLogin.Location = new System.Drawing.Point(328, 49);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(133, 35);
             this.btnLogin.TabIndex = 0;
@@ -47,16 +47,17 @@ namespace UserInterface
             // 
             // txtPasswordInput
             // 
-            this.txtPasswordInput.Location = new System.Drawing.Point(139, 53);
+            this.txtPasswordInput.Location = new System.Drawing.Point(144, 23);
             this.txtPasswordInput.Name = "txtPasswordInput";
             this.txtPasswordInput.Size = new System.Drawing.Size(317, 20);
             this.txtPasswordInput.TabIndex = 1;
+            this.txtPasswordInput.UseSystemPasswordChar = true;
             // 
             // lblLogin
             // 
             this.lblLogin.AutoSize = true;
             this.lblLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLogin.Location = new System.Drawing.Point(3, 47);
+            this.lblLogin.Location = new System.Drawing.Point(8, 17);
             this.lblLogin.Name = "lblLogin";
             this.lblLogin.Size = new System.Drawing.Size(130, 26);
             this.lblLogin.TabIndex = 2;
@@ -70,7 +71,7 @@ namespace UserInterface
             this.Controls.Add(this.txtPasswordInput);
             this.Controls.Add(this.btnLogin);
             this.Name = "LoginPanel";
-            this.Size = new System.Drawing.Size(473, 156);
+            this.Size = new System.Drawing.Size(473, 113);
             this.ResumeLayout(false);
             this.PerformLayout();
 

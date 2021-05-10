@@ -33,14 +33,14 @@ namespace PasswordManager
                 this._name = name;
             }
         }
-        private bool IsValidName(string name) 
-        {
-            return (name.Length <= MAX_LENGTH_FOR_VALID_NAME) && (name.Length >= MIN_LENGTH_FOR_VALID_NAME);
-        }
-
         public override string ToString()
         {
             return this.Name;
+        }
+
+        private bool IsValidName(string name) 
+        {
+            return (name.Length <= MAX_LENGTH_FOR_VALID_NAME) && (name.Length >= MIN_LENGTH_FOR_VALID_NAME);
         }
     }
 }

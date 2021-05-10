@@ -21,6 +21,11 @@ namespace PasswordManager
             this.passwords.RemovePassword(password);
         }
 
+        public bool IsEmpty() 
+        {
+            return this.passwords.IsEmpty();
+        }
+
         public int Count() 
         {
             return this.passwords.Count();

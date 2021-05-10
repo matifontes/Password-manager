@@ -63,6 +63,7 @@ namespace UserInterface
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(353, 20);
             this.txtPassword.TabIndex = 2;
+            this.txtPassword.UseSystemPasswordChar = true;
             // 
             // txtRepeatPassword
             // 
@@ -70,6 +71,7 @@ namespace UserInterface
             this.txtRepeatPassword.Name = "txtRepeatPassword";
             this.txtRepeatPassword.Size = new System.Drawing.Size(353, 20);
             this.txtRepeatPassword.TabIndex = 3;
+            this.txtRepeatPassword.UseSystemPasswordChar = true;
             // 
             // btnCreateProfile
             // 
