@@ -84,5 +84,12 @@ namespace PasswordManagerTest
             Assert.AreEqual(orderedPassword[1].Category, category);
             Assert.AreEqual(orderedPassword[2].Category, category2);
         }
+
+        [TestMethod]
+        public void ListPasswordsRedStrength()
+        {
+            passwordRepository.AddPassword(password);
+            Assert.IsFalse(passwordRepository.ListRedPasswords().isEmptyList());
+        }
     }
 }
