@@ -30,6 +30,11 @@ namespace PasswordManager
             this.Note = note;
         }
 
+        public override string ToString()
+        {
+            return this.Name;
+        }
+
         private void SetNumber(long num)
         {
             if (!IsValidNumber(num))
