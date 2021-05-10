@@ -42,7 +42,7 @@ namespace PasswordManagerTest
         [TestMethod]
         public void CreateNewPasswordsRepositoryShouldBeEmpty() 
         {
-            Assert.IsTrue(password.IsEmpty());
+            Assert.IsTrue(passwordRepository.IsEmpty());
         }
 
         [TestMethod]
@@ -56,7 +56,7 @@ namespace PasswordManagerTest
         public void PasswordRepositoryWithAPasswordShouldntBeEmpty()
         {
             passwordRepository.AddPassword(password);
-            Assert.AreEqual(passwordRepository.IsEmpty());
+            Assert.IsFalse(passwordRepository.IsEmpty());
         }
 
         [TestMethod]
