@@ -7,13 +7,29 @@ namespace PasswordManagerTest
     [TestClass]
     public class CreditCardControllerTest
     {
+        private CreditCardRepository creditCards;
+        private CreditCardsController creditCardsController;
+
+        [TestInitialize]
+        public void Setup()
+        {
+            creditCards = new CreditCardRepository();
+            creditCardsController = new CreditCardsController(creditCards);
+        }
+
+        [TestCleanup]
+        public void Cleanup()
+        {
+            creditCards = null;
+            creditCardsController = null;
+        }
+
         [TestMethod]
         public void CreateCreditCardController()
         {
-            CreditCardRepository creditCards = new CreditCardRepository();
-            CreditCardsController creditCardsController = new CreditCardsController(creditCards);
-            
             Assert.IsNotNull(creditCardsController);
         }
+
+
     }
 }
