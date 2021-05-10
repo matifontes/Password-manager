@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace PasswordManager
 {
@@ -23,6 +24,11 @@ namespace PasswordManager
         public int Count() 
         {
             return this.creditCards.Count;
+        }
+
+        public List<CreditCard> ListCreditCards()
+        {
+            return this.creditCards.OrderBy(creditCard => creditCard.CreditCardCategory.Name).ToList();
         }
     }
 }
