@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace PasswordManager
+namespace PasswordManager.Controllers
 {
     public class PasswordsController
     {
