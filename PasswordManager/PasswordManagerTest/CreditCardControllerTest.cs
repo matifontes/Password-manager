@@ -52,5 +52,12 @@ namespace PasswordManagerTest
             Assert.AreEqual(creditCardsController.Count(), 1);
         }
 
+        [TestMethod]
+        public void CreditCardControllerWithAPasswordShouldntBeEmpty()
+        {
+            creditCardsController.AddCreditCard(card);
+            Assert.IsFalse(creditCardsController.IsEmpty());
+        }
+
     }
 }
