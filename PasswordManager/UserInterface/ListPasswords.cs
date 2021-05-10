@@ -23,13 +23,6 @@ namespace UserInterface
             InitializeComponent();
             this.passwords = passwords;
             this.categories = categories;
-            //hardcoded passwords
-            if (passwords.Count() == 0) 
-            {
-                passwords.AddPassword(new Password(new Category("Personal"), "admin", "sitioweb", "administrador", ""));
-                passwords.AddPassword(new Password(new Category("Trabajo"), "admin", "sitioweb", "administrador", ""));
-                passwords.AddPassword(new Password(new Category("Gaming"), "admin", "sitioweb", "administrador", ""));
-            }
             EnableOptions();
             LoadListPasswords();
         }
@@ -41,26 +34,23 @@ namespace UserInterface
 
         private void EnableOptions() 
         {
-            if (passwords.Count() == 0)
+            if (this.passwords.IsEmpty() && this.categories.IsEmpty())
+            {
+                btnModify.Enabled = false;
+                btnAddPassword.Enabled = false;
+                btnRemove.Enabled = false;
+            }
+            else if (this.passwords.IsEmpty() && !this.categories.IsEmpty())
             {
                 btnModify.Enabled = false;
                 btnRemove.Enabled = false;
-            }
-            else
-            {
-                btnModify.Enabled = true;
-                btnRemove.Enabled = true;
-            }
-
-            if (categories.Count() == 0)
-            {
-                btnAddPassword.Enabled = false;
-                btnModify.Enabled = false;
-            }
-            else
-            {
                 btnAddPassword.Enabled = true;
+            }
+            else 
+            {
+                btnRemove.Enabled = true;
                 btnModify.Enabled = true;
+                btnAddPassword.Enabled = true;
             }
         }
 
@@ -96,7 +86,7 @@ namespace UserInterface
         {
             DisposeChildForms();
             this.passwordForm = new CreateModifyPassword(this.passwords,this.categories);
-            passwordForm.AddListener(LoadListPasswords);
+            passwordForm.AddListener(PostModification);
             passwordForm.Show();
         }
 
@@ -105,7 +95,7 @@ namespace UserInterface
             DisposeChildForms();
             Password password = (Password)dgvPasswords.SelectedRows[0].Cells[2].Value;
             this.passwordForm = new CreateModifyPassword(this.passwords, this.categories, password);
-            passwordForm.AddListener(LoadListPasswords);
+            passwordForm.AddListener(PostModification);
             passwordForm.Show();
         }
 
@@ -115,8 +105,14 @@ namespace UserInterface
             if (selectedPassword != null) 
             {
                 passwords.RemovePassword(selectedPassword);
-                LoadListPasswords();
+                PostModification();
             }
+        }
+
+        private void PostModification() 
+        {
+            EnableOptions();
+            LoadListPasswords();
         }
 
         private void BtnBack_Click(object sender, EventArgs e)

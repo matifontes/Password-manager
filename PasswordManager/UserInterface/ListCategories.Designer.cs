@@ -29,32 +29,32 @@ namespace UserInterface
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnModify = new System.Windows.Forms.Button();
             this.lbxCategories = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnBack = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // button1
+            // btnAdd
             // 
-            this.button1.Location = new System.Drawing.Point(245, 283);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(106, 41);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Agregar";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.BtnAgregar_Click);
+            this.btnAdd.Location = new System.Drawing.Point(245, 283);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(106, 41);
+            this.btnAdd.TabIndex = 0;
+            this.btnAdd.Text = "Agregar";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.BtnAgregar_Click);
             // 
-            // button2
+            // btnModify
             // 
-            this.button2.Location = new System.Drawing.Point(133, 283);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(106, 41);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Modificar";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.BtnModificar_Click);
+            this.btnModify.Location = new System.Drawing.Point(133, 283);
+            this.btnModify.Name = "btnModify";
+            this.btnModify.Size = new System.Drawing.Size(106, 41);
+            this.btnModify.TabIndex = 1;
+            this.btnModify.Text = "Modificar";
+            this.btnModify.UseVisualStyleBackColor = true;
+            this.btnModify.Click += new System.EventHandler(this.BtnModificar_Click);
             // 
             // lbxCategories
             // 
@@ -93,8 +93,8 @@ namespace UserInterface
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lbxCategories);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnModify);
+            this.Controls.Add(this.btnAdd);
             this.Name = "ListCategoriesPanel";
             this.Size = new System.Drawing.Size(369, 359);
             this.ResumeLayout(false);
@@ -104,8 +104,8 @@ namespace UserInterface
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnModify;
         private System.Windows.Forms.ListBox lbxCategories;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnBack;

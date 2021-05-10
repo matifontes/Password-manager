@@ -49,6 +49,7 @@ namespace UserInterface
             this.txtNote = new System.Windows.Forms.TextBox();
             this.lblMsg = new System.Windows.Forms.Label();
             this.lblAutoGenerateError = new System.Windows.Forms.Label();
+            this.btnShow = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nudLarge)).BeginInit();
             this.SuspendLayout();
             // 
@@ -72,7 +73,7 @@ namespace UserInterface
             // 
             // operationPanel
             // 
-            this.operationPanel.Location = new System.Drawing.Point(2, 483);
+            this.operationPanel.Location = new System.Drawing.Point(2, 530);
             this.operationPanel.Name = "operationPanel";
             this.operationPanel.Size = new System.Drawing.Size(289, 39);
             this.operationPanel.TabIndex = 2;
@@ -132,7 +133,7 @@ namespace UserInterface
             // nudLarge
             // 
             this.nudLarge.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nudLarge.Location = new System.Drawing.Point(197, 178);
+            this.nudLarge.Location = new System.Drawing.Point(197, 211);
             this.nudLarge.Maximum = new decimal(new int[] {
             25,
             0,
@@ -156,7 +157,7 @@ namespace UserInterface
             // 
             this.lblLarge.AutoSize = true;
             this.lblLarge.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLarge.Location = new System.Drawing.Point(106, 180);
+            this.lblLarge.Location = new System.Drawing.Point(106, 213);
             this.lblLarge.Name = "lblLarge";
             this.lblLarge.Size = new System.Drawing.Size(50, 18);
             this.lblLarge.TabIndex = 10;
@@ -166,7 +167,7 @@ namespace UserInterface
             // 
             this.cbxMayus.AutoSize = true;
             this.cbxMayus.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxMayus.Location = new System.Drawing.Point(109, 206);
+            this.cbxMayus.Location = new System.Drawing.Point(108, 239);
             this.cbxMayus.Name = "cbxMayus";
             this.cbxMayus.Size = new System.Drawing.Size(170, 22);
             this.cbxMayus.TabIndex = 11;
@@ -177,7 +178,7 @@ namespace UserInterface
             // 
             this.cbxMinus.AutoSize = true;
             this.cbxMinus.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxMinus.Location = new System.Drawing.Point(109, 234);
+            this.cbxMinus.Location = new System.Drawing.Point(109, 267);
             this.cbxMinus.Name = "cbxMinus";
             this.cbxMinus.Size = new System.Drawing.Size(164, 22);
             this.cbxMinus.TabIndex = 12;
@@ -188,7 +189,7 @@ namespace UserInterface
             // 
             this.cbxDigits.AutoSize = true;
             this.cbxDigits.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxDigits.Location = new System.Drawing.Point(109, 262);
+            this.cbxDigits.Location = new System.Drawing.Point(109, 295);
             this.cbxDigits.Name = "cbxDigits";
             this.cbxDigits.Size = new System.Drawing.Size(135, 22);
             this.cbxDigits.TabIndex = 13;
@@ -199,7 +200,7 @@ namespace UserInterface
             // 
             this.cbxSpecialChar.AutoSize = true;
             this.cbxSpecialChar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxSpecialChar.Location = new System.Drawing.Point(109, 290);
+            this.cbxSpecialChar.Location = new System.Drawing.Point(109, 323);
             this.cbxSpecialChar.Name = "cbxSpecialChar";
             this.cbxSpecialChar.Size = new System.Drawing.Size(174, 22);
             this.cbxSpecialChar.TabIndex = 14;
@@ -209,7 +210,7 @@ namespace UserInterface
             // btnAutoGenerate
             // 
             this.btnAutoGenerate.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAutoGenerate.Location = new System.Drawing.Point(190, 318);
+            this.btnAutoGenerate.Location = new System.Drawing.Point(190, 351);
             this.btnAutoGenerate.Name = "btnAutoGenerate";
             this.btnAutoGenerate.Size = new System.Drawing.Size(89, 34);
             this.btnAutoGenerate.TabIndex = 15;
@@ -221,7 +222,7 @@ namespace UserInterface
             // 
             this.lblNote.AutoSize = true;
             this.lblNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNote.Location = new System.Drawing.Point(12, 384);
+            this.lblNote.Location = new System.Drawing.Point(12, 423);
             this.lblNote.Name = "lblNote";
             this.lblNote.Size = new System.Drawing.Size(44, 18);
             this.lblNote.TabIndex = 16;
@@ -229,7 +230,7 @@ namespace UserInterface
             // 
             // txtNote
             // 
-            this.txtNote.Location = new System.Drawing.Point(109, 385);
+            this.txtNote.Location = new System.Drawing.Point(109, 424);
             this.txtNote.MaxLength = 250;
             this.txtNote.Multiline = true;
             this.txtNote.Name = "txtNote";
@@ -239,7 +240,7 @@ namespace UserInterface
             // lblMsg
             // 
             this.lblMsg.AutoSize = true;
-            this.lblMsg.Location = new System.Drawing.Point(12, 467);
+            this.lblMsg.Location = new System.Drawing.Point(12, 505);
             this.lblMsg.Name = "lblMsg";
             this.lblMsg.Size = new System.Drawing.Size(0, 13);
             this.lblMsg.TabIndex = 18;
@@ -247,16 +248,27 @@ namespace UserInterface
             // lblAutoGenerateError
             // 
             this.lblAutoGenerateError.AutoSize = true;
-            this.lblAutoGenerateError.Location = new System.Drawing.Point(106, 360);
+            this.lblAutoGenerateError.Location = new System.Drawing.Point(106, 390);
             this.lblAutoGenerateError.Name = "lblAutoGenerateError";
             this.lblAutoGenerateError.Size = new System.Drawing.Size(0, 13);
             this.lblAutoGenerateError.TabIndex = 19;
+            // 
+            // btnShow
+            // 
+            this.btnShow.Location = new System.Drawing.Point(197, 180);
+            this.btnShow.Name = "btnShow";
+            this.btnShow.Size = new System.Drawing.Size(81, 25);
+            this.btnShow.TabIndex = 20;
+            this.btnShow.Text = "Mostrar";
+            this.btnShow.UseVisualStyleBackColor = true;
+            this.btnShow.Click += new System.EventHandler(this.BtnShow_Click);
             // 
             // CreateModifyPassword
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(303, 534);
+            this.ClientSize = new System.Drawing.Size(303, 581);
+            this.Controls.Add(this.btnShow);
             this.Controls.Add(this.lblAutoGenerateError);
             this.Controls.Add(this.lblMsg);
             this.Controls.Add(this.txtNote);
@@ -308,5 +320,6 @@ namespace UserInterface
         private System.Windows.Forms.TextBox txtNote;
         private System.Windows.Forms.Label lblMsg;
         private System.Windows.Forms.Label lblAutoGenerateError;
+        private System.Windows.Forms.Button btnShow;
     }
 }

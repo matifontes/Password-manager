@@ -135,5 +135,19 @@ namespace UserInterface
                 lblAutoGenerateError.Text = "Ninguna opcion elegida";
             }
         }
+
+        System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
+        private void BtnShow_Click(object sender, EventArgs e)
+        {
+            txtPassword.UseSystemPasswordChar = false;
+            timer.Interval = 30000;
+            timer.Tick += new EventHandler(HidePassword);
+            timer.Start();
+        }
+
+        private void HidePassword(object sender, EventArgs e) 
+        {
+            txtPassword.UseSystemPasswordChar = true;
+        }
     }
 }
