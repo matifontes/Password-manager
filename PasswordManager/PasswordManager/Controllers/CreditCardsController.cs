@@ -38,7 +38,7 @@ namespace PasswordManager.Controllers
 
         public List<CreditCard> ListCreditCards()
         {
-            return this.creditCards.ListCreditCards;
+            return this.creditCards.ListCreditCards();
         }
 
     }
