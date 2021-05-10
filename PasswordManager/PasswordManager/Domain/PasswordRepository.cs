@@ -51,7 +51,7 @@ namespace PasswordManager
                     redPasswords.Add(pass);
                 }
             }
-            return redPasswords;
+            return SortListByCategoryName(redPasswords);
         }
 
         public List<Password> ListOrangePasswords()
@@ -64,7 +64,7 @@ namespace PasswordManager
                     orangePasswords.Add(pass);
                 }
             }
-            return orangePasswords;
+            return SortListByCategoryName(orangePasswords);
         }
 
         public List<Password> ListYellowPasswords()
@@ -77,7 +77,7 @@ namespace PasswordManager
                     yellowPasswords.Add(pass);
                 }
             }
-            return yellowPasswords;
+            return SortListByCategoryName(yellowPasswords);
         }
 
         public List<Password> ListLGreenPasswords()
@@ -90,7 +90,7 @@ namespace PasswordManager
                     lGreenPasswords.Add(pass);
                 }
             }
-            return lGreenPasswords;
+            return SortListByCategoryName(lGreenPasswords);
         }
 
         public List<Password> ListDGreenPasswords()
@@ -103,7 +103,7 @@ namespace PasswordManager
                     dGreenPasswords.Add(pass);
                 }
             }
-            return dGreenPasswords;
+            return SortListByCategoryName(dGreenPasswords);
         }
 
         public List<Password> SortListByCategoryName(List<Password> pass)
