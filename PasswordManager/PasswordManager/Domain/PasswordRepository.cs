@@ -92,5 +92,19 @@ namespace PasswordManager
             }
             return lGreenPasswords;
         }
+
+        public List<Password> ListDGreenPasswords()
+        {
+            List<Password> dGreenPasswords = new List<Password>();
+            foreach (Password pass in this.passwords)
+            {
+                if (pass.Strength == "DarkGreen")
+                {
+                    dGreenPasswords.Add(pass);
+                }
+            }
+            return dGreenPasswords;
+        }
+
     }
 }
