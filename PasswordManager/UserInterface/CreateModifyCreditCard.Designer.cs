@@ -29,13 +29,13 @@ namespace UserInterface
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.lblCategory = new System.Windows.Forms.Label();
+            this.lblName = new System.Windows.Forms.Label();
+            this.lblType = new System.Windows.Forms.Label();
+            this.lblNumber = new System.Windows.Forms.Label();
+            this.lblCCVCode = new System.Windows.Forms.Label();
+            this.lblExpiryDate = new System.Windows.Forms.Label();
+            this.lblNote = new System.Windows.Forms.Label();
             this.cmbCategories = new System.Windows.Forms.ComboBox();
             this.txtName = new System.Windows.Forms.TextBox();
             this.txtType = new System.Windows.Forms.TextBox();
@@ -44,79 +44,78 @@ namespace UserInterface
             this.operationPanel = new System.Windows.Forms.Panel();
             this.dtpExpiryDate = new System.Windows.Forms.DateTimePicker();
             this.lblMsg = new System.Windows.Forms.Label();
-            this.nudCCV = new System.Windows.Forms.NumericUpDown();
-            ((System.ComponentModel.ISupportInitialize)(this.nudCCV)).BeginInit();
+            this.txtCCVCode = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // label1
+            // lblCategory
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(27, 30);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(76, 18);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Categoria:";
+            this.lblCategory.AutoSize = true;
+            this.lblCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCategory.Location = new System.Drawing.Point(27, 30);
+            this.lblCategory.Name = "lblCategory";
+            this.lblCategory.Size = new System.Drawing.Size(76, 18);
+            this.lblCategory.TabIndex = 0;
+            this.lblCategory.Text = "Categoria:";
             // 
-            // label2
+            // lblName
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(27, 70);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(66, 18);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Nombre:";
+            this.lblName.AutoSize = true;
+            this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblName.Location = new System.Drawing.Point(27, 70);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(66, 18);
+            this.lblName.TabIndex = 1;
+            this.lblName.Text = "Nombre:";
             // 
-            // label3
+            // lblType
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(27, 110);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(41, 18);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Tipo:";
+            this.lblType.AutoSize = true;
+            this.lblType.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblType.Location = new System.Drawing.Point(27, 110);
+            this.lblType.Name = "lblType";
+            this.lblType.Size = new System.Drawing.Size(41, 18);
+            this.lblType.TabIndex = 2;
+            this.lblType.Text = "Tipo:";
             // 
-            // label4
+            // lblNumber
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(27, 149);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(66, 18);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Número:";
+            this.lblNumber.AutoSize = true;
+            this.lblNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNumber.Location = new System.Drawing.Point(27, 149);
+            this.lblNumber.Name = "lblNumber";
+            this.lblNumber.Size = new System.Drawing.Size(66, 18);
+            this.lblNumber.TabIndex = 3;
+            this.lblNumber.Text = "Número:";
             // 
-            // label5
+            // lblCCVCode
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(27, 191);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(60, 18);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Código:";
+            this.lblCCVCode.AutoSize = true;
+            this.lblCCVCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCCVCode.Location = new System.Drawing.Point(27, 191);
+            this.lblCCVCode.Name = "lblCCVCode";
+            this.lblCCVCode.Size = new System.Drawing.Size(95, 18);
+            this.lblCCVCode.TabIndex = 4;
+            this.lblCCVCode.Text = "Código CCV:";
             // 
-            // label6
+            // lblExpiryDate
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(27, 232);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(93, 18);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "Vencimiento:";
+            this.lblExpiryDate.AutoSize = true;
+            this.lblExpiryDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblExpiryDate.Location = new System.Drawing.Point(27, 232);
+            this.lblExpiryDate.Name = "lblExpiryDate";
+            this.lblExpiryDate.Size = new System.Drawing.Size(93, 18);
+            this.lblExpiryDate.TabIndex = 5;
+            this.lblExpiryDate.Text = "Vencimiento:";
             // 
-            // label7
+            // lblNote
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(27, 275);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(52, 18);
-            this.label7.TabIndex = 6;
-            this.label7.Text = "Notas:";
+            this.lblNote.AutoSize = true;
+            this.lblNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNote.Location = new System.Drawing.Point(27, 275);
+            this.lblNote.Name = "lblNote";
+            this.lblNote.Size = new System.Drawing.Size(52, 18);
+            this.lblNote.TabIndex = 6;
+            this.lblNote.Text = "Notas:";
             // 
             // cmbCategories
             // 
@@ -170,7 +169,7 @@ namespace UserInterface
             this.dtpExpiryDate.MaxDate = new System.DateTime(2035, 1, 1, 0, 0, 0, 0);
             this.dtpExpiryDate.Name = "dtpExpiryDate";
             this.dtpExpiryDate.Size = new System.Drawing.Size(174, 20);
-            this.dtpExpiryDate.TabIndex = 15;
+            this.dtpExpiryDate.TabIndex = 12;
             this.dtpExpiryDate.Value = new System.DateTime(2021, 5, 10, 0, 0, 0, 0);
             // 
             // lblMsg
@@ -181,24 +180,19 @@ namespace UserInterface
             this.lblMsg.Size = new System.Drawing.Size(0, 13);
             this.lblMsg.TabIndex = 16;
             // 
-            // nudCCV
+            // txtCCVCode
             // 
-            this.nudCCV.Location = new System.Drawing.Point(141, 193);
-            this.nudCCV.Maximum = new decimal(new int[] {
-            999,
-            0,
-            0,
-            0});
-            this.nudCCV.Name = "nudCCV";
-            this.nudCCV.Size = new System.Drawing.Size(176, 20);
-            this.nudCCV.TabIndex = 17;
+            this.txtCCVCode.Location = new System.Drawing.Point(141, 192);
+            this.txtCCVCode.Name = "txtCCVCode";
+            this.txtCCVCode.Size = new System.Drawing.Size(176, 20);
+            this.txtCCVCode.TabIndex = 11;
             // 
             // CreateModifyCreditCard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(363, 444);
-            this.Controls.Add(this.nudCCV);
+            this.Controls.Add(this.txtCCVCode);
             this.Controls.Add(this.lblMsg);
             this.Controls.Add(this.dtpExpiryDate);
             this.Controls.Add(this.operationPanel);
@@ -207,17 +201,16 @@ namespace UserInterface
             this.Controls.Add(this.txtType);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.cmbCategories);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblNote);
+            this.Controls.Add(this.lblExpiryDate);
+            this.Controls.Add(this.lblCCVCode);
+            this.Controls.Add(this.lblNumber);
+            this.Controls.Add(this.lblType);
+            this.Controls.Add(this.lblName);
+            this.Controls.Add(this.lblCategory);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "CreateModifyCreditCard";
             this.Text = "CreditCard";
-            ((System.ComponentModel.ISupportInitialize)(this.nudCCV)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -225,13 +218,13 @@ namespace UserInterface
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lblCategory;
+        private System.Windows.Forms.Label lblName;
+        private System.Windows.Forms.Label lblType;
+        private System.Windows.Forms.Label lblNumber;
+        private System.Windows.Forms.Label lblCCVCode;
+        private System.Windows.Forms.Label lblExpiryDate;
+        private System.Windows.Forms.Label lblNote;
         private System.Windows.Forms.ComboBox cmbCategories;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.TextBox txtType;
@@ -240,6 +233,6 @@ namespace UserInterface
         private System.Windows.Forms.Panel operationPanel;
         private System.Windows.Forms.DateTimePicker dtpExpiryDate;
         private System.Windows.Forms.Label lblMsg;
-        private System.Windows.Forms.NumericUpDown nudCCV;
+        private System.Windows.Forms.TextBox txtCCVCode;
     }
 }

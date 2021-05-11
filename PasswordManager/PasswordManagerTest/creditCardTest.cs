@@ -50,11 +50,26 @@ namespace PasswordManagerTest
         }
 
         [TestMethod]
+        [ExpectedException(typeof(EmptyCreditCardNameException))]
+        public void CreateCreditCardWithEmptyNameThrowsException() 
+        {
+            new CreditCard(category, "", type, creditCardNumber, ccvCode, expDate, note);
+        }
+
+        [TestMethod]
         [ExpectedException(typeof(InvalidCreditCardNumberException))]
         public void CreateCreditCardWithNumberLenghtLongerThanSixteen()
         {
             long creditCardLongNumber = 123451234512345123;
             CreditCard invalidCard = new CreditCard(category, name, type, creditCardLongNumber, ccvCode, expDate, note);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidCreditCardCCVCodeException))]
+        public void CreateCreditCardWithInvalidCCVCode() 
+        {
+            short InvalidCCVCode = 12112; 
+            CreditCard invalidCard = new CreditCard(category, name, type, creditCardNumber, InvalidCCVCode, expDate, note);
         }
 
         [TestMethod]
