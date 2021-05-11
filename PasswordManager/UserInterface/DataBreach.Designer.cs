@@ -91,7 +91,7 @@
             this.Controls.Add(this.lblSubTitle);
             this.Controls.Add(this.lblTitle);
             this.Name = "DataBreach";
-            this.Size = new System.Drawing.Size(442, 380);
+            this.Size = new System.Drawing.Size(451, 398);
             this.ResumeLayout(false);
             this.PerformLayout();
 
