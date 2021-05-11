@@ -15,11 +15,13 @@ namespace UserInterface
     public partial class DataBreach : UserControl
     {
         private PasswordsController passwords;
+        private CreditCardsController creditCards;
         private event HandleBackToMenu ChangeToMenu;
         private CreateModifyPassword passwordForm;
-        public DataBreach(PasswordsController passwords)
+        public DataBreach(PasswordsController passwords, CreditCardsController creditCards)
         {
             InitializeComponent();
+            this.creditCards = creditCards;
             this.passwords = passwords;
             LoadList();
         }
@@ -40,6 +42,11 @@ namespace UserInterface
                 line = readText.ReadLine();
             }
             readText.Close();
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            ChangeToMenu();
         }
     }
 }
