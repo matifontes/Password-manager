@@ -58,6 +58,14 @@ namespace PasswordManagerTest
         }
 
         [TestMethod]
+        [ExpectedException(typeof(InvalidCreditCardCCVCodeException))]
+        public void CreateCreditCardWithInvalidCCVCode() 
+        {
+            short InvalidCCVCode = 12112; 
+            CreditCard invalidCard = new CreditCard(category, name, type, creditCardNumber, InvalidCCVCode, expDate, note);
+        }
+
+        [TestMethod]
         public void CreaditCardToStringShowItsName() 
         {
             Assert.AreEqual(card.ToString(), name);
