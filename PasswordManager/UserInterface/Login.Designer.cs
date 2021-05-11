@@ -32,6 +32,7 @@ namespace UserInterface
             this.btnLogin = new System.Windows.Forms.Button();
             this.txtPasswordInput = new System.Windows.Forms.TextBox();
             this.lblLogin = new System.Windows.Forms.Label();
+            this.lblErrorMsg = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnLogin
@@ -63,10 +64,19 @@ namespace UserInterface
             this.lblLogin.TabIndex = 2;
             this.lblLogin.Text = "Contraseña:";
             // 
+            // lblErrorMsg
+            // 
+            this.lblErrorMsg.AutoSize = true;
+            this.lblErrorMsg.Location = new System.Drawing.Point(19, 63);
+            this.lblErrorMsg.Name = "lblErrorMsg";
+            this.lblErrorMsg.Size = new System.Drawing.Size(0, 13);
+            this.lblErrorMsg.TabIndex = 3;
+            // 
             // LoginPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lblErrorMsg);
             this.Controls.Add(this.lblLogin);
             this.Controls.Add(this.txtPasswordInput);
             this.Controls.Add(this.btnLogin);
@@ -82,5 +92,6 @@ namespace UserInterface
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.TextBox txtPasswordInput;
         private System.Windows.Forms.Label lblLogin;
+        private System.Windows.Forms.Label lblErrorMsg;
     }
 }
