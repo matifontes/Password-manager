@@ -112,10 +112,10 @@ namespace PasswordManagerTest
             creditCardRepository.AddCreditCard(card2);
 
 
-            List<CreditCard> creditCard = new List<CreditCard>();
+            List<CreditCard> creditCards = new List<CreditCard>();
             creditCards.Add(card2);
-
-            Assert.AreEqual(card2, creditCardRepository.GetMatchingCreditCardsList(creditCards));
+            List<CreditCard> creditCardsResult = creditCardRepository.GetMatchingCreditCardsList(creditCards);
+            Assert.AreEqual(card2, creditCardsResult[0]);
         }
     }
 }
