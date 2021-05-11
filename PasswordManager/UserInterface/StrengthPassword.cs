@@ -39,11 +39,11 @@ namespace UserInterface
         
         private void EnableOptions()
         {
-            btnRedPassword.Enabled = passwords.ListRedPasswords().Count == 0;
-            btnOrangePassword.Enabled = passwords.ListOrangePasswords().Count == 0;
-            btnYellowPassword.Enabled = passwords.ListYellowPasswords().Count == 0;
-            btnLightGreenPassword.Enabled = passwords.ListLightGreenPasswords().Count == 0;
-            btnDarkGreenPassword.Enabled = passwords.ListDarkGreenPasswords().Count == 0;
+            btnRedPassword.Enabled = passwords.ListRedPasswords().Count != 0;
+            btnOrangePassword.Enabled = passwords.ListOrangePasswords().Count != 0;
+            btnYellowPassword.Enabled = passwords.ListYellowPasswords().Count != 0;
+            btnLightGreenPassword.Enabled = passwords.ListLightGreenPasswords().Count != 0;
+            btnDarkGreenPassword.Enabled = passwords.ListDarkGreenPasswords().Count != 0;
 
         }
 

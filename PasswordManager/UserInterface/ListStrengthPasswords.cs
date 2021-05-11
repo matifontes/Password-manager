@@ -19,12 +19,14 @@ namespace UserInterface
         private event HandleBackToMenu ChangeToMenu;
         private CreateModifyPassword passwordForm;
         private List<Password> passList;
-        public ListStrengthPasswords(PasswordsController passwords, CategoriesController categories, List<Password> list, string STRENGTH)
+        private string strength;
+        public ListStrengthPasswords(PasswordsController passwords, CategoriesController categories, List<Password> list, string strength)
         {
             InitializeComponent();
             this.categories = categories;
             this.passwords = passwords;
             this.passList = list;
+            this.strength = strength;
             EnableOptions();
             LoadTitle();
             LoadListPasswords();
@@ -67,12 +69,15 @@ namespace UserInterface
 
             foreach (Password password in passList)
             {
-                DataRow row = dataTable.NewRow();
-                row["Categoría"] = password.Category;
-                row["Sitio"] = password.Site;
-                row["Usuario"] = password;
-                row["Última Modificación"] = password.LastModificationDate;
-                dataTable.Rows.Add(row);
+                if(password.Strength == this.strength)
+                {
+                    DataRow row = dataTable.NewRow();
+                    row["Categoría"] = password.Category;
+                    row["Sitio"] = password.Site;
+                    row["Usuario"] = password;
+                    row["Última Modificación"] = password.LastModificationDate;
+                    dataTable.Rows.Add(row);
+                }
             }
 
             dgvList.DataSource = dataTable;
