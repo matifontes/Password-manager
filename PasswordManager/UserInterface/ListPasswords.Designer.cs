@@ -51,14 +51,15 @@ namespace UserInterface
             this.dgvPasswords.MultiSelect = false;
             this.dgvPasswords.Name = "dgvPasswords";
             this.dgvPasswords.ReadOnly = true;
+            this.dgvPasswords.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dgvPasswords.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPasswords.ShowEditingIcon = false;
-            this.dgvPasswords.Size = new System.Drawing.Size(483, 199);
+            this.dgvPasswords.Size = new System.Drawing.Size(543, 257);
             this.dgvPasswords.TabIndex = 0;
             // 
             // btnAddPassword
             // 
-            this.btnAddPassword.Location = new System.Drawing.Point(381, 321);
+            this.btnAddPassword.Location = new System.Drawing.Point(441, 396);
             this.btnAddPassword.Name = "btnAddPassword";
             this.btnAddPassword.Size = new System.Drawing.Size(121, 32);
             this.btnAddPassword.TabIndex = 1;
@@ -68,7 +69,7 @@ namespace UserInterface
             // 
             // btnModify
             // 
-            this.btnModify.Location = new System.Drawing.Point(254, 321);
+            this.btnModify.Location = new System.Drawing.Point(314, 397);
             this.btnModify.Name = "btnModify";
             this.btnModify.Size = new System.Drawing.Size(121, 30);
             this.btnModify.TabIndex = 2;
@@ -78,7 +79,7 @@ namespace UserInterface
             // 
             // btnRemove
             // 
-            this.btnRemove.Location = new System.Drawing.Point(127, 321);
+            this.btnRemove.Location = new System.Drawing.Point(187, 397);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(121, 30);
             this.btnRemove.TabIndex = 3;
@@ -118,7 +119,7 @@ namespace UserInterface
             this.Controls.Add(this.btnAddPassword);
             this.Controls.Add(this.dgvPasswords);
             this.Name = "ListPasswordsPanel";
-            this.Size = new System.Drawing.Size(527, 384);
+            this.Size = new System.Drawing.Size(579, 451);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPasswords)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

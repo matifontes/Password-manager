@@ -64,11 +64,23 @@
     <Compile Include="CreateCategory.Designer.cs">
       <DependentUpon>CreateCategory.cs</DependentUpon>
     </Compile>
+    <Compile Include="CreateCreditCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CreateCreditCard.Designer.cs">
+      <DependentUpon>CreateCreditCard.cs</DependentUpon>
+    </Compile>
     <Compile Include="CreateModifyCategory.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CreateModifyCategory.Designer.cs">
       <DependentUpon>CreateModifyCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CreateModifyCreditCard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateModifyCreditCard.Designer.cs">
+      <DependentUpon>CreateModifyCreditCard.cs</DependentUpon>
     </Compile>
     <Compile Include="CreateModifyPassword.cs">
       <SubType>Form</SubType>
@@ -99,6 +111,12 @@
     </Compile>
     <Compile Include="ListPasswords.Designer.cs">
       <DependentUpon>ListPasswords.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModifyCreditCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ModifyCreditCard.Designer.cs">
+      <DependentUpon>ModifyCreditCard.cs</DependentUpon>
     </Compile>
     <Compile Include="ModifyPassword.cs">
       <SubType>UserControl</SubType>
@@ -141,8 +159,14 @@
     <EmbeddedResource Include="CreateCategory.resx">
       <DependentUpon>CreateCategory.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CreateCreditCard.resx">
+      <DependentUpon>CreateCreditCard.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CreateModifyCategory.resx">
       <DependentUpon>CreateModifyCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateModifyCreditCard.resx">
+      <DependentUpon>CreateModifyCreditCard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CreateModifyPassword.resx">
       <DependentUpon>CreateModifyPassword.cs</DependentUpon>
@@ -161,6 +185,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ListPasswords.resx">
       <DependentUpon>ListPasswords.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModifyCreditCard.resx">
+      <DependentUpon>ModifyCreditCard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModifyPassword.resx">
       <DependentUpon>ModifyPassword.cs</DependentUpon>

@@ -6,14 +6,14 @@ namespace PasswordManager
     public class CreditCard
     {
         const int LENGTH_FOR_VALID_NAME = 16;
-        public Category CreditCardCategory { get; set; }
+        public Category Category { get; set; }
         public string Name { get; set; }
         public string Type { get; set; }
         private long _number;
         public long Number
         {
             get { return _number; }
-            private set => SetNumber(value);
+            set => SetNumber(value);
         }
         public short CCVCode { get; set; }
         public DateTime ExpiryDate { get; set; }
@@ -21,13 +21,18 @@ namespace PasswordManager
 
 
         public CreditCard(Category category, string name, string type, long creditCardNumber, short ccvCode, DateTime expDate, string note) {
-            this.CreditCardCategory = category;
+            this.Category = category;
             this.Name = name;
             this.Type = type;
             this.Number = creditCardNumber;
             this.CCVCode = ccvCode;
             this.ExpiryDate = expDate;
             this.Note = note;
+        }
+
+        public override string ToString()
+        {
+            return this.Name;
         }
 
         private void SetNumber(long num)

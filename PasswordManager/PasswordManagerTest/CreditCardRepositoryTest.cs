@@ -41,10 +41,23 @@ namespace PasswordManagerTest
         }
 
         [TestMethod]
+        public void CreateNewCreditCardRepositoryShouldBeEmpty() 
+        {
+            Assert.IsTrue(creditCardRepository.IsEmpty());
+        }
+
+        [TestMethod]
         public void AddCreditCardToRepository() 
         {
             creditCardRepository.AddCreditCard(creditCard);
             Assert.AreEqual(creditCardRepository.Count(), 1);
+        }
+
+        [TestMethod]
+        public void AddCreditCardToRepositoryShouldntBeEmpty()
+        {
+            creditCardRepository.AddCreditCard(creditCard);
+            Assert.IsFalse(creditCardRepository.IsEmpty());
         }
 
         [TestMethod]
@@ -84,9 +97,9 @@ namespace PasswordManagerTest
 
 
             List<CreditCard> orderedCreditCards = creditCardRepository.ListCreditCards();
-            Assert.AreEqual(orderedCreditCards[0].CreditCardCategory, category3);
-            Assert.AreEqual(orderedCreditCards[1].CreditCardCategory, category);
-            Assert.AreEqual(orderedCreditCards[2].CreditCardCategory, category2);
+            Assert.AreEqual(orderedCreditCards[0].Category, category3);
+            Assert.AreEqual(orderedCreditCards[1].Category, category);
+            Assert.AreEqual(orderedCreditCards[2].Category, category2);
         }
     }
 }

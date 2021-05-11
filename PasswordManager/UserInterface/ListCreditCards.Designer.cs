@@ -29,22 +29,30 @@ namespace UserInterface
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvCategories = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.btnAddCreditCard = new System.Windows.Forms.Button();
             this.btnModify = new System.Windows.Forms.Button();
             this.btnRemove = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCategories)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dgvCategories
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(14, 111);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(493, 272);
-            this.dataGridView1.TabIndex = 0;
+            this.dgvCategories.AllowUserToAddRows = false;
+            this.dgvCategories.AllowUserToDeleteRows = false;
+            this.dgvCategories.AllowUserToResizeColumns = false;
+            this.dgvCategories.AllowUserToResizeRows = false;
+            this.dgvCategories.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvCategories.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCategories.Location = new System.Drawing.Point(14, 111);
+            this.dgvCategories.MultiSelect = false;
+            this.dgvCategories.Name = "dgvCategories";
+            this.dgvCategories.ReadOnly = true;
+            this.dgvCategories.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvCategories.Size = new System.Drawing.Size(459, 264);
+            this.dgvCategories.TabIndex = 0;
             // 
             // label1
             // 
@@ -58,30 +66,33 @@ namespace UserInterface
             // 
             // btnAddCreditCard
             // 
-            this.btnAddCreditCard.Location = new System.Drawing.Point(388, 401);
+            this.btnAddCreditCard.Location = new System.Drawing.Point(355, 381);
             this.btnAddCreditCard.Name = "btnAddCreditCard";
             this.btnAddCreditCard.Size = new System.Drawing.Size(118, 38);
             this.btnAddCreditCard.TabIndex = 2;
             this.btnAddCreditCard.Text = "Agregar";
             this.btnAddCreditCard.UseVisualStyleBackColor = true;
+            this.btnAddCreditCard.Click += new System.EventHandler(this.BtnAddCreditCard_Click);
             // 
             // btnModify
             // 
-            this.btnModify.Location = new System.Drawing.Point(264, 401);
+            this.btnModify.Location = new System.Drawing.Point(231, 381);
             this.btnModify.Name = "btnModify";
             this.btnModify.Size = new System.Drawing.Size(118, 38);
             this.btnModify.TabIndex = 3;
             this.btnModify.Text = "Modificar";
             this.btnModify.UseVisualStyleBackColor = true;
+            this.btnModify.Click += new System.EventHandler(this.BtnModify_Click);
             // 
             // btnRemove
             // 
-            this.btnRemove.Location = new System.Drawing.Point(140, 401);
+            this.btnRemove.Location = new System.Drawing.Point(107, 381);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(118, 37);
             this.btnRemove.TabIndex = 4;
             this.btnRemove.Text = "Eliminar";
             this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.BtnRemove_Click);
             // 
             // btnBack
             // 
@@ -102,10 +113,10 @@ namespace UserInterface
             this.Controls.Add(this.btnModify);
             this.Controls.Add(this.btnAddCreditCard);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvCategories);
             this.Name = "ListCreditCards";
-            this.Size = new System.Drawing.Size(524, 471);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Size = new System.Drawing.Size(502, 458);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCategories)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -113,7 +124,7 @@ namespace UserInterface
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvCategories;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnAddCreditCard;
         private System.Windows.Forms.Button btnModify;
