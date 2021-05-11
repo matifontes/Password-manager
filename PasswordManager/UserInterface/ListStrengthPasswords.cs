@@ -89,7 +89,6 @@ namespace UserInterface
 
         private void BtnModify_Click(object sender, EventArgs e)
         {
-            DisposeModifyPassword();
             DisposeChildForms();
             Password password = (Password)dgvList.SelectedRows[0].Cells[2].Value;
             this.modifyPassword = password;
