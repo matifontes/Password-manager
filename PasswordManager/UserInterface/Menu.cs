@@ -60,7 +60,7 @@ namespace UserInterface
 
         private void BtnBreaches_Click(object sender, EventArgs e)
         {
-            DataBreach dataBreaches = new DataBreach(this.passwords, this.creditCards);
+            DataBreach dataBreaches = new DataBreach(this.passwords, this.creditCards, this.categories);
             dataBreaches.AddListener(ReturnToMenu);
             dataBreaches.AddListener(ChangeWindow);
             ChangeWindow(dataBreaches);

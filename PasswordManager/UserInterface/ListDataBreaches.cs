@@ -17,13 +17,17 @@ namespace UserInterface
         private event HandleBackToMenu ChangeToDataBreach;
         private event HandleWindowChange ChangeWindow;
         private CreateModifyPassword passwordForm;
+        private CategoriesController categories;
+        private PasswordsController passwordsController;
         List<Password> passwords;
         List<CreditCard> creditCards;
 
 
-        public ListDataBreaches(List<Password> passwords, List<CreditCard> creditCards)
+        public ListDataBreaches(List<Password> passwords, List<CreditCard> creditCards, CategoriesController categories, PasswordsController passwordsController)
         {
             InitializeComponent();
+            this.passwordsController = passwordsController;
+            this.categories = categories;
             this.passwords = passwords;
             this.creditCards = creditCards;
             LoadListPasswords();
@@ -97,6 +101,21 @@ namespace UserInterface
         private void EnableModifyOption()
         {
             btnModify.Enabled = this.passwords.Count > 0;
+        }
+
+        private void btnModify_Click(object sender, EventArgs e)
+        {
+            DisposeChildForm();
+            Password password = (Password)dgvPasswords.SelectedRows[0].Cells[2].Value;
+            this.passwordForm = new CreateModifyPassword(this.passwordsController, this.categories, password);
+            passwordForm.AddListener(PostModification);
+            passwordForm.Show();
+        }
+
+        private void PostModification()
+        {
+            EnableModifyOption();
+            LoadListPasswords();
         }
 
         private void btnBack_Click(object sender, EventArgs e)
