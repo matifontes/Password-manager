@@ -39,18 +39,21 @@ namespace UserInterface
                 btnModify.Enabled = false;
                 btnRemove.Enabled = false;
                 btnAddCreditCard.Enabled = false;
+                dgvCategories.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             }
             else if (creditCards.IsEmpty() && !categories.IsEmpty())
             {
                 btnModify.Enabled = false;
                 btnRemove.Enabled = false;
                 btnAddCreditCard.Enabled = true;
+                dgvCategories.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill; 
             }
             else 
             {
                 btnModify.Enabled = true;
                 btnRemove.Enabled = true;
                 btnAddCreditCard.Enabled = true;
+                dgvCategories.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             }
         }
 
