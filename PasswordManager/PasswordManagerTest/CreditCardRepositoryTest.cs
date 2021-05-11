@@ -102,6 +102,7 @@ namespace PasswordManagerTest
             Assert.AreEqual(orderedCreditCards[2].Category, category2);
         }
 
+        [TestMethod]
         public void GetMatchingCreditCardsList()
         {
             Category category2 = new Category("Trabajo");

@@ -89,5 +89,23 @@ namespace PasswordManagerTest
 
         }
 
+        [TestMethod]
+        public void GetMatchingCreditCardsList()
+        {
+            Category category2 = new Category("Trabajo");
+            Category category3 = new Category("Gaming");
+            CreditCard card2 = new CreditCard(category2, name, type, creditCardNumber, ccvCode, expDate, note);
+            CreditCard card3 = new CreditCard(category3, name, type, creditCardNumber, ccvCode, expDate, note);
+            creditCardsController.AddCreditCard(card3);
+            creditCardsController.AddCreditCard(card2);
+
+
+            List<CreditCard> creditCards = new List<CreditCard>();
+            creditCards.Add(card2);
+            List<CreditCard> creditCardsResult = creditCardsController.GetMatchingCreditCardsList(creditCards);
+            Assert.AreEqual(card2, creditCardsResult[0]);
+        }
     }
+
 }
+
