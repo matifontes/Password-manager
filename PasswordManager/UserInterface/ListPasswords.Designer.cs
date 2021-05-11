@@ -61,7 +61,7 @@ namespace UserInterface
             // 
             this.btnAddPassword.Location = new System.Drawing.Point(441, 396);
             this.btnAddPassword.Name = "btnAddPassword";
-            this.btnAddPassword.Size = new System.Drawing.Size(121, 32);
+            this.btnAddPassword.Size = new System.Drawing.Size(121, 30);
             this.btnAddPassword.TabIndex = 1;
             this.btnAddPassword.Text = "Agregar";
             this.btnAddPassword.UseVisualStyleBackColor = true;

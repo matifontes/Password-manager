@@ -65,6 +65,10 @@ namespace UserInterface
 
         private void BtnPasswordStrangth_Click(object sender, EventArgs e)
         {
+            StrengthPassword strengthPassword = new StrengthPassword(passwords, categories);
+            strengthPassword.AddListener(ReturnToMenu);
+            strengthPassword.AddListener(ChangeWindow);
+            ChangeWindow(strengthPassword);
 
         }
         private void BtnChangePassword_Click(object sender, EventArgs e)
