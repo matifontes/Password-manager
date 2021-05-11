@@ -32,6 +32,7 @@
             this.dgvList = new System.Windows.Forms.DataGridView();
             this.btnModify = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
+            this.lblMsg = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,7 +53,7 @@
             this.dgvList.AllowUserToResizeRows = false;
             this.dgvList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvList.Location = new System.Drawing.Point(48, 83);
+            this.dgvList.Location = new System.Drawing.Point(48, 79);
             this.dgvList.MultiSelect = false;
             this.dgvList.Name = "dgvList";
             this.dgvList.ReadOnly = true;
@@ -69,7 +70,7 @@
             this.btnModify.TabIndex = 2;
             this.btnModify.Text = "Modificar";
             this.btnModify.UseVisualStyleBackColor = true;
-            this.btnModify.Click += new System.EventHandler(this.btnModify_Click);
+            this.btnModify.Click += new System.EventHandler(this.BtnModify_Click);
             // 
             // btnBack
             // 
@@ -79,12 +80,21 @@
             this.btnBack.TabIndex = 3;
             this.btnBack.Text = "Volver";
             this.btnBack.UseVisualStyleBackColor = true;
-            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            this.btnBack.Click += new System.EventHandler(this.BtnBack_Click);
+            // 
+            // lblMsg
+            // 
+            this.lblMsg.AutoSize = true;
+            this.lblMsg.Location = new System.Drawing.Point(49, 292);
+            this.lblMsg.Name = "lblMsg";
+            this.lblMsg.Size = new System.Drawing.Size(0, 13);
+            this.lblMsg.TabIndex = 4;
             // 
             // ListStrengthPasswords
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lblMsg);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnModify);
             this.Controls.Add(this.dgvList);
@@ -103,5 +113,6 @@
         private System.Windows.Forms.DataGridView dgvList;
         private System.Windows.Forms.Button btnModify;
         private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.Label lblMsg;
     }
 }

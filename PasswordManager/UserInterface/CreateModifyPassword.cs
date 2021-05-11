@@ -26,7 +26,7 @@ namespace UserInterface
             this.categories = categories;
             LoadCategories();
         }
-        public CreateModifyPassword(PasswordsController passwords, CategoriesController categories, Password password) 
+        public CreateModifyPassword(CategoriesController categories, Password password) 
         {
             InitializeComponent();
             CreateModifyPanel();

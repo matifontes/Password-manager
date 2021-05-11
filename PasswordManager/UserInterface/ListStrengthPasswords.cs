@@ -14,17 +14,16 @@ namespace UserInterface
 {
     public partial class ListStrengthPasswords : UserControl
     {
-        private PasswordsController passwords;
         private CategoriesController categories;
-        private event HandleBackToMenu ChangeToMenu;
+        private event HandleBackToMenu ChangeToPasswordStrenght;
         private CreateModifyPassword passwordForm;
         private List<Password> passList;
+        private Password modifyPassword;
         private string strength;
-        public ListStrengthPasswords(PasswordsController passwords, CategoriesController categories, List<Password> list, string strength)
+        public ListStrengthPasswords( CategoriesController categories, List<Password> list, string strength)
         {
             InitializeComponent();
             this.categories = categories;
-            this.passwords = passwords;
             this.passList = list;
             this.strength = strength;
             EnableOptions();
@@ -34,7 +33,7 @@ namespace UserInterface
 
         public void AddListener(HandleBackToMenu del)
         {
-            ChangeToMenu += del;
+            ChangeToPasswordStrenght += del;
         }
 
         private void LoadTitle()
@@ -49,11 +48,7 @@ namespace UserInterface
 
         private void EnableOptions()
         {
-            if (this.passwords.IsEmpty() && this.categories.IsEmpty())
-            {
-                btnModify.Enabled = false;
-            }
-            else if (this.passwords.IsEmpty() && !this.categories.IsEmpty())
+            if (this.passList.Count() == 0)
             {
                 btnModify.Enabled = false;
             }
@@ -92,26 +87,43 @@ namespace UserInterface
             return dataTable;
         }
 
-        private void btnModify_Click(object sender, EventArgs e)
+        private void BtnModify_Click(object sender, EventArgs e)
         {
+            DisposeModifyPassword();
             DisposeChildForms();
             Password password = (Password)dgvList.SelectedRows[0].Cells[2].Value;
-            this.passwordForm = new CreateModifyPassword(this.passwords, this.categories, password);
+            this.modifyPassword = password;
+            this.passwordForm = new CreateModifyPassword(this.categories, password);
             passwordForm.AddListener(PostModification);
             passwordForm.Show();
         }
 
         private void PostModification()
         {
+            if (this.modifyPassword.Strength != this.strength) 
+            {
+                const string SUCCESSFUL_MODIFY = "Contraseña modificada correctamente, a cambiado su nivel de fortaleza";
+                this.passList.Remove(this.modifyPassword);
+                DisposeChildForms();
+                ShowMSG(System.Drawing.Color.Green, SUCCESSFUL_MODIFY);
+            }
+            DisposeModifyPassword();
             EnableOptions();
             LoadListPasswords();
         }
 
-        private void btnBack_Click(object sender, EventArgs e)
+        private void BtnBack_Click(object sender, EventArgs e)
         {
+            DisposeModifyPassword();
             DisposeChildForms();
-            ChangeToMenu();
+            ChangeToPasswordStrenght();
 
+        }
+
+        private void ShowMSG(System.Drawing.Color color, string message) 
+        {
+            lblMsg.ForeColor = color;
+            lblMsg.Text = message;
         }
 
         private void DisposeChildForms()
@@ -119,6 +131,14 @@ namespace UserInterface
             if (this.passwordForm != null)
             {
                 this.passwordForm.Dispose();
+            }
+        }
+
+        private void DisposeModifyPassword() 
+        {
+            if (this.modifyPassword != null) 
+            {
+                this.modifyPassword = null;
             }
         }
     }
