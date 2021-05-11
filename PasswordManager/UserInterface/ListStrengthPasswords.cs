@@ -65,7 +65,7 @@ namespace UserInterface
 
         private void LoadListPasswords()
         {
-            DataTable dataTable = InitilizeTable();
+            DataTable dataTable = InitializeTable();
 
             foreach (Password password in passList)
             {
