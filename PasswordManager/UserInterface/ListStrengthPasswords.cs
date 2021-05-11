@@ -69,22 +69,20 @@ namespace UserInterface
 
             foreach (Password password in passList)
             {
-                if(password.Strength == this.strength)
-                {
-                    DataRow row = dataTable.NewRow();
-                    row["Categoría"] = password.Category;
-                    row["Sitio"] = password.Site;
-                    row["Usuario"] = password;
-                    row["Última Modificación"] = password.LastModificationDate;
-                    dataTable.Rows.Add(row);
-                }
+
+                DataRow row = dataTable.NewRow();
+                row["Categoría"] = password.Category;
+                row["Sitio"] = password.Site;
+                row["Usuario"] = password;
+                row["Última Modificación"] = password.LastModificationDate;
+                dataTable.Rows.Add(row);
             }
 
             dgvList.DataSource = dataTable;
         }
 
 
-        private DataTable InitilizeTable()
+        private DataTable InitializeTable()
         {
             DataTable dataTable = new DataTable();
             dataTable.Columns.Add("Categoría", typeof(object));
