@@ -13,7 +13,7 @@ namespace PasswordManager
         public long Number
         {
             get { return _number; }
-            private set => SetNumber(value);
+            set => SetNumber(value);
         }
         public short CCVCode { get; set; }
         public DateTime ExpiryDate { get; set; }
