@@ -56,7 +56,7 @@ namespace UserInterface
             lblCountDarkGreen.Text = passwords.ListDarkGreenPasswords().Count.ToString();
         }
 
-        private void btnRedPassword_Click(object sender, EventArgs e)
+        private void BtnRedPassword_Click(object sender, EventArgs e)
         {
             const string STRENGTH_RED = "Red";
             ListStrengthPasswords redPasswords = new ListStrengthPasswords(passwords, categories, passwords.ListRedPasswords(), STRENGTH_RED);
@@ -65,7 +65,7 @@ namespace UserInterface
         }
 
 
-        private void btnOrangePassword_Click(object sender, EventArgs e)
+        private void BtnOrangePassword_Click(object sender, EventArgs e)
         {
             const string STRENGTH_ORANGE = "Orange";
             ListStrengthPasswords orangePasswords = new ListStrengthPasswords(passwords, categories, passwords.ListOrangePasswords(), STRENGTH_ORANGE);
@@ -73,7 +73,7 @@ namespace UserInterface
             ChangeWindow(orangePasswords);
         }
 
-        private void btnYellowPassword_Click(object sender, EventArgs e)
+        private void BtnYellowPassword_Click(object sender, EventArgs e)
         {
             const string STRENGTH_YELLOW = "Yellow";
             ListStrengthPasswords yellowPasswords = new ListStrengthPasswords(passwords, categories, passwords.ListYellowPasswords(), STRENGTH_YELLOW);
@@ -81,7 +81,7 @@ namespace UserInterface
             ChangeWindow(yellowPasswords);
         }
 
-        private void btnLightGreenPassword_Click(object sender, EventArgs e)
+        private void BtnLightGreenPassword_Click(object sender, EventArgs e)
         {
             const string STRENGTH_LGREEN = "LightGreen";
             ListStrengthPasswords lightGreenPasswords = new ListStrengthPasswords(passwords, categories, passwords.ListLightGreenPasswords(), STRENGTH_LGREEN);
@@ -89,7 +89,7 @@ namespace UserInterface
             ChangeWindow(lightGreenPasswords);
         }
 
-        private void btnDarkGreenPassword_Click(object sender, EventArgs e)
+        private void BtnDarkGreenPassword_Click(object sender, EventArgs e)
         {
             const string STRENGTH_DGREEN = "DarkGreen";
             ListStrengthPasswords darkGreenPasswords = new ListStrengthPasswords(passwords, categories, passwords.ListDarkGreenPasswords(), STRENGTH_DGREEN);
