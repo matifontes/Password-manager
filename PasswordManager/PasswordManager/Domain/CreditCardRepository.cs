@@ -35,5 +35,21 @@ namespace PasswordManager
         {
             return this.creditCards.OrderBy(creditCard => creditCard.Category.Name).ToList();
         }
+
+        public List<CreditCard> GetMatchingCreditCardsList(List<CreditCard> creditCardsList)
+        {
+            List<CreditCard> ret = new List<CreditCard>();
+            foreach (CreditCard credCard in this.creditCards)
+            {
+                foreach (CreditCard credCard2 in creditCardsList)
+                {
+                    if (credCard.Equals(credCard2))
+                    {
+                        ret.Add(credCard);
+                    }
+                }
+            }
+            return ret;
+        }
     }
 }
