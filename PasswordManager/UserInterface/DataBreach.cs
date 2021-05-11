@@ -26,6 +26,8 @@ namespace UserInterface
             InitializeComponent();
             this.creditCards = creditCards;
             this.passwords = passwords;
+            this.passwordsLine = new List<Password>();
+            this.creditCardsLine = new List<CreditCard>();
             LoadList();
         }
 
@@ -42,9 +44,15 @@ namespace UserInterface
             while (line != null)
             {
                 listBox.Items.Add(line);
-
-
-
+                
+                if(line.Contains(" "))
+                {
+                    LoadCreditCards(line);
+                }
+                else
+                {
+                    LoadPasswords(line);
+                }
 
                 line = readText.ReadLine();
             }
@@ -54,13 +62,15 @@ namespace UserInterface
         private void LoadPasswords(string password)
         {
             Password pass = new Password(password);
-            passwordsLine.Add(pass);
+            this.passwordsLine.Add(pass);
         }
 
-        private void LoadCreditCards(long creditCardNumber)
+        private void LoadCreditCards(string strCreditCardNumber)
         {
-            CreditCard creditCard = new CreditCard(creditCardNumber);
-            creditCardsLine.Add(creditCard);
+            string strNum = strCreditCardNumber.Replace(" ", String.Empty);
+            long numberCreditCard = long.Parse(strNum);
+            CreditCard creditCard = new CreditCard(numberCreditCard);
+            this.creditCardsLine.Add(creditCard);
         }
 
         private void btnBack_Click(object sender, EventArgs e)
