@@ -157,5 +157,22 @@ namespace PasswordManagerTest
             Assert.AreEqual(orderedDarkGreenPasswords[0].Category, category2);
             Assert.AreEqual(orderedDarkGreenPasswords[1].Category, category);
         }
+
+        [TestMethod]
+        public void GetPasswordsMatchingList()
+        {
+            Category category2 = new Category("Trabajo");
+            Category category3 = new Category("Gaming");
+            Password password2 = new Password(category2, pass, site, user, note);
+            Password password3 = new Password(category3, pass, site, user, note);
+            passwords.AddPassword(password);
+            passwords.AddPassword(password2);
+            passwords.AddPassword(password3);
+            List<Password> passwords2 = new List<Password>();
+            passwords2.Add(password);
+            List<Password> passwordsResult = passwordsController.ListPasswordsMatching(passwords2);
+
+            Assert.AreEqual(passwordsResult[0], password);
+        }
     }
 }

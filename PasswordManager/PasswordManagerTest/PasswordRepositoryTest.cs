@@ -158,7 +158,6 @@ namespace PasswordManagerTest
             Category category3 = new Category("Gaming");
             Password password2 = new Password(category2, pass, site, user, note);
             Password password3 = new Password(category3, pass, site, user, note);
-            List<Password> passwords = passwordRepository.ListPasswords();
             passwordRepository.AddPassword(password);
             passwordRepository.AddPassword(password2);
             passwordRepository.AddPassword(password3);
