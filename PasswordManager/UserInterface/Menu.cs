@@ -62,6 +62,7 @@ namespace UserInterface
         {
             DataBreach dataBreaches = new DataBreach(this.passwords, this.creditCards);
             dataBreaches.AddListener(ReturnToMenu);
+            dataBreaches.AddListener(ChangeWindow);
             ChangeWindow(dataBreaches);
         }
 

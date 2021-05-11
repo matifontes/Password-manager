@@ -18,7 +18,7 @@ namespace UserInterface
         private PasswordsController passwords;
         private CreditCardsController creditCards;
         private event HandleBackToMenu ChangeToMenu;
-        private CreateModifyPassword passwordForm;
+        private event HandleWindowChange ChangeWindow;
         private List<Password> passwordsLine;
         private List<CreditCard> creditCardsLine;
         public DataBreach(PasswordsController passwords, CreditCardsController creditCards)
@@ -29,11 +29,22 @@ namespace UserInterface
             this.passwordsLine = new List<Password>();
             this.creditCardsLine = new List<CreditCard>();
             LoadList();
+            EnableOption();
         }
 
         public void AddListener(HandleBackToMenu del)
         {
             ChangeToMenu += del;
+        }
+
+        public void AddListener(HandleWindowChange del)
+        {
+            ChangeWindow += del;
+        }
+
+        public void EnableOption()
+        {
+            btnVerify.Enabled = !this.passwords.IsEmpty();
         }
 
         public void LoadList()
@@ -76,6 +87,20 @@ namespace UserInterface
         private void btnBack_Click(object sender, EventArgs e)
         {
             ChangeToMenu();
+        }
+
+        private void btnVerify_Click(object sender, EventArgs e)
+        {
+            List<Password> passwordsList = this.passwords.ListPasswordsMatching(this.passwordsLine);
+            List<CreditCard> creditCardlist = this.creditCards.GetMatchingCreditCardsList(this.creditCardsLine);
+            ListDataBreaches listDataBreaches = new ListDataBreaches(passwordsList, creditCardlist);
+            listDataBreaches.AddListener(ReturnToDataBreach);
+            ChangeWindow(listDataBreaches);
+        }
+
+        private void ReturnToDataBreach()
+        {
+            ChangeWindow(this);
         }
     }
 }
