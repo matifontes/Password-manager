@@ -63,6 +63,7 @@
             this.btnVerify.TabIndex = 2;
             this.btnVerify.Text = "Verificar";
             this.btnVerify.UseVisualStyleBackColor = true;
+            this.btnVerify.Click += new System.EventHandler(this.btnVerify_Click);
             // 
             // btnBack
             // 
