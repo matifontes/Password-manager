@@ -43,7 +43,7 @@ namespace PasswordManager
             {
                 foreach (CreditCard credCard2 in creditCardsList)
                 {
-                    if (credCard.Equals(credCard2))
+                    if (credCard.Number.Equals(credCard2.Number))
                     {
                         ret.Add(credCard);
                     }
