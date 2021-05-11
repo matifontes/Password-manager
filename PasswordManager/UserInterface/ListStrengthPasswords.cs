@@ -19,19 +19,30 @@ namespace UserInterface
         private event HandleBackToMenu ChangeToMenu;
         private CreateModifyPassword passwordForm;
         private List<Password> passList;
-        public ListStrengthPasswords(PasswordsController passwords, CategoriesController categories, List<Password> list)
+        public ListStrengthPasswords(PasswordsController passwords, CategoriesController categories, List<Password> list, string STRENGTH)
         {
             InitializeComponent();
             this.categories = categories;
             this.passwords = passwords;
             this.passList = list;
             EnableOptions();
+            LoadTitle();
             LoadListPasswords();
         }
 
         public void AddListener(HandleBackToMenu del)
         {
             ChangeToMenu += del;
+        }
+
+        private void LoadTitle()
+        {
+            if(this.passList.Count > 0)
+            {
+                string title = "Contraseñas con fortaleza ";
+                title += this.passList[0].Strength;
+                lblTitle.Text = title;
+            }
         }
 
         private void EnableOptions()
