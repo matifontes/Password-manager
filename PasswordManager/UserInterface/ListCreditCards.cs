@@ -24,7 +24,7 @@ namespace UserInterface
             this.creditCards = creditCards;
             this.categories = categories;
             EnableOption();
-            LoadCategoriesList();
+            LoadCreditCardsList();
         }
 
         public void AddListener(HandleBackToMenu del) 
@@ -57,7 +57,7 @@ namespace UserInterface
             }
         }
 
-        private void LoadCategoriesList() 
+        private void LoadCreditCardsList() 
         {
             List<CreditCard> orderedCreditCard = this.creditCards.ListCreditCards();
             DataTable dataTable = InitializeDataTable();
@@ -118,7 +118,7 @@ namespace UserInterface
         private void PostModification() 
         {
             EnableOption();
-            LoadCategoriesList();
+            LoadCreditCardsList();
         }
 
         private void BtnBack_Click(object sender, EventArgs e)
