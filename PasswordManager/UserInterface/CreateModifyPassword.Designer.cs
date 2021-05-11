@@ -145,6 +145,7 @@ namespace UserInterface
             0,
             0});
             this.nudLarge.Name = "nudLarge";
+            this.nudLarge.ReadOnly = true;
             this.nudLarge.Size = new System.Drawing.Size(81, 24);
             this.nudLarge.TabIndex = 9;
             this.nudLarge.Value = new decimal(new int[] {

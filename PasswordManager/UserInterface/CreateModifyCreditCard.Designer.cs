@@ -36,14 +36,16 @@ namespace UserInterface
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmbCategories = new System.Windows.Forms.ComboBox();
             this.txtName = new System.Windows.Forms.TextBox();
             this.txtType = new System.Windows.Forms.TextBox();
             this.txtNumber = new System.Windows.Forms.TextBox();
-            this.txtCCV = new System.Windows.Forms.TextBox();
-            this.txtExpireDate = new System.Windows.Forms.TextBox();
             this.txtNote = new System.Windows.Forms.TextBox();
             this.operationPanel = new System.Windows.Forms.Panel();
+            this.dtpExpiryDate = new System.Windows.Forms.DateTimePicker();
+            this.lblMsg = new System.Windows.Forms.Label();
+            this.nudCCV = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCCV)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -116,13 +118,13 @@ namespace UserInterface
             this.label7.TabIndex = 6;
             this.label7.Text = "Notas:";
             // 
-            // comboBox1
+            // cmbCategories
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(141, 30);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(176, 21);
-            this.comboBox1.TabIndex = 7;
+            this.cmbCategories.FormattingEnabled = true;
+            this.cmbCategories.Location = new System.Drawing.Point(141, 30);
+            this.cmbCategories.Name = "cmbCategories";
+            this.cmbCategories.Size = new System.Drawing.Size(176, 21);
+            this.cmbCategories.TabIndex = 7;
             // 
             // txtName
             // 
@@ -145,20 +147,6 @@ namespace UserInterface
             this.txtNumber.Size = new System.Drawing.Size(176, 20);
             this.txtNumber.TabIndex = 10;
             // 
-            // txtCCV
-            // 
-            this.txtCCV.Location = new System.Drawing.Point(141, 192);
-            this.txtCCV.Name = "txtCCV";
-            this.txtCCV.Size = new System.Drawing.Size(176, 20);
-            this.txtCCV.TabIndex = 11;
-            // 
-            // txtExpireDate
-            // 
-            this.txtExpireDate.Location = new System.Drawing.Point(141, 232);
-            this.txtExpireDate.Name = "txtExpireDate";
-            this.txtExpireDate.Size = new System.Drawing.Size(176, 20);
-            this.txtExpireDate.TabIndex = 12;
-            // 
             // txtNote
             // 
             this.txtNote.Location = new System.Drawing.Point(141, 275);
@@ -174,19 +162,51 @@ namespace UserInterface
             this.operationPanel.Size = new System.Drawing.Size(364, 50);
             this.operationPanel.TabIndex = 14;
             // 
+            // dtpExpiryDate
+            // 
+            this.dtpExpiryDate.CustomFormat = "MM/yyyy";
+            this.dtpExpiryDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpExpiryDate.Location = new System.Drawing.Point(143, 235);
+            this.dtpExpiryDate.MaxDate = new System.DateTime(2035, 1, 1, 0, 0, 0, 0);
+            this.dtpExpiryDate.Name = "dtpExpiryDate";
+            this.dtpExpiryDate.Size = new System.Drawing.Size(174, 20);
+            this.dtpExpiryDate.TabIndex = 15;
+            this.dtpExpiryDate.Value = new System.DateTime(2021, 5, 10, 0, 0, 0, 0);
+            // 
+            // lblMsg
+            // 
+            this.lblMsg.AutoSize = true;
+            this.lblMsg.Location = new System.Drawing.Point(27, 367);
+            this.lblMsg.Name = "lblMsg";
+            this.lblMsg.Size = new System.Drawing.Size(0, 13);
+            this.lblMsg.TabIndex = 16;
+            // 
+            // nudCCV
+            // 
+            this.nudCCV.Location = new System.Drawing.Point(141, 193);
+            this.nudCCV.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
+            this.nudCCV.Name = "nudCCV";
+            this.nudCCV.Size = new System.Drawing.Size(176, 20);
+            this.nudCCV.TabIndex = 17;
+            // 
             // CreateModifyCreditCard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(363, 444);
+            this.Controls.Add(this.nudCCV);
+            this.Controls.Add(this.lblMsg);
+            this.Controls.Add(this.dtpExpiryDate);
             this.Controls.Add(this.operationPanel);
             this.Controls.Add(this.txtNote);
-            this.Controls.Add(this.txtExpireDate);
-            this.Controls.Add(this.txtCCV);
             this.Controls.Add(this.txtNumber);
             this.Controls.Add(this.txtType);
             this.Controls.Add(this.txtName);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cmbCategories);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -197,6 +217,7 @@ namespace UserInterface
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "CreateModifyCreditCard";
             this.Text = "CreditCard";
+            ((System.ComponentModel.ISupportInitialize)(this.nudCCV)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -211,13 +232,14 @@ namespace UserInterface
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbCategories;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.TextBox txtType;
         private System.Windows.Forms.TextBox txtNumber;
-        private System.Windows.Forms.TextBox txtCCV;
-        private System.Windows.Forms.TextBox txtExpireDate;
         private System.Windows.Forms.TextBox txtNote;
         private System.Windows.Forms.Panel operationPanel;
+        private System.Windows.Forms.DateTimePicker dtpExpiryDate;
+        private System.Windows.Forms.Label lblMsg;
+        private System.Windows.Forms.NumericUpDown nudCCV;
     }
 }

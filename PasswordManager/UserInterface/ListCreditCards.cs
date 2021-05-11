@@ -23,19 +23,35 @@ namespace UserInterface
             InitializeComponent();
             this.creditCards = creditCards;
             this.categories = categories;
-            //harcoded creaditCards
-            if (this.creditCards.Count() == 0) 
-            {
-                this.creditCards.AddCreditCard(new CreditCard(new Category("Personal"),"Visa Gold", "Visa",3212314543432456,090,DateTime.Today,"nota"));
-                this.creditCards.AddCreditCard(new CreditCard(new Category("Trabajo"), "Visa Gold", "Visa", 3212314543432456, 090, DateTime.Today, "nota"));
-                this.creditCards.AddCreditCard(new CreditCard(new Category("Gaming"), "Visa Gold", "Visa", 3212314543432456, 090, DateTime.Today, "nota"));
-            }
+            EnableOption();
             LoadCategoriesList();
         }
 
         public void AddListener(HandleBackToMenu del) 
         {
             ChangeToMenu += del;
+        }
+
+        private void EnableOption() 
+        {
+            if (creditCards.IsEmpty() && categories.IsEmpty())
+            {
+                btnModify.Enabled = false;
+                btnRemove.Enabled = false;
+                btnAddCreditCard.Enabled = false;
+            }
+            else if (creditCards.IsEmpty() && !categories.IsEmpty())
+            {
+                btnModify.Enabled = false;
+                btnRemove.Enabled = false;
+                btnAddCreditCard.Enabled = true;
+            }
+            else 
+            {
+                btnModify.Enabled = true;
+                btnRemove.Enabled = true;
+                btnAddCreditCard.Enabled = true;
+            }
         }
 
         private void LoadCategoriesList() 
@@ -73,17 +89,32 @@ namespace UserInterface
         private void BtnAddCreditCard_Click(object sender, EventArgs e)
         {
             DisposeChildForm();
+            CreateModifyCreditCard createCreditCard = new CreateModifyCreditCard(this.categories,this.creditCards);
+            createCreditCard.AddListener(PostModification);
+            this.creditCardForm = createCreditCard;
+            this.creditCardForm.Show();
         }
 
         private void BtnModify_Click(object sender, EventArgs e)
         {
             DisposeChildForm();
+            CreditCard creditCard = (CreditCard)dgvCategories.SelectedRows[0].Cells[1].Value;
+            CreateModifyCreditCard modifyCreditCard = new CreateModifyCreditCard(this.categories, this.creditCards,creditCard);
+            modifyCreditCard.AddListener(PostModification);
+            this.creditCardForm = modifyCreditCard;
+            this.creditCardForm.Show();
         }
 
         private void BtnRemove_Click(object sender, EventArgs e)
         {
             CreditCard creditCardToRemove = (CreditCard)dgvCategories.SelectedRows[0].Cells[1].Value;
             this.creditCards.RemoveCreditCard(creditCardToRemove);
+            PostModification();
+        }
+
+        private void PostModification() 
+        {
+            EnableOption();
             LoadCategoriesList();
         }
 
