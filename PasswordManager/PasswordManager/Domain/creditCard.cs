@@ -10,12 +10,17 @@ namespace PasswordManager
         public string Name { get; set; }
         public string Type { get; set; }
         private long _number;
+        private short _ccvCode;
         public long Number
         {
             get { return _number; }
             set => SetNumber(value);
         }
-        public short CCVCode { get; set; }
+        public short CCVCode 
+        {
+            get { return _ccvCode; }
+            set => SetCCVCode(value); 
+        }
         public DateTime ExpiryDate { get; set; }
         public string Note { get; set; }
 
@@ -39,12 +44,29 @@ namespace PasswordManager
         {
             if (!IsValidNumber(num))
             {
-                throw new InvalidCreditCardNumberException("Largo del numero de tarjeta incorrecto");
+                throw new InvalidCreditCardNumberException("Largo del numero de tarjeta invalido");
             }
             else
             {
                 this._number = num;
             }
+        }
+
+        private void SetCCVCode(short num) 
+        {
+            if (!IsValidCCV(num))
+            {
+                throw new InvalidCreditCardCCVCodeException("Código CCV invalido");
+            }
+            else 
+            {
+                this._ccvCode = num;
+            }
+        }
+
+        private bool IsValidCCV(short num) 
+        {
+            return num <= 999 && num >= 000;
         }
 
         private bool IsValidNumber(long creditCardNumber)
