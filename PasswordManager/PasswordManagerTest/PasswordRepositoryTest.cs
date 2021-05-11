@@ -150,5 +150,23 @@ namespace PasswordManagerTest
             List<Password> dGreenPasswords = passwordRepository.ListDGreenPasswords();
             Assert.IsFalse(passwordRepository.IsEmptyList(dGreenPasswords));
         }
+
+        [TestMethod]
+        public void GetPasswordsMatchingList()
+        {
+            Category category2 = new Category("Trabajo");
+            Category category3 = new Category("Gaming");
+            Password password2 = new Password(category2, pass, site, user, note);
+            Password password3 = new Password(category3, pass, site, user, note);
+            List<Password> passwords = passwordRepository.ListPasswords();
+            passwordRepository.AddPassword(password);
+            passwordRepository.AddPassword(password2);
+            passwordRepository.AddPassword(password3);
+            List<Password> passwords2 = new List<Password>();
+            passwords2.Add(password);
+            List<Password> passwordsResult = passwordRepository.GetPasswordMatching(passwords2);
+
+            Assert.AreEqual(passwordsResult[0], password);
+        }
     }
 }
