@@ -101,5 +101,21 @@ namespace PasswordManagerTest
             Assert.AreEqual(orderedCreditCards[1].Category, category);
             Assert.AreEqual(orderedCreditCards[2].Category, category2);
         }
+
+        public void GetMatchingCreditCardsList()
+        {
+            Category category2 = new Category("Trabajo");
+            Category category3 = new Category("Gaming");
+            CreditCard card2 = new CreditCard(category2, name, type, creditCardNumber, ccvCode, expDate, note);
+            CreditCard card3 = new CreditCard(category3, name, type, creditCardNumber, ccvCode, expDate, note);
+            creditCardRepository.AddCreditCard(card3);
+            creditCardRepository.AddCreditCard(card2);
+
+
+            List<CreditCard> creditCard = new List<CreditCard>();
+            creditCards.Add(card2);
+
+            Assert.AreEqual(card2, creditCardRepository.GetMatchingCreditCardsList(creditCards));
+        }
     }
 }
