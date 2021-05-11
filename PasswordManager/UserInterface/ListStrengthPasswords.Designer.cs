@@ -46,29 +46,40 @@
             // 
             // dgvList
             // 
+            this.dgvList.AllowUserToAddRows = false;
+            this.dgvList.AllowUserToDeleteRows = false;
+            this.dgvList.AllowUserToResizeColumns = false;
+            this.dgvList.AllowUserToResizeRows = false;
+            this.dgvList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvList.Location = new System.Drawing.Point(48, 96);
+            this.dgvList.Location = new System.Drawing.Point(48, 83);
+            this.dgvList.MultiSelect = false;
             this.dgvList.Name = "dgvList";
-            this.dgvList.Size = new System.Drawing.Size(368, 176);
-            this.dgvList.TabIndex = 1;
+            this.dgvList.ReadOnly = true;
+            this.dgvList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvList.ShowEditingIcon = false;
+            this.dgvList.Size = new System.Drawing.Size(441, 207);
+            this.dgvList.TabIndex = 0;
             // 
             // btnModify
             // 
-            this.btnModify.Location = new System.Drawing.Point(327, 291);
+            this.btnModify.Location = new System.Drawing.Point(400, 309);
             this.btnModify.Name = "btnModify";
             this.btnModify.Size = new System.Drawing.Size(89, 31);
             this.btnModify.TabIndex = 2;
             this.btnModify.Text = "Modificar";
             this.btnModify.UseVisualStyleBackColor = true;
+            this.btnModify.Click += new System.EventHandler(this.btnModify_Click);
             // 
             // btnBack
             // 
-            this.btnBack.Location = new System.Drawing.Point(48, 291);
+            this.btnBack.Location = new System.Drawing.Point(48, 309);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(89, 31);
             this.btnBack.TabIndex = 3;
             this.btnBack.Text = "Volver";
             this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // ListStrengthPasswords
             // 
@@ -79,8 +90,7 @@
             this.Controls.Add(this.dgvList);
             this.Controls.Add(this.lblTitle);
             this.Name = "ListStrengthPasswords";
-            this.Size = new System.Drawing.Size(452, 335);
-            this.Load += new System.EventHandler(this.ListStrengthPasswords_Load);
+            this.Size = new System.Drawing.Size(539, 368);
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

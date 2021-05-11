@@ -36,11 +36,6 @@ namespace UserInterface
         {
             ChangeWindow += del;
         }
-
-        private void BtnAccept_Click(object sender, EventArgs e)
-        {
-            ChangeToMenu();
-        }
         
         private void EnableOptions()
         {
@@ -139,6 +134,11 @@ namespace UserInterface
         private void ReturnToMenu()
         {
             ChangeWindow(this);
+        }
+
+        private void btnAccept_Click(object sender, EventArgs e)
+        {
+            ChangeToMenu();
         }
     }
 }

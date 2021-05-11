@@ -78,7 +78,7 @@ namespace UserInterface
             return dataTable;
         }
 
-        private void BtnModify_Click(object sender, EventArgs e)
+        private void btnModify_Click(object sender, EventArgs e)
         {
             DisposeChildForms();
             Password password = (Password)dgvList.SelectedRows[0].Cells[2].Value;
@@ -93,10 +93,11 @@ namespace UserInterface
             LoadListPasswords();
         }
 
-        private void BtnBack_Click(object sender, EventArgs e)
+        private void btnBack_Click(object sender, EventArgs e)
         {
             DisposeChildForms();
             ChangeToMenu();
+
         }
 
         private void DisposeChildForms()
@@ -105,11 +106,6 @@ namespace UserInterface
             {
                 this.passwordForm.Dispose();
             }
-        }
-
-        private void ListStrengthPasswords_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
