@@ -50,7 +50,6 @@ namespace PasswordManager
             this.Site = site;
             this.User = user;
             this.Note = note;
-            this.Strength = PasswordStrength(password);
         }
 
         public void SetPassword(string value)
@@ -63,6 +62,7 @@ namespace PasswordManager
             {
                 this._pass = value;
                 this.LastModificationDate = DateTime.Today;
+                this.Strength = PasswordStrength(value);
             }
         }
         public void SetUser(string value)
