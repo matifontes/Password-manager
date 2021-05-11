@@ -7,10 +7,15 @@ namespace PasswordManager
     {
         const int LENGTH_FOR_VALID_NAME = 16;
         public Category Category { get; set; }
-        public string Name { get; set; }
         public string Type { get; set; }
         private long _number;
         private short _ccvCode;
+        private string _name;
+        public string Name
+        {
+            get { return _name; }
+            set => SetName(value);
+        }
         public long Number
         {
             get { return _number; }
@@ -40,6 +45,18 @@ namespace PasswordManager
             return this.Name;
         }
 
+        private void SetName(string name) 
+        {
+            if (!IsValidName(name))
+            {
+                throw new EmptyCreditCardNameException("Nombre de tarjeta de creadito no puede ser vacio");
+            }
+            else 
+            {
+                this._name = name;
+            }
+        }
+
         private void SetNumber(long num)
         {
             if (!IsValidNumber(num))
@@ -62,6 +79,11 @@ namespace PasswordManager
             {
                 this._ccvCode = num;
             }
+        }
+
+        private bool IsValidName(string name) 
+        {
+            return name != "";
         }
 
         private bool IsValidCCV(short num) 
