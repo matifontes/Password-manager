@@ -38,7 +38,7 @@ namespace PasswordManagerTest
         [TestMethod]
         public void CreatePasswordWithStringPassword()
         {
-            string passTest = 134151;
+            string passTest = "134151";
             Password pass = new Password(passTest);
         }
 
