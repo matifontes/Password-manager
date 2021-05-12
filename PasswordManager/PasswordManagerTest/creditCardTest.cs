@@ -106,5 +106,19 @@ namespace PasswordManagerTest
             Assert.AreEqual(card.ToString(), name);
         }
 
+        [TestMethod]
+        public void CreditCardsAreEqualIfTheyHaveTheSameNumber() 
+        {
+            CreditCard sameCard = new CreditCard(category,name,type,creditCardNumber,ccvCode,expDate,note);
+            Assert.IsTrue(card.Equals(sameCard));
+        }
+
+        [TestMethod]
+        public void CreditCardsAreDifferentIfTheyHaveDifferentNumber()
+        {
+            long creditCardNumber = 1234123412341234;
+            CreditCard sameCard = new CreditCard(category, name, type, creditCardNumber, ccvCode, expDate, note);
+            Assert.IsTrue(card.Equals(sameCard));
+        }
     }
 }
