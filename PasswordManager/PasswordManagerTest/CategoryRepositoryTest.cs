@@ -2,6 +2,7 @@
 using System;
 using PasswordManager;
 using System.Collections.Generic;
+using PasswordManager.Exceptions;
 
 namespace PasswordManagerTest
 {
@@ -46,12 +47,25 @@ namespace PasswordManagerTest
         }
 
         [TestMethod]
+        public void RepositoryShouldNotContainCategoryThatWasntAddedToIt() 
+        {
+            Assert.IsFalse(categoryRepository.ContainsCategory(category));
+        }
+
+        [TestMethod]
+        public void RepositoryShouldContainAddedCategory()
+        {
+            categoryRepository.AddCategory(category);
+            Assert.IsTrue(categoryRepository.ContainsCategory(category));
+        }
+
+        [TestMethod]
         [ExpectedException(typeof(CategoryAlreadyExistsException))]
         public void AddCategoryThatAlreadyExistsThrowsException() 
         {
             categoryRepository.AddCategory(category);
             Category categoryWithSameName = new Category(categoryName);
-            
+            categoryRepository.AddCategory(categoryWithSameName);
         }
 
         [TestMethod]
