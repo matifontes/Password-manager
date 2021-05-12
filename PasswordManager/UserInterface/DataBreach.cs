@@ -84,7 +84,10 @@ namespace UserInterface
                     }
                     else
                     {
-                        LoadPasswords(line);
+                        if(!this.passwords.PasswordExist(this.passwordsLine, line))
+                        {
+                            LoadPasswords(line);
+                        }
                     }
                 }
             }

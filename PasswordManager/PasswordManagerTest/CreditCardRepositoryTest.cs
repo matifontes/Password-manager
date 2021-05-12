@@ -118,5 +118,23 @@ namespace PasswordManagerTest
             List<CreditCard> creditCardsResult = creditCardRepository.GetMatchingCreditCardsList(creditCards);
             Assert.AreEqual(card2.Number, creditCardsResult[0].Number);
         }
+
+        [TestMethod]
+        public void CreditCardExist()
+        {
+            List<CreditCard> cardsList = new List<CreditCard>();
+            cardsList.Add(creditCard);
+            long numCard = creditCard.Number;
+            Assert.IsTrue(creditCardRepository.CreditCardExist(cardsList, numCard));
+        }
+
+        [TestMethod]
+        public void CreditCardNotExist()
+        {
+            List<CreditCard> cardsList = new List<CreditCard>();
+            cardsList.Add(creditCard);
+            long numCard = 1234123412341234;
+            Assert.IsFalse(creditCardRepository.CreditCardExist(cardsList, numCard));
+        }
     }
 }
