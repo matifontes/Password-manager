@@ -36,20 +36,20 @@ namespace UserInterface
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.txtType = new System.Windows.Forms.TextBox();
+            this.txtCategory = new System.Windows.Forms.TextBox();
+            this.txtCCNumber = new System.Windows.Forms.TextBox();
+            this.txtCCV = new System.Windows.Forms.TextBox();
+            this.txtNote = new System.Windows.Forms.TextBox();
+            this.txtExpiryDate = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(28, 40);
+            this.label1.Location = new System.Drawing.Point(27, 23);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(76, 18);
             this.label1.TabIndex = 0;
@@ -59,7 +59,7 @@ namespace UserInterface
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(39, 80);
+            this.label2.Location = new System.Drawing.Point(37, 64);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(66, 18);
             this.label2.TabIndex = 1;
@@ -69,7 +69,7 @@ namespace UserInterface
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(64, 116);
+            this.label3.Location = new System.Drawing.Point(62, 100);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(41, 18);
             this.label3.TabIndex = 2;
@@ -79,7 +79,7 @@ namespace UserInterface
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(28, 165);
+            this.label4.Location = new System.Drawing.Point(26, 137);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(77, 36);
             this.label4.TabIndex = 3;
@@ -89,7 +89,7 @@ namespace UserInterface
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(10, 219);
+            this.label5.Location = new System.Drawing.Point(8, 202);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(95, 18);
             this.label5.TabIndex = 4;
@@ -99,7 +99,7 @@ namespace UserInterface
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(12, 253);
+            this.label6.Location = new System.Drawing.Point(10, 237);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(93, 54);
             this.label6.TabIndex = 5;
@@ -109,74 +109,81 @@ namespace UserInterface
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(10, 307);
+            this.label7.Location = new System.Drawing.Point(59, 301);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(44, 18);
             this.label7.TabIndex = 6;
             this.label7.Text = "Nota:";
             // 
-            // textBox1
+            // txtName
             // 
-            this.textBox1.Location = new System.Drawing.Point(125, 80);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(198, 20);
-            this.textBox1.TabIndex = 7;
+            this.txtName.Location = new System.Drawing.Point(123, 64);
+            this.txtName.Name = "txtName";
+            this.txtName.ReadOnly = true;
+            this.txtName.Size = new System.Drawing.Size(198, 20);
+            this.txtName.TabIndex = 2;
             // 
-            // textBox2
+            // txtType
             // 
-            this.textBox2.Location = new System.Drawing.Point(125, 114);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(198, 20);
-            this.textBox2.TabIndex = 8;
+            this.txtType.Location = new System.Drawing.Point(123, 98);
+            this.txtType.Name = "txtType";
+            this.txtType.ReadOnly = true;
+            this.txtType.Size = new System.Drawing.Size(198, 20);
+            this.txtType.TabIndex = 3;
             // 
-            // textBox3
+            // txtCategory
             // 
-            this.textBox3.Location = new System.Drawing.Point(125, 40);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(198, 20);
-            this.textBox3.TabIndex = 9;
+            this.txtCategory.Location = new System.Drawing.Point(123, 24);
+            this.txtCategory.Name = "txtCategory";
+            this.txtCategory.ReadOnly = true;
+            this.txtCategory.Size = new System.Drawing.Size(198, 20);
+            this.txtCategory.TabIndex = 1;
             // 
-            // textBox4
+            // txtCCNumber
             // 
-            this.textBox4.Location = new System.Drawing.Point(125, 181);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(198, 20);
-            this.textBox4.TabIndex = 10;
+            this.txtCCNumber.Location = new System.Drawing.Point(123, 153);
+            this.txtCCNumber.Name = "txtCCNumber";
+            this.txtCCNumber.ReadOnly = true;
+            this.txtCCNumber.Size = new System.Drawing.Size(198, 20);
+            this.txtCCNumber.TabIndex = 4;
             // 
-            // textBox5
+            // txtCCV
             // 
-            this.textBox5.Location = new System.Drawing.Point(125, 219);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(67, 20);
-            this.textBox5.TabIndex = 11;
+            this.txtCCV.Location = new System.Drawing.Point(123, 200);
+            this.txtCCV.Name = "txtCCV";
+            this.txtCCV.ReadOnly = true;
+            this.txtCCV.Size = new System.Drawing.Size(198, 20);
+            this.txtCCV.TabIndex = 11;
             // 
-            // textBox6
+            // txtNote
             // 
-            this.textBox6.Location = new System.Drawing.Point(13, 328);
-            this.textBox6.Multiline = true;
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(293, 94);
-            this.textBox6.TabIndex = 12;
+            this.txtNote.Location = new System.Drawing.Point(123, 302);
+            this.txtNote.Multiline = true;
+            this.txtNote.Name = "txtNote";
+            this.txtNote.ReadOnly = true;
+            this.txtNote.Size = new System.Drawing.Size(198, 94);
+            this.txtNote.TabIndex = 12;
             // 
-            // textBox7
+            // txtExpiryDate
             // 
-            this.textBox7.Location = new System.Drawing.Point(125, 267);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(100, 20);
-            this.textBox7.TabIndex = 13;
+            this.txtExpiryDate.Location = new System.Drawing.Point(123, 251);
+            this.txtExpiryDate.Name = "txtExpiryDate";
+            this.txtExpiryDate.ReadOnly = true;
+            this.txtExpiryDate.Size = new System.Drawing.Size(198, 20);
+            this.txtExpiryDate.TabIndex = 13;
             // 
             // ShowCreditCard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(372, 434);
-            this.Controls.Add(this.textBox7);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.ClientSize = new System.Drawing.Size(345, 426);
+            this.Controls.Add(this.txtExpiryDate);
+            this.Controls.Add(this.txtNote);
+            this.Controls.Add(this.txtCCV);
+            this.Controls.Add(this.txtCCNumber);
+            this.Controls.Add(this.txtCategory);
+            this.Controls.Add(this.txtType);
+            this.Controls.Add(this.txtName);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -201,12 +208,12 @@ namespace UserInterface
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.TextBox txtType;
+        private System.Windows.Forms.TextBox txtCategory;
+        private System.Windows.Forms.TextBox txtCCNumber;
+        private System.Windows.Forms.TextBox txtCCV;
+        private System.Windows.Forms.TextBox txtNote;
+        private System.Windows.Forms.TextBox txtExpiryDate;
     }
 }

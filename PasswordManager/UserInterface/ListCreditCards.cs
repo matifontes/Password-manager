@@ -45,13 +45,15 @@ namespace UserInterface
                 btnRemove.Enabled = false;
                 btnAddCreditCard.Enabled = false;
                 dgvCategories.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                btnShow.Enabled = false;
             }
             else if (creditCards.IsEmpty() && !categories.IsEmpty())
             {
                 btnModify.Enabled = false;
                 btnRemove.Enabled = false;
                 btnAddCreditCard.Enabled = true;
-                dgvCategories.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill; 
+                dgvCategories.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                btnShow.Enabled = false;
             }
             else 
             {
@@ -59,6 +61,7 @@ namespace UserInterface
                 btnRemove.Enabled = true;
                 btnAddCreditCard.Enabled = true;
                 dgvCategories.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                btnShow.Enabled = true;
             }
         }
 
@@ -111,6 +114,17 @@ namespace UserInterface
             modifyCreditCard.AddListener(PostModification);
             this.creditCardForm = modifyCreditCard;
             this.creditCardForm.Show();
+        }
+
+        private void BtnShow_Click(object sender, EventArgs e)
+        {
+
+            CreditCard creditCard = (CreditCard)dgvCategories.SelectedRows[0].Cells[1].Value;
+            if (creditCard != null) 
+            {
+                ShowCreditCard creditCardShow = new ShowCreditCard(creditCard);
+                creditCardShow.Show();
+            }
         }
 
         private void BtnRemove_Click(object sender, EventArgs e)
