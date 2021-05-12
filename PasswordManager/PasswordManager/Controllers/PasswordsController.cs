@@ -16,9 +16,9 @@ namespace PasswordManager.Controllers
             this.passwords.AddPassword(password);
         }
 
-        public bool Contains(Password password) 
+        public bool ContainsPassword(Password password) 
         {
-            return this.passwords.Contains(password);
+            return this.passwords.ContainsPassword(password);
         }
 
         public void RemovePassword(Password password) 

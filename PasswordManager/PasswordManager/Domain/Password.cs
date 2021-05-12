@@ -52,7 +52,7 @@ namespace PasswordManager
             this.Note = note;
         }
 
-        public bool Equals(Password password) 
+        public bool IsEquals(Password password) 
         {
             bool equals = false;
 
@@ -66,11 +66,6 @@ namespace PasswordManager
             equals = equals && user == passwordUser;
 
             return equals;            
-        }
-
-        public override bool Equals(object obj)
-        {
-            return Equals(obj as Password);
         }
 
         private void SetPassword(string value)

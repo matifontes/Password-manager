@@ -79,7 +79,7 @@ namespace PasswordManagerTest
         public void ControllerContainsPasswordAddedToIt()
         {
             passwordsController.AddPassword(password);
-            Assert.IsTrue(passwordsController.Contains(password));
+            Assert.IsTrue(passwordsController.ContainsPassword(password));
         }
 
         [TestMethod]

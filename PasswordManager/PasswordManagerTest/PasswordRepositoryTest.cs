@@ -76,7 +76,7 @@ namespace PasswordManagerTest
         public void RepositoryContainsPasswordAddedToIt() 
         {
             passwordRepository.AddPassword(password);
-            Assert.IsTrue(passwordRepository.Contains(password));
+            Assert.IsTrue(passwordRepository.ContainsPassword(password));
         }
 
         [TestMethod]

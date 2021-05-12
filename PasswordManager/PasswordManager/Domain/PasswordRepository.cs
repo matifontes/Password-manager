@@ -15,7 +15,7 @@ namespace PasswordManager
 
         public void AddPassword(Password password) 
         {
-            if (this.passwords.Contains(password))
+            if (this.ContainsPassword(password))
             {
                 const string PASSWORD_ALREADY_EXISTS_MSG = "El conjunto Usuario Sitio de la contraseña ya existe";
                 throw new PasswordAlreadyExistsException(PASSWORD_ALREADY_EXISTS_MSG);
@@ -26,9 +26,17 @@ namespace PasswordManager
             }
         }
 
-        public bool Contains(Password password) 
+        public bool ContainsPassword(Password password) 
         {
-            return this.passwords.Contains(password);
+            bool notExists = false;
+            foreach (Password pass in this.passwords) 
+            {
+                if (pass.IsEquals(password)) 
+                {
+                    return true;
+                }
+            }
+            return notExists;
         }
 
         public void RemovePassword(Password password) 
