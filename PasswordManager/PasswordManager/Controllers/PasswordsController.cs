@@ -76,5 +76,11 @@ namespace PasswordManager.Controllers
             return listRet;
         }
 
+        public bool PasswordExist(List<Password> passList, string pass)
+        {
+            bool exist = this.passwords.PasswordExist(passList, pass);
+            return exist;
+        }
+
     }
 }
