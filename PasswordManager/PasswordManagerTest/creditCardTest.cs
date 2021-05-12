@@ -50,11 +50,39 @@ namespace PasswordManagerTest
         }
 
         [TestMethod]
-        [ExpectedException(typeof(EmptyCreditCardNameException))]
-        public void CreateCreditCardWithEmptyNameThrowsException() 
+        [ExpectedException(typeof(InvalidCreditCardNameException))]
+        public void CreateCreditCardWithNameLongerThan25ThrowsException() 
         {
-            new CreditCard(category, "", type, creditCardNumber, ccvCode, expDate, note);
+            string name = "1234567890ABCDEFGHRSDAWRFS";
+            new CreditCard(category, name, type, creditCardNumber, ccvCode, expDate, note);
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidCreditCardNameException))]
+        public void CreateCreditCardWithNameShorterThan3ThrowsException()
+        {
+            string name = "a2";
+            new CreditCard(category, name, type, creditCardNumber, ccvCode, expDate, note);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidCreditCardTypeException))]
+        public void CreateCreaditCardWithTypeShorterThan3ThrowsException() 
+        {
+
+            string type = "ab";
+            new CreditCard(category, name, type, creditCardNumber, ccvCode, expDate, note);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidCreditCardTypeException))]
+        public void CreateCreaditCardWithTypeLargerThan25ThrowsException()
+        {
+
+            string type = "1234567890ABCDEFGHRSDAWRFS";
+            new CreditCard(category, name, type, creditCardNumber, ccvCode, expDate, note);
+        }
+
 
         [TestMethod]
         [ExpectedException(typeof(InvalidCreditCardNumberException))]
@@ -78,5 +106,19 @@ namespace PasswordManagerTest
             Assert.AreEqual(card.ToString(), name);
         }
 
+        [TestMethod]
+        public void CreditCardsAreEqualIfTheyHaveTheSameNumber() 
+        {
+            CreditCard sameCard = new CreditCard(category,name,type,creditCardNumber,ccvCode,expDate,note);
+            Assert.IsTrue(card.Equals(sameCard));
+        }
+
+        [TestMethod]
+        public void CreditCardsAreDifferentIfTheyHaveDifferentNumber()
+        {
+            long creditCardNumber = 1234123412341234;
+            CreditCard sameCard = new CreditCard(category, name, type, creditCardNumber, ccvCode, expDate, note);
+            Assert.IsFalse(card.Equals(sameCard));
+        }
     }
 }

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace PasswordManager.Exceptions
 {
-    public class EmptyCreditCardNameException : Exception
+    public class InvalidCreditCardNameException : Exception
     {
-        public EmptyCreditCardNameException(string message)
+        public InvalidCreditCardNameException(string message)
          : base(message)
         {
         }
