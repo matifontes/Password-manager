@@ -49,7 +49,7 @@ namespace PasswordManager
         {
             if (!IsValidName(name))
             {
-                throw new EmptyCreditCardNameException("Nombre de tarjeta de creadito no puede ser vacio");
+                throw new InvalidCreditCardNameException("Nombre de tarjeta de creadito no puede ser vacio");
             }
             else 
             {
@@ -83,7 +83,7 @@ namespace PasswordManager
 
         private bool IsValidName(string name) 
         {
-            return name != "";
+            return name.Length >= 3 && name.Length <= 25;
         }
 
         private bool IsValidCCV(short num) 
