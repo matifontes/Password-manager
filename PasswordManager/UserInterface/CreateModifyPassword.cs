@@ -150,5 +150,10 @@ namespace UserInterface
         {
             txtPassword.UseSystemPasswordChar = true;
         }
+
+        private void TxtPassword_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == ' ') e.Handled = true;
+        }
     }
 }

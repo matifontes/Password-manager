@@ -130,6 +130,7 @@ namespace UserInterface
             this.txtPassword.Size = new System.Drawing.Size(169, 20);
             this.txtPassword.TabIndex = 8;
             this.txtPassword.UseSystemPasswordChar = true;
+            this.txtPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtPassword_KeyPress);
             // 
             // nudLarge
             // 
