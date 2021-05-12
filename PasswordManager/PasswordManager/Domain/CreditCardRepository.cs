@@ -43,7 +43,7 @@ namespace PasswordManager
 
         public List<CreditCard> ListCreditCards()
         {
-            return this.creditCards.OrderBy(creditCard => creditCard.Category.Name).ToList();
+            return this.creditCards.OrderBy(creditCard => creditCard.Category.ToString()).ToList();
         }
 
         public bool Contains(CreditCard creditCard) 
