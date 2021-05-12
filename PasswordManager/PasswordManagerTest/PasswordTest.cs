@@ -210,7 +210,7 @@ namespace PasswordManagerTest
         public void PasswordIsEqualToAnotherPasswordIfSiteAndUserMatches() 
         {
             Password samePassword = new Password(personal,password,site,user,note);
-            Assert.IsTrue(passwordCreatedToday.IsEquals(samePassword));
+            Assert.IsTrue(passwordCreatedToday.IsEqual(samePassword));
         }
 
         [TestMethod]

@@ -50,12 +50,7 @@ namespace PasswordManager
             return this.Name;
         }
 
-        public override bool Equals(object obj)
-        {
-            return Equals(obj as CreditCard);
-        }
-
-        public bool Equals(CreditCard creditCard) 
+        public bool IsEqual(CreditCard creditCard) 
         {
             return this.Number == creditCard.Number;
         }

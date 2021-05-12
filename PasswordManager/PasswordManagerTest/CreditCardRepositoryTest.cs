@@ -109,7 +109,7 @@ namespace PasswordManagerTest
         public void RepositoryContainsCreditCardAddedToIt() 
         {
             creditCardRepository.AddCreditCard(creditCard);
-            Assert.IsTrue(creditCardRepository.Contains(creditCard));
+            Assert.IsTrue(creditCardRepository.ContainsCreditCard(creditCard));
         }
 
         [TestMethod]

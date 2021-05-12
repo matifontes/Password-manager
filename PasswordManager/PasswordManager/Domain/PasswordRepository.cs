@@ -31,7 +31,7 @@ namespace PasswordManager
             bool notExists = false;
             foreach (Password pass in this.passwords) 
             {
-                if (pass.IsEquals(password)) 
+                if (pass.IsEqual(password)) 
                 {
                     return true;
                 }

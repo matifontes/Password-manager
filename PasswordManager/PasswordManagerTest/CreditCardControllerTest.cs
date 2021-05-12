@@ -80,7 +80,7 @@ namespace PasswordManagerTest
         public void CreditCardAddedToControllerContainsIt()
         {
             creditCardsController.AddCreditCard(card);
-            Assert.IsTrue(creditCardsController.Contains(card));
+            Assert.IsTrue(creditCardsController.ContainsCreditCard(card));
         }
 
         [TestMethod]

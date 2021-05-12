@@ -52,7 +52,7 @@ namespace PasswordManager
             this.Note = note;
         }
 
-        public bool IsEquals(Password password) 
+        public bool IsEqual(Password password) 
         {
             bool equals = false;
 

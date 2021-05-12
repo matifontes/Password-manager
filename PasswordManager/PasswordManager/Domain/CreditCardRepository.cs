@@ -14,7 +14,7 @@ namespace PasswordManager
 
         public void AddCreditCard(CreditCard creditCard) 
         {
-            if (this.creditCards.Contains(creditCard))
+            if (this.ContainsCreditCard(creditCard))
             {
                 const string CREDIT_CARD_ALREADY_EXISTS_MSG = "La Tarjeta de credito ya existe";
                 throw new CreditCardAlreadyExistsException(CREDIT_CARD_ALREADY_EXISTS_MSG);
@@ -46,9 +46,16 @@ namespace PasswordManager
             return this.creditCards.OrderBy(creditCard => creditCard.Category.ToString()).ToList();
         }
 
-        public bool Contains(CreditCard creditCard) 
+        public bool ContainsCreditCard(CreditCard creditCard) 
         {
-            return this.creditCards.Contains(creditCard);
+            foreach (CreditCard cards in this.creditCards) 
+            {
+                if (cards.IsEqual(creditCard)) 
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }
