@@ -102,13 +102,10 @@ namespace UserInterface
         {
             try
             {
-                if (SiteOrUserChanged()) 
+                if (SiteOrUserChanged() && CheckForPairSiteUserOnPasswords()) 
                 {
-                    if(CheckForPairSiteUserOnPasswords()) 
-                    {
-                        const string PASSWORD_WITH_PAIR_USER_SITE_ALREADY_EXISTS = "Existe una contraseña con el par definido de Sitio/Usuario";
-                        throw new PasswordAlreadyExistsException(PASSWORD_WITH_PAIR_USER_SITE_ALREADY_EXISTS);
-                    }
+                    const string PASSWORD_WITH_PAIR_USER_SITE_ALREADY_EXISTS = "Existe una contraseña con el par definido de Sitio/Usuario";
+                    throw new PasswordAlreadyExistsException(PASSWORD_WITH_PAIR_USER_SITE_ALREADY_EXISTS);
                 }
                 const string SUCCESSFUL_MSG = "Contraseña modificada con exito";
                 password.Category = (Category)cbxCategories.SelectedItem;

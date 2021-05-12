@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using PasswordManager.Controllers;
 using PasswordManager;
+using PasswordManager.Exceptions;
 
 namespace UserInterface
 {
@@ -102,6 +103,11 @@ namespace UserInterface
         {
             try
             {
+                if (CreditCardNumberChanged() && CheckExistenceOfCreditCardNumber()) 
+                {
+                    const string CCNUMBER_ALREADY_EXISTS = "Existe una tarjeta de credito con ese numero";
+                    throw new CreditCardAlreadyExistsException(CCNUMBER_ALREADY_EXISTS);
+                }
                 const string SUCCSESSFUL_MODIFY = "Tarjeta de credito modificada correctamente";
                 creditCard.Category = (Category)cmbCategories.SelectedItem;
                 creditCard.Name = txtName.Text;
@@ -117,6 +123,16 @@ namespace UserInterface
             {
                 ShowMSG(System.Drawing.Color.Red, e.Message);
             }
+        }
+
+        private bool CreditCardNumberChanged() 
+        {
+            return this.creditCard.Number != long.Parse(txtNumber.Text);
+        }
+
+        private bool CheckExistenceOfCreditCardNumber() 
+        {
+            return this.creditCards.ContainsCreditCard(new CreditCard(long.Parse(txtNumber.Text)));
         }
 
         private void ShowMSG(System.Drawing.Color color, string message) 
