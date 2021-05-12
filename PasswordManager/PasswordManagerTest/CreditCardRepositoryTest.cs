@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using PasswordManager;
+using PasswordManager.Exceptions;
 
 namespace PasswordManagerTest
 {
@@ -89,8 +90,10 @@ namespace PasswordManagerTest
         {
             Category category2 = new Category("Trabajo");
             Category category3 = new Category("Gaming");
-            CreditCard card2 = new CreditCard(category2, name, type, creditCardNumber, ccvCode, expDate, note);
-            CreditCard card3 = new CreditCard(category3, name, type, creditCardNumber, ccvCode, expDate, note);
+            long creditCardNumberForCard2 = 1234123412341234;
+            long creditCardNumberForCard3 = 6789678967896789;
+            CreditCard card2 = new CreditCard(category2, name, type, creditCardNumberForCard2, ccvCode, expDate, note);
+            CreditCard card3 = new CreditCard(category3, name, type, creditCardNumberForCard3, ccvCode, expDate, note);
             creditCardRepository.AddCreditCard(card3);
             creditCardRepository.AddCreditCard(creditCard);
             creditCardRepository.AddCreditCard(card2);
