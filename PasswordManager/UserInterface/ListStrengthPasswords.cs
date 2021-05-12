@@ -104,9 +104,9 @@ namespace UserInterface
                 const string SUCCESSFUL_MODIFY = "Contraseña modificada correctamente, a cambiado su nivel de fortaleza";
                 this.passList.Remove(this.modifyPassword);
                 DisposeChildForms();
+                DisposeModifyPassword();
                 ShowMSG(System.Drawing.Color.Green, SUCCESSFUL_MODIFY);
             }
-            DisposeModifyPassword();
             EnableOptions();
             LoadListPasswords();
         }
