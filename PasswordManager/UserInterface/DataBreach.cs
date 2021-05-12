@@ -84,10 +84,7 @@ namespace UserInterface
                     }
                     else
                     {
-                        if(!this.passwords.PasswordExist(this.passwordsLine, line))
-                        {
-                            LoadPasswords(line);
-                        }
+                        LoadPasswords(line);
                     }
                 }
             }
@@ -97,8 +94,11 @@ namespace UserInterface
         {
             try
             {
-                Password pass = new Password(password);
-                this.passwordsLine.Add(pass);
+                if (!this.passwords.PasswordExist(this.passwordsLine, password))
+                {
+                    Password pass = new Password(password);
+                    this.passwordsLine.Add(pass);
+                }
             }
             catch
             {
@@ -113,8 +113,11 @@ namespace UserInterface
             {
                 string strNum = strCreditCardNumber.Replace(" ", String.Empty);
                 long numberCreditCard = long.Parse(strNum);
-                CreditCard creditCard = new CreditCard(numberCreditCard);
-                this.creditCardsLine.Add(creditCard);
+                if (!this.creditCards.CreditCardExist(this.creditCardsLine, numberCreditCard))
+                {
+                    CreditCard creditCard = new CreditCard(numberCreditCard);
+                    this.creditCardsLine.Add(creditCard);
+                }
             }
             catch
             {
