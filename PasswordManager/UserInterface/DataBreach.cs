@@ -30,7 +30,7 @@ namespace UserInterface
             this.categories = categories;
             this.passwordsLine = new List<Password>();
             this.creditCardsLine = new List<CreditCard>();
-            LoadList();
+            //LoadList();
             EnableOption();
         }
 
@@ -49,7 +49,7 @@ namespace UserInterface
             btnVerify.Enabled = !this.passwords.IsEmpty();
         }
 
-        public void LoadList()
+        /*public void LoadList()
         {
             StreamReader readText = new StreamReader("C:\\dataBreach.txt");
             string line = "";
@@ -70,20 +70,53 @@ namespace UserInterface
                 line = readText.ReadLine();
             }
             readText.Close();
+        }*/
+
+        private void LoadList()
+        {
+            foreach(string line in txtBox.Lines)
+            {
+                if(line != string.Empty)
+                {
+                    if(line.Contains(" "))
+                    {
+                        LoadCreditCards(line);
+                    }
+                    else
+                    {
+                        LoadPasswords(line);
+                    }
+                }
+            }
         }
 
         private void LoadPasswords(string password)
         {
-            Password pass = new Password(password);
-            this.passwordsLine.Add(pass);
+            try
+            {
+                Password pass = new Password(password);
+                this.passwordsLine.Add(pass);
+            }
+            catch
+            {
+
+            }
+
         }
 
         private void LoadCreditCards(string strCreditCardNumber)
         {
-            string strNum = strCreditCardNumber.Replace(" ", String.Empty);
-            long numberCreditCard = long.Parse(strNum);
-            CreditCard creditCard = new CreditCard(numberCreditCard);
-            this.creditCardsLine.Add(creditCard);
+            try
+            {
+                string strNum = strCreditCardNumber.Replace(" ", String.Empty);
+                long numberCreditCard = long.Parse(strNum);
+                CreditCard creditCard = new CreditCard(numberCreditCard);
+                this.creditCardsLine.Add(creditCard);
+            }
+            catch
+            {
+
+            }
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -93,6 +126,7 @@ namespace UserInterface
 
         private void btnVerify_Click(object sender, EventArgs e)
         {
+            LoadList();
             List<Password> passwordsList = this.passwords.ListPasswordsMatching(this.passwordsLine);
             List<CreditCard> creditCardlist = this.creditCards.GetMatchingCreditCardsList(this.creditCardsLine);
             ListDataBreaches listDataBreaches = new ListDataBreaches(passwordsList, creditCardlist, this.categories, this.passwords);

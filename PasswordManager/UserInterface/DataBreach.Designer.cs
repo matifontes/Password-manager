@@ -32,7 +32,8 @@
             this.lblSubTitle = new System.Windows.Forms.Label();
             this.btnVerify = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
-            this.listBox = new System.Windows.Forms.ListBox();
+            this.txtBox = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblTitle
@@ -75,19 +76,29 @@
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
-            // listBox
+            // txtBox
             // 
-            this.listBox.FormattingEnabled = true;
-            this.listBox.Location = new System.Drawing.Point(43, 110);
-            this.listBox.Name = "listBox";
-            this.listBox.Size = new System.Drawing.Size(374, 199);
-            this.listBox.TabIndex = 4;
+            this.txtBox.Location = new System.Drawing.Point(43, 106);
+            this.txtBox.Multiline = true;
+            this.txtBox.Name = "txtBox";
+            this.txtBox.Size = new System.Drawing.Size(374, 175);
+            this.txtBox.TabIndex = 4;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(43, 288);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(268, 13);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Formato Tarjeta de credito: \"XXXX XXXX XXXX XXXX\"";
             // 
             // DataBreach
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.listBox);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txtBox);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnVerify);
             this.Controls.Add(this.lblSubTitle);
@@ -105,6 +116,7 @@
         private System.Windows.Forms.Label lblSubTitle;
         private System.Windows.Forms.Button btnVerify;
         private System.Windows.Forms.Button btnBack;
-        private System.Windows.Forms.ListBox listBox;
+        private System.Windows.Forms.TextBox txtBox;
+        private System.Windows.Forms.Label label1;
     }
 }
