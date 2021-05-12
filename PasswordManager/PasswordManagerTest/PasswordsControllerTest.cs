@@ -175,23 +175,5 @@ namespace PasswordManagerTest
             Assert.AreEqual(passwordsResult[0], password);
         }
 
-        [TestMethod]
-        public void PasswordExist()
-        {
-            List<Password> passList = new List<Password>();
-            passList.Add(password);
-            string pass = password.Pass;
-            Assert.IsTrue(passwordsController.PasswordExist(passList, pass));
-        }
-
-
-        [TestMethod]
-        public void PasswordNotExist()
-        {
-            List<Password> passList = new List<Password>();
-            passList.Add(password);
-            string pass = "dfault";
-            Assert.IsFalse(passwordsController.PasswordExist(passList, pass));
-        }
     }
 }

@@ -43,7 +43,7 @@ namespace PasswordManager
             {
                 foreach (CreditCard credCard2 in creditCardsList)
                 {
-                    if (credCard.Number.Equals(credCard2.Number))
+                    if (credCard.Number.Equals(credCard2.Number) && !ret.Contains(credCard))
                     {
                         ret.Add(credCard);
                     }
@@ -52,17 +52,5 @@ namespace PasswordManager
             return ret;
         }
 
-        public bool CreditCardExist(List<CreditCard> cardsList, long numCard)
-        {
-            bool exist = false;
-            foreach (CreditCard card in cardsList)
-            {
-                if(card.Number == numCard)
-                {
-                    exist = true;
-                }
-            }
-            return exist;
-        }
     }
 }
