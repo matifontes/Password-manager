@@ -52,6 +52,27 @@ namespace PasswordManager
             this.Note = note;
         }
 
+        public bool Equals(Password password) 
+        {
+            bool equals = false;
+
+            string site = this.Site.ToUpper();
+            string user = this.User.ToUpper();
+
+            string passwordSite = password.Site.ToUpper();
+            string passwordUser = password.User.ToUpper();
+
+            equals = site == passwordSite;
+            equals = equals && user == passwordUser;
+
+            return equals;            
+        }
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as Password);
+        }
+
         private void SetPassword(string value)
         {
             if (!IsValidLength(value))
