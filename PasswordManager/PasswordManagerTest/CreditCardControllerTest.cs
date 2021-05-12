@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 using PasswordManager.Controllers;
 using PasswordManager;
+using PasswordManager.Exceptions;
 
 namespace PasswordManagerTest
 {
@@ -55,6 +56,21 @@ namespace PasswordManagerTest
         }
 
         [TestMethod]
+        [ExpectedException(typeof(CreditCardAlreadyExistsException))]
+        public void AddCreditCardThatAlreadyExistsThrowsException() 
+        {
+            creditCardsController.AddCreditCard(card);
+            creditCardsController.AddCreditCard(card);
+        }
+
+        [TestMethod]
+        public void CreditCardAddedToControllerContainsIt()
+        {
+            creditCardsController.AddCreditCard(card);
+            Assert.IsTrue(creditCardsController.Contains(card));
+        }
+
+        [TestMethod]
         public void CreditCardControllerWithAPasswordShouldntBeEmpty()
         {
             creditCardsController.AddCreditCard(card);
@@ -75,19 +91,19 @@ namespace PasswordManagerTest
         {
             Category category2 = new Category("Trabajo");
             Category category3 = new Category("Gaming");
-            CreditCard card2 = new CreditCard(category2, name, type, creditCardNumber, ccvCode, expDate, note);
-            CreditCard card3 = new CreditCard(category3, name, type, creditCardNumber, ccvCode, expDate, note);
-            creditCardsController.AddCreditCard(card3);
+            long creditCardNumberForCard2 = 1234123412341234;
+            long creditCardNumberForCard3 = 4321432143214321;
+            CreditCard card2 = new CreditCard(category2, name, type, creditCardNumberForCard2, ccvCode, expDate, note);
+            CreditCard card3 = new CreditCard(category3, name, type, creditCardNumberForCard3, ccvCode, expDate, note);
             creditCardsController.AddCreditCard(card);
             creditCardsController.AddCreditCard(card2);
+            creditCardsController.AddCreditCard(card3);
+
 
             List<CreditCard> orderedCreditCards = creditCardsController.ListCreditCards();
             Assert.AreEqual(orderedCreditCards[0].Category, category3);
             Assert.AreEqual(orderedCreditCards[1].Category, category);
             Assert.AreEqual(orderedCreditCards[2].Category, category2);
-
-
         }
-
     }
 }
