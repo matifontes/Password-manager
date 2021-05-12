@@ -30,7 +30,7 @@ namespace PasswordManagerTest
         }
 
         [TestMethod]
-        public void CreateCreditCardWithNumber()
+        public void CreateCreditCardOnlyWithNumber()
         {
             long creditCardNumber = 2145321155556688;
             CreditCard creditCardTest = new CreditCard(creditCardNumber);
@@ -91,6 +91,12 @@ namespace PasswordManagerTest
             new CreditCard(category, name, type, creditCardNumber, ccvCode, expDate, note);
         }
 
+        [TestMethod]
+        public void GetCreditCardType()
+        {
+            CreditCard creaditCard = new CreditCard(category, name, type, creditCardNumber, ccvCode, expDate, note);
+            Assert.AreEqual(type, creaditCard.Type);
+        }
 
         [TestMethod]
         [ExpectedException(typeof(InvalidCreditCardNumberException))]
@@ -106,6 +112,13 @@ namespace PasswordManagerTest
         {
             short InvalidCCVCode = 12112; 
             CreditCard invalidCard = new CreditCard(category, name, type, creditCardNumber, InvalidCCVCode, expDate, note);
+        }
+
+        [TestMethod]
+        public void GetCreditCardCCVCode()
+        {
+            CreditCard creaditCard = new CreditCard(category, name, type, creditCardNumber, ccvCode, expDate, note);
+            Assert.AreEqual(ccvCode, creaditCard.CCVCode);
         }
 
         [TestMethod]
