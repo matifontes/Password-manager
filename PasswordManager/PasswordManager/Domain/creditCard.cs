@@ -49,7 +49,7 @@ namespace PasswordManager
         {
             if (!IsValidName(name))
             {
-                throw new InvalidCreditCardNameException("Nombre de tarjeta de creadito no puede ser vacio");
+                throw new InvalidCreditCardNameException("Largo del nombre de tarjeta de credito invalido, entre 3 y 25 caracteres");
             }
             else 
             {
