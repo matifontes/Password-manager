@@ -9,7 +9,7 @@ namespace PasswordManager.Exceptions
     public class InvalidCreditCardNameException : Exception
     {
         public InvalidCreditCardNameException(string message)
-         : base(message)
+            : base(message)
         {
         }
     }
