@@ -50,6 +50,16 @@ namespace PasswordManager
             return this.Name;
         }
 
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as CreditCard);
+        }
+
+        public bool Equals(CreditCard creditCard) 
+        {
+            return this.Number == creditCard.Number;
+        }
+
         private void SetName(string name) 
         {
             if (!IsValidName(name))
