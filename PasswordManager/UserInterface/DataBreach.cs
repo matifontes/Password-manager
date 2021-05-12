@@ -46,7 +46,7 @@ namespace UserInterface
 
         public void EnableOption()
         {
-            btnVerify.Enabled = !this.passwords.IsEmpty();
+            btnVerify.Enabled = !this.passwords.IsEmpty() || !this.creditCards.IsEmpty();
         }
 
         /*public void LoadList()
@@ -74,6 +74,8 @@ namespace UserInterface
 
         private void LoadList()
         {
+            this.passwordsLine.Clear();
+            this.creditCardsLine.Clear();
             foreach(string line in txtBox.Lines)
             {
                 if(line != string.Empty)
@@ -94,11 +96,8 @@ namespace UserInterface
         {
             try
             {
-                if (!this.passwords.PasswordExist(this.passwordsLine, password))
-                {
-                    Password pass = new Password(password);
-                    this.passwordsLine.Add(pass);
-                }
+                Password pass = new Password(password);
+                this.passwordsLine.Add(pass);
             }
             catch
             {
@@ -113,11 +112,8 @@ namespace UserInterface
             {
                 string strNum = strCreditCardNumber.Replace(" ", String.Empty);
                 long numberCreditCard = long.Parse(strNum);
-                if (!this.creditCards.CreditCardExist(this.creditCardsLine, numberCreditCard))
-                {
-                    CreditCard creditCard = new CreditCard(numberCreditCard);
-                    this.creditCardsLine.Add(creditCard);
-                }
+                CreditCard creditCard = new CreditCard(numberCreditCard);
+                this.creditCardsLine.Add(creditCard);
             }
             catch
             {

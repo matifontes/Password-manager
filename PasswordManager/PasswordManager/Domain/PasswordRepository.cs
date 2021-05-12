@@ -118,7 +118,7 @@ namespace PasswordManager
             {
                 foreach (Password pass2 in passList)
                 {
-                    if (pass.Pass.Equals(pass2.Pass))
+                    if (pass.Pass.Equals(pass2.Pass) && !ret.Contains(pass))
                     {
                         ret.Add(pass);
                     }
