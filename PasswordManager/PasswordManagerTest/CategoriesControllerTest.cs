@@ -3,6 +3,7 @@ using System;
 using PasswordManager;
 using System.Collections.Generic;
 using PasswordManager.Controllers;
+using PasswordManager.Exceptions;
 
 namespace PasswordManagerTest
 {
@@ -44,6 +45,25 @@ namespace PasswordManagerTest
 
             categoriesController.AddCategory(category);
             Assert.AreEqual(categoriesController.Count(),1);
+        }
+
+        [TestMethod]
+        public void ControllerContainsCategoryAddedToIt()
+        {
+            Category category = new Category("Personal");
+
+            categoriesController.AddCategory(category);
+            Assert.IsTrue(categoriesController.ContainsCategory(category));
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(CategoryAlreadyExistsException))]
+        public void AddCategoryThatAlreadyExistsThrowsException()
+        {
+            Category category = new Category("Personal");
+            Category sameCategory = new Category("PERSONAL");
+            categoriesController.AddCategory(category);
+            categoriesController.AddCategory(sameCategory);
         }
 
         [TestMethod]
