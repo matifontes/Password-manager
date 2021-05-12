@@ -116,8 +116,12 @@ namespace UserInterface
         private void BtnRemove_Click(object sender, EventArgs e)
         {
             CreditCard creditCardToRemove = (CreditCard)dgvCategories.SelectedRows[0].Cells[1].Value;
-            this.creditCards.RemoveCreditCard(creditCardToRemove);
-            PostModification();
+            if (creditCardToRemove != null) 
+            {
+                DisposeChildForm();
+                this.creditCards.RemoveCreditCard(creditCardToRemove);
+                PostModification();
+            }
         }
 
         private void PostModification() 

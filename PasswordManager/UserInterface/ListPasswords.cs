@@ -118,6 +118,7 @@ namespace UserInterface
             Password selectedPassword = (Password)dgvPasswords.SelectedRows[0].Cells[2].Value;
             if (selectedPassword != null) 
             {
+                DisposeChildForms();
                 passwords.RemovePassword(selectedPassword);
                 PostModification();
             }
