@@ -8,7 +8,6 @@ namespace PasswordManagerTest
     [TestClass]
     public class PasswordTest
     {
-        Profile profile;
         Password passwordCreatedToday;
         Password passwordCreatedYesterday;
         private Category personal;
@@ -20,7 +19,6 @@ namespace PasswordManagerTest
         [TestInitialize]
         public void setup()
         {
-            profile = new Profile("test123");
             personal = new Category("Personal");
             passwordCreatedToday = new Password(personal, password, site, user, note);
             passwordCreatedYesterday = new Password(personal, password, site, user, note);
@@ -206,6 +204,13 @@ namespace PasswordManagerTest
         public void PasswordToStringShowTheUser() 
         {
             Assert.AreEqual(passwordCreatedToday.ToString(), user);
+        }
+
+        [TestMethod]
+        public void PasswordIsEqualToAnotherPasswordIfSiteAndUserMatches() 
+        {
+            Password samePassword = new Password(personal,password,site,user,note);
+            Assert.IsTrue(passwordCreatedToday.Equals(samePassword));
         }
 
     }
