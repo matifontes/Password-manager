@@ -51,6 +51,32 @@ namespace PasswordManagerTest
             passwordRepository.AddPassword(password);
             Assert.AreEqual(passwordRepository.Count(), 1);
         }
+        
+        [TestMethod]
+        [ExpectedException(typeof(PasswordAlreadyExistsException))]
+        public void AddPasswordThatAlreadyExitsThrowsException() 
+        {
+            passwordRepository.AddPassword(password);
+            passwordRepository.AddPassword(password);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(PasswordAlreadyExistsException))]
+        public void AddPasswordWithSameUserAndSiteThenOtherPasswordThrowsAlreadyExistsException()
+        {
+            passwordRepository.AddPassword(password);
+            string pass = "rootpassword";
+            string note = "password";
+            Password samePassword = new Password(category,pass,site,user,note);
+            passwordRepository.AddPassword(samePassword);
+        }
+
+        [TestMethod]
+        public void RepositoryContainsPasswordAddedToIt() 
+        {
+            passwordRepository.AddPassword(password);
+            Assert.IsTrue(passwordRepository.Contains(password);
+        }
 
         [TestMethod]
         public void PasswordRepositoryWithAPasswordShouldntBeEmpty()

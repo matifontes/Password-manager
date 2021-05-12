@@ -64,6 +64,19 @@ namespace PasswordManagerTest
         }
 
         [TestMethod]
+        [ExpectedException(typeof(CreditCardAlreadyExistsException))]
+        public void AddCreditCardWhitSameNumberThrowsAlreadyExistsException()
+        {
+            creditCardsController.AddCreditCard(card);
+            string name = "Master Black";
+            string type = "MasterCard";
+            short ccvCode = 091;
+            string note = "note";
+            CreditCard sameCard = new CreditCard(category,name,type,creditCardNumber,ccvCode,DateTime.Now,note);
+            creditCardsController.AddCreditCard(sameCard);
+        }
+
+        [TestMethod]
         public void CreditCardAddedToControllerContainsIt()
         {
             creditCardsController.AddCreditCard(card);

@@ -119,5 +119,19 @@ namespace PasswordManagerTest
             creditCardRepository.AddCreditCard(creditCard);
             creditCardRepository.AddCreditCard(creditCard);
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(CreditCardAlreadyExistsException))]
+        public void AddCreditCardWhitSameNumberThenAnotherCardThrowsException()
+        {
+            creditCardRepository.AddCreditCard(creditCard);
+            string name = "Master Black";
+            string type = "MasterCard";
+            short ccvCode = 091;
+            string note = "note";
+
+            CreditCard sameCreditcard = new CreditCard(category,name,type,creditCardNumber,ccvCode,DateTime.Now,note);
+            creditCardRepository.AddCreditCard(sameCreditcard);
+        }
     }
 }
