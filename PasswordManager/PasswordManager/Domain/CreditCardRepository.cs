@@ -57,5 +57,22 @@ namespace PasswordManager
             }
             return false;
         }
+
+        public List<CreditCard> GetMatchingCreditCardsList(List<CreditCard> creditCardsList)
+        {
+            List<CreditCard> ret = new List<CreditCard>();
+            foreach (CreditCard credCard in this.creditCards)
+            {
+                foreach (CreditCard credCard2 in creditCardsList)
+                {
+                    if (credCard.Number.Equals(credCard2.Number) && !ret.Contains(credCard))
+                    {
+                        ret.Add(credCard);
+                    }
+                }
+            }
+            return ret;
+        }
+
     }
 }

@@ -30,6 +30,14 @@ namespace PasswordManagerTest
         }
 
         [TestMethod]
+        public void CreateCreditCardWithNumber()
+        {
+            long creditCardNumber = 2145321155556688;
+            CreditCard creditCardTest = new CreditCard(creditCardNumber);
+            Assert.IsNotNull(creditCardTest);
+        }
+
+        [TestMethod]
         public void CreateCreditCard()
         {
             Assert.IsNotNull(card);

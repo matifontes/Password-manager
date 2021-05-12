@@ -34,6 +34,18 @@ namespace PasswordManager
         public DateTime ExpiryDate { get; set; }
         public string Note { get; set; }
 
+        public CreditCard(long number)
+        {
+            Category defaultCategory = new Category("default");
+            DateTime expDate = new DateTime(2021, 5, 1);
+            this.Category = defaultCategory;
+            this.Name = "Default";
+            this.Type = "Default";
+            this.Number = number;
+            this.CCVCode = 111;
+            this.ExpiryDate = expDate;
+            this.Note = "Default note";
+        }
 
         public CreditCard(Category category, string name, string type, long creditCardNumber, short ccvCode, DateTime expDate, string note) {
             this.Category = category;

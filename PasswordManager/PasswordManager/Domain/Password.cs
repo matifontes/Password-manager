@@ -43,6 +43,17 @@ namespace PasswordManager
         public string Strength { get; set; }
         public DateTime LastModificationDate { get; set; }
 
+        public Password(string password)
+        {
+            Category defaultCategory = new Category("Default");
+            this.Category = defaultCategory;
+            this.Pass = password;
+            this.Site = "www.default.com";
+            this.User = "Default";
+            this.Note = "Default";
+            this.Strength = PasswordStrength(password);
+        }
+
         public Password(Category category, string password, string site, string user, string note)
         {
             this.Category = category;

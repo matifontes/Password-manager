@@ -74,5 +74,12 @@ namespace PasswordManager.Controllers
             return listDarkGreenPasswords;
         }
 
+        public List<Password> ListPasswordsMatching(List<Password> pass)
+        {
+            List<Password> listRet = this.passwords.GetPasswordMatching(pass);
+            this.passwords.SortListByCategoryName(pass);
+            return listRet;
+        }
+
     }
 }

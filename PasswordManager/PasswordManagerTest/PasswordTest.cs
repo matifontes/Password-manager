@@ -34,6 +34,15 @@ namespace PasswordManagerTest
         }
 
         [TestMethod]
+        public void CreatePasswordWithStringPassword()
+        {
+            string passTest = "134151";
+            Password pass = new Password(passTest);
+            
+            Assert.IsNotNull(pass);
+        }
+
+        [TestMethod]
         public void CreatePassword()
         {
             Assert.IsNotNull(passwordCreatedToday);

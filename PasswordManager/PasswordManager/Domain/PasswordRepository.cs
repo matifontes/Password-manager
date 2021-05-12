@@ -132,5 +132,21 @@ namespace PasswordManager
         {
             return pass.OrderBy(password => password.Category.ToString()).ToList();
         }
+
+        public List<Password> GetPasswordMatching(List<Password> passList)
+        {
+            List<Password> ret = new List<Password>();
+            foreach (Password pass in this.passwords)
+            {
+                foreach (Password pass2 in passList)
+                {
+                    if (pass.Pass.Equals(pass2.Pass) && !ret.Contains(pass))
+                    {
+                        ret.Add(pass);
+                    }
+                }
+            }
+            return ret;
+        }
     }
 }

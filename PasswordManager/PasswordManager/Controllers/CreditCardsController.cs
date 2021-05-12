@@ -40,10 +40,15 @@ namespace PasswordManager.Controllers
             return this.creditCards.ListCreditCards();
         }
 
+        public List<CreditCard> GetMatchingCreditCardsList(List<CreditCard> credCardsList)
+        {
+            List<CreditCard> creditCardsList = this.creditCards.GetMatchingCreditCardsList(credCardsList);
+            return creditCardsList;
+        }
+
         public bool ContainsCreditCard(CreditCard creditCard) 
         {
             return this.creditCards.ContainsCreditCard(creditCard);
         }
-
     }
 }
