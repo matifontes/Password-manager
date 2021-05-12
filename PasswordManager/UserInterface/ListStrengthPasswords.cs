@@ -14,18 +14,20 @@ namespace UserInterface
 {
     public partial class ListStrengthPasswords : UserControl
     {
+        private PasswordsController passwords;
         private CategoriesController categories;
         private event HandleBackToMenu ChangeToPasswordStrenght;
         private CreateModifyPassword passwordForm;
         private List<Password> passList;
         private Password modifyPassword;
         private string strength;
-        public ListStrengthPasswords( CategoriesController categories, List<Password> list, string strength)
+        public ListStrengthPasswords(PasswordsController passwords, CategoriesController categories, List<Password> list, string strength)
         {
             InitializeComponent();
             this.categories = categories;
             this.passList = list;
             this.strength = strength;
+            this.passwords = passwords;
             EnableOptions();
             LoadTitle();
             LoadListPasswords();
@@ -92,7 +94,7 @@ namespace UserInterface
             DisposeChildForms();
             Password password = (Password)dgvList.SelectedRows[0].Cells[2].Value;
             this.modifyPassword = password;
-            this.passwordForm = new CreateModifyPassword(this.categories, password);
+            this.passwordForm = new CreateModifyPassword(this.passwords,this.categories, password);
             passwordForm.AddListener(PostModification);
             passwordForm.Show();
         }

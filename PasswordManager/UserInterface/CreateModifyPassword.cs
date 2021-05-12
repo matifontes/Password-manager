@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using PasswordManager;
 using PasswordManager.Controllers;
+using PasswordManager.Exceptions;
 
 namespace UserInterface
 {
@@ -27,10 +28,11 @@ namespace UserInterface
             LoadCategories();
         }
 
-        public CreateModifyPassword(CategoriesController categories, Password password) 
+        public CreateModifyPassword(PasswordsController passwords, CategoriesController categories, Password password) 
         {
             InitializeComponent();
             CreateModifyPanel();
+            this.passwords = passwords;
             this.categories = categories;
             this.password = password;
             LoadCategories();
@@ -100,6 +102,14 @@ namespace UserInterface
         {
             try
             {
+                if (SiteOrUserChanged()) 
+                {
+                    if(CheckForPairSiteUserOnPasswords()) 
+                    {
+                        const string PASSWORD_WITH_PAIR_USER_SITE_ALREADY_EXISTS = "Existe una contraseña con el par definido de Sitio/Usuario";
+                        throw new PasswordAlreadyExistsException(PASSWORD_WITH_PAIR_USER_SITE_ALREADY_EXISTS);
+                    }
+                }
                 const string SUCCESSFUL_MSG = "Contraseña modificada con exito";
                 password.Category = (Category)cbxCategories.SelectedItem;
                 password.Site = txtSite.Text;
@@ -113,6 +123,16 @@ namespace UserInterface
             {
                 ShowMSG(System.Drawing.Color.Red,e.Message);
             }
+        }
+
+        private bool SiteOrUserChanged() 
+        {
+            return password.Site != txtSite.Text || password.User != txtUser.Text;
+        }
+
+        private bool CheckForPairSiteUserOnPasswords() 
+        {
+            return this.passwords.ContainsPassword(new Password((Category)cbxCategories.SelectedItem, txtPassword.Text, txtSite.Text, txtUser.Text, txtNote.Text));
         }
 
         private void ShowMSG(System.Drawing.Color color, string message)
