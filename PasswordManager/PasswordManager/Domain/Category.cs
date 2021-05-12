@@ -34,6 +34,12 @@ namespace PasswordManager
                 this._name = name;
             }
         }
+
+        public bool IsEqual(Category category) 
+        {
+            return this.Name.ToUpper() == category.Name.ToUpper();
+        }
+
         public override string ToString()
         {
             return this.Name;
