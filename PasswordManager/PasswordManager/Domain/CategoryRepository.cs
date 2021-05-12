@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using PasswordManager.Exceptions;
 
 namespace PasswordManager
 {
@@ -13,7 +14,28 @@ namespace PasswordManager
 
         public void AddCategory(Category category) 
         {
-            categories.Add(category);
+            if (this.ContainsCategory(category))
+            {
+                const string CATEGORY_ALREADY_EXISTS = "Ya existe una categoria con ese nombre";
+                throw new CategoryAlreadyExistsException(CATEGORY_ALREADY_EXISTS);
+            }
+            else 
+            {
+                categories.Add(category);
+            }
+           
+        }
+
+        public bool ContainsCategory(Category category) 
+        {
+            foreach (Category cat in this.categories) 
+            {
+                if (cat.IsEqual(category)) 
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         public void RemoveCategory(Category category) 
