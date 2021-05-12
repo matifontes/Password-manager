@@ -14,7 +14,7 @@ namespace PasswordManagerTest
         private string password = "admin";
         private string site = "aulas.ort.edu.uy";
         private string user = "Ralph";
-        private string note = "";
+        private string note = "nota";
 
         [TestInitialize]
         public void setup()
@@ -69,6 +69,12 @@ namespace PasswordManagerTest
             passwordCreatedYesterday.Pass = newPassword;
             DateTime currentDate = DateTime.Now;
             Assert.AreEqual(passwordCreatedYesterday.LastModificationDate, currentDate);    
+        }
+
+        [TestMethod]
+        public void GetPasswordNote() 
+        {
+            Assert.AreEqual(note, passwordCreatedToday.Note);
         }
 
         [TestMethod]
