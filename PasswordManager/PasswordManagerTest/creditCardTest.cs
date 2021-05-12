@@ -73,7 +73,7 @@ namespace PasswordManagerTest
         }
 
         [TestMethod]
-        public void CreaditCardToStringShowItsName() 
+        public void CreditCardToStringShowItsName() 
         {
             Assert.AreEqual(card.ToString(), name);
         }

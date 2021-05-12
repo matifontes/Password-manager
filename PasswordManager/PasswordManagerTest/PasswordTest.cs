@@ -141,7 +141,7 @@ namespace PasswordManagerTest
         }
 
         [TestMethod]
-        public void VerifyOrangePassword()
+        public void PasswordLargerThan8CharsButShorterThan15ShouldBeOrange()
         {
             string passOr = "testOrange";
             Password passOrange = new Password(personal, passOr, site, user, note);
@@ -150,7 +150,7 @@ namespace PasswordManagerTest
         }
 
         [TestMethod]
-        public void VerifyYellowPassword()
+        public void PasswordLargerThan14WithOnlyMayusShouldBeYellow()
         {
             string passY = "testyellowyellowwwww";
             Password passYellow = new Password(personal, passY, site, user, note);
@@ -159,7 +159,16 @@ namespace PasswordManagerTest
         }
 
         [TestMethod]
-        public void VeifyLightGreenPassword()
+        public void PasswordLargerThan14WithOnlyMinusShouldBeYellow()
+        {
+            string passY = "testyellowyellowwwww";
+            Password passYellow = new Password(personal, passY, site, user, note);
+
+            Assert.AreEqual(passYellow.Strength, "Yellow");
+        }
+
+        [TestMethod]
+        public void PasswordWithMayusandMinusAndLenghtLargerThen14ShouldBeLightGreen()
         {
             string passLG = "testGreenGreenGR";
             Password passLGreen = new Password(personal, passLG, site, user, note);
@@ -168,7 +177,25 @@ namespace PasswordManagerTest
         }
 
         [TestMethod]
-        public void VeifyDarkGreenPassword()
+        public void PasswordWithLenghtLargerThen14WithMayusMinusAndSpecialSimbolsShouldBeLightGreen() 
+        {
+            string passLG = "test@GreenGreenGR";
+            Password passLGreen = new Password(personal, passLG, site, user, note);
+
+            Assert.AreEqual(passLGreen.Strength, "LightGreen");
+        }
+
+        [TestMethod]
+        public void PasswordWithLenghtLargerThen14WithMayusMinusAndNumbersShouldBeLightGreen()
+        {
+            string passLG = "test@GreenGreenGR";
+            Password passLGreen = new Password(personal, passLG, site, user, note);
+
+            Assert.AreEqual(passLGreen.Strength, "LightGreen");
+        }
+
+        [TestMethod]
+        public void PasswordLargerThan14WithMayusMinusSpecialCharsAndNumbersShouldBeDarkGreen()
         {
             string passDG = "testGreenGreen.13";
             Password passDGreen = new Password(personal, passDG, site, user, note);

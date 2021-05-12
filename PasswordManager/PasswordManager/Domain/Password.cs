@@ -188,10 +188,10 @@ namespace PasswordManager
             bool ret = false;
             if (password.Length > 14)
             {
-                if (!PasswordIncludeSpecialCharacters(password) && !PasswordIncludeNumbers(password))
-                {
-                    ret = (PasswordIncludeLowerCase(password) && PasswordIncludeUpperCase(password));
-                }
+                ret = (PasswordIncludeLowerCase(password) && PasswordIncludeUpperCase(password));
+                bool onlySpecialChar = (PasswordIncludeSpecialCharacters(password) && !PasswordIncludeNumbers(password));
+                bool onlyNumber =  (!PasswordIncludeSpecialCharacters(password) && PasswordIncludeNumbers(password));
+                ret = ret || (ret && (onlySpecialChar || onlyNumber));
             }
             return ret;
         }

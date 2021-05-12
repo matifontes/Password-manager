@@ -57,7 +57,7 @@ namespace UserInterface
         private void LoadListPasswords() 
         {
             List<Password> orderedPasswords = passwords.ListPasswords();
-            DataTable dataTable = InitilizeTable();
+            DataTable dataTable = InitializeDataTable();
 
             foreach (Password password in orderedPasswords) 
             {
@@ -72,7 +72,7 @@ namespace UserInterface
             dgvPasswords.DataSource = dataTable;
         }
 
-        private DataTable InitilizeTable() 
+        private DataTable InitializeDataTable() 
         {
             DataTable dataTable = new DataTable();
             dataTable.Columns.Add("Categoría", typeof(object));
