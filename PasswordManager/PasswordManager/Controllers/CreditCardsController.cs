@@ -46,5 +46,11 @@ namespace PasswordManager.Controllers
             return creditCardsList;
         }
 
+        public bool CreditCardExist(List<CreditCard> cardsList, long numCard)
+        {
+            bool exist = this.creditCards.CreditCardExist(cardsList, numCard);
+            return exist;
+        }
+
     }
 }

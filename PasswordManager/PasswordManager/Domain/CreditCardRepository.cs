@@ -51,5 +51,18 @@ namespace PasswordManager
             }
             return ret;
         }
+
+        public bool CreditCardExist(List<CreditCard> cardsList, long numCard)
+        {
+            bool exist = false;
+            foreach (CreditCard card in cardsList)
+            {
+                if(card.Number == numCard)
+                {
+                    exist = true;
+                }
+            }
+            return exist;
+        }
     }
 }
