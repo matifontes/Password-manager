@@ -191,7 +191,7 @@ namespace PasswordManagerTest
             List<Password> passList = new List<Password>();
             passList.Add(password);
             string pass = "dfault";
-            Assert.IsTrue(passwordsController.PasswordExist(passList, pass));
+            Assert.IsFalse(passwordsController.PasswordExist(passList, pass));
         }
     }
 }
