@@ -61,9 +61,28 @@ namespace PasswordManagerTest
         [ExpectedException(typeof(InvalidCreditCardNameException))]
         public void CreateCreditCardWithNameShorterThan3ThrowsException()
         {
-            string name = "12";
+            string name = "a2";
             new CreditCard(category, name, type, creditCardNumber, ccvCode, expDate, note);
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidCreditcardTypeException))]
+        public void CreateCreaditCardWithTypeShorterThan3ThrowsException() 
+        {
+
+            string type = "ab";
+            new CreditCard(category, name, type, creditCardNumber, ccvCode, expDate, note);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidCreditcardTypeException))]
+        public void CreateCreaditCardWithTypeLargerThan25ThrowsException()
+        {
+
+            string type = "1234567890ABCDEFGHRSDAWRFS";
+            new CreditCard(category, name, type, creditCardNumber, ccvCode, expDate, note);
+        }
+
 
         [TestMethod]
         [ExpectedException(typeof(InvalidCreditCardNumberException))]
