@@ -85,7 +85,7 @@ namespace PasswordManagerTest
         }
 
         [TestMethod]
-        public void ListCreditCardssOrderByCategory()
+        public void ListCreditCardsOrderByCategory()
         {
             Category category2 = new Category("Trabajo");
             Category category3 = new Category("Gaming");
@@ -100,6 +100,21 @@ namespace PasswordManagerTest
             Assert.AreEqual(orderedCreditCards[0].Category, category3);
             Assert.AreEqual(orderedCreditCards[1].Category, category);
             Assert.AreEqual(orderedCreditCards[2].Category, category2);
+        }
+
+        [TestMethod]
+        public void RepositoryContainsCreditCardAddedToIt() 
+        {
+            creditCardRepository.AddCreditCard(creditCard);
+            Assert.IsTrue(creditCardRepository.Contains(creditCard));
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(CreditCardAlreadyExistsException))]
+        public void AddCreditCardThatAlreadyExistrsThrowsException() 
+        {
+            creditCardRepository.AddCreditCard(creditCard);
+            creditCardRepository.AddCreditCard(creditCard);
         }
     }
 }
