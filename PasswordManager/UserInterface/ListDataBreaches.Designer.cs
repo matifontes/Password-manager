@@ -57,7 +57,7 @@
             this.btnBack.TabIndex = 1;
             this.btnBack.Text = "Volver";
             this.btnBack.UseVisualStyleBackColor = true;
-            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            this.btnBack.Click += new System.EventHandler(this.BtnBack_Click);
             // 
             // dgvPasswords
             // 
@@ -117,7 +117,7 @@
             this.btnModify.TabIndex = 6;
             this.btnModify.Text = "Modificar";
             this.btnModify.UseVisualStyleBackColor = true;
-            this.btnModify.Click += new System.EventHandler(this.btnModify_Click);
+            this.btnModify.Click += new System.EventHandler(this.BtnModify_Click);
             // 
             // ListDataBreaches
             // 

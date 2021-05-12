@@ -150,6 +150,7 @@ namespace UserInterface
             // txtNote
             // 
             this.txtNote.Location = new System.Drawing.Point(141, 275);
+            this.txtNote.MaxLength = 250;
             this.txtNote.Multiline = true;
             this.txtNote.Name = "txtNote";
             this.txtNote.Size = new System.Drawing.Size(176, 82);

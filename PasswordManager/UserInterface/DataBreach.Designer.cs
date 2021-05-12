@@ -64,7 +64,7 @@
             this.btnVerify.TabIndex = 2;
             this.btnVerify.Text = "Verificar";
             this.btnVerify.UseVisualStyleBackColor = true;
-            this.btnVerify.Click += new System.EventHandler(this.btnVerify_Click);
+            this.btnVerify.Click += new System.EventHandler(this.BtnVerify_Click);
             // 
             // btnBack
             // 
@@ -74,7 +74,7 @@
             this.btnBack.TabIndex = 3;
             this.btnBack.Text = "Volver";
             this.btnBack.UseVisualStyleBackColor = true;
-            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            this.btnBack.Click += new System.EventHandler(this.BtnBack_Click);
             // 
             // txtBox
             // 

@@ -91,12 +91,12 @@ namespace UserInterface
             }
         }
 
-        private void btnBack_Click(object sender, EventArgs e)
+        private void BtnBack_Click(object sender, EventArgs e)
         {
             ChangeToMenu();
         }
 
-        private void btnVerify_Click(object sender, EventArgs e)
+        private void BtnVerify_Click(object sender, EventArgs e)
         {
             LoadList();
             List<Password> passwordsList = this.passwords.ListPasswordsMatching(this.passwordsLine);

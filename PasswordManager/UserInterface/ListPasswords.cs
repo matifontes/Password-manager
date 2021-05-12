@@ -22,6 +22,7 @@ namespace UserInterface
         private CategoriesController categories;
         private event HandleBackToMenu ChangeToMenu;
         private CreateModifyPassword passwordForm;
+        private ShowPassword showPassword;
         public ListPasswordsPanel(PasswordsController passwords, CategoriesController categories)
         {
             InitializeComponent();
@@ -111,8 +112,9 @@ namespace UserInterface
             Password password = (Password)dgvPasswords.SelectedRows[0].Cells[2].Value;
             if (password != null) 
             {
-                ShowPassword showPassword = new ShowPassword(password);
-                showPassword.Show();
+                DisposeChildForms();
+                this.showPassword = new ShowPassword(password);
+                this.showPassword.Show();
             }
         }
 
@@ -144,6 +146,11 @@ namespace UserInterface
             if (this.passwordForm != null)
             {
                 this.passwordForm.Dispose();
+            }
+
+            if(this.showPassword != null) 
+            {
+                this.showPassword.Dispose();
             }
         }
     }

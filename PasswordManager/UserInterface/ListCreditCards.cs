@@ -23,6 +23,7 @@ namespace UserInterface
         private CategoriesController categories;
         private CreateModifyCreditCard creditCardForm;
         private event HandleBackToMenu ChangeToMenu;
+        private ShowCreditCard showCreditCard;
         public ListCreditCards(CreditCardsController creditCards, CategoriesController categories)
         {
             InitializeComponent();
@@ -122,8 +123,9 @@ namespace UserInterface
             CreditCard creditCard = (CreditCard)dgvCategories.SelectedRows[0].Cells[1].Value;
             if (creditCard != null) 
             {
-                ShowCreditCard creditCardShow = new ShowCreditCard(creditCard);
-                creditCardShow.Show();
+                DisposeChildForm();
+                this.showCreditCard = new ShowCreditCard(creditCard);
+                this.showCreditCard.Show();
             }
         }
 
@@ -155,6 +157,11 @@ namespace UserInterface
             if (this.creditCardForm != null) 
             {
                 this.creditCardForm.Dispose();
+            }
+
+            if (this.showCreditCard != null) 
+            {
+                this.showCreditCard.Dispose();
             }
         }
     }

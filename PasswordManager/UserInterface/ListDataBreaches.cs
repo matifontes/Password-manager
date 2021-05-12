@@ -15,10 +15,10 @@ namespace UserInterface
     public partial class ListDataBreaches : UserControl
     {
         private event HandleBackToMenu ChangeToDataBreach;
-        private event HandleWindowChange ChangeWindow;
         private CreateModifyPassword passwordForm;
         private CategoriesController categories;
         private PasswordsController passwordsController;
+        private Password password;
         List<Password> passwords;
         List<CreditCard> creditCards;
 
@@ -103,10 +103,11 @@ namespace UserInterface
             btnModify.Enabled = this.passwords.Count > 0;
         }
 
-        private void btnModify_Click(object sender, EventArgs e)
+        private void BtnModify_Click(object sender, EventArgs e)
         {
             DisposeChildForm();
             Password password = (Password)dgvPasswords.SelectedRows[0].Cells[2].Value;
+            this.password = password;
             this.passwordForm = new CreateModifyPassword(this.categories, password);
             passwordForm.AddListener(PostModification);
             passwordForm.Show();
@@ -118,7 +119,7 @@ namespace UserInterface
             LoadListPasswords();
         }
 
-        private void btnBack_Click(object sender, EventArgs e)
+        private void BtnBack_Click(object sender, EventArgs e)
         {
             ChangeToDataBreach();
             DisposeChildForm();
