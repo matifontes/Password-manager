@@ -22,7 +22,7 @@ namespace PasswordManager
             {
                 if (PickOfCharSetOptions(indexOptions, settings))
                 {
-                    pass[charPosition] = settings.CharSetOptions[indexOptions][random.Next(charSetOptionsLength - 1)];
+                    pass[charPosition] = settings.CharSetOptions[indexOptions][random.Next(settings.CharSetOptions[indexOptions].Length - 1)];
                 }
                 else
                 {
