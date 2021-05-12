@@ -8,13 +8,14 @@ namespace PasswordManagerTest
     [TestClass]
     public class CategoryRepositoryTest
     {
+        private string categoryName = "Personal";
         private Category category;
         private CategoryRepository categoryRepository;
 
         [TestInitialize]
         public void Setup() 
         {
-            category = new Category("Personal");
+            category = new Category(categoryName);
             categoryRepository = new CategoryRepository();
         }
 
@@ -42,6 +43,25 @@ namespace PasswordManagerTest
         {
             categoryRepository.AddCategory(category);
             Assert.AreEqual(categoryRepository.Count(), 1);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(CategoryAlreadyExistsException))]
+        public void AddCategoryThatAlreadyExistsThrowsException() 
+        {
+            categoryRepository.AddCategory(category);
+            Category categoryWithSameName = new Category(categoryName);
+            
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(CategoryAlreadyExistsException))]
+        public void AddCategoryWhitSameNameDifferentCaseThrowsAlreadyExistsException()
+        {
+            categoryRepository.AddCategory(category);
+            string categoryNameUperCase = categoryName.ToUpper();
+            Category categoryWithSameName = new Category(categoryNameUperCase);
+            categoryRepository.AddCategory(categoryWithSameName);
         }
 
         [TestMethod]
