@@ -213,5 +213,21 @@ namespace PasswordManagerTest
             Assert.IsTrue(passwordCreatedToday.Equals(samePassword));
         }
 
+        [TestMethod]
+        public void PasswordsWithSameSiteButDifferentUserArentEqual()
+        {
+            string user = "Primo";
+            Password samePassword = new Password(personal, password, site, user, note);
+            Assert.IsFalse(passwordCreatedToday.Equals(samePassword));
+        }
+
+        [TestMethod]
+        public void PasswordsWithSameUserButDifferentSiteArentEqual()
+        {
+            string site = "steam";
+            Password samePassword = new Password(personal, password, site, user, note);
+            Assert.IsFalse(passwordCreatedToday.Equals(samePassword));
+        }
+
     }
 }
