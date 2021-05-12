@@ -50,18 +50,17 @@ namespace PasswordManagerTest
         [TestMethod]
         public void VerifyLastModificationDateAfterCreatingPassword() 
         {
-            DateTime currentDate = DateTime.Today;
+            DateTime currentDate = DateTime.Now;
             Assert.AreEqual(passwordCreatedToday.LastModificationDate,currentDate);
         }
 
         [TestMethod]
         public void ValidateLastModificationDateAfterChangingPassword() 
         {
-            DateTime currentDate = DateTime.Today;
             string newPassword = "tableTop5E";
 
             passwordCreatedYesterday.Pass = newPassword;
-
+            DateTime currentDate = DateTime.Now;
             Assert.AreEqual(passwordCreatedYesterday.LastModificationDate, currentDate);    
         }
 

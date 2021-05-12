@@ -39,18 +39,21 @@ namespace UserInterface
                 btnModify.Enabled = false;
                 btnAddPassword.Enabled = false;
                 btnRemove.Enabled = false;
+                btnShow.Enabled = false;
             }
             else if (this.passwords.IsEmpty() && !this.categories.IsEmpty())
             {
                 btnModify.Enabled = false;
                 btnRemove.Enabled = false;
                 btnAddPassword.Enabled = true;
+                btnShow.Enabled = false;
             }
             else 
             {
                 btnRemove.Enabled = true;
                 btnModify.Enabled = true;
                 btnAddPassword.Enabled = true;
+                btnShow.Enabled = true;
             }
         }
 
@@ -99,6 +102,13 @@ namespace UserInterface
             passwordForm.Show();
         }
 
+        private void BtnShow_Click(object sender, EventArgs e)
+        {
+            Password password = (Password)dgvPasswords.SelectedRows[0].Cells[2].Value;
+            ShowPassword showPassword = new ShowPassword(password);
+            showPassword.Show();
+        }
+
         private void BtnRemove_Click(object sender, EventArgs e)
         {
             Password selectedPassword = (Password)dgvPasswords.SelectedRows[0].Cells[2].Value;
@@ -120,6 +130,7 @@ namespace UserInterface
             DisposeChildForms();
             ChangeToMenu();
         }
+
         private void DisposeChildForms()
         {
             if (this.passwordForm != null)
@@ -127,6 +138,5 @@ namespace UserInterface
                 this.passwordForm.Dispose();
             }
         }
-
     }
 }

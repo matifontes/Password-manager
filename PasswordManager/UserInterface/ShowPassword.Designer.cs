@@ -35,12 +35,12 @@ namespace UserInterface
             this.lblPassword = new System.Windows.Forms.Label();
             this.lblLastModification = new System.Windows.Forms.Label();
             this.lblNote = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.txtCategory = new System.Windows.Forms.TextBox();
+            this.txtSite = new System.Windows.Forms.TextBox();
+            this.txtUser = new System.Windows.Forms.TextBox();
+            this.txtPass = new System.Windows.Forms.TextBox();
+            this.txtDate = new System.Windows.Forms.TextBox();
+            this.txtNote = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // lblCategory
@@ -104,66 +104,66 @@ namespace UserInterface
             this.lblNote.TabIndex = 5;
             this.lblNote.Text = "Nota:";
             // 
-            // textBox1
+            // txtCategory
             // 
-            this.textBox1.Location = new System.Drawing.Point(111, 36);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(203, 20);
-            this.textBox1.TabIndex = 6;
+            this.txtCategory.Location = new System.Drawing.Point(111, 36);
+            this.txtCategory.Name = "txtCategory";
+            this.txtCategory.ReadOnly = true;
+            this.txtCategory.Size = new System.Drawing.Size(203, 20);
+            this.txtCategory.TabIndex = 6;
             // 
-            // textBox2
+            // txtSite
             // 
-            this.textBox2.Location = new System.Drawing.Point(111, 76);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(203, 20);
-            this.textBox2.TabIndex = 7;
+            this.txtSite.Location = new System.Drawing.Point(111, 76);
+            this.txtSite.Name = "txtSite";
+            this.txtSite.ReadOnly = true;
+            this.txtSite.Size = new System.Drawing.Size(203, 20);
+            this.txtSite.TabIndex = 7;
             // 
-            // textBox3
+            // txtUser
             // 
-            this.textBox3.Location = new System.Drawing.Point(111, 121);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(203, 20);
-            this.textBox3.TabIndex = 8;
+            this.txtUser.Location = new System.Drawing.Point(111, 121);
+            this.txtUser.Name = "txtUser";
+            this.txtUser.ReadOnly = true;
+            this.txtUser.Size = new System.Drawing.Size(203, 20);
+            this.txtUser.TabIndex = 8;
             // 
-            // textBox4
+            // txtPass
             // 
-            this.textBox4.Location = new System.Drawing.Point(111, 165);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(203, 20);
-            this.textBox4.TabIndex = 9;
+            this.txtPass.Location = new System.Drawing.Point(111, 165);
+            this.txtPass.Name = "txtPass";
+            this.txtPass.ReadOnly = true;
+            this.txtPass.Size = new System.Drawing.Size(203, 20);
+            this.txtPass.TabIndex = 9;
             // 
-            // textBox5
+            // txtDate
             // 
-            this.textBox5.Location = new System.Drawing.Point(111, 223);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.ReadOnly = true;
-            this.textBox5.Size = new System.Drawing.Size(203, 20);
-            this.textBox5.TabIndex = 10;
+            this.txtDate.Location = new System.Drawing.Point(111, 223);
+            this.txtDate.Name = "txtDate";
+            this.txtDate.ReadOnly = true;
+            this.txtDate.Size = new System.Drawing.Size(203, 20);
+            this.txtDate.TabIndex = 10;
             // 
-            // textBox6
+            // txtNote
             // 
-            this.textBox6.Location = new System.Drawing.Point(111, 276);
-            this.textBox6.Multiline = true;
-            this.textBox6.Name = "textBox6";
-            this.textBox6.ReadOnly = true;
-            this.textBox6.Size = new System.Drawing.Size(203, 84);
-            this.textBox6.TabIndex = 11;
+            this.txtNote.Location = new System.Drawing.Point(111, 276);
+            this.txtNote.Multiline = true;
+            this.txtNote.Name = "txtNote";
+            this.txtNote.ReadOnly = true;
+            this.txtNote.Size = new System.Drawing.Size(203, 84);
+            this.txtNote.TabIndex = 11;
             // 
             // ShowPassword
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(349, 398);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtNote);
+            this.Controls.Add(this.txtDate);
+            this.Controls.Add(this.txtPass);
+            this.Controls.Add(this.txtUser);
+            this.Controls.Add(this.txtSite);
+            this.Controls.Add(this.txtCategory);
             this.Controls.Add(this.lblNote);
             this.Controls.Add(this.lblLastModification);
             this.Controls.Add(this.lblPassword);
@@ -172,7 +172,7 @@ namespace UserInterface
             this.Controls.Add(this.lblCategory);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "ShowPassword";
-            this.Text = "ShowPassword";
+            this.Text = "Contraseña";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -186,11 +186,11 @@ namespace UserInterface
         private System.Windows.Forms.Label lblPassword;
         private System.Windows.Forms.Label lblLastModification;
         private System.Windows.Forms.Label lblNote;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox txtCategory;
+        private System.Windows.Forms.TextBox txtSite;
+        private System.Windows.Forms.TextBox txtUser;
+        private System.Windows.Forms.TextBox txtPass;
+        private System.Windows.Forms.TextBox txtDate;
+        private System.Windows.Forms.TextBox txtNote;
     }
 }

@@ -61,7 +61,7 @@ namespace PasswordManager
             else
             {
                 this._pass = value;
-                this.LastModificationDate = DateTime.Today;
+                this.LastModificationDate = DateTime.Now;
                 this.Strength = PasswordStrength(value);
             }
         }
@@ -74,7 +74,7 @@ namespace PasswordManager
             else
             {
                 this._user = value;
-                this.LastModificationDate = DateTime.Today;
+                this.LastModificationDate = DateTime.Now;
             }
         }
 
@@ -87,7 +87,7 @@ namespace PasswordManager
             else
             {
                 this._site = value;
-                this.LastModificationDate = DateTime.Today;
+                this.LastModificationDate = DateTime.Now;
             }
         }
 
@@ -100,7 +100,7 @@ namespace PasswordManager
             else
             {
                 this._note = value;
-                this.LastModificationDate = DateTime.Today;
+                this.LastModificationDate = DateTime.Now;
             }
         }
 
