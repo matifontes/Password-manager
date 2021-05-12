@@ -150,6 +150,12 @@
     <Compile Include="ModifyCategory.Designer.cs">
       <DependentUpon>ModifyCategory.cs</DependentUpon>
     </Compile>
+    <Compile Include="ShowCreditCard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowCreditCard.Designer.cs">
+      <DependentUpon>ShowCreditCard.cs</DependentUpon>
+    </Compile>
     <Compile Include="ShowPassword.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -230,6 +236,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModifyCategory.resx">
       <DependentUpon>ModifyCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShowCreditCard.resx">
+      <DependentUpon>ShowCreditCard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ShowPassword.resx">
       <DependentUpon>ShowPassword.cs</DependentUpon>

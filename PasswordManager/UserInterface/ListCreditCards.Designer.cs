@@ -35,6 +35,7 @@ namespace UserInterface
             this.btnModify = new System.Windows.Forms.Button();
             this.btnRemove = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
+            this.btnShow = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCategories)).BeginInit();
             this.SuspendLayout();
             // 
@@ -66,9 +67,9 @@ namespace UserInterface
             // 
             // btnAddCreditCard
             // 
-            this.btnAddCreditCard.Location = new System.Drawing.Point(355, 381);
+            this.btnAddCreditCard.Location = new System.Drawing.Point(353, 381);
             this.btnAddCreditCard.Name = "btnAddCreditCard";
-            this.btnAddCreditCard.Size = new System.Drawing.Size(118, 38);
+            this.btnAddCreditCard.Size = new System.Drawing.Size(102, 38);
             this.btnAddCreditCard.TabIndex = 2;
             this.btnAddCreditCard.Text = "Agregar";
             this.btnAddCreditCard.UseVisualStyleBackColor = true;
@@ -76,9 +77,9 @@ namespace UserInterface
             // 
             // btnModify
             // 
-            this.btnModify.Location = new System.Drawing.Point(231, 381);
+            this.btnModify.Location = new System.Drawing.Point(245, 380);
             this.btnModify.Name = "btnModify";
-            this.btnModify.Size = new System.Drawing.Size(118, 38);
+            this.btnModify.Size = new System.Drawing.Size(102, 38);
             this.btnModify.TabIndex = 3;
             this.btnModify.Text = "Modificar";
             this.btnModify.UseVisualStyleBackColor = true;
@@ -86,9 +87,9 @@ namespace UserInterface
             // 
             // btnRemove
             // 
-            this.btnRemove.Location = new System.Drawing.Point(107, 381);
+            this.btnRemove.Location = new System.Drawing.Point(29, 381);
             this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(118, 37);
+            this.btnRemove.Size = new System.Drawing.Size(102, 37);
             this.btnRemove.TabIndex = 4;
             this.btnRemove.Text = "Eliminar";
             this.btnRemove.UseVisualStyleBackColor = true;
@@ -104,10 +105,21 @@ namespace UserInterface
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.BtnBack_Click);
             // 
+            // btnShow
+            // 
+            this.btnShow.Location = new System.Drawing.Point(137, 381);
+            this.btnShow.Name = "btnShow";
+            this.btnShow.Size = new System.Drawing.Size(102, 37);
+            this.btnShow.TabIndex = 6;
+            this.btnShow.Text = "Ver";
+            this.btnShow.UseVisualStyleBackColor = true;
+            this.btnShow.Click += new System.EventHandler(this.BtnShow_Click);
+            // 
             // ListCreditCards
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnShow);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.btnModify);
@@ -130,5 +142,6 @@ namespace UserInterface
         private System.Windows.Forms.Button btnModify;
         private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.Button btnShow;
     }
 }

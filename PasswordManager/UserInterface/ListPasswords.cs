@@ -109,8 +109,11 @@ namespace UserInterface
         private void BtnShow_Click(object sender, EventArgs e)
         {
             Password password = (Password)dgvPasswords.SelectedRows[0].Cells[2].Value;
-            ShowPassword showPassword = new ShowPassword(password);
-            showPassword.Show();
+            if (password != null) 
+            {
+                ShowPassword showPassword = new ShowPassword(password);
+                showPassword.Show();
+            }
         }
 
         private void BtnRemove_Click(object sender, EventArgs e)
