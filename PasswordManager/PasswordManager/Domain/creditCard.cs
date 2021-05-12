@@ -7,14 +7,19 @@ namespace PasswordManager
     {
         const int LENGTH_FOR_VALID_NAME = 16;
         public Category Category { get; set; }
-        public string Type { get; set; }
+        private string _name;
+        private string _type;
         private long _number;
         private short _ccvCode;
-        private string _name;
         public string Name
         {
             get { return _name; }
             set => SetName(value);
+        }
+        public string Type 
+        { 
+            get { return _type; }
+            set => SetType(value); 
         }
         public long Number
         {
@@ -57,6 +62,18 @@ namespace PasswordManager
             }
         }
 
+        private void SetType(string type) 
+        {
+            if (!IsValidType(type))
+            {
+                throw new InvalidCreditCardTypeException("Largo del tipo de tarjeta de credito invalido, entre 3 y 25 caracteres");
+            }
+            else
+            {
+                this._type = type;
+            }
+        }
+
         private void SetNumber(long num)
         {
             if (!IsValidNumber(num))
@@ -84,6 +101,11 @@ namespace PasswordManager
         private bool IsValidName(string name) 
         {
             return name.Length >= 3 && name.Length <= 25;
+        }
+
+        private bool IsValidType(string type) 
+        {
+            return type.Length >= 3 && type.Length <= 25;
         }
 
         private bool IsValidCCV(short num) 

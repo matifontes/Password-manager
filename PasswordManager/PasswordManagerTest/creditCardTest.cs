@@ -66,7 +66,7 @@ namespace PasswordManagerTest
         }
 
         [TestMethod]
-        [ExpectedException(typeof(InvalidCreditcardTypeException))]
+        [ExpectedException(typeof(InvalidCreditCardTypeException))]
         public void CreateCreaditCardWithTypeShorterThan3ThrowsException() 
         {
 
@@ -75,7 +75,7 @@ namespace PasswordManagerTest
         }
 
         [TestMethod]
-        [ExpectedException(typeof(InvalidCreditcardTypeException))]
+        [ExpectedException(typeof(InvalidCreditCardTypeException))]
         public void CreateCreaditCardWithTypeLargerThan25ThrowsException()
         {
 
