@@ -16,6 +16,11 @@ namespace PasswordManager.Controllers
             this.categories.AddCategory(category);  
         }
 
+        public bool ContainsCategory(Category category) 
+        {
+            return this.categories.ContainsCategory(category);
+        }
+
         public void RemoveCategory(Category category) 
         {
             this.categories.RemoveCategory(category);
