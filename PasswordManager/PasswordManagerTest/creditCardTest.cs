@@ -118,7 +118,7 @@ namespace PasswordManagerTest
         {
             long creditCardNumber = 1234123412341234;
             CreditCard sameCard = new CreditCard(category, name, type, creditCardNumber, ccvCode, expDate, note);
-            Assert.IsTrue(card.Equals(sameCard));
+            Assert.IsFalse(card.Equals(sameCard));
         }
     }
 }
