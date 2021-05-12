@@ -30,7 +30,6 @@ namespace UserInterface
         {
             InitializeComponent();
             CreateModifyPanel();
-            this.passwords = passwords;
             this.categories = categories;
             this.password = password;
             LoadCategories();
@@ -132,8 +131,9 @@ namespace UserInterface
             }
             catch (Exception) 
             {
+                const string AUTOGEN_MSG_ERR = "Ninguna opcion elegida";
                 lblAutoGenerateError.ForeColor = System.Drawing.Color.Red;
-                lblAutoGenerateError.Text = "Ninguna opcion elegida";
+                lblAutoGenerateError.Text = AUTOGEN_MSG_ERR;
             }
         }
 

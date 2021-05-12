@@ -59,16 +59,20 @@ namespace UserInterface
 
         private void LoadListPasswords() 
         {
+            const string CATEGORY_HEADER = "Categoría";
+            const string SITE_HEADER = "Sitio";
+            const string USER_HEADER = "Usuario";
+            const string LASTMODIFICATION_DATE_HEADER = "Última Modificación";
             List<Password> orderedPasswords = passwords.ListPasswords();
             DataTable dataTable = InitializeDataTable();
 
             foreach (Password password in orderedPasswords) 
             {
                 DataRow row = dataTable.NewRow();
-                row["Categoría"] = password.Category;
-                row["Sitio"] = password.Site;
-                row["Usuario"] = password;
-                row["Última Modificación"] = password.LastModificationDate;
+                row[CATEGORY_HEADER] = password.Category;
+                row[SITE_HEADER] = password.Site;
+                row[USER_HEADER] = password;
+                row[LASTMODIFICATION_DATE_HEADER] = password.LastModificationDate;
                 dataTable.Rows.Add(row);
             }
 
