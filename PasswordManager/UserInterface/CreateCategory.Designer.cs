@@ -47,7 +47,7 @@ namespace UserInterface
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(192, 68);
+            this.btnCreate.Location = new System.Drawing.Point(191, 83);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(139, 38);
             this.btnCreate.TabIndex = 7;
@@ -65,7 +65,7 @@ namespace UserInterface
             // lblErrorMsg
             // 
             this.lblErrorMsg.AutoSize = true;
-            this.lblErrorMsg.Location = new System.Drawing.Point(15, 59);
+            this.lblErrorMsg.Location = new System.Drawing.Point(20, 55);
             this.lblErrorMsg.Name = "lblErrorMsg";
             this.lblErrorMsg.Size = new System.Drawing.Size(0, 13);
             this.lblErrorMsg.TabIndex = 9;
@@ -79,7 +79,7 @@ namespace UserInterface
             this.Controls.Add(this.btnCreate);
             this.Controls.Add(this.txtCategoryName);
             this.Name = "CreateCategory";
-            this.Size = new System.Drawing.Size(347, 136);
+            this.Size = new System.Drawing.Size(347, 142);
             this.ResumeLayout(false);
             this.PerformLayout();
 

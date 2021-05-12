@@ -37,7 +37,7 @@ namespace UserInterface
                 ShowFeedbackMessage(System.Drawing.Color.Green, CATEGORY_CREATED_SUCCESFULLY);
                 PostCreated();
             }
-            catch (InvalidCategoryNameException exp) 
+            catch (Exception exp) 
             {
                 ShowFeedbackMessage(System.Drawing.Color.Red, exp.Message);
             }

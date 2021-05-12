@@ -44,7 +44,7 @@ namespace UserInterface
 
         private void CreateModifyPanel() 
         {
-            ModifyCategory modifyCategoryPanel = new ModifyCategory(category);
+            ModifyCategory modifyCategoryPanel = new ModifyCategory(category, this.categories);
             modifyCategoryPanel.AddListener(PostModified);
             optionPanel.Controls.Add(modifyCategoryPanel);
             ReSizeForm(modifyCategoryPanel.Width, modifyCategoryPanel.Height);
