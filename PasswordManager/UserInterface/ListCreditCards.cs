@@ -14,6 +14,11 @@ namespace UserInterface
 {
     public partial class ListCreditCards : UserControl
     {
+        const string CATEGORY_HEADER = "Categoría";
+        const string NAME_HEADER = "Nombre";
+        const string TYPE_HEADER = "Tipo";
+        const string CCNUMBER_HEADER = "Tarjeta";
+        const string EXPIRYDATE_HEADER = "Vencimiento";
         private CreditCardsController creditCards;
         private CategoriesController categories;
         private CreateModifyCreditCard creditCardForm;
@@ -65,14 +70,14 @@ namespace UserInterface
             foreach (CreditCard creditCard in orderedCreditCard)
             {
                 DataRow row = dataTable.NewRow();
-                row["Categoría"] = creditCard.Category;
-                row["Nombre"] = creditCard;
-                row["Tipo"] = creditCard.Type;
+                row[CATEGORY_HEADER] = creditCard.Category;
+                row[NAME_HEADER] = creditCard;
+                row[TYPE_HEADER] = creditCard.Type;
                 string XXNo = "XXXX";
                 string CCNo = creditCard.Number.ToString();
                 string maskedCCNo = String.Format("{0} {0} {0} {1}", XXNo, CCNo.Substring(CCNo.Length - 4, 4));
-                row["Tarjeta"] = maskedCCNo;
-                row["Vencimiento"] = creditCard.ExpiryDate;
+                row[CCNUMBER_HEADER] = maskedCCNo;
+                row[EXPIRYDATE_HEADER] = creditCard.ExpiryDate;
                 dataTable.Rows.Add(row);
             }
             dgvCategories.DataSource = dataTable;
@@ -81,11 +86,11 @@ namespace UserInterface
         private DataTable InitializeDataTable() 
         {
             DataTable dataTable = new DataTable();
-            dataTable.Columns.Add("Categoría", typeof(Category));
-            dataTable.Columns.Add("Nombre", typeof(CreditCard));
-            dataTable.Columns.Add("Tipo", typeof(string));
-            dataTable.Columns.Add("Tarjeta", typeof(string));
-            dataTable.Columns.Add("Vencimiento", typeof(DateTime));
+            dataTable.Columns.Add(CATEGORY_HEADER, typeof(Category));
+            dataTable.Columns.Add(NAME_HEADER, typeof(CreditCard));
+            dataTable.Columns.Add(TYPE_HEADER, typeof(string));
+            dataTable.Columns.Add(CCNUMBER_HEADER, typeof(string));
+            dataTable.Columns.Add(EXPIRYDATE_HEADER, typeof(DateTime));
             return dataTable;
         }
 
