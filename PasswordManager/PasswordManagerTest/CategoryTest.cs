@@ -57,5 +57,13 @@ namespace PasswordManagerTest
             string invalidNewName = "PC";
             category.ChangeName(invalidNewName);
         }
+
+        [TestMethod]
+        public void CategorysWithSameNameAreEqual() 
+        {
+            Category category = new Category("Personal");
+            Category categoryWithSameName = new Category("PERSONAL");
+            Assert.IsTrue(category.IsEqual(categoryWithSameName));
+        }
     }
 }
