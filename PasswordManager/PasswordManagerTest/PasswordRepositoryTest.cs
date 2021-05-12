@@ -2,6 +2,7 @@
 using System;
 using PasswordManager;
 using System.Collections.Generic;
+using PasswordManager.Exceptions;
 
 namespace PasswordManagerTest
 {
@@ -75,7 +76,7 @@ namespace PasswordManagerTest
         public void RepositoryContainsPasswordAddedToIt() 
         {
             passwordRepository.AddPassword(password);
-            Assert.IsTrue(passwordRepository.Contains(password);
+            Assert.IsTrue(passwordRepository.Contains(password));
         }
 
         [TestMethod]
@@ -99,8 +100,10 @@ namespace PasswordManagerTest
         {
             Category category2 = new Category("Trabajo");
             Category category3 = new Category("Gaming");
-            Password password2 = new Password(category2, pass, site, user, note);
-            Password password3 = new Password(category3, pass, site, user, note);
+            string userForPassword2 = "Ramon";
+            string userForPassword3 = "Guest";
+            Password password2 = new Password(category2, pass, site, userForPassword2, note);
+            Password password3 = new Password(category3, pass, site, userForPassword3, note);
             passwordRepository.AddPassword(password);
             passwordRepository.AddPassword(password2);
             passwordRepository.AddPassword(password3);
@@ -116,8 +119,10 @@ namespace PasswordManagerTest
         {
             Category category2 = new Category("Trabajo");
             Category category3 = new Category("Gaming");
-            Password password2 = new Password(category2, pass, site, user, note);
-            Password password3 = new Password(category3, pass, site, user, note);
+            string userForPassword2 = "Ramon";
+            string userForPassword3 = "Guest";
+            Password password2 = new Password(category2, pass, site, userForPassword2, note);
+            Password password3 = new Password(category3, pass, site, userForPassword3, note);
             List<Password> passwords = passwordRepository.ListPasswords();
             passwords.Add(password);
             passwords.Add(password2);
