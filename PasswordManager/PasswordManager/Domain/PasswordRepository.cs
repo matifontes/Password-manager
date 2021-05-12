@@ -127,5 +127,18 @@ namespace PasswordManager
             return ret;
         }
 
+        public bool PasswordExist(List<Password> passList, string pass)
+        {
+            bool exist = false;
+            foreach (Password password in passList)
+            {
+                if(password.Pass == pass)
+                {
+                    exist = true;
+                }
+            }
+            return exist;
+        }
+
     }
 }
