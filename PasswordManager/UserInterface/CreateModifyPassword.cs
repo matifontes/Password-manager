@@ -27,11 +27,10 @@ namespace UserInterface
             LoadCategories();
         }
 
-        public CreateModifyPassword(PasswordsController passwords, CategoriesController categories, Password password) 
+        public CreateModifyPassword(CategoriesController categories, Password password) 
         {
             InitializeComponent();
             CreateModifyPanel();
-            this.passwords = passwords;
             this.categories = categories;
             this.password = password;
             LoadCategories();
@@ -133,8 +132,9 @@ namespace UserInterface
             }
             catch (Exception) 
             {
+                const string AUTOGEN_MSG_ERR = "Ninguna opcion elegida";
                 lblAutoGenerateError.ForeColor = System.Drawing.Color.Red;
-                lblAutoGenerateError.Text = "Ninguna opcion elegida";
+                lblAutoGenerateError.Text = AUTOGEN_MSG_ERR;
             }
         }
 
@@ -150,6 +150,11 @@ namespace UserInterface
         private void HidePassword(object sender, EventArgs e) 
         {
             txtPassword.UseSystemPasswordChar = true;
+        }
+
+        private void TxtPassword_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == ' ') e.Handled = true;
         }
     }
 }

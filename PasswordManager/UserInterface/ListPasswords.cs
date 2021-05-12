@@ -14,6 +14,10 @@ namespace UserInterface
 {
     public partial class ListPasswordsPanel : UserControl
     {
+        const string CATEGORY_HEADER = "Categoría";
+        const string SITE_HEADER = "Sitio";
+        const string USER_HEADER = "Usuario";
+        const string LASTMODIFICATION_DATE_HEADER = "Última Modificación";
         private PasswordsController passwords;
         private CategoriesController categories;
         private event HandleBackToMenu ChangeToMenu;
@@ -39,46 +43,49 @@ namespace UserInterface
                 btnModify.Enabled = false;
                 btnAddPassword.Enabled = false;
                 btnRemove.Enabled = false;
+                btnShow.Enabled = false;
             }
             else if (this.passwords.IsEmpty() && !this.categories.IsEmpty())
             {
                 btnModify.Enabled = false;
                 btnRemove.Enabled = false;
                 btnAddPassword.Enabled = true;
+                btnShow.Enabled = false;
             }
             else 
             {
                 btnRemove.Enabled = true;
                 btnModify.Enabled = true;
                 btnAddPassword.Enabled = true;
+                btnShow.Enabled = true;
             }
         }
 
         private void LoadListPasswords() 
         {
             List<Password> orderedPasswords = passwords.ListPasswords();
-            DataTable dataTable = InitilizeTable();
+            DataTable dataTable = InitializeDataTable();
 
             foreach (Password password in orderedPasswords) 
             {
                 DataRow row = dataTable.NewRow();
-                row["Categoría"] = password.Category;
-                row["Sitio"] = password.Site;
-                row["Usuario"] = password;
-                row["Última Modificación"] = password.LastModificationDate;
+                row[CATEGORY_HEADER] = password.Category;
+                row[SITE_HEADER] = password.Site;
+                row[USER_HEADER] = password;
+                row[LASTMODIFICATION_DATE_HEADER] = password.LastModificationDate;
                 dataTable.Rows.Add(row);
             }
 
             dgvPasswords.DataSource = dataTable;
         }
 
-        private DataTable InitilizeTable() 
+        private DataTable InitializeDataTable() 
         {
             DataTable dataTable = new DataTable();
-            dataTable.Columns.Add("Categoría", typeof(object));
-            dataTable.Columns.Add("Sitio", typeof(string));
-            dataTable.Columns.Add("Usuario", typeof(Password));
-            dataTable.Columns.Add("Última Modificación", typeof(DateTime));
+            dataTable.Columns.Add(CATEGORY_HEADER, typeof(object));
+            dataTable.Columns.Add(SITE_HEADER, typeof(string));
+            dataTable.Columns.Add(USER_HEADER, typeof(Password));
+            dataTable.Columns.Add(LASTMODIFICATION_DATE_HEADER, typeof(DateTime));
             return dataTable;
         }
 
@@ -94,9 +101,19 @@ namespace UserInterface
         {
             DisposeChildForms();
             Password password = (Password)dgvPasswords.SelectedRows[0].Cells[2].Value;
-            this.passwordForm = new CreateModifyPassword(this.passwords, this.categories, password);
+            this.passwordForm = new CreateModifyPassword(this.categories, password);
             passwordForm.AddListener(PostModification);
             passwordForm.Show();
+        }
+
+        private void BtnShow_Click(object sender, EventArgs e)
+        {
+            Password password = (Password)dgvPasswords.SelectedRows[0].Cells[2].Value;
+            if (password != null) 
+            {
+                ShowPassword showPassword = new ShowPassword(password);
+                showPassword.Show();
+            }
         }
 
         private void BtnRemove_Click(object sender, EventArgs e)
@@ -104,6 +121,7 @@ namespace UserInterface
             Password selectedPassword = (Password)dgvPasswords.SelectedRows[0].Cells[2].Value;
             if (selectedPassword != null) 
             {
+                DisposeChildForms();
                 passwords.RemovePassword(selectedPassword);
                 PostModification();
             }
@@ -120,6 +138,7 @@ namespace UserInterface
             DisposeChildForms();
             ChangeToMenu();
         }
+
         private void DisposeChildForms()
         {
             if (this.passwordForm != null)
@@ -127,6 +146,5 @@ namespace UserInterface
                 this.passwordForm.Dispose();
             }
         }
-
     }
 }

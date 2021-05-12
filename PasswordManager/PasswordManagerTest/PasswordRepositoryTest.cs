@@ -2,6 +2,7 @@
 using System;
 using PasswordManager;
 using System.Collections.Generic;
+using PasswordManager.Exceptions;
 
 namespace PasswordManagerTest
 {
@@ -51,6 +52,32 @@ namespace PasswordManagerTest
             passwordRepository.AddPassword(password);
             Assert.AreEqual(passwordRepository.Count(), 1);
         }
+        
+        [TestMethod]
+        [ExpectedException(typeof(PasswordAlreadyExistsException))]
+        public void AddPasswordThatAlreadyExitsThrowsException() 
+        {
+            passwordRepository.AddPassword(password);
+            passwordRepository.AddPassword(password);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(PasswordAlreadyExistsException))]
+        public void AddPasswordWithSameUserAndSiteThenOtherPasswordThrowsAlreadyExistsException()
+        {
+            passwordRepository.AddPassword(password);
+            string pass = "rootpassword";
+            string note = "password";
+            Password samePassword = new Password(category,pass,site,user,note);
+            passwordRepository.AddPassword(samePassword);
+        }
+
+        [TestMethod]
+        public void RepositoryContainsPasswordAddedToIt() 
+        {
+            passwordRepository.AddPassword(password);
+            Assert.IsTrue(passwordRepository.ContainsPassword(password));
+        }
 
         [TestMethod]
         public void PasswordRepositoryWithAPasswordShouldntBeEmpty()
@@ -73,8 +100,10 @@ namespace PasswordManagerTest
         {
             Category category2 = new Category("Trabajo");
             Category category3 = new Category("Gaming");
-            Password password2 = new Password(category2, pass, site, user, note);
-            Password password3 = new Password(category3, pass, site, user, note);
+            string userForPassword2 = "Ramon";
+            string userForPassword3 = "Guest";
+            Password password2 = new Password(category2, pass, site, userForPassword2, note);
+            Password password3 = new Password(category3, pass, site, userForPassword3, note);
             passwordRepository.AddPassword(password);
             passwordRepository.AddPassword(password2);
             passwordRepository.AddPassword(password3);
@@ -90,8 +119,10 @@ namespace PasswordManagerTest
         {
             Category category2 = new Category("Trabajo");
             Category category3 = new Category("Gaming");
-            Password password2 = new Password(category2, pass, site, user, note);
-            Password password3 = new Password(category3, pass, site, user, note);
+            string userForPassword2 = "Ramon";
+            string userForPassword3 = "Guest";
+            Password password2 = new Password(category2, pass, site, userForPassword2, note);
+            Password password3 = new Password(category3, pass, site, userForPassword3, note);
             List<Password> passwords = passwordRepository.ListPasswords();
             passwords.Add(password);
             passwords.Add(password2);
@@ -156,8 +187,10 @@ namespace PasswordManagerTest
         {
             Category category2 = new Category("Trabajo");
             Category category3 = new Category("Gaming");
-            Password password2 = new Password(category2, pass, site, user, note);
-            Password password3 = new Password(category3, pass, site, user, note);
+            string userForPassword2 = "Miguel";
+            string userForPassword3 = "Guest";
+            Password password2 = new Password(category2, pass, site, userForPassword2, note);
+            Password password3 = new Password(category3, pass, site, userForPassword3, note);
             passwordRepository.AddPassword(password);
             passwordRepository.AddPassword(password2);
             passwordRepository.AddPassword(password3);

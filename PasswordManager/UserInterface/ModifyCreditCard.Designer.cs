@@ -37,7 +37,7 @@ namespace UserInterface
             this.btnSave.Location = new System.Drawing.Point(231, 3);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(119, 42);
-            this.btnSave.TabIndex = 0;
+            this.btnSave.TabIndex = 100;
             this.btnSave.Text = "Guardar";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.BtnSave_Click);

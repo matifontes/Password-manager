@@ -77,7 +77,7 @@ namespace UserInterface
             }
             txtName.Text = creditCard.Name;
             txtType.Text = creditCard.Type;
-            nudCCV.Value = creditCard.CCVCode;
+            txtCCVCode.Text = creditCard.CCVCode.ToString();
             txtNumber.Text = creditCard.Number.ToString();
             txtNote.Text = creditCard.Note;
             dtpExpiryDate.Value = creditCard.ExpiryDate;
@@ -87,7 +87,7 @@ namespace UserInterface
             try
             {
                 const string SUCCSESSFUL_CREATED = "Tarjeta de credito creada correctamente";
-                CreditCard creditCard = new CreditCard((Category)cmbCategories.SelectedItem, txtName.Text, txtType.Text, long.Parse(txtNumber.Text), Convert.ToInt16(nudCCV.Value), dtpExpiryDate.Value, txtNote.Text);
+                CreditCard creditCard = new CreditCard((Category)cmbCategories.SelectedItem, txtName.Text, txtType.Text, long.Parse(txtNumber.Text), short.Parse(txtCCVCode.Text), dtpExpiryDate.Value, txtNote.Text);
                 this.creditCards.AddCreditCard(creditCard);
                 ShowMSG(System.Drawing.Color.Green, SUCCSESSFUL_CREATED);
                 PostModification();
@@ -107,7 +107,7 @@ namespace UserInterface
                 creditCard.Name = txtName.Text;
                 creditCard.Type = txtType.Text;
                 creditCard.Number = long.Parse(txtNumber.Text);
-                creditCard.CCVCode = Convert.ToInt16(nudCCV.Value);
+                creditCard.CCVCode = short.Parse(txtCCVCode.Text);
                 creditCard.ExpiryDate = dtpExpiryDate.Value;
                 creditCard.Note = txtNote.Text;
                 ShowMSG(System.Drawing.Color.Green, SUCCSESSFUL_MODIFY);

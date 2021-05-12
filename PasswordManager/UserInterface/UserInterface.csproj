@@ -161,6 +161,30 @@
     </Compile>
     <Compile Include="ListDataBreaches.Designer.cs">
       <DependentUpon>ListDataBreaches.cs</DependentUpon>
+	</Compile>
+    <Compile Include="ShowCreditCard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowCreditCard.Designer.cs">
+      <DependentUpon>ShowCreditCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShowPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowPassword.Designer.cs">
+      <DependentUpon>ShowPassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StrengthPassword.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="StrengthPassword.Designer.cs">
+      <DependentUpon>StrengthPassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ListStrengthPasswords.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ListStrengthPasswords.Designer.cs">
+      <DependentUpon>ListStrengthPasswords.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="AppWindow.resx">
       <DependentUpon>AppWindow.cs</DependentUpon>
@@ -195,6 +219,9 @@
     <EmbeddedResource Include="ListCreditCards.resx">
       <DependentUpon>ListCreditCards.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ListStrengthPasswords.resx">
+      <DependentUpon>ListStrengthPasswords.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
     </EmbeddedResource>
@@ -227,6 +254,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ListDataBreaches.resx">
       <DependentUpon>ListDataBreaches.cs</DependentUpon>
+	</EmbeddedResource>
+    <EmbeddedResource Include="ShowCreditCard.resx">
+      <DependentUpon>ShowCreditCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShowPassword.resx">
+      <DependentUpon>ShowPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StrengthPassword.resx">
+      <DependentUpon>StrengthPassword.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

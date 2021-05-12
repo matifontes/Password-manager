@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using PasswordManager.Exceptions;
 
 namespace PasswordManager
 {
@@ -14,7 +15,28 @@ namespace PasswordManager
 
         public void AddPassword(Password password) 
         {
-            this.passwords.Add(password);
+            if (this.ContainsPassword(password))
+            {
+                const string PASSWORD_ALREADY_EXISTS_MSG = "El conjunto Usuario Sitio de la contraseña ya existe";
+                throw new PasswordAlreadyExistsException(PASSWORD_ALREADY_EXISTS_MSG);
+            }
+            else 
+            {
+                this.passwords.Add(password);
+            }
+        }
+
+        public bool ContainsPassword(Password password) 
+        {
+            bool notExists = false;
+            foreach (Password pass in this.passwords) 
+            {
+                if (pass.IsEqual(password)) 
+                {
+                    return true;
+                }
+            }
+            return notExists;
         }
 
         public void RemovePassword(Password password) 
@@ -108,7 +130,7 @@ namespace PasswordManager
 
         public List<Password> SortListByCategoryName(List<Password> pass)
         {
-            return pass.OrderBy(password => password.Category.Name).ToList();
+            return pass.OrderBy(password => password.Category.ToString()).ToList();
         }
 
         public List<Password> GetPasswordMatching(List<Password> passList)
@@ -126,6 +148,5 @@ namespace PasswordManager
             }
             return ret;
         }
-
     }
 }

@@ -35,6 +35,7 @@ namespace UserInterface
             this.btnRemove = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btnBack = new System.Windows.Forms.Button();
+            this.btnShow = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPasswords)).BeginInit();
             this.SuspendLayout();
             // 
@@ -59,9 +60,9 @@ namespace UserInterface
             // 
             // btnAddPassword
             // 
-            this.btnAddPassword.Location = new System.Drawing.Point(441, 396);
+            this.btnAddPassword.Location = new System.Drawing.Point(421, 379);
             this.btnAddPassword.Name = "btnAddPassword";
-            this.btnAddPassword.Size = new System.Drawing.Size(121, 32);
+            this.btnAddPassword.Size = new System.Drawing.Size(121, 30);
             this.btnAddPassword.TabIndex = 1;
             this.btnAddPassword.Text = "Agregar";
             this.btnAddPassword.UseVisualStyleBackColor = true;
@@ -69,7 +70,7 @@ namespace UserInterface
             // 
             // btnModify
             // 
-            this.btnModify.Location = new System.Drawing.Point(314, 397);
+            this.btnModify.Location = new System.Drawing.Point(294, 379);
             this.btnModify.Name = "btnModify";
             this.btnModify.Size = new System.Drawing.Size(121, 30);
             this.btnModify.TabIndex = 2;
@@ -79,7 +80,7 @@ namespace UserInterface
             // 
             // btnRemove
             // 
-            this.btnRemove.Location = new System.Drawing.Point(187, 397);
+            this.btnRemove.Location = new System.Drawing.Point(40, 379);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(121, 30);
             this.btnRemove.TabIndex = 3;
@@ -108,10 +109,21 @@ namespace UserInterface
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.BtnBack_Click);
             // 
+            // btnShow
+            // 
+            this.btnShow.Location = new System.Drawing.Point(167, 379);
+            this.btnShow.Name = "btnShow";
+            this.btnShow.Size = new System.Drawing.Size(121, 29);
+            this.btnShow.TabIndex = 6;
+            this.btnShow.Text = "Ver";
+            this.btnShow.UseVisualStyleBackColor = true;
+            this.btnShow.Click += new System.EventHandler(this.BtnShow_Click);
+            // 
             // ListPasswordsPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnShow);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnRemove);
@@ -119,7 +131,7 @@ namespace UserInterface
             this.Controls.Add(this.btnAddPassword);
             this.Controls.Add(this.dgvPasswords);
             this.Name = "ListPasswordsPanel";
-            this.Size = new System.Drawing.Size(579, 451);
+            this.Size = new System.Drawing.Size(579, 438);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPasswords)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -134,5 +146,6 @@ namespace UserInterface
         private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.Button btnShow;
     }
 }

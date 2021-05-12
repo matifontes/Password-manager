@@ -14,6 +14,11 @@ namespace UserInterface
 {
     public partial class ListCreditCards : UserControl
     {
+        const string CATEGORY_HEADER = "Categoría";
+        const string NAME_HEADER = "Nombre";
+        const string TYPE_HEADER = "Tipo";
+        const string CCNUMBER_HEADER = "Tarjeta";
+        const string EXPIRYDATE_HEADER = "Vencimiento";
         private CreditCardsController creditCards;
         private CategoriesController categories;
         private CreateModifyCreditCard creditCardForm;
@@ -24,7 +29,7 @@ namespace UserInterface
             this.creditCards = creditCards;
             this.categories = categories;
             EnableOption();
-            LoadCategoriesList();
+            LoadCreditCardsList();
         }
 
         public void AddListener(HandleBackToMenu del) 
@@ -39,22 +44,28 @@ namespace UserInterface
                 btnModify.Enabled = false;
                 btnRemove.Enabled = false;
                 btnAddCreditCard.Enabled = false;
+                dgvCategories.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                btnShow.Enabled = false;
             }
             else if (creditCards.IsEmpty() && !categories.IsEmpty())
             {
                 btnModify.Enabled = false;
                 btnRemove.Enabled = false;
                 btnAddCreditCard.Enabled = true;
+                dgvCategories.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                btnShow.Enabled = false;
             }
             else 
             {
                 btnModify.Enabled = true;
                 btnRemove.Enabled = true;
                 btnAddCreditCard.Enabled = true;
+                dgvCategories.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                btnShow.Enabled = true;
             }
         }
 
-        private void LoadCategoriesList() 
+        private void LoadCreditCardsList() 
         {
             List<CreditCard> orderedCreditCard = this.creditCards.ListCreditCards();
             DataTable dataTable = InitializeDataTable();
@@ -62,14 +73,14 @@ namespace UserInterface
             foreach (CreditCard creditCard in orderedCreditCard)
             {
                 DataRow row = dataTable.NewRow();
-                row["Categoría"] = creditCard.Category;
-                row["Nombre"] = creditCard;
-                row["Tipo"] = creditCard.Type;
+                row[CATEGORY_HEADER] = creditCard.Category;
+                row[NAME_HEADER] = creditCard;
+                row[TYPE_HEADER] = creditCard.Type;
                 string XXNo = "XXXX";
                 string CCNo = creditCard.Number.ToString();
                 string maskedCCNo = String.Format("{0} {0} {0} {1}", XXNo, CCNo.Substring(CCNo.Length - 4, 4));
-                row["Tarjeta"] = maskedCCNo;
-                row["Vencimiento"] = creditCard.ExpiryDate;
+                row[CCNUMBER_HEADER] = maskedCCNo;
+                row[EXPIRYDATE_HEADER] = creditCard.ExpiryDate;
                 dataTable.Rows.Add(row);
             }
             dgvCategories.DataSource = dataTable;
@@ -78,11 +89,11 @@ namespace UserInterface
         private DataTable InitializeDataTable() 
         {
             DataTable dataTable = new DataTable();
-            dataTable.Columns.Add("Categoría", typeof(Category));
-            dataTable.Columns.Add("Nombre", typeof(CreditCard));
-            dataTable.Columns.Add("Tipo", typeof(string));
-            dataTable.Columns.Add("Tarjeta", typeof(string));
-            dataTable.Columns.Add("Vencimiento", typeof(DateTime));
+            dataTable.Columns.Add(CATEGORY_HEADER, typeof(Category));
+            dataTable.Columns.Add(NAME_HEADER, typeof(CreditCard));
+            dataTable.Columns.Add(TYPE_HEADER, typeof(string));
+            dataTable.Columns.Add(CCNUMBER_HEADER, typeof(string));
+            dataTable.Columns.Add(EXPIRYDATE_HEADER, typeof(DateTime));
             return dataTable;
         }
 
@@ -105,17 +116,32 @@ namespace UserInterface
             this.creditCardForm.Show();
         }
 
+        private void BtnShow_Click(object sender, EventArgs e)
+        {
+
+            CreditCard creditCard = (CreditCard)dgvCategories.SelectedRows[0].Cells[1].Value;
+            if (creditCard != null) 
+            {
+                ShowCreditCard creditCardShow = new ShowCreditCard(creditCard);
+                creditCardShow.Show();
+            }
+        }
+
         private void BtnRemove_Click(object sender, EventArgs e)
         {
             CreditCard creditCardToRemove = (CreditCard)dgvCategories.SelectedRows[0].Cells[1].Value;
-            this.creditCards.RemoveCreditCard(creditCardToRemove);
-            PostModification();
+            if (creditCardToRemove != null) 
+            {
+                DisposeChildForm();
+                this.creditCards.RemoveCreditCard(creditCardToRemove);
+                PostModification();
+            }
         }
 
         private void PostModification() 
         {
             EnableOption();
-            LoadCategoriesList();
+            LoadCreditCardsList();
         }
 
         private void BtnBack_Click(object sender, EventArgs e)

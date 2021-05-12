@@ -61,7 +61,22 @@ namespace PasswordManager
             this.Site = site;
             this.User = user;
             this.Note = note;
-            this.Strength = PasswordStrength(password);
+        }
+
+        public bool IsEqual(Password password) 
+        {
+            bool equals = false;
+
+            string site = this.Site.ToUpper();
+            string user = this.User.ToUpper();
+
+            string passwordSite = password.Site.ToUpper();
+            string passwordUser = password.User.ToUpper();
+
+            equals = site == passwordSite;
+            equals = equals && user == passwordUser;
+
+            return equals;            
         }
 
         private void SetPassword(string value)
@@ -73,7 +88,8 @@ namespace PasswordManager
             else
             {
                 this._pass = value;
-                this.LastModificationDate = DateTime.Today;
+                this.LastModificationDate = DateTime.Now;
+                this.Strength = PasswordStrength(value);
             }
         }
         private void SetUser(string value)
@@ -85,7 +101,7 @@ namespace PasswordManager
             else
             {
                 this._user = value;
-                this.LastModificationDate = DateTime.Today;
+                this.LastModificationDate = DateTime.Now;
             }
         }
 
@@ -98,7 +114,7 @@ namespace PasswordManager
             else
             {
                 this._site = value;
-                this.LastModificationDate = DateTime.Today;
+                this.LastModificationDate = DateTime.Now;
             }
         }
 
@@ -111,7 +127,7 @@ namespace PasswordManager
             else
             {
                 this._note = value;
-                this.LastModificationDate = DateTime.Today;
+                this.LastModificationDate = DateTime.Now;
             }
         }
 
@@ -199,10 +215,10 @@ namespace PasswordManager
             bool ret = false;
             if (password.Length > 14)
             {
-                if (!PasswordIncludeSpecialCharacters(password) && !PasswordIncludeNumbers(password))
-                {
-                    ret = (PasswordIncludeLowerCase(password) && PasswordIncludeUpperCase(password));
-                }
+                ret = (PasswordIncludeLowerCase(password) && PasswordIncludeUpperCase(password));
+                bool onlySpecialChar = (PasswordIncludeSpecialCharacters(password) && !PasswordIncludeNumbers(password));
+                bool onlyNumber =  (!PasswordIncludeSpecialCharacters(password) && PasswordIncludeNumbers(password));
+                ret = ret || (ret && (onlySpecialChar || onlyNumber));
             }
             return ret;
         }

@@ -67,6 +67,7 @@ namespace UserInterface
             this.txtActualPassword.Size = new System.Drawing.Size(254, 20);
             this.txtActualPassword.TabIndex = 2;
             this.txtActualPassword.UseSystemPasswordChar = true;
+            this.txtActualPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtActualPassword_KeyPress);
             // 
             // txtNewPassword
             // 
@@ -75,6 +76,7 @@ namespace UserInterface
             this.txtNewPassword.Size = new System.Drawing.Size(254, 20);
             this.txtNewPassword.TabIndex = 3;
             this.txtNewPassword.UseSystemPasswordChar = true;
+            this.txtNewPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtNewPassword_KeyPress);
             // 
             // txtRepeatNewPassword
             // 
@@ -83,6 +85,7 @@ namespace UserInterface
             this.txtRepeatNewPassword.Size = new System.Drawing.Size(253, 20);
             this.txtRepeatNewPassword.TabIndex = 4;
             this.txtRepeatNewPassword.UseSystemPasswordChar = true;
+            this.txtRepeatNewPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtRepeatNewPassword_KeyPress);
             // 
             // lblActualPassword
             // 

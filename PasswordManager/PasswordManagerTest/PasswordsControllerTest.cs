@@ -57,6 +57,32 @@ namespace PasswordManagerTest
         }
 
         [TestMethod]
+        [ExpectedException(typeof(PasswordAlreadyExistsException))]
+        public void AddPasswordThatAlreadyExitsThrowsException()
+        {
+            passwordsController.AddPassword(password);
+            passwordsController.AddPassword(password);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(PasswordAlreadyExistsException))]
+        public void AddPasswordWithSameUserAndSiteThenOtherPasswordThrowsAlreadyExistsException()
+        {
+            passwordsController.AddPassword(password);
+            string pass = "rootpassword";
+            string note = "password";
+            Password samePassword = new Password(category, pass, site, user, note);
+            passwordsController.AddPassword(samePassword);
+        }
+
+        [TestMethod]
+        public void ControllerContainsPasswordAddedToIt()
+        {
+            passwordsController.AddPassword(password);
+            Assert.IsTrue(passwordsController.ContainsPassword(password));
+        }
+
+        [TestMethod]
         public void PasswordsControllerWithAPasswordShouldntBeEmpty()
         {
             passwordsController.AddPassword(password);
@@ -77,85 +103,97 @@ namespace PasswordManagerTest
         {
             Category category2 = new Category("Trabajo");
             Category category3 = new Category("Gaming");
-            Password password2 = new Password(category2,pass,site,user,note);
-            Password password3 = new Password(category3,pass,site,user,note);
+            string userForPassword2 = "Ramon";
+            string userForPassword3 = "Guest";
+            Password password2 = new Password(category2, pass, site, userForPassword2, note);
+            Password password3 = new Password(category3, pass, site, userForPassword3, note);
             passwordsController.AddPassword(password);
             passwordsController.AddPassword(password2);
             passwordsController.AddPassword(password3);
 
             List<Password> orderedPassword = passwordsController.ListPasswords();
-            Assert.AreEqual(orderedPassword[0].Category,category3);
-            Assert.AreEqual(orderedPassword[1].Category, category);
-            Assert.AreEqual(orderedPassword[2].Category, category2);
+            Assert.AreEqual(category3, orderedPassword[0].Category);
+            Assert.AreEqual(category, orderedPassword[1].Category);
+            Assert.AreEqual(category2, orderedPassword[2].Category);
         }
 
         [TestMethod]
         public void ListRedPasswordsOrderByCategory()
         {
+            Password password1 = new Password(category, "guest", site, user, note);
             Category category2 = new Category("Gaming");
-            Password password2 = new Password(category2, pass, site, user, note);
-            passwordsController.AddPassword(password);
+            string userForPassword2 = "Guest";
+            Password password2 = new Password(category2, pass, site, userForPassword2, note);
+            passwordsController.AddPassword(password1);
             passwordsController.AddPassword(password2);
 
             List<Password> orderedRedPasswords = passwordsController.ListRedPasswords();
-            Assert.AreEqual(orderedRedPasswords[0].Category, category2);
-            Assert.AreEqual(orderedRedPasswords[1].Category, category);
+            Assert.AreEqual(category2, orderedRedPasswords[0].Category);
+            Assert.AreEqual(category, orderedRedPasswords[1].Category);
         }
 
         [TestMethod]
         public void ListOrangePasswordsOrderByCategory()
         {
+            Password password1 = new Password(category, "adminadmin", site, user, note);
             Category category2 = new Category("Gaming");
-            Password password2 = new Password(category2, "adminadmin", site, user, note);
-            Password password = new Password(category, "adminadmin", site, user, note);
-            passwordsController.AddPassword(password);
+            string userForPassword2 = "Guest";
+            string passForPassword2 = "gfdghggfhjf";
+            Password password2 = new Password(category2, passForPassword2, site, userForPassword2, note);
+            passwordsController.AddPassword(password1);
             passwordsController.AddPassword(password2);
 
             List<Password> orderedOrangePasswords = passwordsController.ListOrangePasswords();
-            Assert.AreEqual(orderedOrangePasswords[0].Category, category2);
-            Assert.AreEqual(orderedOrangePasswords[1].Category, category);
+            Assert.AreEqual(category2, orderedOrangePasswords[0].Category);
+            Assert.AreEqual(category, orderedOrangePasswords[1].Category);
         }
 
         [TestMethod]
         public void ListYellowPasswordsOrderByCategory()
         {
-            Category category2 = new Category("Gaming");
-            Password password2 = new Password(category2, "adminadminadminadmin", site, user, note);
             Password password = new Password(category, "ADMINADMINADMINADMIN", site, user, note);
+            Category category2 = new Category("Gaming");
+            string userForPassword2 = "Guest";
+            string passForPassword2 = "adminadminadmin";
+            Password password2 = new Password(category2, passForPassword2, site, userForPassword2, note);
             passwordsController.AddPassword(password);
             passwordsController.AddPassword(password2);
 
             List<Password> orderedYellowPasswords = passwordsController.ListYellowPasswords();
-            Assert.AreEqual(orderedYellowPasswords[0].Category, category2);
-            Assert.AreEqual(orderedYellowPasswords[1].Category, category);
+            Assert.AreEqual(category2, orderedYellowPasswords[0].Category);
+            Assert.AreEqual(category, orderedYellowPasswords[1].Category);
         }
 
         [TestMethod]
         public void ListLightGreenPasswordsOrderByCategory()
         {
             Category category2 = new Category("Gaming");
-            Password password2 = new Password(category2, "adminADMINAdminAdminJk", site, user, note);
+            string userForPassword2 = "Guest";
+            string passForPassword2 = "userUSERuserUser";
+            Password password2 = new Password(category2, passForPassword2, site, userForPassword2, note);
             Password password = new Password(category, "ADMINadminADMINadminAD", site, user, note);
             passwordsController.AddPassword(password);
             passwordsController.AddPassword(password2);
 
             List<Password> orderedLightGreenPasswords = passwordsController.ListLightGreenPasswords();
-            Assert.AreEqual(orderedLightGreenPasswords[0].Category, category2);
-            Assert.AreEqual(orderedLightGreenPasswords[1].Category, category);
+            Assert.AreEqual(category2, orderedLightGreenPasswords[0].Category);
+            Assert.AreEqual(category, orderedLightGreenPasswords[1].Category);
         }
 
         [TestMethod]
         public void ListDarkGreenPasswordsOrderByCategory()
         {
             Category category2 = new Category("Gaming");
-            Password password2 = new Password(category2, "adminADMINAdminAd.12.", site, user, note);
+            string userForPassword2 = "Guest";
+            string passForPassword2 = "userUSERuserUser123@";
+            Password password2 = new Password(category2, passForPassword2, site, userForPassword2, note);
             Password password = new Password(category, "ADMINadminADMINad.13mi", site, user, note);
             passwordsController.AddPassword(password);
             passwordsController.AddPassword(password2);
 
             List<Password> orderedDarkGreenPasswords = passwordsController.ListDarkGreenPasswords();
-            Assert.AreEqual(orderedDarkGreenPasswords[0].Category, category2);
-            Assert.AreEqual(orderedDarkGreenPasswords[1].Category, category);
+            Assert.AreEqual(category2, orderedDarkGreenPasswords[0].Category);
+            Assert.AreEqual(category, orderedDarkGreenPasswords[1].Category);
         }
 
         [TestMethod]
@@ -163,8 +201,10 @@ namespace PasswordManagerTest
         {
             Category category2 = new Category("Trabajo");
             Category category3 = new Category("Gaming");
-            Password password2 = new Password(category2, pass, site, user, note);
-            Password password3 = new Password(category3, pass, site, user, note);
+            string userForPassword2 = "Miguel";
+            string userForPassword3 = "Guest";
+            Password password2 = new Password(category2, pass, site, userForPassword2, note);
+            Password password3 = new Password(category3, pass, site, userForPassword3, note);
             passwords.AddPassword(password);
             passwords.AddPassword(password2);
             passwords.AddPassword(password3);

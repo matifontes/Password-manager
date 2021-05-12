@@ -65,6 +65,7 @@ namespace UserInterface
             // 
             // cbxCategories
             // 
+            this.cbxCategories.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxCategories.FormattingEnabled = true;
             this.cbxCategories.Location = new System.Drawing.Point(109, 33);
             this.cbxCategories.Name = "cbxCategories";
@@ -129,6 +130,7 @@ namespace UserInterface
             this.txtPassword.Size = new System.Drawing.Size(169, 20);
             this.txtPassword.TabIndex = 8;
             this.txtPassword.UseSystemPasswordChar = true;
+            this.txtPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtPassword_KeyPress);
             // 
             // nudLarge
             // 
@@ -236,7 +238,7 @@ namespace UserInterface
             this.txtNote.Multiline = true;
             this.txtNote.Name = "txtNote";
             this.txtNote.Size = new System.Drawing.Size(173, 76);
-            this.txtNote.TabIndex = 17;
+            this.txtNote.TabIndex = 16;
             // 
             // lblMsg
             // 

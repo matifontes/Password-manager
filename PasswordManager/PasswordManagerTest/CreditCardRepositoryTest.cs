@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using PasswordManager;
+using PasswordManager.Exceptions;
 
 namespace PasswordManagerTest
 {
@@ -85,12 +86,14 @@ namespace PasswordManagerTest
         }
 
         [TestMethod]
-        public void ListCreditCardssOrderByCategory()
+        public void ListCreditCardsOrderByCategory()
         {
             Category category2 = new Category("Trabajo");
             Category category3 = new Category("Gaming");
-            CreditCard card2 = new CreditCard(category2, name, type, creditCardNumber, ccvCode, expDate, note);
-            CreditCard card3 = new CreditCard(category3, name, type, creditCardNumber, ccvCode, expDate, note);
+            long creditCardNumberForCard2 = 1234123412341234;
+            long creditCardNumberForCard3 = 6789678967896789;
+            CreditCard card2 = new CreditCard(category2, name, type, creditCardNumberForCard2, ccvCode, expDate, note);
+            CreditCard card3 = new CreditCard(category3, name, type, creditCardNumberForCard3, ccvCode, expDate, note);
             creditCardRepository.AddCreditCard(card3);
             creditCardRepository.AddCreditCard(creditCard);
             creditCardRepository.AddCreditCard(card2);
@@ -107,8 +110,10 @@ namespace PasswordManagerTest
         {
             Category category2 = new Category("Trabajo");
             Category category3 = new Category("Gaming");
-            CreditCard card2 = new CreditCard(category2, name, type, creditCardNumber, ccvCode, expDate, note);
-            CreditCard card3 = new CreditCard(category3, name, type, creditCardNumber, ccvCode, expDate, note);
+            long cardNumber2 = 1111222233334444;
+            long cardNumber3 = 1111222233335555;
+            CreditCard card2 = new CreditCard(category2, name, type, cardNumber2, ccvCode, expDate, note);
+            CreditCard card3 = new CreditCard(category3, name, type, cardNumber3, ccvCode, expDate, note);
             creditCardRepository.AddCreditCard(card3);
             creditCardRepository.AddCreditCard(card2);
 
@@ -119,5 +124,32 @@ namespace PasswordManagerTest
             Assert.AreEqual(card2.Number, creditCardsResult[0].Number);
         }
 
+        public void RepositoryContainsCreditCardAddedToIt() 
+        {
+            creditCardRepository.AddCreditCard(creditCard);
+            Assert.IsTrue(creditCardRepository.ContainsCreditCard(creditCard));
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(CreditCardAlreadyExistsException))]
+        public void AddCreditCardThatAlreadyExistrsThrowsException() 
+        {
+            creditCardRepository.AddCreditCard(creditCard);
+            creditCardRepository.AddCreditCard(creditCard);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(CreditCardAlreadyExistsException))]
+        public void AddCreditCardWhitSameNumberThenAnotherCardThrowsException()
+        {
+            creditCardRepository.AddCreditCard(creditCard);
+            string name = "Master Black";
+            string type = "MasterCard";
+            short ccvCode = 091;
+            string note = "note";
+
+            CreditCard sameCreditcard = new CreditCard(category,name,type,creditCardNumber,ccvCode,DateTime.Now,note);
+            creditCardRepository.AddCreditCard(sameCreditcard);
+        }
     }
 }

@@ -26,8 +26,15 @@ namespace UserInterface
                 PostLoginEvent();
             }
             else {
-                Console.WriteLine("No Valido");
+                const string FAIL_LOGIN = "Contraseña incorrecta";
+                ShowMSG(System.Drawing.Color.Red, FAIL_LOGIN);
             }
+        }
+
+        private void ShowMSG(System.Drawing.Color color,string message) 
+        {
+            lblErrorMsg.ForeColor = color;
+            lblErrorMsg.Text = message;
         }
     }
 }

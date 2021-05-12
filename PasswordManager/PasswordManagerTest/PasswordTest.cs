@@ -8,7 +8,6 @@ namespace PasswordManagerTest
     [TestClass]
     public class PasswordTest
     {
-        Profile profile;
         Password passwordCreatedToday;
         Password passwordCreatedYesterday;
         private Category personal;
@@ -20,7 +19,6 @@ namespace PasswordManagerTest
         [TestInitialize]
         public void setup()
         {
-            profile = new Profile("test123");
             personal = new Category("Personal");
             passwordCreatedToday = new Password(personal, password, site, user, note);
             passwordCreatedYesterday = new Password(personal, password, site, user, note);
@@ -59,18 +57,17 @@ namespace PasswordManagerTest
         [TestMethod]
         public void VerifyLastModificationDateAfterCreatingPassword() 
         {
-            DateTime currentDate = DateTime.Today;
+            DateTime currentDate = DateTime.Now;
             Assert.AreEqual(passwordCreatedToday.LastModificationDate,currentDate);
         }
 
         [TestMethod]
         public void ValidateLastModificationDateAfterChangingPassword() 
         {
-            DateTime currentDate = DateTime.Today;
             string newPassword = "tableTop5E";
 
             passwordCreatedYesterday.Pass = newPassword;
-
+            DateTime currentDate = DateTime.Now;
             Assert.AreEqual(passwordCreatedYesterday.LastModificationDate, currentDate);    
         }
 
@@ -150,7 +147,7 @@ namespace PasswordManagerTest
         }
 
         [TestMethod]
-        public void VerifyOrangePassword()
+        public void PasswordLargerThan8CharsButShorterThan15ShouldBeOrange()
         {
             string passOr = "testOrange";
             Password passOrange = new Password(personal, passOr, site, user, note);
@@ -159,7 +156,7 @@ namespace PasswordManagerTest
         }
 
         [TestMethod]
-        public void VerifyYellowPassword()
+        public void PasswordLargerThan14WithOnlyMayusShouldBeYellow()
         {
             string passY = "testyellowyellowwwww";
             Password passYellow = new Password(personal, passY, site, user, note);
@@ -168,7 +165,16 @@ namespace PasswordManagerTest
         }
 
         [TestMethod]
-        public void VeifyLightGreenPassword()
+        public void PasswordLargerThan14WithOnlyMinusShouldBeYellow()
+        {
+            string passY = "testyellowyellowwwww";
+            Password passYellow = new Password(personal, passY, site, user, note);
+
+            Assert.AreEqual(passYellow.Strength, "Yellow");
+        }
+
+        [TestMethod]
+        public void PasswordWithMayusandMinusAndLenghtLargerThen14ShouldBeLightGreen()
         {
             string passLG = "testGreenGreenGR";
             Password passLGreen = new Password(personal, passLG, site, user, note);
@@ -177,7 +183,25 @@ namespace PasswordManagerTest
         }
 
         [TestMethod]
-        public void VeifyDarkGreenPassword()
+        public void PasswordWithLenghtLargerThen14WithMayusMinusAndSpecialSimbolsShouldBeLightGreen() 
+        {
+            string passLG = "test@GreenGreenGR";
+            Password passLGreen = new Password(personal, passLG, site, user, note);
+
+            Assert.AreEqual(passLGreen.Strength, "LightGreen");
+        }
+
+        [TestMethod]
+        public void PasswordWithLenghtLargerThen14WithMayusMinusAndNumbersShouldBeLightGreen()
+        {
+            string passLG = "test@GreenGreenGR";
+            Password passLGreen = new Password(personal, passLG, site, user, note);
+
+            Assert.AreEqual(passLGreen.Strength, "LightGreen");
+        }
+
+        [TestMethod]
+        public void PasswordLargerThan14WithMayusMinusSpecialCharsAndNumbersShouldBeDarkGreen()
         {
             string passDG = "testGreenGreen.13";
             Password passDGreen = new Password(personal, passDG, site, user, note);
@@ -189,6 +213,29 @@ namespace PasswordManagerTest
         public void PasswordToStringShowTheUser() 
         {
             Assert.AreEqual(passwordCreatedToday.ToString(), user);
+        }
+
+        [TestMethod]
+        public void PasswordIsEqualToAnotherPasswordIfSiteAndUserMatches() 
+        {
+            Password samePassword = new Password(personal,password,site,user,note);
+            Assert.IsTrue(passwordCreatedToday.IsEqual(samePassword));
+        }
+
+        [TestMethod]
+        public void PasswordsWithSameSiteButDifferentUserArentEqual()
+        {
+            string user = "Primo";
+            Password samePassword = new Password(personal, password, site, user, note);
+            Assert.IsFalse(passwordCreatedToday.Equals(samePassword));
+        }
+
+        [TestMethod]
+        public void PasswordsWithSameUserButDifferentSiteArentEqual()
+        {
+            string site = "steam";
+            Password samePassword = new Password(personal, password, site, user, note);
+            Assert.IsFalse(passwordCreatedToday.Equals(samePassword));
         }
 
     }

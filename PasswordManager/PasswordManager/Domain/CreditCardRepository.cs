@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using PasswordManager.Exceptions;
 
 namespace PasswordManager
 {
@@ -11,9 +12,18 @@ namespace PasswordManager
             creditCards = new List<CreditCard>();
         }
 
-        public void AddCreditCard(CreditCard creaditCard) 
+        public void AddCreditCard(CreditCard creditCard) 
         {
-            this.creditCards.Add(creaditCard);
+            if (this.ContainsCreditCard(creditCard))
+            {
+                const string CREDIT_CARD_ALREADY_EXISTS_MSG = "La Tarjeta de credito ya existe";
+                throw new CreditCardAlreadyExistsException(CREDIT_CARD_ALREADY_EXISTS_MSG);
+            }
+            else 
+            {
+                this.creditCards.Add(creditCard);
+            }
+
         }
 
         public void RemoveCreditCard(CreditCard creditCard) 
@@ -33,7 +43,19 @@ namespace PasswordManager
 
         public List<CreditCard> ListCreditCards()
         {
-            return this.creditCards.OrderBy(creditCard => creditCard.Category.Name).ToList();
+            return this.creditCards.OrderBy(creditCard => creditCard.Category.ToString()).ToList();
+        }
+
+        public bool ContainsCreditCard(CreditCard creditCard) 
+        {
+            foreach (CreditCard cards in this.creditCards) 
+            {
+                if (cards.IsEqual(creditCard)) 
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         public List<CreditCard> GetMatchingCreditCardsList(List<CreditCard> creditCardsList)

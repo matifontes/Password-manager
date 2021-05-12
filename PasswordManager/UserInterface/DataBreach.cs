@@ -30,8 +30,6 @@ namespace UserInterface
             this.categories = categories;
             this.passwordsLine = new List<Password>();
             this.creditCardsLine = new List<CreditCard>();
-            //LoadList();
-            EnableOption();
         }
 
         public void AddListener(HandleBackToMenu del)
@@ -43,34 +41,6 @@ namespace UserInterface
         {
             ChangeWindow += del;
         }
-
-        public void EnableOption()
-        {
-            btnVerify.Enabled = !this.passwords.IsEmpty() || !this.creditCards.IsEmpty();
-        }
-
-        /*public void LoadList()
-        {
-            StreamReader readText = new StreamReader("C:\\dataBreach.txt");
-            string line = "";
-            line = readText.ReadLine();
-            while (line != null)
-            {
-                listBox.Items.Add(line);
-                
-                if(line.Contains(" "))
-                {
-                    LoadCreditCards(line);
-                }
-                else
-                {
-                    LoadPasswords(line);
-                }
-
-                line = readText.ReadLine();
-            }
-            readText.Close();
-        }*/
 
         private void LoadList()
         {

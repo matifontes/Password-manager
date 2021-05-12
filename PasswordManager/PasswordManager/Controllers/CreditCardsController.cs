@@ -46,5 +46,9 @@ namespace PasswordManager.Controllers
             return creditCardsList;
         }
 
+        public bool ContainsCreditCard(CreditCard creditCard) 
+        {
+            return this.creditCards.ContainsCreditCard(creditCard);
+        }
     }
 }
