@@ -42,19 +42,24 @@ namespace UserInterface
                         lblErrorMsg.ForeColor = System.Drawing.Color.Green;
 
                     }
-                    catch (FailToValidatePasswordException exp) 
+                    catch (Exception exp) 
                     {
-                        lblErrorMsg.ForeColor = System.Drawing.Color.Red;
-                        lblErrorMsg.Text = exp.Message;
+                        ShowMSG(System.Drawing.Color.Red, exp.Message);
                     }
                 }
                 else 
                 {
-                    lblErrorMsg.ForeColor = System.Drawing.Color.Red;
-                    lblErrorMsg.Text = "La contraseña nueva no coinciden";
+                    const string PASSWORD_DONT_MATCH = "La contraseña nueva no coinciden";
+                    ShowMSG(System.Drawing.Color.Red, PASSWORD_DONT_MATCH);
                 }
 
             }
+        }
+
+        private void ShowMSG(System.Drawing.Color color, string message) 
+        {
+            lblErrorMsg.ForeColor = color;
+            lblErrorMsg.Text = message;
         }
 
         private void BtnBack_Click(object sender, EventArgs e)
