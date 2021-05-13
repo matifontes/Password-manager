@@ -30,7 +30,11 @@ namespace UserInterface
             txtCategory.Text = this.creditCard.Category.ToString();
             txtName.Text = this.creditCard.Name;
             txtType.Text = this.creditCard.Type;
-            txtCCNumber.Text = this.creditCard.Number.ToString();
+            string creditCardNumber = this.creditCard.Number.ToString().Substring(0,4);
+            creditCardNumber += " " + this.creditCard.Number.ToString().Substring(4, 4);
+            creditCardNumber += " " + this.creditCard.Number.ToString().Substring(8, 4);
+            creditCardNumber += " " + this.creditCard.Number.ToString().Substring(12, 4);
+            txtCCNumber.Text = creditCardNumber;
             txtCCV.Text = this.creditCard.CCVCode.ToString();
             txtExpiryDate.Text = this.creditCard.ExpiryDate.ToString();
             txtNote.Text = this.creditCard.Note;

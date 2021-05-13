@@ -88,7 +88,8 @@ namespace UserInterface
             try
             {
                 const string SUCCSESSFUL_CREATED = "Tarjeta de credito creada correctamente";
-                CreditCard creditCard = new CreditCard((Category)cmbCategories.SelectedItem, txtName.Text, txtType.Text, long.Parse(txtNumber.Text), short.Parse(txtCCVCode.Text), dtpExpiryDate.Value, txtNote.Text);
+                string ccNumber = txtNumber.Text.Replace(" ", string.Empty);
+                CreditCard creditCard = new CreditCard((Category)cmbCategories.SelectedItem, txtName.Text, txtType.Text, long.Parse(ccNumber), short.Parse(txtCCVCode.Text), dtpExpiryDate.Value, txtNote.Text);
                 this.creditCards.AddCreditCard(creditCard);
                 ShowMSG(System.Drawing.Color.Green, SUCCSESSFUL_CREATED);
                 PostModification();
@@ -112,7 +113,8 @@ namespace UserInterface
                 creditCard.Category = (Category)cmbCategories.SelectedItem;
                 creditCard.Name = txtName.Text;
                 creditCard.Type = txtType.Text;
-                creditCard.Number = long.Parse(txtNumber.Text);
+                string ccNumber = txtNumber.Text.Replace(" ", string.Empty);
+                creditCard.Number = long.Parse(ccNumber);
                 creditCard.CCVCode = short.Parse(txtCCVCode.Text);
                 creditCard.ExpiryDate = dtpExpiryDate.Value;
                 creditCard.Note = txtNote.Text;
@@ -127,7 +129,8 @@ namespace UserInterface
 
         private bool CreditCardNumberChanged() 
         {
-            return this.creditCard.Number != long.Parse(txtNumber.Text);
+            string ccNumber = txtNumber.Text.Replace(" ", string.Empty);
+            return this.creditCard.Number != long.Parse(ccNumber);
         }
 
         private bool CheckExistenceOfCreditCardNumber() 
