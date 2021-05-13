@@ -25,7 +25,7 @@ namespace UserInterface
             timer.Start();
         }
 
-        public void LoadPasswordIntoFields() 
+        private void LoadPasswordIntoFields() 
         {
             txtCategory.Text = this.password.Category.ToString();
             txtSite.Text = this.password.Site;
@@ -35,7 +35,7 @@ namespace UserInterface
             txtNote.Text = this.password.Note;
         }
 
-        public void CloseForm(object sender, EventArgs e) 
+        private void CloseForm(object sender, EventArgs e) 
         {
             this.Dispose();
         }
