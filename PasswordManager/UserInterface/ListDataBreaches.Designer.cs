@@ -51,7 +51,7 @@
             // 
             // btnBack
             // 
-            this.btnBack.Location = new System.Drawing.Point(396, 354);
+            this.btnBack.Location = new System.Drawing.Point(404, 379);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(96, 42);
             this.btnBack.TabIndex = 1;
@@ -71,7 +71,7 @@
             this.dgvPasswords.Name = "dgvPasswords";
             this.dgvPasswords.ReadOnly = true;
             this.dgvPasswords.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPasswords.Size = new System.Drawing.Size(478, 109);
+            this.dgvPasswords.Size = new System.Drawing.Size(464, 109);
             this.dgvPasswords.TabIndex = 2;
             // 
             // dgvCreditCards
@@ -80,20 +80,20 @@
             this.dgvCreditCards.AllowUserToDeleteRows = false;
             this.dgvCreditCards.AllowUserToResizeColumns = false;
             this.dgvCreditCards.AllowUserToResizeRows = false;
-            this.dgvCreditCards.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvCreditCards.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvCreditCards.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCreditCards.Location = new System.Drawing.Point(37, 224);
+            this.dgvCreditCards.Location = new System.Drawing.Point(36, 264);
             this.dgvCreditCards.Name = "dgvCreditCards";
             this.dgvCreditCards.ReadOnly = true;
             this.dgvCreditCards.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCreditCards.Size = new System.Drawing.Size(477, 109);
+            this.dgvCreditCards.Size = new System.Drawing.Size(464, 109);
             this.dgvCreditCards.TabIndex = 3;
             // 
             // lblCreditCards
             // 
             this.lblCreditCards.AutoSize = true;
             this.lblCreditCards.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCreditCards.Location = new System.Drawing.Point(32, 196);
+            this.lblCreditCards.Location = new System.Drawing.Point(31, 236);
             this.lblCreditCards.Name = "lblCreditCards";
             this.lblCreditCards.Size = new System.Drawing.Size(159, 20);
             this.lblCreditCards.TabIndex = 4;
@@ -111,7 +111,7 @@
             // 
             // btnModify
             // 
-            this.btnModify.Location = new System.Drawing.Point(520, 146);
+            this.btnModify.Location = new System.Drawing.Point(425, 190);
             this.btnModify.Name = "btnModify";
             this.btnModify.Size = new System.Drawing.Size(75, 38);
             this.btnModify.TabIndex = 6;
@@ -131,7 +131,7 @@
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.lblTitle);
             this.Name = "ListDataBreaches";
-            this.Size = new System.Drawing.Size(626, 419);
+            this.Size = new System.Drawing.Size(532, 463);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPasswords)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCreditCards)).EndInit();
             this.ResumeLayout(false);

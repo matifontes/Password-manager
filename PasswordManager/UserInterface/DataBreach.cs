@@ -50,14 +50,8 @@ namespace UserInterface
             {
                 if(line != string.Empty)
                 {
-                    if(line.Contains(" "))
-                    {
-                        LoadCreditCards(line);
-                    }
-                    else
-                    {
-                        LoadPasswords(line);
-                    }
+                    LoadCreditCards(line);
+                    LoadPasswords(line);
                 }
             }
         }

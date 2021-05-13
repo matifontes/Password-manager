@@ -64,7 +64,6 @@ namespace UserInterface
             this.txtPassword.Size = new System.Drawing.Size(353, 20);
             this.txtPassword.TabIndex = 2;
             this.txtPassword.UseSystemPasswordChar = true;
-            this.txtPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtPassword_KeyPress);
             // 
             // txtRepeatPassword
             // 
@@ -73,7 +72,6 @@ namespace UserInterface
             this.txtRepeatPassword.Size = new System.Drawing.Size(353, 20);
             this.txtRepeatPassword.TabIndex = 3;
             this.txtRepeatPassword.UseSystemPasswordChar = true;
-            this.txtRepeatPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtRepeatPassword_KeyPress);
             // 
             // btnCreateProfile
             // 

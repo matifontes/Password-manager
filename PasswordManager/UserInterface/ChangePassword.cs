@@ -72,20 +72,5 @@ namespace UserInterface
             DialogResult confirmDialog = MessageBox.Show(message, action, MessageBoxButtons.YesNo);
             return confirmDialog == DialogResult.Yes;
         }
-
-        private void TxtActualPassword_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == ' ') e.Handled = true;
-        }
-
-        private void TxtNewPassword_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == ' ') e.Handled = true;
-        }
-
-        private void TxtRepeatNewPassword_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == ' ') e.Handled = true;
-        }
     }
 }

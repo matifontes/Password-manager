@@ -55,15 +55,5 @@ namespace UserInterface
             lblErrorMsg.Text = message;
             lblErrorMsg.ForeColor = color;
         }
-
-        private void TxtPassword_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == ' ') e.Handled = true;
-        }
-
-        private void TxtRepeatPassword_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == ' ') e.Handled = true;
-        }
     }
 }
