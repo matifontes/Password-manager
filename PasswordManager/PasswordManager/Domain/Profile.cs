@@ -5,7 +5,12 @@ namespace PasswordManager
 {
     public class Profile
     {
-        public string password {get; private set;}
+        private string _password;
+        public string password 
+        {
+            get { return this._password; }
+            set => SetPassword(value);
+        }
         private CategoryRepository categories;
         private PasswordRepository passwords;
         private CreditCardRepository creditCards;
@@ -30,7 +35,8 @@ namespace PasswordManager
             }
             else 
             {
-                throw new FailToValidatePasswordException("Error al validar la contraseña actual");
+                const string FAIL_TO_VALIDATE_PASSWORD = "Error al validar la contraseña actual";
+                throw new FailToValidatePasswordException(FAIL_TO_VALIDATE_PASSWORD);
             }
         }
 
@@ -47,6 +53,24 @@ namespace PasswordManager
         public CreditCardRepository GetCreditCardRepository() 
         {
             return this.creditCards;
+        }
+
+        private void SetPassword(string password) 
+        {
+            if (!IsValidPassword(password)) 
+            {
+                const string INVALID_PASSWORD = "La contraseña debe tener entre 5 a 25 caracteres";
+                throw new InvalidPasswordException(INVALID_PASSWORD);
+            }
+            else
+            {
+                this._password = password;
+            }
+        }
+
+        private bool IsValidPassword(string password) 
+        {
+            return password.Length >= 5 && password.Length <= 25;
         }
     }
 }
