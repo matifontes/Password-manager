@@ -31,6 +31,8 @@ namespace UserInterface
         {
             const string DIALOG_MSG = "Esta seguro de cambiar la contraseña?";
             const string DIALOG_ACTION = "Cambiar de contraseña";
+            const string PASSWORD_CHANGED = "Contraseña Cambiada con exito";
+            const string PASSWORD_DONT_MATCH = "La contraseña nueva no coinciden";
             if (ConfirmDialog(DIALOG_MSG, DIALOG_ACTION))
             {
                 if (txtNewPassword.Text.Equals(txtRepeatNewPassword.Text))
@@ -38,8 +40,7 @@ namespace UserInterface
                     try
                     {
                         profile.ChangePassword(txtActualPassword.Text, txtNewPassword.Text);
-                        lblErrorMsg.Text = "Contraseña cambiada correctamente";
-                        lblErrorMsg.ForeColor = System.Drawing.Color.Green;
+                        ShowMSG(System.Drawing.Color.Green, PASSWORD_CHANGED);
 
                     }
                     catch (Exception exp) 
@@ -49,7 +50,6 @@ namespace UserInterface
                 }
                 else 
                 {
-                    const string PASSWORD_DONT_MATCH = "La contraseña nueva no coinciden";
                     ShowMSG(System.Drawing.Color.Red, PASSWORD_DONT_MATCH);
                 }
 

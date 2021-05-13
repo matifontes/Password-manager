@@ -26,8 +26,8 @@ namespace UserInterface
                 PostLoginEvent();
             }
             else {
-                const string FAIL_LOGIN = "Contraseña incorrecta";
-                ShowMSG(System.Drawing.Color.Red, FAIL_LOGIN);
+                const string FAIL_TO_LOGIN = "Contraseña incorrecta";
+                ShowMSG(System.Drawing.Color.Red, FAIL_TO_LOGIN);
             }
         }
 
