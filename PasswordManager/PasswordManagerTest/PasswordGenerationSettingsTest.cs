@@ -10,7 +10,7 @@ namespace PasswordManagerTest
         const string LOWERCASE_CHARACTERS = "abcdefghijklmnopqrstuvwxyz";
         const string UPPERCASE_CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         const string NUMERIC_CHARACTERS = "0123456789";
-        const string SPECIAL_CHARACTERS = @"!#$%&.*@\";
+        const string SPECIAL_CHARACTERS = "@!#$%&.*@\"\'_-^[](){} ~|<>?¿¡:;,+\\/=";
         private GeneratePasswordSettings settingsAllTrue;
         private GeneratePasswordSettings settingsAllFalse;
         int passwordLength = 10;
