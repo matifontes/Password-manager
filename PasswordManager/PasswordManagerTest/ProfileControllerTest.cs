@@ -30,6 +30,22 @@ namespace PasswordManagerTest
         }
 
         [TestMethod]
+        [ExpectedException(typeof(InvalidPasswordException))]
+        public void InValidPassworLenghtLongerThen25OnUserCreation()
+        {
+            string invalidPassowrd = "1234567890ABCDEFGHTYUGFASDFDD";
+            ProfileController profile = new ProfileController(invalidPassowrd);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidPasswordException))]
+        public void InValidPassworLenghtShorterThen5OnUserCreation()
+        {
+            string invalidPassowrd = "1234";
+            ProfileController profile = new ProfileController(invalidPassowrd);
+        }
+
+        [TestMethod]
         public void ValidateWithWrongPassword() 
         {
             string wrongPassword = "1234";

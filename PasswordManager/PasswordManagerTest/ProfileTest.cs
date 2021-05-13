@@ -40,6 +40,23 @@ namespace PasswordManagerTest
         }
 
         [TestMethod]
+        [ExpectedException(typeof(InvalidPasswordException))]
+        public void InValidPassworLenghtLongerThen25OnUserCreation() 
+        {
+            string invalidPassowrd = "1234567890ABCDEFGHTYUGFASDFDD";
+            Profile profile = new PasswordManager.Profile(invalidPassowrd);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidPasswordException))]
+        public void InValidPassworLenghtShorterThen5OnUserCreation()
+        {
+            string invalidPassowrd = "1234";
+            Profile profile = new PasswordManager.Profile(invalidPassowrd);
+        }
+
+
+        [TestMethod]
         public void CreateUserWithAPasswordUsingSpecialCharacters() 
         {
             Assert.AreEqual(profileWithSpecialCharactersOnPassword.password, specialCharacterPsw);

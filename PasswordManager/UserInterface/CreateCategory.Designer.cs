@@ -79,7 +79,7 @@ namespace UserInterface
             this.Controls.Add(this.btnCreate);
             this.Controls.Add(this.txtCategoryName);
             this.Name = "CreateCategory";
-            this.Size = new System.Drawing.Size(347, 142);
+            this.Size = new System.Drawing.Size(347, 150);
             this.ResumeLayout(false);
             this.PerformLayout();
 
