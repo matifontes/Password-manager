@@ -81,7 +81,7 @@ namespace UserInterface
                 string CCNo = creditCard.Number.ToString();
                 string maskedCCNo = String.Format("{0} {0} {0} {1}", XXNo, CCNo.Substring(CCNo.Length - 4, 4));
                 row[CCNUMBER_HEADER] = maskedCCNo;
-                row[EXPIRYDATE_HEADER] = creditCard.ExpiryDate;
+                row[EXPIRYDATE_HEADER] = creditCard.ExpiryDate.ToString("MM/yy");
                 dataTable.Rows.Add(row);
             }
             dgvCategories.DataSource = dataTable;
@@ -94,7 +94,7 @@ namespace UserInterface
             dataTable.Columns.Add(NAME_HEADER, typeof(CreditCard));
             dataTable.Columns.Add(TYPE_HEADER, typeof(string));
             dataTable.Columns.Add(CCNUMBER_HEADER, typeof(string));
-            dataTable.Columns.Add(EXPIRYDATE_HEADER, typeof(DateTime));
+            dataTable.Columns.Add(EXPIRYDATE_HEADER, typeof(string));
             return dataTable;
         }
 

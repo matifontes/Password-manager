@@ -36,7 +36,7 @@ namespace UserInterface
             creditCardNumber += " " + this.creditCard.Number.ToString().Substring(12, 4);
             txtCCNumber.Text = creditCardNumber;
             txtCCV.Text = this.creditCard.CCVCode.ToString();
-            txtExpiryDate.Text = this.creditCard.ExpiryDate.ToString();
+            txtExpiryDate.Text = this.creditCard.ExpiryDate.ToString("MM/yy");
             txtNote.Text = this.creditCard.Note;
         }
 

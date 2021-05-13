@@ -135,7 +135,8 @@ namespace UserInterface
 
         private bool CheckExistenceOfCreditCardNumber() 
         {
-            return this.creditCards.ContainsCreditCard(new CreditCard(long.Parse(txtNumber.Text)));
+            string ccNumber = txtNumber.Text.Replace(" ", string.Empty);
+            return this.creditCards.ContainsCreditCard(new CreditCard(long.Parse(ccNumber)));
         }
 
         private void ShowMSG(System.Drawing.Color color, string message) 
