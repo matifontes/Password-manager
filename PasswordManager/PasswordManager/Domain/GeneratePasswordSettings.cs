@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace PasswordManager
@@ -11,7 +12,7 @@ namespace PasswordManager
         const string LOWERCASE_CHARACTERS = "abcdefghijklmnopqrstuvwxyz";
         const string UPPERCASE_CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         const string NUMERIC_CHARACTERS = "0123456789";
-        const string SPECIAL_CHARACTERS = "@!#$%&.*@\"\'_-^[](){} ~|<>?¿¡:;,+\\/=";
+        const string SPECIAL_CHARACTERS = @"!#$%&.*@\";
         public int PasswordLength { get; set; }
         public bool IncludeLowerCase { get; set; }
         public bool IncludeUpperCase { get; set; }
@@ -50,8 +51,9 @@ namespace PasswordManager
 
             if (includeSpecialCharacters)
             {
+                
                 characterSet.Append(SPECIAL_CHARACTERS);
-                CharSetOptions[3] = SPECIAL_CHARACTERS;
+                CharSetOptions[3] = SPECIAL_CHARACTERS; 
             }
 
             this.CharacterSet = characterSet.ToString();

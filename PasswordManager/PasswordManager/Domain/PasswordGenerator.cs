@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace PasswordManager
@@ -83,8 +84,8 @@ namespace PasswordManager
 
         private static bool ValidateSpecialCharacters(GeneratePasswordSettings settings, string password)
         {
-            const string SPECIAL_CHARACTERS = "@!#$%&.*@\"\'_-^[] (){}~|<>?¿¡:;,+\\/=";
-            bool isValid = !settings.IncludeSpecialCharacters || (settings.IncludeSpecialCharacters && System.Text.RegularExpressions.Regex.IsMatch(password, SPECIAL_CHARACTERS));
+            const string SPECIAL = @"([!#$%&.*@\\])+";
+            bool isValid = !settings.IncludeSpecialCharacters || (settings.IncludeSpecialCharacters && Regex.IsMatch(password, SPECIAL));
             return isValid;
         }
     }
