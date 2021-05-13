@@ -201,11 +201,8 @@ namespace PasswordManager
             bool ret = false;
             if (password.Length > 14)
             {
-                if(!PasswordIncludeSpecialCharacters(password) && !PasswordIncludeNumbers(password))
-                {
-                    ret = (PasswordIncludeLowerCase(password) && !PasswordIncludeUpperCase(password));
-                    ret = ret || (!PasswordIncludeLowerCase(password) && PasswordIncludeUpperCase(password));
-                }
+                ret = (PasswordIncludeLowerCase(password) && !PasswordIncludeUpperCase(password));
+                ret = ret || (!PasswordIncludeLowerCase(password) && PasswordIncludeUpperCase(password));
             }
             return ret;
         }
