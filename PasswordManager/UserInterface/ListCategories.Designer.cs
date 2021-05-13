@@ -44,7 +44,7 @@ namespace UserInterface
             this.btnAdd.TabIndex = 0;
             this.btnAdd.Text = "Agregar";
             this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.BtnAgregar_Click);
+            this.btnAdd.Click += new System.EventHandler(this.BtnAddCategory_Click);
             // 
             // btnModify
             // 
@@ -54,7 +54,7 @@ namespace UserInterface
             this.btnModify.TabIndex = 1;
             this.btnModify.Text = "Modificar";
             this.btnModify.UseVisualStyleBackColor = true;
-            this.btnModify.Click += new System.EventHandler(this.BtnModificar_Click);
+            this.btnModify.Click += new System.EventHandler(this.BtnModifyCategory_Click);
             // 
             // lbxCategories
             // 

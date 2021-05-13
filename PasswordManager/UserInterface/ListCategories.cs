@@ -41,13 +41,13 @@ namespace UserInterface
             lbxCategories.DataSource = this.categories.ListCategories();
         }
 
-        private void BtnAgregar_Click(object sender, EventArgs e)
+        private void BtnAddCategory_Click(object sender, EventArgs e)
         {
             RemoveChildForms();
             CreateModifyCategoryForm();
         }
 
-        private void BtnModificar_Click(object sender, EventArgs e)
+        private void BtnModifyCategory_Click(object sender, EventArgs e)
         {
             RemoveChildForms();
             Object category = lbxCategories.SelectedItem;
