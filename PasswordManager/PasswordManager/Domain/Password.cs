@@ -12,7 +12,7 @@ namespace PasswordManager
         const string LOWERCASE_CHARACTERS = @"[a-z]";
         const string UPPERCASE_CHARACTERS = @"[A-Z]";
         const string NUMERIC_CHARACTERS = @"[\d]";
-        const string SPECIAL_CHARACTERS = @"([!#$%&.*@\\])+";
+        const string SPECIAL_CHARACTERS = @"([!#$%&.*@\\,:;\[\])(}{^\|¿\?=~< >])+";
         private string _user;
         private string _pass;
         private string _site;
