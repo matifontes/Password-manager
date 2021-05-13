@@ -162,7 +162,7 @@ namespace PasswordManagerTest
         }
 
         [TestMethod]
-        public void PasswordLargerThan14WithOnlyMayusShouldBeYellow()
+        public void PasswordLargerThan14WithOnlyMinusShouldBeYellow()
         {
             string passY = "testyellowyellowwwww";
             Password passYellow = new Password(personal, passY, site, user, note);
@@ -171,9 +171,45 @@ namespace PasswordManagerTest
         }
 
         [TestMethod]
-        public void PasswordLargerThan14WithOnlyMinusShouldBeYellow()
+        public void PasswordLargerThan14WithOnlyMayusShouldBeYellow()
         {
-            string passY = "testyellowyellowwwww";
+            string passY = "TESTYELLOWTELLOWWWWW";
+            Password passYellow = new Password(personal, passY, site, user, note);
+
+            Assert.AreEqual(passYellow.Strength, "Yellow");
+        }
+
+        [TestMethod]
+        public void PasswordLargerThan14WithOnlyMayusAndSpecialCharsShouldBeYellow()
+        {
+            string passY = "TESTYELLOWTELLOWWW.WW@";
+            Password passYellow = new Password(personal, passY, site, user, note);
+
+            Assert.AreEqual(passYellow.Strength, "Yellow");
+        }
+
+        [TestMethod]
+        public void PasswordLargerThan14WithOnlyMayusAndNumbersShouldBeYellow()
+        {
+            string passY = "TESTYELLOWTELLOWWWWW231";
+            Password passYellow = new Password(personal, passY, site, user, note);
+
+            Assert.AreEqual(passYellow.Strength, "Yellow");
+        }
+
+        [TestMethod]
+        public void PasswordLargerThan14WithOnlyMinusAndSpecialCharsShouldBeYellow()
+        {
+            string passY = "testyellowyellow@wwww";
+            Password passYellow = new Password(personal, passY, site, user, note);
+
+            Assert.AreEqual(passYellow.Strength, "Yellow");
+        }
+
+        [TestMethod]
+        public void PasswordLargerThan14WithOnlyMinusAndNumbersShouldBeYellow()
+        {
+            string passY = "testyellowyelloww123www";
             Password passYellow = new Password(personal, passY, site, user, note);
 
             Assert.AreEqual(passYellow.Strength, "Yellow");
