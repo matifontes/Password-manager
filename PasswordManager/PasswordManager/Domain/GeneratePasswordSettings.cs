@@ -12,7 +12,7 @@ namespace PasswordManager
         const string LOWERCASE_CHARACTERS = "abcdefghijklmnopqrstuvwxyz";
         const string UPPERCASE_CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         const string NUMERIC_CHARACTERS = "0123456789";
-        const string SPECIAL_CHARACTERS = @"!#$%&.*@\\,:;\[\])(}{^\|¿\?=~< >";
+        const string SPECIAL_CHARACTERS = @"!#$%&.*@\\,:;\[\])(}{^\|¿\?=~< >¡¨´-";
         
         public int PasswordLength { get; set; }
         public bool IncludeLowerCase { get; set; }
