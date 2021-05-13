@@ -83,8 +83,8 @@ namespace PasswordManager
 
         private static bool ValidateSpecialCharacters(GeneratePasswordSettings settings, string password)
         {
-            const string SPECIAL = @"([!#$%&.*@\\])+";
-            bool isValid = !settings.IncludeSpecialCharacters || (settings.IncludeSpecialCharacters && System.Text.RegularExpressions.Regex.IsMatch(password, SPECIAL));
+            const string SPECIAL_CHARACTERS = "@!#$%&.*@\"\'_-^[](){}~|<>?¿¡:;,+\\/=";
+            bool isValid = !settings.IncludeSpecialCharacters || (settings.IncludeSpecialCharacters && System.Text.RegularExpressions.Regex.IsMatch(password, SPECIAL_CHARACTERS));
             return isValid;
         }
     }
