@@ -77,7 +77,7 @@ namespace UserInterface
             // 
             // btnCreateProfile
             // 
-            this.btnCreateProfile.Location = new System.Drawing.Point(250, 181);
+            this.btnCreateProfile.Location = new System.Drawing.Point(250, 215);
             this.btnCreateProfile.Name = "btnCreateProfile";
             this.btnCreateProfile.Size = new System.Drawing.Size(134, 58);
             this.btnCreateProfile.TabIndex = 4;
@@ -104,7 +104,7 @@ namespace UserInterface
             this.Controls.Add(this.lblRepeatPassword);
             this.Controls.Add(this.lblNewPassword);
             this.Name = "RegisterProfile";
-            this.Size = new System.Drawing.Size(420, 276);
+            this.Size = new System.Drawing.Size(420, 305);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -29,11 +29,19 @@ namespace UserInterface
         {
             if (VerifyNewPassword())
             {
-                ProfileController profile = new ProfileController(txtPassword.Text);
-                PostRegisterEvent(profile);
+                try
+                {
+                    ProfileController profile = new ProfileController(txtPassword.Text);
+                    PostRegisterEvent(profile);
+                } 
+                catch(Exception exp)
+                {
+                    ShowMSG(System.Drawing.Color.Red, exp.Message);
+                }
             }
             else {
-                ShowErrorMSGPasswordsArentEqual();
+                string ERROR_MSG_PASSWORDS_ARENT_EQUAL = "Las contraseñas no coinciden";
+                ShowMSG(System.Drawing.Color.Red, ERROR_MSG_PASSWORDS_ARENT_EQUAL);
             }         
         }
 
@@ -42,11 +50,10 @@ namespace UserInterface
             return txtPassword.Text.Equals(txtRepeatPassword.Text);
         }
 
-        private void ShowErrorMSGPasswordsArentEqual() 
+        private void ShowMSG(System.Drawing.Color color, string message) 
         {
-            string ERROR_MSG_PASSWORDS_ARENT_EQUAL = "Las contraseñas no coinciden";
-            lblErrorMsg.Text = ERROR_MSG_PASSWORDS_ARENT_EQUAL;
-            lblErrorMsg.ForeColor = System.Drawing.Color.Red;
+            lblErrorMsg.Text = message;
+            lblErrorMsg.ForeColor = color;
         }
 
         private void TxtPassword_KeyPress(object sender, KeyPressEventArgs e)
