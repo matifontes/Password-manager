@@ -112,6 +112,7 @@ namespace UserInterface
             this.filePath = String.Empty;
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
+                openFileDialog.Filter = "txt files (*.txt)|*.txt";
                 openFileDialog.RestoreDirectory = true;
 
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
