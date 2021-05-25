@@ -112,7 +112,7 @@ namespace UserInterface
             this.fileReader();
         }
 
-        private void fileReader()
+        private void filePathReader()
         {
             this.filePath = String.Empty;
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
@@ -126,6 +126,8 @@ namespace UserInterface
                 }
             }
         }
+
+        private void 
 
 
     }
