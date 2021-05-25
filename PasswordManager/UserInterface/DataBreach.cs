@@ -22,6 +22,7 @@ namespace UserInterface
         private event HandleWindowChange ChangeWindow;
         private List<Password> passwordsLine;
         private List<CreditCard> creditCardsLine;
+        private string filePath;
         public DataBreach(PasswordsController passwords, CreditCardsController creditCards, CategoriesController categories)
         {
             InitializeComponent();
@@ -30,6 +31,7 @@ namespace UserInterface
             this.categories = categories;
             this.passwordsLine = new List<Password>();
             this.creditCardsLine = new List<CreditCard>();
+            this.filePath = String.Empty;
         }
 
         public void AddListener(HandleBackToMenu del)
@@ -107,6 +109,16 @@ namespace UserInterface
 
         private void btnReadFile_Click(object sender, EventArgs e)
         {
+            this.filePath = String.Empty;
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.RestoreDirectory = true;
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    this.filePath = openFileDialog.FileName;
+                }
+            }
         }
     }
 }
