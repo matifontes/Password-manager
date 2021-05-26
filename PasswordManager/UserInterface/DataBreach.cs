@@ -135,8 +135,26 @@ namespace UserInterface
 
         private void LoadListOfDataBreachesWithFile()
         {
-            this.txtBox.Text += "\r\n" + this.fileContent;
+            String[] fileContentList = SeparateString();
+           
+            if(this.txtBox.Text != String.Empty)
+            {
+                this.txtBox.Text += "\r\n";
+            }
+
+            foreach (string str in fileContentList)
+            {
+                this.txtBox.Text += str + "\r\n";
+            }
+            this.fileContent = string.Empty;
         }
 
+        private string[] SeparateString()
+        {
+            String[] separator = { "\\t" };
+            String[] fileContentList = this.fileContent.Split(separator, StringSplitOptions.None);
+
+            return fileContentList;
+        }
     }
 }
