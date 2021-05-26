@@ -111,11 +111,11 @@ namespace UserInterface
 
         private void btnReadFile_Click(object sender, EventArgs e)
         {
-            this.filePathReader();
-            this.loadListOfDataBreachesWithFile();
+            this.FilePathReader();
+            this.LoadListOfDataBreachesWithFile();
         }
 
-        private void filePathReader()
+        private void FilePathReader()
         {
             this.filePath = String.Empty;
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
@@ -133,7 +133,7 @@ namespace UserInterface
             }
         }
 
-        private void loadListOfDataBreachesWithFile()
+        private void LoadListOfDataBreachesWithFile()
         {
             this.txtBox.Text += "\r\n" + this.fileContent;
         }
