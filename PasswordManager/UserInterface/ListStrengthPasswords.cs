@@ -25,12 +25,12 @@ namespace UserInterface
         private List<Password> passList;
         private Password modifyPassword;
         private string strength;
-        public ListStrengthPasswords(PasswordsController passwords, CategoriesController categories, List<Password> list, string strength)
+        public ListStrengthPasswords(PasswordsController passwords, CategoriesController categories, List<Password> list)
         {
             InitializeComponent();
             this.categories = categories;
             this.passList = list;
-            this.strength = strength;
+            this.strength = list[0].Strength;
             this.passwords = passwords;
             EnableOptions();
             LoadTitle();

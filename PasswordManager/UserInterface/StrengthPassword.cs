@@ -14,6 +14,12 @@ namespace UserInterface
 {
     public partial class StrengthPassword : UserControl
     {
+        const string RED_STRENGTH = "Red";
+        const string ORANGE_STRENGTH = "Orange";
+        const string YELLOW_STRENGTH = "Yellow";
+        const string LIGHTGREEN_STRENGTH = "LightGreen";
+        const string DARKGREEN_STRENGTH = "DarkGreen";
+
         private PasswordsController passwords;
         private CategoriesController categories;
         private event HandleBackToMenu ChangeToMenu;
@@ -39,27 +45,26 @@ namespace UserInterface
         
         private void EnableOptions()
         {
-            btnRedPassword.Enabled = passwords.ListRedPasswords().Count != 0;
-            btnOrangePassword.Enabled = passwords.ListOrangePasswords().Count != 0;
-            btnYellowPassword.Enabled = passwords.ListYellowPasswords().Count != 0;
-            btnLightGreenPassword.Enabled = passwords.ListLightGreenPasswords().Count != 0;
-            btnDarkGreenPassword.Enabled = passwords.ListDarkGreenPasswords().Count != 0;
+            btnRedPassword.Enabled = passwords.ListPasswordsByStrength(RED_STRENGTH).Count != 0;
+            btnOrangePassword.Enabled = passwords.ListPasswordsByStrength(ORANGE_STRENGTH).Count != 0;
+            btnYellowPassword.Enabled = passwords.ListPasswordsByStrength(YELLOW_STRENGTH).Count != 0;
+            btnLightGreenPassword.Enabled = passwords.ListPasswordsByStrength(LIGHTGREEN_STRENGTH).Count != 0;
+            btnDarkGreenPassword.Enabled = passwords.ListPasswordsByStrength(DARKGREEN_STRENGTH).Count != 0;
 
         }
 
         private void LoadPasswordCount()
         {
-            lblCountRed.Text = passwords.ListRedPasswords().Count.ToString();
-            lblCountOrange.Text = passwords.ListOrangePasswords().Count.ToString();
-            lblCountYellow.Text = passwords.ListYellowPasswords().Count.ToString();
-            lblCountLightGreen.Text = passwords.ListLightGreenPasswords().Count.ToString();
-            lblCountDarkGreen.Text = passwords.ListDarkGreenPasswords().Count.ToString();
+            lblCountRed.Text = passwords.ListPasswordsByStrength(RED_STRENGTH).Count.ToString();
+            lblCountOrange.Text = passwords.ListPasswordsByStrength(ORANGE_STRENGTH).Count.ToString();
+            lblCountYellow.Text = passwords.ListPasswordsByStrength(YELLOW_STRENGTH).Count.ToString();
+            lblCountLightGreen.Text = passwords.ListPasswordsByStrength(LIGHTGREEN_STRENGTH).Count.ToString();
+            lblCountDarkGreen.Text = passwords.ListPasswordsByStrength(DARKGREEN_STRENGTH).Count.ToString();
         }
 
         private void BtnRedPassword_Click(object sender, EventArgs e)
         {
-            const string STRENGTH_RED = "Red";
-            ListStrengthPasswords redPasswords = new ListStrengthPasswords(this.passwords,categories, passwords.ListRedPasswords(), STRENGTH_RED);
+            ListStrengthPasswords redPasswords = new ListStrengthPasswords(this.passwords,categories, passwords.ListPasswordsByStrength(RED_STRENGTH));
             redPasswords.AddListener(ReturnToPasswordStrengh);
             ChangeWindow(redPasswords);
         }
@@ -67,32 +72,28 @@ namespace UserInterface
 
         private void BtnOrangePassword_Click(object sender, EventArgs e)
         {
-            const string STRENGTH_ORANGE = "Orange";
-            ListStrengthPasswords orangePasswords = new ListStrengthPasswords(this.passwords, categories, passwords.ListOrangePasswords(), STRENGTH_ORANGE);
+            ListStrengthPasswords orangePasswords = new ListStrengthPasswords(this.passwords, categories, passwords.ListPasswordsByStrength(ORANGE_STRENGTH));
             orangePasswords.AddListener(ReturnToPasswordStrengh);
             ChangeWindow(orangePasswords);
         }
 
         private void BtnYellowPassword_Click(object sender, EventArgs e)
         {
-            const string STRENGTH_YELLOW = "Yellow";
-            ListStrengthPasswords yellowPasswords = new ListStrengthPasswords(this.passwords, categories, passwords.ListYellowPasswords(), STRENGTH_YELLOW);
+            ListStrengthPasswords yellowPasswords = new ListStrengthPasswords(this.passwords, categories, passwords.ListPasswordsByStrength(YELLOW_STRENGTH));
             yellowPasswords.AddListener(ReturnToPasswordStrengh);
             ChangeWindow(yellowPasswords);
         }
 
         private void BtnLightGreenPassword_Click(object sender, EventArgs e)
         {
-            const string STRENGTH_LGREEN = "LightGreen";
-            ListStrengthPasswords lightGreenPasswords = new ListStrengthPasswords(this.passwords, categories, passwords.ListLightGreenPasswords(), STRENGTH_LGREEN);
+            ListStrengthPasswords lightGreenPasswords = new ListStrengthPasswords(this.passwords, categories, passwords.ListPasswordsByStrength(LIGHTGREEN_STRENGTH));
             lightGreenPasswords.AddListener(ReturnToPasswordStrengh);
             ChangeWindow(lightGreenPasswords);
         }
 
         private void BtnDarkGreenPassword_Click(object sender, EventArgs e)
         {
-            const string STRENGTH_DGREEN = "DarkGreen";
-            ListStrengthPasswords darkGreenPasswords = new ListStrengthPasswords(this.passwords, categories, passwords.ListDarkGreenPasswords(), STRENGTH_DGREEN);
+            ListStrengthPasswords darkGreenPasswords = new ListStrengthPasswords(this.passwords, categories, passwords.ListPasswordsByStrength(DARKGREEN_STRENGTH));
             darkGreenPasswords.AddListener(ReturnToPasswordStrengh);
             ChangeWindow(darkGreenPasswords);
         }
