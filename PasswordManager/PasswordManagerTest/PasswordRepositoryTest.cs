@@ -9,6 +9,13 @@ namespace PasswordManagerTest
     [TestClass]
     public class PasswordRepositoryTest
     {
+
+        const string RED_STRENGTH = "Red";
+        const string ORANGE_STRENGTH = "Orange";
+        const string YELLOW_STRENGTH = "Yellow";
+        const string LIGHTGREEN_STRENGTH = "LightGreen";
+        const string DARKGREEN_STRENGTH = "DarkGreen";
+
         private PasswordRepository passwordRepository;
         private Category category;
         private Password password;
@@ -132,6 +139,14 @@ namespace PasswordManagerTest
             Assert.AreEqual(orderedPassword[0].Category, category3);
             Assert.AreEqual(orderedPassword[1].Category, category);
             Assert.AreEqual(orderedPassword[2].Category, category2);
+        }
+
+        [TestMethod]
+        public void ListPasswordsByStrengthRED() 
+        {
+            passwordRepository.AddPassword(password);
+            List<Password> redPasswords = passwordRepository.ListPasswordsByStrenght(RED_STRENGTH);
+            Assert.IsFalse(passwordRepository.IsEmptyList(redPasswords));
         }
 
         [TestMethod]
