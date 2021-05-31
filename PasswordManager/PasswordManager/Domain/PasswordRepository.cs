@@ -63,69 +63,17 @@ namespace PasswordManager
             return this.passwords.OrderBy(password => password.Category.Name).ToList();
         }
 
-        public List<Password> ListRedPasswords()
+        public List<Password> ListPasswordsByStrength(string strength) 
         {
-            List<Password> redPasswords = new List<Password>();
+            List<Password> passwords = new List<Password>();
             foreach (Password pass in this.passwords)
             {
-                if (pass.Strength == "Red")
+                if (pass.Strength == strength)
                 {
-                    redPasswords.Add(pass);
+                    passwords.Add(pass);
                 }
             }
-            return SortListByCategoryName(redPasswords);
-        }
-
-        public List<Password> ListOrangePasswords()
-        {
-            List<Password> orangePasswords = new List<Password>();
-            foreach (Password pass in this.passwords)
-            {
-                if (pass.Strength == "Orange")
-                {
-                    orangePasswords.Add(pass);
-                }
-            }
-            return SortListByCategoryName(orangePasswords);
-        }
-
-        public List<Password> ListYellowPasswords()
-        {
-            List<Password> yellowPasswords = new List<Password>();
-            foreach (Password pass in this.passwords)
-            {
-                if (pass.Strength == "Yellow")
-                {
-                    yellowPasswords.Add(pass);
-                }
-            }
-            return SortListByCategoryName(yellowPasswords);
-        }
-
-        public List<Password> ListLGreenPasswords()
-        {
-            List<Password> lGreenPasswords = new List<Password>();
-            foreach (Password pass in this.passwords)
-            {
-                if (pass.Strength == "LightGreen")
-                {
-                    lGreenPasswords.Add(pass);
-                }
-            }
-            return SortListByCategoryName(lGreenPasswords);
-        }
-
-        public List<Password> ListDGreenPasswords()
-        {
-            List<Password> dGreenPasswords = new List<Password>();
-            foreach (Password pass in this.passwords)
-            {
-                if (pass.Strength == "DarkGreen")
-                {
-                    dGreenPasswords.Add(pass);
-                }
-            }
-            return SortListByCategoryName(dGreenPasswords);
+            return SortListByCategoryName(passwords);
         }
 
         public List<Password> SortListByCategoryName(List<Password> pass)

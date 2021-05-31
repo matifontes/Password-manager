@@ -13,6 +13,17 @@ namespace PasswordManager
         const string UPPERCASE_CHARACTERS = @"[A-Z]";
         const string NUMERIC_CHARACTERS = @"[\d]";
         const string SPECIAL_CHARACTERS = @"([!#$%&.*@\\,:;\[\])(}{^\|¿\?=~< >¡¨´-])+";
+        const string RED_STRENGTH = "Red";
+        const string ORANGE_STRENGTH = "Orange";
+        const string YELLOW_STRENGTH = "Yellow";
+        const string LIGHTGREEN_STRENGTH = "LightGreen";
+        const string DARKGREEN_STRENGTH = "DarkGreen";
+        const string INVALID_PASSWORD_LENGTH = "Largo de contraseña incorrecto";
+        const string INVALID_USER_LENGHT = "Largo de usuario incorrecto";
+        const string INVALID_SITE_LENGHT = "Largo de sitio incorrecto";
+        const string INVALID_NOTE_LENGHT = "Largo de nota incorrecto";
+
+
         private string _user;
         private string _pass;
         private string _site;
@@ -83,7 +94,7 @@ namespace PasswordManager
         {
             if (!IsValidLength(value))
             {
-                throw new InvalidPasswordException("Largo de contraseña incorrecto");
+                throw new InvalidPasswordException(INVALID_PASSWORD_LENGTH);
             }
             else
             {
@@ -96,7 +107,7 @@ namespace PasswordManager
         {
             if (!IsValidLength(value))
             {
-                throw new InvalidPasswordUserException("Largo de usuario incorrecto");
+                throw new InvalidPasswordUserException(INVALID_USER_LENGHT);
             }
             else
             {
@@ -109,7 +120,7 @@ namespace PasswordManager
         {
             if (!IsValidSiteLength(value))
             {
-                throw new InvalidPasswordSiteException("Largo de sitio incorrecto");
+                throw new InvalidPasswordSiteException(INVALID_SITE_LENGHT);
             }
             else
             {
@@ -122,7 +133,7 @@ namespace PasswordManager
         {
             if (!IsValidNoteLength(value))
             {
-                throw new InvalidPasswordNoteException("Largo de nota incorrecto");
+                throw new InvalidPasswordNoteException(INVALID_NOTE_LENGHT);
             }
             else
             {
@@ -160,27 +171,27 @@ namespace PasswordManager
            
             if (PasswordIsRed(password))
             {
-                strength = "Red";
+                strength = RED_STRENGTH;
             }
 
             if (PasswordIsOrange(password))
             {
-                strength = "Orange";
+                strength = ORANGE_STRENGTH;
             }
 
             if (PasswordIsYellow(password))
             {
-                strength = "Yellow";
+                strength = YELLOW_STRENGTH;
             }
 
             if (PasswordIsLightGreen(password))
             {
-                strength = "LightGreen";
+                strength = LIGHTGREEN_STRENGTH;
             }
 
             if (PasswordIsDarkGreen(password))
             {
-                strength = "DarkGreen";
+                strength = DARKGREEN_STRENGTH;
             }
             return strength;
         }
@@ -198,12 +209,8 @@ namespace PasswordManager
 
         private bool PasswordIsYellow(string password)
         {
-            bool ret = false;
-            if (password.Length > 14)
-            {
-                ret = (PasswordIncludeLowerCase(password) && !PasswordIncludeUpperCase(password));
-                ret = ret || (!PasswordIncludeLowerCase(password) && PasswordIncludeUpperCase(password));
-            }
+            bool ret = password.Length > 14;
+            ret = (ret && !PasswordIncludeLowerCase(password)) || (ret && !PasswordIncludeUpperCase(password));
             return ret;
         }
 
