@@ -10,6 +10,12 @@ namespace PasswordManagerTest
     [TestClass]
     public class PasswordsControllerTest
     {
+        const string RED_STRENGTH = "Red";
+        const string ORANGE_STRENGTH = "Orange";
+        const string YELLOW_STRENGTH = "Yellow";
+        const string LIGHTGREEN_STRENGTH = "LightGreen";
+        const string DARKGREEN_STRENGTH = "DarkGreen";
+
         private PasswordRepository passwords;
         private PasswordsController passwordsController;
         private Category category;
@@ -128,6 +134,21 @@ namespace PasswordManagerTest
             passwordsController.AddPassword(password2);
 
             List<Password> orderedRedPasswords = passwordsController.ListRedPasswords();
+            Assert.AreEqual(category2, orderedRedPasswords[0].Category);
+            Assert.AreEqual(category, orderedRedPasswords[1].Category);
+        }
+
+        [TestMethod]
+        public void ListPasswordsStrengthREDOrderByCategory()
+        {
+            Password password1 = new Password(category, "guest", site, user, note);
+            Category category2 = new Category("Gaming");
+            string userForPassword2 = "Guest";
+            Password password2 = new Password(category2, pass, site, userForPassword2, note);
+            passwordsController.AddPassword(password1);
+            passwordsController.AddPassword(password2);
+
+            List<Password> orderedRedPasswords = passwordsController.ListPasswordsByStrength(RED_STRENGTH);
             Assert.AreEqual(category2, orderedRedPasswords[0].Category);
             Assert.AreEqual(category, orderedRedPasswords[1].Category);
         }
