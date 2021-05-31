@@ -63,6 +63,19 @@ namespace PasswordManager
             return this.passwords.OrderBy(password => password.Category.Name).ToList();
         }
 
+        public List<Password> ListPasswordsByStrength(string strength) 
+        {
+            List<Password> passwords = new List<Password>();
+            foreach (Password pass in this.passwords)
+            {
+                if (pass.Strength == strength)
+                {
+                    passwords.Add(pass);
+                }
+            }
+            return SortListByCategoryName(passwords);
+        }
+
         public List<Password> ListRedPasswords()
         {
             List<Password> redPasswords = new List<Password>();
