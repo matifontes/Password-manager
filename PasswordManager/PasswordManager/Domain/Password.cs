@@ -198,12 +198,8 @@ namespace PasswordManager
 
         private bool PasswordIsYellow(string password)
         {
-            bool ret = false;
-            if (password.Length > 14)
-            {
-                ret = (PasswordIncludeLowerCase(password) && !PasswordIncludeUpperCase(password));
-                ret = ret || (!PasswordIncludeLowerCase(password) && PasswordIncludeUpperCase(password));
-            }
+            bool ret = password.Length > 14;
+            ret = (ret && !PasswordIncludeLowerCase(password)) || (ret && !PasswordIncludeUpperCase(password));
             return ret;
         }
 
