@@ -4,6 +4,7 @@ using PasswordManager;
 using System.Collections.Generic;
 using PasswordManager.Controllers;
 using PasswordManager.Exceptions;
+using PasswordManager.Repositories;
 
 namespace PasswordManagerTest
 {

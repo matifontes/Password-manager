@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using PasswordManager.Controllers;
 using PasswordManager;
@@ -15,6 +8,7 @@ namespace UserInterface
 {
     public partial class CreateModifyCreditCard : Form
     {
+        const string INCORRECTFORMAT_EXPCEPTION_MSG = "Formato incorrecto de información";
         private CategoriesController categories;
         private CreditCardsController creditCards;
         private CreditCard creditCard;
@@ -93,8 +87,10 @@ namespace UserInterface
                 this.creditCards.AddCreditCard(creditCard);
                 ShowMSG(System.Drawing.Color.Green, SUCCSESSFUL_CREATED);
                 PostModification();
-            }
-            catch (Exception e) 
+            }catch (System.FormatException)
+            {
+                ShowMSG(System.Drawing.Color.Red, INCORRECTFORMAT_EXPCEPTION_MSG);
+            }catch (Exception e)
             {
                 ShowMSG(System.Drawing.Color.Red,e.Message);
             }
@@ -120,8 +116,10 @@ namespace UserInterface
                 creditCard.Note = txtNote.Text;
                 ShowMSG(System.Drawing.Color.Green, SUCCSESSFUL_MODIFY);
                 PostModification();
-            }
-            catch (Exception e) 
+            }catch(System.FormatException)
+            {
+                ShowMSG(System.Drawing.Color.Red, INCORRECTFORMAT_EXPCEPTION_MSG);
+            }catch (Exception e) 
             {
                 ShowMSG(System.Drawing.Color.Red, e.Message);
             }

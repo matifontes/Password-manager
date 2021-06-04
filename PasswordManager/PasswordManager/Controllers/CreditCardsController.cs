@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PasswordManager.Repositories;
 
 namespace PasswordManager.Controllers
 {
@@ -40,10 +41,10 @@ namespace PasswordManager.Controllers
             return this.creditCards.ListCreditCards();
         }
 
-        public List<CreditCard> GetMatchingCreditCardsList(List<CreditCard> credCardsList)
+        public List<CreditCard> GetMatchingCreditCards(List<CreditCard> creditCardsOnDataBreach)
         {
-            List<CreditCard> creditCardsList = this.creditCards.GetMatchingCreditCardsList(credCardsList);
-            return creditCardsList;
+            List<CreditCard> creditCardsLeaked = this.creditCards.GetMatchingCreditCards(creditCardsOnDataBreach);
+            return creditCardsLeaked;
         }
 
         public bool ContainsCreditCard(CreditCard creditCard) 

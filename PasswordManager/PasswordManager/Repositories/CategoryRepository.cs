@@ -2,7 +2,7 @@
 using System.Linq;
 using PasswordManager.Exceptions;
 
-namespace PasswordManager
+namespace PasswordManager.Repositories
 {
     public class CategoryRepository
     {

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using PasswordManager.Exceptions;
+using PasswordManager.Repositories;
 
 namespace PasswordManager
 {

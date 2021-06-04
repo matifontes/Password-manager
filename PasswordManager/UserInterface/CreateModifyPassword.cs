@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using PasswordManager;
 using PasswordManager.Controllers;
@@ -143,7 +136,7 @@ namespace UserInterface
             try
             {
                 int large = Convert.ToInt32(nudLarge.Value);
-                GeneratePasswordSettings settings = new GeneratePasswordSettings(large, cbxMinus.Checked, cbxMayus.Checked, cbxDigits.Checked, cbxSpecialChar.Checked);
+                PasswordSettings settings = new PasswordSettings(large, cbxMinus.Checked, cbxMayus.Checked, cbxDigits.Checked, cbxSpecialChar.Checked);
                 string password = PasswordGenerator.GeneratePassword(settings);
                 txtPassword.Text = password;
             }

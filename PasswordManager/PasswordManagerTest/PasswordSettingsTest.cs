@@ -5,14 +5,14 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace PasswordManagerTest
 {
     [TestClass]
-    public class PasswordGenerationSettingsTest
+    public class PasswordSettingsTest
     {
         const string LOWERCASE_CHARACTERS = "abcdefghijklmnopqrstuvwxyz";
         const string UPPERCASE_CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         const string NUMERIC_CHARACTERS = "0123456789";
         const string SPECIAL_CHARACTERS = @"!#$%&.*@\\,:;\[\])(}{^\|¿\?=~< >¡¨´-";
-        private GeneratePasswordSettings settingsAllTrue;
-        private GeneratePasswordSettings settingsAllFalse;
+        private PasswordSettings settingsAllTrue;
+        private PasswordSettings settingsAllFalse;
         int passwordLength = 10;
         bool includeLowerCase = true;
         bool includeUpperCase = true;
@@ -26,8 +26,8 @@ namespace PasswordManagerTest
         [TestInitialize]
         public void Setup()
         {
-            settingsAllTrue = new PasswordManager.GeneratePasswordSettings(passwordLength, includeLowerCase, includeUpperCase, includeNumbers, includeSpecialCharacters);
-            settingsAllFalse = new PasswordManager.GeneratePasswordSettings(passwordLength, notIncludeLowerCase, notIncludeUpperCase, notIncludeNumbers, notIncludeSpecialCharacters);
+            settingsAllTrue = new PasswordManager.PasswordSettings(passwordLength, includeLowerCase, includeUpperCase, includeNumbers, includeSpecialCharacters);
+            settingsAllFalse = new PasswordManager.PasswordSettings(passwordLength, notIncludeLowerCase, notIncludeUpperCase, notIncludeNumbers, notIncludeSpecialCharacters);
         }
 
         [TestCleanup]

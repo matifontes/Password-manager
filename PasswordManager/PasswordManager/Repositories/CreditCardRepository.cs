@@ -2,7 +2,7 @@
 using System.Linq;
 using PasswordManager.Exceptions;
 
-namespace PasswordManager
+namespace PasswordManager.Repositories
 {
     public class CreditCardRepository
     {
@@ -58,20 +58,20 @@ namespace PasswordManager
             return false;
         }
 
-        public List<CreditCard> GetMatchingCreditCardsList(List<CreditCard> creditCardsList)
+        public List<CreditCard> GetMatchingCreditCards(List<CreditCard> creditCardsOnDataBreach)
         {
-            List<CreditCard> ret = new List<CreditCard>();
-            foreach (CreditCard credCard in this.creditCards)
+            List<CreditCard> creditCardsLeaked = new List<CreditCard>();
+            foreach (CreditCard credCardInRepo in this.creditCards)
             {
-                foreach (CreditCard credCard2 in creditCardsList)
+                foreach (CreditCard creditCardInBreach in creditCardsOnDataBreach)
                 {
-                    if (credCard.Number.Equals(credCard2.Number) && !ret.Contains(credCard))
+                    if (credCardInRepo.Number.Equals(creditCardInBreach.Number) && !creditCardsLeaked.Contains(credCardInRepo))
                     {
-                        ret.Add(credCard);
+                        creditCardsLeaked.Add(credCardInRepo);
                     }
                 }
             }
-            return ret;
+            return creditCardsLeaked;
         }
 
     }
