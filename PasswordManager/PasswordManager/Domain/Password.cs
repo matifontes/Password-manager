@@ -209,35 +209,24 @@ namespace PasswordManager
 
         private bool PasswordIsYellow(string password)
         {
-            bool ret = password.Length > 14;
-            ret = (ret && !PasswordIncludeLowerCase(password)) || (ret && !PasswordIncludeUpperCase(password));
-            return ret;
+            return (password.Length > 14 && !PasswordIncludeLowerCase(password)) || (password.Length > 14 && !PasswordIncludeUpperCase(password));
         }
 
         private bool PasswordIsLightGreen(string password)
         {
-            bool ret = false;
-            if (password.Length > 14)
-            {
-                ret = (PasswordIncludeLowerCase(password) && PasswordIncludeUpperCase(password));
-                bool onlySpecialChar = (PasswordIncludeSpecialCharacters(password) && !PasswordIncludeNumbers(password));
-                bool onlyNumber =  (!PasswordIncludeSpecialCharacters(password) && PasswordIncludeNumbers(password));
-                ret = ret || (ret && (onlySpecialChar || onlyNumber));
-            }
-            return ret;
+            bool onlySpecialChar = (PasswordIncludeSpecialCharacters(password) && !PasswordIncludeNumbers(password));
+            bool onlyNumber = (!PasswordIncludeSpecialCharacters(password) && PasswordIncludeNumbers(password));
+            bool isLargerThan14AndHasMayusAndMinus = (password.Length > 14 && (PasswordIncludeLowerCase(password) && PasswordIncludeUpperCase(password)));
+            return isLargerThan14AndHasMayusAndMinus || (isLargerThan14AndHasMayusAndMinus && (onlySpecialChar || onlyNumber));
         }
 
         private bool PasswordIsDarkGreen(string password)
         {
-            bool ret = false;
-            if (password.Length > 14)
-            {
-                ret = PasswordIncludeLowerCase(password);
-                ret = ret && PasswordIncludeUpperCase(password);
-                ret = ret && PasswordIncludeNumbers(password);
-                ret = ret && PasswordIncludeSpecialCharacters(password);
-            }
-            return ret;
+            return password.Length > 14 &&
+                PasswordIncludeLowerCase(password) &&
+                PasswordIncludeUpperCase(password) &&
+                PasswordIncludeNumbers(password) &&
+                PasswordIncludeSpecialCharacters(password);
         }
 
         private bool PasswordIncludeSpecialCharacters(string password)

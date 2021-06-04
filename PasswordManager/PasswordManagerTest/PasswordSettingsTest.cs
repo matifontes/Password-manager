@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace PasswordManagerTest
 {
-    [Test4FCVBB lass]
+    [TestClass]
     public class PasswordSettingsTest
     {
         const string LOWERCASE_CHARACTERS = "abcdefghijklmnopqrstuvwxyz";
