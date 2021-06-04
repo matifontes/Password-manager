@@ -133,6 +133,7 @@ namespace UserInterface
         {
             EnableOptions();
             LoadListPasswords();
+            DisposeChildForms();
         }
 
         private void BtnBack_Click(object sender, EventArgs e)

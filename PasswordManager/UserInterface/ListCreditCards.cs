@@ -144,6 +144,7 @@ namespace UserInterface
         {
             EnableOption();
             LoadCreditCardsList();
+            DisposeChildForm();
         }
 
         private void BtnBack_Click(object sender, EventArgs e)

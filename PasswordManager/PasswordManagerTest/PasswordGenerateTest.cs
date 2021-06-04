@@ -7,8 +7,8 @@ namespace PasswordManagerTest
     [TestClass]
     public class PasswordGenerateTest
     {
-        private GeneratePasswordSettings settingsAllTrue;
-        private GeneratePasswordSettings settingsMmNS;
+        private PasswordSettings settingsAllTrue;
+        private PasswordSettings settingsMmNS;
         private int passwordLength = 10;
         private bool includeLowerCase = true;
         private bool includeUpperCase = true;
@@ -19,8 +19,8 @@ namespace PasswordManagerTest
         [TestInitialize]
         public void Setup()
         {
-            settingsAllTrue = new GeneratePasswordSettings(passwordLength, includeLowerCase, includeUpperCase, includeNumbers, includeSpecialCharacters);
-            settingsMmNS = new GeneratePasswordSettings(passwordLength, includeLowerCase, includeUpperCaseFalse, includeNumbers, includeSpecialCharacters);
+            settingsAllTrue = new PasswordSettings(passwordLength, includeLowerCase, includeUpperCase, includeNumbers, includeSpecialCharacters);
+            settingsMmNS = new PasswordSettings(passwordLength, includeLowerCase, includeUpperCaseFalse, includeNumbers, includeSpecialCharacters);
         }
 
         [TestMethod]

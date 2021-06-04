@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PasswordManager
 {
-    public class GeneratePasswordSettings
+    public class PasswordSettings
     {
         const string LOWERCASE_CHARACTERS = "abcdefghijklmnopqrstuvwxyz";
         const string UPPERCASE_CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -22,7 +22,7 @@ namespace PasswordManager
         public string CharacterSet { get; set; }
         public string [] CharSetOptions { get; set; }
         
-        public GeneratePasswordSettings(int passLength, bool includeLowerCase, bool includeUpperCase, bool includeNumbers, bool includeSpecialCharacters)
+        public PasswordSettings(int passLength, bool includeLowerCase, bool includeUpperCase, bool includeNumbers, bool includeSpecialCharacters)
         {
             this.PasswordLength = passLength;
             this.IncludeLowerCase = includeLowerCase;

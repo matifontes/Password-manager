@@ -10,7 +10,7 @@ namespace PasswordManager
     public static class PasswordGenerator
     {
 
-        public static string GeneratePassword(GeneratePasswordSettings settings)
+        public static string GeneratePassword(PasswordSettings settings)
         {
             char[] pass = new char[settings.PasswordLength];
             int characterSetLength = settings.CharacterSet.Length;
@@ -35,23 +35,23 @@ namespace PasswordManager
             return password;
         }
 
-        public static bool PickOfCharSetOptions(int indexOptions, GeneratePasswordSettings settings)
+        public static bool PickOfCharSetOptions(int indexOptions, PasswordSettings settings)
         {
             bool ret = CheckRange(indexOptions, settings) && !IsEmptyCharSetOptionOnPos(indexOptions, settings);
             return ret;
         }
 
-        public static bool CheckRange(int indexOptions, GeneratePasswordSettings settings)
+        public static bool CheckRange(int indexOptions, PasswordSettings settings)
         {
             return indexOptions < settings.CharSetOptions.Length;
         }
 
-        public static bool IsEmptyCharSetOptionOnPos(int indexOptions, GeneratePasswordSettings settings)
+        public static bool IsEmptyCharSetOptionOnPos(int indexOptions, PasswordSettings settings)
         {
             return settings.CharSetOptions[indexOptions].Length == 0;
         }
 
-        public static bool PasswordIsValid(GeneratePasswordSettings settings, string password)
+        public static bool PasswordIsValid(PasswordSettings settings, string password)
         {
             bool isValid = true;
             isValid = isValid && ValidateLowerCase(settings, password);
@@ -61,28 +61,28 @@ namespace PasswordManager
             return isValid;
         }
 
-        private static bool ValidateLowerCase(GeneratePasswordSettings settings, string password)
+        private static bool ValidateLowerCase(PasswordSettings settings, string password)
         {
             const string LOWERCASE = @"[a-z]";
             bool isValid = !settings.IncludeLowerCase || (settings.IncludeLowerCase && System.Text.RegularExpressions.Regex.IsMatch(password, LOWERCASE));
             return isValid;
         }
 
-        private static bool ValidateUpperCase(GeneratePasswordSettings settings, string password)
+        private static bool ValidateUpperCase(PasswordSettings settings, string password)
         {
             const string UPPERCASE = @"[A-Z]";
             bool isValid = !settings.IncludeUpperCase || (settings.IncludeUpperCase && System.Text.RegularExpressions.Regex.IsMatch(password, UPPERCASE));
             return isValid;
         }
 
-        private static bool ValidateNumbers(GeneratePasswordSettings settings, string password)
+        private static bool ValidateNumbers(PasswordSettings settings, string password)
         {
             const string NUMERIC = @"[\d]";
             bool isValid = !settings.IncludeNumbers || (settings.IncludeNumbers && System.Text.RegularExpressions.Regex.IsMatch(password, NUMERIC));
             return isValid;
         }
 
-        private static bool ValidateSpecialCharacters(GeneratePasswordSettings settings, string password)
+        private static bool ValidateSpecialCharacters(PasswordSettings settings, string password)
         {
             const string SPECIAL = @"([!#$%&.*@\\,:;\[\])(}{^\|¿\?=~< >¡¨´-])+";
             bool isValid = !settings.IncludeSpecialCharacters || (settings.IncludeSpecialCharacters && Regex.IsMatch(password, SPECIAL));
