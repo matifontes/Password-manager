@@ -22,6 +22,8 @@ namespace UserInterface
         private event HandleWindowChange ChangeWindow;
         private List<Password> passwordsLine;
         private List<CreditCard> creditCardsLine;
+        private string filePath;
+        private string fileContent;
         public DataBreach(PasswordsController passwords, CreditCardsController creditCards, CategoriesController categories)
         {
             InitializeComponent();
@@ -30,6 +32,8 @@ namespace UserInterface
             this.categories = categories;
             this.passwordsLine = new List<Password>();
             this.creditCardsLine = new List<CreditCard>();
+            this.filePath = String.Empty;
+            this.fileContent = String.Empty;
         }
 
         public void AddListener(HandleBackToMenu del)
@@ -103,6 +107,54 @@ namespace UserInterface
         private void ReturnToDataBreach()
         {
             ChangeWindow(this);
+        }
+
+        private void btnReadFile_Click(object sender, EventArgs e)
+        {
+            this.FilePathReader();
+            this.LoadListOfDataBreachesWithFile();
+        }
+
+        private void FilePathReader()
+        {
+            this.filePath = String.Empty;
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "txt files (*.txt)|*.txt";
+                openFileDialog.RestoreDirectory = true;
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    this.filePath = openFileDialog.FileName;
+                    var fileStream = openFileDialog.OpenFile();
+                    StreamReader reader = new StreamReader(fileStream);
+                    this.fileContent = reader.ReadToEnd();
+                }
+            }
+        }
+
+        private void LoadListOfDataBreachesWithFile()
+        {
+            String[] fileContentList = SeparateString();
+           
+            if(this.txtBox.Text != String.Empty)
+            {
+                this.txtBox.Text += "\r\n";
+            }
+
+            foreach (string str in fileContentList)
+            {
+                this.txtBox.Text += str + "\r\n";
+            }
+            this.fileContent = string.Empty;
+        }
+
+        private string[] SeparateString()
+        {
+            String[] separator = { "\\t" };
+            String[] fileContentList = this.fileContent.Split(separator, StringSplitOptions.None);
+
+            return fileContentList;
         }
     }
 }

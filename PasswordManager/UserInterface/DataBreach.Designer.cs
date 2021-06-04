@@ -33,6 +33,7 @@
             this.btnVerify = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
             this.txtBox = new System.Windows.Forms.TextBox();
+            this.btnReadFile = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblTitle
@@ -57,7 +58,7 @@
             // 
             // btnVerify
             // 
-            this.btnVerify.Location = new System.Drawing.Point(318, 324);
+            this.btnVerify.Location = new System.Drawing.Point(318, 345);
             this.btnVerify.Name = "btnVerify";
             this.btnVerify.Size = new System.Drawing.Size(99, 36);
             this.btnVerify.TabIndex = 2;
@@ -67,7 +68,7 @@
             // 
             // btnBack
             // 
-            this.btnBack.Location = new System.Drawing.Point(43, 324);
+            this.btnBack.Location = new System.Drawing.Point(43, 345);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(99, 36);
             this.btnBack.TabIndex = 3;
@@ -83,17 +84,28 @@
             this.txtBox.Size = new System.Drawing.Size(374, 175);
             this.txtBox.TabIndex = 4;
             // 
+            // btnReadFile
+            // 
+            this.btnReadFile.Location = new System.Drawing.Point(318, 287);
+            this.btnReadFile.Name = "btnReadFile";
+            this.btnReadFile.Size = new System.Drawing.Size(99, 36);
+            this.btnReadFile.TabIndex = 5;
+            this.btnReadFile.Text = "LeerArchivo";
+            this.btnReadFile.UseVisualStyleBackColor = true;
+            this.btnReadFile.Click += new System.EventHandler(this.btnReadFile_Click);
+            // 
             // DataBreach
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnReadFile);
             this.Controls.Add(this.txtBox);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnVerify);
             this.Controls.Add(this.lblSubTitle);
             this.Controls.Add(this.lblTitle);
             this.Name = "DataBreach";
-            this.Size = new System.Drawing.Size(451, 398);
+            this.Size = new System.Drawing.Size(451, 413);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -106,5 +118,6 @@
         private System.Windows.Forms.Button btnVerify;
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.TextBox txtBox;
+        private System.Windows.Forms.Button btnReadFile;
     }
 }

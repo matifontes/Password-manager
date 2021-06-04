@@ -35,6 +35,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -161,7 +162,7 @@
     </Compile>
     <Compile Include="ListDataBreaches.Designer.cs">
       <DependentUpon>ListDataBreaches.cs</DependentUpon>
-	</Compile>
+    </Compile>
     <Compile Include="ShowCreditCard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -254,7 +255,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ListDataBreaches.resx">
       <DependentUpon>ListDataBreaches.cs</DependentUpon>
-	</EmbeddedResource>
+    </EmbeddedResource>
     <EmbeddedResource Include="ShowCreditCard.resx">
       <DependentUpon>ShowCreditCard.cs</DependentUpon>
     </EmbeddedResource>
