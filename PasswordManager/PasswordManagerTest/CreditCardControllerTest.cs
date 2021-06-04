@@ -134,7 +134,7 @@ namespace PasswordManagerTest
 
             List<CreditCard> creditCards = new List<CreditCard>();
             creditCards.Add(card2);
-            List<CreditCard> creditCardsResult = creditCardsController.GetMatchingCreditCardsList(creditCards);
+            List<CreditCard> creditCardsResult = creditCardsController.GetMatchingCreditCards(creditCards);
             Assert.AreEqual(card2.Number, creditCardsResult[0].Number);
         }
 
