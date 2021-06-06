@@ -115,6 +115,14 @@ namespace PasswordManagerTest
         }
 
         [TestMethod]
+        [ExpectedException(typeof(InvalidPasswordException))]
+        public void CreateEmptyPassword() 
+        {
+            string passTest = "      ";
+            new Password(personal, passTest, site, user, note);
+        }
+
+        [TestMethod]
         [ExpectedException(typeof(InvalidPasswordSiteException))]
         public void CreatePasswordSiteWithLenghtLessThanThree()
         {
