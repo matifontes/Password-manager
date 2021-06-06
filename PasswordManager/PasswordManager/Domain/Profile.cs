@@ -60,7 +60,7 @@ namespace PasswordManager
         {
             if (!IsValidPassword(password)) 
             {
-                const string INVALID_PASSWORD = "La contraseña debe tener entre 5 a 25 caracteres";
+                const string INVALID_PASSWORD = "La contraseña debe tener entre 5 a 25 caracteres y no puede ser unicamente de caracteres vacios";
                 throw new InvalidPasswordException(INVALID_PASSWORD);
             }
             else
@@ -71,7 +71,12 @@ namespace PasswordManager
 
         private bool IsValidPassword(string password) 
         {
-            return password.Length >= 5 && password.Length <= 25;
+            string emptyPassword = "";
+            for(int i = 0; i < password.Length; i++)
+            {
+                emptyPassword += " ";
+            }
+            return (password.Length >= 5 && password.Length <= 25) && password != emptyPassword;
         }
     }
 }
