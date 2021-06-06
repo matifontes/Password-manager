@@ -18,10 +18,11 @@ namespace PasswordManager
         const string YELLOW_STRENGTH = "Yellow";
         const string LIGHTGREEN_STRENGTH = "LightGreen";
         const string DARKGREEN_STRENGTH = "DarkGreen";
-        const string INVALID_PASSWORD_LENGTH = "Largo de contraseña incorrecto";
-        const string INVALID_USER_LENGHT = "Largo de usuario incorrecto";
-        const string INVALID_SITE_LENGHT = "Largo de sitio incorrecto";
-        const string INVALID_NOTE_LENGHT = "Largo de nota incorrecto";
+        const string INVALID_PASSWORD_LENGTH = "Contraseña Invalida, debe tener entre 5 a 25 caracteres";
+        const string EMPTY_PASSWORD = "Contraseña Invalida, no puede ser vacia";
+        const string INVALID_USER_LENGTH = "Largo de usuario incorrecto";
+        const string INVALID_SITE_LENGTH = "Largo de sitio incorrecto";
+        const string INVALID_NOTE_LENGTH = "Largo de nota incorrecto";
 
 
         private string _user;
@@ -96,6 +97,10 @@ namespace PasswordManager
             {
                 throw new InvalidPasswordException(INVALID_PASSWORD_LENGTH);
             }
+            else if (!IsValidPassword(value))
+            {
+                throw new InvalidPasswordException(EMPTY_PASSWORD);
+            }
             else
             {
                 this._pass = value;
@@ -107,7 +112,7 @@ namespace PasswordManager
         {
             if (!IsValidLength(value))
             {
-                throw new InvalidPasswordUserException(INVALID_USER_LENGHT);
+                throw new InvalidPasswordUserException(INVALID_USER_LENGTH);
             }
             else
             {
@@ -120,7 +125,7 @@ namespace PasswordManager
         {
             if (!IsValidSiteLength(value))
             {
-                throw new InvalidPasswordSiteException(INVALID_SITE_LENGHT);
+                throw new InvalidPasswordSiteException(INVALID_SITE_LENGTH);
             }
             else
             {
@@ -133,7 +138,7 @@ namespace PasswordManager
         {
             if (!IsValidNoteLength(value))
             {
-                throw new InvalidPasswordNoteException(INVALID_NOTE_LENGHT);
+                throw new InvalidPasswordNoteException(INVALID_NOTE_LENGTH);
             }
             else
             {
@@ -145,6 +150,16 @@ namespace PasswordManager
         public override string ToString()
         {
             return this.User;
+        }
+
+        private bool IsValidPassword(string password)
+        {
+            string emptyPassword = "";
+            for(int i = 0; i < password.Length; i++)
+            {
+                emptyPassword += " ";
+            }
+            return emptyPassword != password;
         }
 
         private bool IsValidLength(string toCheck)
