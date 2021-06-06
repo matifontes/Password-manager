@@ -8,7 +8,10 @@ namespace PasswordManager
     {
         const string INVALID_PASSWORD_LENGTH = "Contraseña Invalida, debe tener entre 5 a 25 caracteres";
         const string EMPTY_PASSWORD = "Contraseña Invalida, no puede ser vacia";
+
         private string _password;
+
+        public int ProfileId { get; set; }
         public string password 
         {
             get { return this._password; }

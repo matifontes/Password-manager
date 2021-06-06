@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PasswordManager.Exceptions;
+using System.ComponentModel.DataAnnotations;
 
 namespace PasswordManager
 {
@@ -29,6 +30,8 @@ namespace PasswordManager
         private string _pass;
         private string _site;
         private string _note;
+
+        public int PasswordId { get; set; }
         public Category Category { get; set; }
         public string Pass 
         {

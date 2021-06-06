@@ -1,5 +1,7 @@
 ﻿using System;
 using PasswordManager.Exceptions;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PasswordManager
 {
@@ -21,6 +23,9 @@ namespace PasswordManager
             get { return _type; }
             set => SetType(value); 
         }
+
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public long Number
         {
             get { return _number; }
