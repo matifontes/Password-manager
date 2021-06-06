@@ -41,7 +41,7 @@ namespace PasswordManagerTest
 
         [TestMethod]
         [ExpectedException(typeof(InvalidPasswordException))]
-        public void InValidPassworLenghtLongerThen25OnUserCreation() 
+        public void InValidPassworLenghtLongerThen25OnProfileCreation() 
         {
             string invalidPassowrd = "1234567890ABCDEFGHTYUGFASDFDD";
             Profile profile = new PasswordManager.Profile(invalidPassowrd);
@@ -49,12 +49,19 @@ namespace PasswordManagerTest
 
         [TestMethod]
         [ExpectedException(typeof(InvalidPasswordException))]
-        public void InValidPassworLenghtShorterThen5OnUserCreation()
+        public void InValidPassworLenghtShorterThen5OnProfileCreation()
         {
             string invalidPassowrd = "1234";
             Profile profile = new PasswordManager.Profile(invalidPassowrd);
         }
 
+        [TestMethod]
+        [ExpectedException(typeof(InvalidPasswordException))]
+        public void EmptyPasswordOnProfileCreation() 
+        {
+            string invalidPassowrd = "      ";
+            Profile profile = new PasswordManager.Profile(invalidPassowrd);
+        }
 
         [TestMethod]
         public void CreateUserWithAPasswordUsingSpecialCharacters() 
