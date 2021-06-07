@@ -30,6 +30,12 @@ namespace PasswordManagerTest
         }
 
         [TestMethod]
+        public void GetProfileCreated()
+        {
+            Assert.IsNotNull(profileController.GetProfile());
+        }
+
+        [TestMethod]
         [ExpectedException(typeof(InvalidPasswordException))]
         public void InValidPassworLenghtLongerThen25OnUserCreation()
         {
