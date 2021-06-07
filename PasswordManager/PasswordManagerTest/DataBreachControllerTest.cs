@@ -1,8 +1,8 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using PasswordManager;
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 using PasswordManager.Controllers;
+using PasswordManager;
 using PasswordManager.Exceptions;
 using PasswordManager.Repositories;
 
@@ -16,6 +16,7 @@ namespace PasswordManagerTest
         List<Password> passwords;
         DataBreach dBreach;
         DataBreachesRepository dataBreachesRepository;
+        DataBreachesController dBreachController;
 
         [TestInitialize]
         public void Setup()
@@ -24,6 +25,7 @@ namespace PasswordManagerTest
             passwords = new List<Password>();
             dBreach = new DataBreach(cards, passwords);
             dataBreachesRepository = new DataBreachesRepository();
+            dBreachController = new DataBreachesController(dataBreachesRepository);
         }
 
         [TestCleanup]
@@ -33,13 +35,19 @@ namespace PasswordManagerTest
             passwords = null;
             dBreach = null;
             dataBreachesRepository = null;
+            dBreachController = null;
         }
         [TestMethod]
         public void CreateDataBreachController()
         {
-            DataBreachesRepository dBreaches = new DataBreachesRepository();
-            DataBreachesController dBreachController = new DataBreachesController(dBreaches);
             Assert.IsNotNull(dBreachController);
+        }
+
+        [TestMethod]
+        public void AddDataBreach()
+        {
+            dBreachController.AddDataBreach(dBreach);
+            Assert.AreEqual(dBreachController.Count(), 1);
         }
 
     }
