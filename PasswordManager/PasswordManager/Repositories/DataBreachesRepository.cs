@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using PasswordManager.Exceptions;
 
 namespace PasswordManager.Repositories
 {
@@ -12,7 +10,12 @@ namespace PasswordManager.Repositories
 
         public DataBreachesRepository()
         {
-            this.dataBreaches = new List<DataBreach>();
+            dataBreaches = new List<DataBreach>();
+        }
+
+        public bool IsEmpty()
+        {
+           return this.dataBreaches.Count == 0;
         }
     }
 }
