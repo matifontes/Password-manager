@@ -43,6 +43,15 @@ namespace PasswordManagerTest
         }
 
         [TestMethod]
+        public void CreatePasswordWithProfileReference()
+        {
+            Profile profile = new Profile("TESTProfile");
+            Password pass = new Password(personal, password, site, user, note, profile);
+
+            Assert.AreEqual(profile,pass.Profile);
+        }
+
+        [TestMethod]
         public void CreatePassword()
         {
             Assert.IsNotNull(passwordCreatedToday);
