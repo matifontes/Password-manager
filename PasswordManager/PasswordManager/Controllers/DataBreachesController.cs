@@ -16,6 +16,15 @@ namespace PasswordManager.Controllers
             this.dBreaches = dBreaches;
         }
 
+        public void AddDataBreach(DataBreach dBreach)
+        {
+            this.dBreaches.AddDataBreach(dBreach);
+        }
+
+        public bool IsEmpty()
+        {
+            return this.dBreaches.IsEmpty();
+        }
 
     }
 }
