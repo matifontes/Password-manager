@@ -11,12 +11,26 @@ namespace PasswordManagerTest
     [TestClass]
     public class DataBreachTest
     {
+        List<CreditCard> creditCards;
+        List<Password> passwords;
+
+        [TestInitialize]
+        public void Setup()
+        {
+            creditCards = new List<CreditCard>();
+            passwords = new List<Password>();
+        }
+
+        [TestCleanup]
+        public void Cleanup()
+        {
+            creditCards = null;
+            passwords = null;
+        }
+
         [TestMethod]
         public void CreateDataBreach()
         {
-            List<CreditCard> creditCards = new List<CreditCard>();
-            List<Password> passwords = new List<Password>();
-
             DataBreach dBreachTest = new DataBreach(creditCards, passwords);
         }
     }
