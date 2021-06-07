@@ -10,23 +10,39 @@ namespace PasswordManagerTest
     [TestClass]
     public class DataBreachesRepositoryTest
     {
-        [TestMethod]
+        List<CreditCard> cards;
+        List<Password> passwords;
+        DataBreach dBreach;
+        DataBreachesRepository dataBreachesRepository;
+
+        [TestInitialize]
+        public void Setup() {
+            cards = new List<CreditCard>();
+            passwords = new List<Password>();
+            dBreach = new DataBreach(cards, passwords);
+            dataBreachesRepository = new DataBreachesRepository();
+        }
+
+        [TestCleanup]
+        public void Cleanup()
+        {
+            cards = null;
+            passwords = null;
+            dBreach = null;
+            dataBreachesRepository = null;
+        }
+    
+        
+    [TestMethod]
         public void CreateDataBreachesRepository()
         {
-            DataBreachesRepositoryTest dataBreaches = new DataBreachesRepositoryTest();
-            Assert.IsNotNull(dataBreaches);
+            Assert.IsNotNull(dataBreachesRepository);
         }
 
 
         [TestMethod]
         public void AddDataBreachToRepository()
         {
-            List<CreditCard> cards = new List<CreditCard>();
-            List<Password> passwords = new List<Password>();
-            DataBreach dBreach = new DataBreach(cards, passwords);
-
-            DataBreachesRepository dataBreachesRepository = new DataBreachesRepository();
-
             dataBreachesRepository.AddDataBreach(dBreach);
             Assert.IsFalse(dataBreachesRepository.IsEmpty());
         }
@@ -34,12 +50,14 @@ namespace PasswordManagerTest
         [TestMethod]
         public void CreateNewDataBreachesRepositoryShouldBeEmpty()
         {
-            List<CreditCard> cards = new List<CreditCard>();
-            List<Password> passwords = new List<Password>();
-            DataBreach dBreach = new DataBreach(cards, passwords);
-
-            DataBreachesRepository dataBreachesRepository = new DataBreachesRepository();
             Assert.IsTrue(dataBreachesRepository.IsEmpty());
+        }
+
+        [TestMethod]
+        public void AddCreditCardToRepositoryShouldntBeEmpty()
+        {
+            dataBreachesRepository.AddDataBreach(dBreach);
+            Assert.IsFalse(dataBreachesRepository.IsEmpty());
         }
 
     }
