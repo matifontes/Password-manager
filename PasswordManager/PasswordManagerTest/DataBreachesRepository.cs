@@ -14,5 +14,12 @@ namespace PasswordManagerTest
             DataBreachesRepository dataBreaches = new DataBreachesRepository();
             Assert.IsNotNull(dataBreaches);
         }
+
+        [TestMethod]
+        public void CreateNewDataBreachesRepositoryShouldBeEmpty()
+        {
+            DataBreachesRepository dataBreaches = new DataBreachesRepository();
+            Assert.IsTrue(dataBreaches.IsEmpty());
+        }
     }
 }
