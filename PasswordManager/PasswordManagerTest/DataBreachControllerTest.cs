@@ -44,10 +44,16 @@ namespace PasswordManagerTest
         }
 
         [TestMethod]
+        public void DataBreachIsEmpty()
+        {
+            Assert.IsTrue(dBreachController.IsEmpty());
+        }
+
+        [TestMethod]
         public void AddDataBreach()
         {
             dBreachController.AddDataBreach(dBreach);
-            Assert.AreEqual(dBreachController.Count(), 1);
+            Assert.IsFalse(dBreachController.IsEmpty());
         }
 
     }
