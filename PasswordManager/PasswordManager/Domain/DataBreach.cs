@@ -10,11 +10,13 @@ namespace PasswordManager
     {
         private List<CreditCard> creditCards;
         private List<Password> passwords;
+        public DateTime Date { get; set; }
 
         public DataBreach(List<CreditCard> creditCards, List<Password> passwords)
         {
             this.creditCards = new List<CreditCard>();
             this.passwords = new List<Password>();
+            this.Date = DateTime.Now;
         }
     }
 }
