@@ -39,6 +39,8 @@ namespace PasswordManager
             set => SetPassword(value);
         }
 
+        public Profile Profile { get; set; }
+
         public string Site {
             get { return _site; }
             set => SetSite(value);
@@ -77,6 +79,16 @@ namespace PasswordManager
             this.User = user;
             this.Note = note;
         }
+        public Password(Category category, string password, string site, string user, string note, Profile profile)
+        {
+            this.Category = category;
+            this.Pass = password;
+            this.Profile = profile;
+            this.Site = site;
+            this.User = user;
+            this.Note = note;
+        }
+
 
         public bool IsEqual(Password password) 
         {
