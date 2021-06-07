@@ -32,15 +32,16 @@ namespace PasswordManagerTest
         public void CreateDataBreach()
         {
             DataBreach dBreachTest = new DataBreach(creditCards, passwords);
+            Assert.IsNotNull(dBreachTest);
         }
 
         [TestMethod]
         public void CheckDateofDataBreach()
         {
-            DateTime nowDateTime = new DateTime();
+            DateTime nowDateTime = DateTime.Now;
             DataBreach dBreachDateTest = new DataBreach(creditCards, passwords);
             
-            Assert.AreEqual(nowDateTime, dBreachDateTest.date);
+            Assert.AreEqual(nowDateTime, dBreachDateTest.Date);
         }
     }
 }
