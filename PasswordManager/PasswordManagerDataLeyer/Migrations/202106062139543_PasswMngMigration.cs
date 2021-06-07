@@ -37,10 +37,13 @@
                         CCVCode = c.Short(nullable: false),
                         ExpiryDate = c.DateTime(nullable: false),
                         Note = c.String(),
+                        Profile_ProfileId = c.Int(),
                     })
                 .PrimaryKey(t => t.Number)
                 .ForeignKey("dbo.Categories", t => t.Name)
-                .Index(t => t.Name);
+                .ForeignKey("dbo.Profiles", t => t.Profile_ProfileId)
+                .Index(t => t.Name)
+                .Index(t => t.Profile_ProfileId);
             
             CreateTable(
                 "dbo.Passwords",
@@ -64,9 +67,11 @@
         public override void Down()
         {
             DropForeignKey("dbo.Passwords", "Category_Name", "dbo.Categories");
+            DropForeignKey("dbo.CreditCards", "Profile_ProfileId", "dbo.Profiles");
             DropForeignKey("dbo.CreditCards", "Name", "dbo.Categories");
             DropForeignKey("dbo.Categories", "Profile_ProfileId", "dbo.Profiles");
             DropIndex("dbo.Passwords", new[] { "Category_Name" });
+            DropIndex("dbo.CreditCards", new[] { "Profile_ProfileId" });
             DropIndex("dbo.CreditCards", new[] { "Name" });
             DropIndex("dbo.Categories", new[] { "Profile_ProfileId" });
             DropTable("dbo.Passwords");
