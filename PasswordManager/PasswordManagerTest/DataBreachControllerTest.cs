@@ -14,7 +14,8 @@ namespace PasswordManagerTest
         [TestMethod]
         public void CreateDataBreachController()
         {
-            DataBreachController dBreachController = new DataBreachController();
+            DataBreachesRepository dBreaches = new DataBreachesRepository();
+            DataBreachesController dBreachController = new DataBreachesController(dBreaches);
             Assert.IsNotNull(dBreachController);
         }
     }
