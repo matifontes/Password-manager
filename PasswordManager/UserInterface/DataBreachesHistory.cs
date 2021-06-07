@@ -37,7 +37,7 @@ namespace UserInterface
 
         private void showBtn_Click(object sender, EventArgs e)
         {
-            PasswordManager.DataBreach dBreach = (PasswordManager.DataBreach)dBreachList.SelectedItem;
+            PasswordManager.DataBreach dBreach = (DataBreach)dBreachList.SelectedItem;
             if(dBreach != null)
             {
                 DisposeChildForms();

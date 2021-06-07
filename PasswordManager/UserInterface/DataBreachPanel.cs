@@ -13,7 +13,7 @@ using PasswordManager;
 
 namespace UserInterface
 {
-    public partial class DataBreach : UserControl
+    public partial class DataBreachPanel : UserControl
     {
         private PasswordsController passwords;
         private CreditCardsController creditCards;
@@ -25,7 +25,7 @@ namespace UserInterface
         private List<CreditCard> creditCardsLine;
         private string filePath;
         private string fileContent;
-        public DataBreach(PasswordsController passwords, CreditCardsController creditCards, CategoriesController categories, DataBreachesController dBreachesController)
+        public DataBreachPanel(PasswordsController passwords, CreditCardsController creditCards, CategoriesController categories, DataBreachesController dBreachesController)
         {
             InitializeComponent();
             this.creditCards = creditCards;
@@ -102,7 +102,7 @@ namespace UserInterface
             List<Password> passwordsList = this.passwords.ListPasswordsMatching(this.passwordsLine);
             List<CreditCard> creditCardlist = this.creditCards.GetMatchingCreditCards(this.creditCardsLine);
 
-            dBreachesController.AddDataBreach(new PasswordManager.DataBreach(creditCardlist, passwordsList));
+            dBreachesController.AddDataBreach(new DataBreach(creditCardlist, passwordsList));
 
             ListDataBreaches listDataBreaches = new ListDataBreaches(passwordsList, creditCardlist, this.categories, this.passwords);
             listDataBreaches.AddListener(ReturnToDataBreach);

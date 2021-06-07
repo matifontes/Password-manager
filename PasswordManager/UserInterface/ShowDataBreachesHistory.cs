@@ -22,8 +22,8 @@ namespace UserInterface
         const string TYPE_HEADER = "Tipo";
         const string CCNUMBER_HEADER = "Tarjeta";
         const string EXPIRYDATE_HEADER = "Vencimiento";
-        private PasswordManager.DataBreach dBreach;
-        public ShowDataBreachesHistory(PasswordManager.DataBreach dBreach)
+        DataBreach dBreach;
+        public ShowDataBreachesHistory(DataBreach dBreach)
         {
             InitializeComponent();
             this.dBreach = dBreach;
@@ -34,7 +34,6 @@ namespace UserInterface
         private void LoadListPasswords()
         {
             DataTable dataTable = InitializeTablePassword();
-
             foreach (Password password in this.dBreach.passwords)
             {
                 DataRow row = dataTable.NewRow();

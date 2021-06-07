@@ -54,7 +54,7 @@ namespace UserInterface
 
         private void BtnBreaches_Click(object sender, EventArgs e)
         {
-            DataBreach dataBreaches = new DataBreach(this.passwords, this.creditCards, this.categories, this.dBreachesController);
+            DataBreachPanel dataBreaches = new DataBreachPanel(this.passwords, this.creditCards, this.categories, this.dBreachesController);
             dataBreaches.AddListener(ReturnToMenu);
             dataBreaches.AddListener(ChangeWindow);
             ChangeWindow(dataBreaches);
