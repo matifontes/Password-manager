@@ -60,5 +60,17 @@ namespace PasswordManagerTest
             Assert.IsFalse(dataBreachesRepository.IsEmpty());
         }
 
+        [TestMethod]
+        public void ListDataBreaches()
+        {
+            DataBreach dBreach01 = new DataBreach(cards, passwords);
+            DataBreach dBreach02 = new DataBreach(cards, passwords);
+            dataBreachesRepository.AddDataBreach(dBreach01);
+            dataBreachesRepository.AddDataBreach(dBreach02);
+            List<DataBreach> dBreachesList = dataBreachesRepository.ListDataBreaches();
+            Assert.AreEqual(dBreach01, dBreachesList[0]);
+            Assert.AreEqual(dBreach02, dBreachesList[1]);
+        }
+
     }
 }
