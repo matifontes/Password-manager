@@ -10,11 +10,13 @@ namespace UserInterface
     {
         private event HandleBackToMenu ChangeToMenu;
         private CategoriesController categories;
+        private ProfileController profile;
         private CreateModifyCategory categoryForm;
-        public ListCategoriesPanel(CategoriesController categories)
+        public ListCategoriesPanel(CategoriesController categories, ProfileController profile)
         {
             InitializeComponent();
             this.categories = categories;
+            this.profile = profile;
             EnableOptions();
             LoadCategoriesList();
         }
@@ -62,13 +64,13 @@ namespace UserInterface
 
         private void CreateModifyCategoryForm() 
         {
-            categoryForm = new CreateModifyCategory(categories, PostModification);
+            categoryForm = new CreateModifyCategory(categories, this.profile, PostModification);
             categoryForm.Show();
         }
 
         private void CreateModifyCategoryForm(Category category)
         {
-            categoryForm = new CreateModifyCategory(categories, category, PostModification);
+            categoryForm = new CreateModifyCategory(categories, category, this.profile, PostModification);
             categoryForm.Show();
         }
 

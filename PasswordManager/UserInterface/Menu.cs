@@ -31,7 +31,7 @@ namespace UserInterface
 
         private void BtnCategories_Click(object sender, EventArgs e)
         {
-            ListCategoriesPanel categories = new ListCategoriesPanel(this.categories);
+            ListCategoriesPanel categories = new ListCategoriesPanel(this.categories, this.profile);
             categories.AddListener(ReturnToMenu);
             ChangeWindow(categories);
         }

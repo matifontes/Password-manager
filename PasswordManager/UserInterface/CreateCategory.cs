@@ -9,10 +9,12 @@ namespace UserInterface
     {
         private event HandleModification PostCreated;
         private CategoriesController categories;
-        public CreateCategory(CategoriesController categories)
+        private ProfileController profile;
+        public CreateCategory(CategoriesController categories, ProfileController profile)
         {
             InitializeComponent();
             this.categories = categories;
+            this.profile = profile;
         }
 
         public void AddListener(HandleModification del) 
@@ -25,7 +27,7 @@ namespace UserInterface
             const string CATEGORY_CREATED_SUCCESFULLY = "Categoria creada con exito";
             try 
             {
-                categories.AddCategory(new Category(txtCategoryName.Text));
+                categories.AddCategory(new Category(txtCategoryName.Text, this.profile.GetProfile()));
                 ShowFeedbackMessage(System.Drawing.Color.Green, CATEGORY_CREATED_SUCCESFULLY);
                 PostCreated();
             }
