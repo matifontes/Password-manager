@@ -12,22 +12,25 @@ namespace UserInterface
         private CategoriesController categories;
         private CreditCardsController creditCards;
         private CreditCard creditCard;
+        private ProfileController profile;
         private event HandlePostModification PostModification;
-        public CreateModifyCreditCard(CategoriesController categories, CreditCardsController creditCards)
+        public CreateModifyCreditCard(CategoriesController categories, CreditCardsController creditCards, ProfileController profile)
         {
             InitializeComponent();
             this.categories = categories;
             this.creditCards = creditCards;
+            this.profile = profile;
             LoadCategories();
             CreateCreditCardPanel();
         }
 
-        public CreateModifyCreditCard(CategoriesController categories, CreditCardsController creditCards, CreditCard creditCard)
+        public CreateModifyCreditCard(CategoriesController categories, CreditCardsController creditCards, CreditCard creditCard, ProfileController profile)
         {
             InitializeComponent();
             this.categories = categories;
             this.creditCards = creditCards;
             this.creditCard = creditCard;
+            this.profile = profile;
             LoadCategories();
             LoadCreditCardIntoFields();
             ModifyCreditCardPanel();
@@ -83,7 +86,7 @@ namespace UserInterface
             {
                 const string SUCCSESSFUL_CREATED = "Tarjeta de credito creada correctamente";
                 string ccNumber = txtNumber.Text.Replace(" ", string.Empty);
-                CreditCard creditCard = new CreditCard((Category)cmbCategories.SelectedItem, txtName.Text, txtType.Text, long.Parse(ccNumber), short.Parse(txtCCVCode.Text), dtpExpiryDate.Value, txtNote.Text);
+                CreditCard creditCard = new CreditCard((Category)cmbCategories.SelectedItem, txtName.Text, txtType.Text, long.Parse(ccNumber), short.Parse(txtCCVCode.Text), dtpExpiryDate.Value, txtNote.Text, this.profile.GetProfile());
                 this.creditCards.AddCreditCard(creditCard);
                 ShowMSG(System.Drawing.Color.Green, SUCCSESSFUL_CREATED);
                 PostModification();

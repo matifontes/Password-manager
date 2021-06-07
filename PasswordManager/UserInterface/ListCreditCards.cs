@@ -16,14 +16,16 @@ namespace UserInterface
         const string EXPIRYDATE_HEADER = "Vencimiento";
         private CreditCardsController creditCards;
         private CategoriesController categories;
+        private ProfileController profile;
         private CreateModifyCreditCard creditCardForm;
         private event HandleBackToMenu ChangeToMenu;
         private ShowCreditCard showCreditCard;
-        public ListCreditCards(CreditCardsController creditCards, CategoriesController categories)
+        public ListCreditCards(CreditCardsController creditCards, CategoriesController categories, ProfileController profile)
         {
             InitializeComponent();
             this.creditCards = creditCards;
             this.categories = categories;
+            this.profile = profile;
             EnableOption();
             LoadCreditCardsList();
         }
@@ -96,7 +98,7 @@ namespace UserInterface
         private void BtnAddCreditCard_Click(object sender, EventArgs e)
         {
             DisposeChildForm();
-            CreateModifyCreditCard createCreditCard = new CreateModifyCreditCard(this.categories,this.creditCards);
+            CreateModifyCreditCard createCreditCard = new CreateModifyCreditCard(this.categories,this.creditCards, this.profile);
             createCreditCard.AddListener(PostModification);
             this.creditCardForm = createCreditCard;
             this.creditCardForm.Show();
@@ -106,7 +108,7 @@ namespace UserInterface
         {
             DisposeChildForm();
             CreditCard creditCard = (CreditCard)dgvCategories.SelectedRows[0].Cells[1].Value;
-            CreateModifyCreditCard modifyCreditCard = new CreateModifyCreditCard(this.categories, this.creditCards,creditCard);
+            CreateModifyCreditCard modifyCreditCard = new CreateModifyCreditCard(this.categories, this.creditCards,creditCard, this.profile);
             modifyCreditCard.AddListener(PostModification);
             this.creditCardForm = modifyCreditCard;
             this.creditCardForm.Show();

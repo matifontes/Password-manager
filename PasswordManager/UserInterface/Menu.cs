@@ -45,7 +45,7 @@ namespace UserInterface
 
         private void BtnCreditCards_Click(object sender, EventArgs e)
         {
-            ListCreditCards creditCards = new ListCreditCards(this.creditCards,this.categories);
+            ListCreditCards creditCards = new ListCreditCards(this.creditCards,this.categories, this.profile);
             creditCards.AddListener(ReturnToMenu);
             ChangeWindow(creditCards);
         }
