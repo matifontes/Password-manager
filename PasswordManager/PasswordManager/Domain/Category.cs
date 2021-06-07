@@ -17,15 +17,24 @@ namespace PasswordManager
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public string Name {
+        public string Name 
+        {
             get { return _name; }
             private set => ChangeName(value);
         }
-        
         public Category(string name)
         {
             this.Name = name;
+            this.Profile = new Profile("default");
         }
+
+        public Category(string name, Profile profile)
+        {
+            this.Name = name;
+            this.Profile = profile;
+        }
+
+        public Profile Profile{ get; set; }
 
         public void ChangeName(string name)
         {

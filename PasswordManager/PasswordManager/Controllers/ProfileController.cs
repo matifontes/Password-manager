@@ -22,6 +22,11 @@ namespace PasswordManager.Controllers
             this.profile.ChangePassword(actualpassword, newpassword);
         }
 
+        public Profile GetProfile() 
+        {
+            return this.profile;
+        }
+
         public CategoryRepository GetCategoryRepository() 
         {
             return this.profile.GetCategoryRepository();
