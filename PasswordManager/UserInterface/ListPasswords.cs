@@ -15,14 +15,16 @@ namespace UserInterface
         const string LASTMODIFICATION_DATE_HEADER = "Última Modificación";
         private PasswordsController passwords;
         private CategoriesController categories;
+        private ProfileController profile;
         private event HandleBackToMenu ChangeToMenu;
         private CreateModifyPassword passwordForm;
         private ShowPassword showPassword;
-        public ListPasswordsPanel(PasswordsController passwords, CategoriesController categories)
+        public ListPasswordsPanel(PasswordsController passwords, CategoriesController categories, ProfileController profile)
         {
             InitializeComponent();
             this.passwords = passwords;
             this.categories = categories;
+            this.profile = profile;
             EnableOptions();
             LoadListPasswords();
         }
@@ -88,7 +90,7 @@ namespace UserInterface
         private void BtnAddPassword_Click(object sender, EventArgs e)
         {
             DisposeChildForms();
-            this.passwordForm = new CreateModifyPassword(this.passwords,this.categories);
+            this.passwordForm = new CreateModifyPassword(this.passwords,this.categories, this.profile);
             passwordForm.AddListener(PostModification);
             passwordForm.Show();
         }

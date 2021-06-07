@@ -10,14 +10,16 @@ namespace UserInterface
     {
         private PasswordsController passwords;
         private CategoriesController categories;
+        private ProfileController profile;
         private event HandlePostModification PostModification;
         private Password password;
-        public CreateModifyPassword(PasswordsController passwords, CategoriesController categories)
+        public CreateModifyPassword(PasswordsController passwords, CategoriesController categories, ProfileController profile)
         {
             InitializeComponent();
             CreatePasswordPanel();
             this.passwords = passwords;
             this.categories = categories;
+            this.profile = profile;
             LoadCategories();
         }
 
@@ -80,7 +82,7 @@ namespace UserInterface
             try
             {
                 const string SUCCESSFUL_MSG = "Contraseña creada con exito";
-                passwords.AddPassword(new Password((Category)cbxCategories.SelectedItem, txtPassword.Text, txtSite.Text, txtUser.Text, txtNote.Text));
+                passwords.AddPassword(new Password((Category)cbxCategories.SelectedItem, txtPassword.Text, txtSite.Text, txtUser.Text, txtNote.Text, this.profile.GetProfile()));
                 ShowMSG(System.Drawing.Color.Green, SUCCESSFUL_MSG);
                 PostModification();
             }
