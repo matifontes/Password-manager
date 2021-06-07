@@ -75,12 +75,12 @@ namespace UserInterface
             ChangeWindow(changePassword);
         }
 
-        /*private void dBreachesHistory_Click(object sender, EventArgs e)
+        private void dBreachesHistory_Click(object sender, EventArgs e)
         {
-            DataBreachesHistory dBreachesHistory = new DataBreachesHistory(profile);
+            DataBreachesHistory dBreachesHistory = new DataBreachesHistory(dBreachesController);
             dBreachesHistory.AddListener(ReturnToMenu);
             ChangeWindow(dBreachesHistory);
-        }*/
+        }
 
         private void ReturnToMenu() 
         {

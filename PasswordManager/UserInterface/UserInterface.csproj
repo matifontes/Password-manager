@@ -105,6 +105,12 @@
     <Compile Include="CreatePassword.Designer.cs">
       <DependentUpon>CreatePassword.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataBreachesHistory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataBreachesHistory.Designer.cs">
+      <DependentUpon>DataBreachesHistory.cs</DependentUpon>
+    </Compile>
     <Compile Include="ListCategories.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -223,6 +229,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DataBreach.resx">
       <DependentUpon>DataBreach.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataBreachesHistory.resx">
+      <DependentUpon>DataBreachesHistory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ListCategories.resx">
       <DependentUpon>ListCategories.cs</DependentUpon>
