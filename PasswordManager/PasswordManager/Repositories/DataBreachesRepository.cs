@@ -13,6 +13,11 @@ namespace PasswordManager.Repositories
             dataBreaches = new List<DataBreach>();
         }
 
+        public void AddDataBreach(DataBreach dBreach)
+        {
+            this.dataBreaches.Add(dBreach);
+        }
+
         public bool IsEmpty()
         {
            return this.dataBreaches.Count == 0;
