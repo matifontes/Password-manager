@@ -19,6 +19,19 @@ namespace PasswordManagerTest
 
 
         [TestMethod]
+        public void AddDataBreachToRepository()
+        {
+            List<CreditCard> cards = new List<CreditCard>();
+            List<Password> passwords = new List<Password>();
+            DataBreach dBreach = new DataBreach(cards, passwords);
+
+            DataBreachesRepository dataBreachesRepository = new DataBreachesRepository();
+
+            dataBreachesRepository.AddDataBreach(dBreach);
+            Assert.IsFalse(dataBreachesRepository.IsEmpty());
+        }
+
+        [TestMethod]
         public void CreateNewDataBreachesRepositoryShouldBeEmpty()
         {
             List<CreditCard> cards = new List<CreditCard>();
