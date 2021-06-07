@@ -34,5 +34,10 @@ namespace PasswordManager.Controllers
         {
             return this.profile.GetCreditCardRepository();
         }
+
+        public DataBreachesRepository GetDataBreachesRepository()
+        {
+            return this.profile.GetDataBreachesRepository();
+        }
     }
 }

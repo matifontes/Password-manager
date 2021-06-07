@@ -13,15 +13,17 @@ namespace UserInterface
         private CategoriesController categories;
         private PasswordsController passwords;
         private CreditCardsController creditCards;
+        private DataBreachesController dBreachesController;
         private event HandleWindowChange ChangeWindow;
 
-        public MenuPanel(ProfileController profile,CategoriesController categories, PasswordsController passwords, CreditCardsController creditCards)
+        public MenuPanel(ProfileController profile,CategoriesController categories, PasswordsController passwords, CreditCardsController creditCards, DataBreachesController dataBreachesController)
         {
             InitializeComponent();
             this.profile = profile;
             this.categories = categories;
             this.passwords = passwords;
             this.creditCards = creditCards;
+            this.dBreachesController = dataBreachesController;
         }
 
         public void AddListener(HandleWindowChange del) 
@@ -52,7 +54,7 @@ namespace UserInterface
 
         private void BtnBreaches_Click(object sender, EventArgs e)
         {
-            DataBreach dataBreaches = new DataBreach(this.passwords, this.creditCards, this.categories);
+            DataBreach dataBreaches = new DataBreach(this.passwords, this.creditCards, this.categories, this.dBreachesController);
             dataBreaches.AddListener(ReturnToMenu);
             dataBreaches.AddListener(ChangeWindow);
             ChangeWindow(dataBreaches);
@@ -72,9 +74,18 @@ namespace UserInterface
             changePassword.AddListener(ReturnToMenu);
             ChangeWindow(changePassword);
         }
+
+        /*private void dBreachesHistory_Click(object sender, EventArgs e)
+        {
+            DataBreachesHistory dBreachesHistory = new DataBreachesHistory(profile);
+            dBreachesHistory.AddListener(ReturnToMenu);
+            ChangeWindow(dBreachesHistory);
+        }*/
+
         private void ReturnToMenu() 
         {
             ChangeWindow(this);
         }
+
     }
 }

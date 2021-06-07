@@ -18,13 +18,14 @@ namespace UserInterface
         private PasswordsController passwords;
         private CreditCardsController creditCards;
         private CategoriesController categories;
+        private DataBreachesController dBreachesController;
         private event HandleBackToMenu ChangeToMenu;
         private event HandleWindowChange ChangeWindow;
         private List<Password> passwordsLine;
         private List<CreditCard> creditCardsLine;
         private string filePath;
         private string fileContent;
-        public DataBreach(PasswordsController passwords, CreditCardsController creditCards, CategoriesController categories)
+        public DataBreach(PasswordsController passwords, CreditCardsController creditCards, CategoriesController categories, DataBreachesController dBreachesController)
         {
             InitializeComponent();
             this.creditCards = creditCards;
@@ -34,6 +35,7 @@ namespace UserInterface
             this.creditCardsLine = new List<CreditCard>();
             this.filePath = String.Empty;
             this.fileContent = String.Empty;
+            this.dBreachesController = dBreachesController;
         }
 
         public void AddListener(HandleBackToMenu del)
@@ -99,6 +101,9 @@ namespace UserInterface
             LoadList();
             List<Password> passwordsList = this.passwords.ListPasswordsMatching(this.passwordsLine);
             List<CreditCard> creditCardlist = this.creditCards.GetMatchingCreditCards(this.creditCardsLine);
+
+            dBreachesController.AddDataBreach(new PasswordManager.DataBreach(creditCardlist, passwordsList));
+
             ListDataBreaches listDataBreaches = new ListDataBreaches(passwordsList, creditCardlist, this.categories, this.passwords);
             listDataBreaches.AddListener(ReturnToDataBreach);
             ChangeWindow(listDataBreaches);

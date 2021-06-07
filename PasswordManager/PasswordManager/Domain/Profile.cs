@@ -17,12 +17,14 @@ namespace PasswordManager
         private CategoryRepository categories;
         private PasswordRepository passwords;
         private CreditCardRepository creditCards;
+        private DataBreachesRepository dBreaches;
 
         public Profile(string password) {
             this.password = password;
             categories = new CategoryRepository();
             passwords = new PasswordRepository();
             creditCards = new CreditCardRepository();
+            dBreaches = new DataBreachesRepository();
         }
 
         public bool ValidatePassword(string password) 
@@ -56,6 +58,11 @@ namespace PasswordManager
         public CreditCardRepository GetCreditCardRepository() 
         {
             return this.creditCards;
+        }
+
+        public DataBreachesRepository GetDataBreachesRepository()
+        {
+            return this.dBreaches;
         }
 
         private void SetPassword(string password) 
