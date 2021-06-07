@@ -57,19 +57,24 @@
                         Strength = c.String(),
                         LastModificationDate = c.DateTime(nullable: false),
                         Category_Name = c.String(maxLength: 128),
+                        Profile_ProfileId = c.Int(),
                     })
                 .PrimaryKey(t => t.PasswordId)
                 .ForeignKey("dbo.Categories", t => t.Category_Name)
-                .Index(t => t.Category_Name);
+                .ForeignKey("dbo.Profiles", t => t.Profile_ProfileId)
+                .Index(t => t.Category_Name)
+                .Index(t => t.Profile_ProfileId);
             
         }
         
         public override void Down()
         {
+            DropForeignKey("dbo.Passwords", "Profile_ProfileId", "dbo.Profiles");
             DropForeignKey("dbo.Passwords", "Category_Name", "dbo.Categories");
             DropForeignKey("dbo.CreditCards", "Profile_ProfileId", "dbo.Profiles");
             DropForeignKey("dbo.CreditCards", "Name", "dbo.Categories");
             DropForeignKey("dbo.Categories", "Profile_ProfileId", "dbo.Profiles");
+            DropIndex("dbo.Passwords", new[] { "Profile_ProfileId" });
             DropIndex("dbo.Passwords", new[] { "Category_Name" });
             DropIndex("dbo.CreditCards", new[] { "Profile_ProfileId" });
             DropIndex("dbo.CreditCards", new[] { "Name" });
