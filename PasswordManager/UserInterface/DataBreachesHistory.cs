@@ -1,15 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using PasswordManager.Controllers;
 using PasswordManager;
-
+using PasswordManager.Controllers;
 
 namespace UserInterface
 {
@@ -18,10 +12,12 @@ namespace UserInterface
         private DataBreachesController dBreachesController;
         private event HandleBackToMenu ChangeToMenu;
         private event HandleWindowChange ChangeWindow;
+        private ShowDataBreachesHistory showDataBreaches;
         public DataBreachesHistory(DataBreachesController dBreachesController)
         {
             InitializeComponent();
             this.dBreachesController = dBreachesController;
+            LoadDataBreaches();
         }
 
         public void AddListener(HandleBackToMenu del)
@@ -29,5 +25,34 @@ namespace UserInterface
             ChangeToMenu += del;
         }
 
-    }
+        public void LoadDataBreaches()
+        {
+            this.dBreachList.DataSource = this.dBreachesController.ListDataBreaches();
+        }
+
+        private void backBtn_Click(object sender, EventArgs e)
+        {
+            ChangeToMenu();
+        }
+
+        private void showBtn_Click(object sender, EventArgs e)
+        {
+            PasswordManager.DataBreach dBreach = (PasswordManager.DataBreach)dBreachList.SelectedItem;
+            if(dBreach != null)
+            {
+                DisposeChildForms();
+                this.showDataBreaches = new ShowDataBreachesHistory(dBreach);
+                this.showDataBreaches.Show();
+            }
+        }
+
+        private void DisposeChildForms()
+        {
+            if (this.showDataBreaches != null)
+            {
+                this.showDataBreaches.Dispose();
+            }
+        }
+
+        }
 }

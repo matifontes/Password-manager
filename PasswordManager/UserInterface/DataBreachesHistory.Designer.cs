@@ -58,8 +58,9 @@
             this.showBtn.Name = "showBtn";
             this.showBtn.Size = new System.Drawing.Size(99, 40);
             this.showBtn.TabIndex = 2;
-            this.showBtn.Text = "button1";
+            this.showBtn.Text = "Mostrar";
             this.showBtn.UseVisualStyleBackColor = true;
+            this.showBtn.Click += new System.EventHandler(this.showBtn_Click);
             // 
             // backBtn
             // 
@@ -69,6 +70,7 @@
             this.backBtn.TabIndex = 3;
             this.backBtn.Text = "Volver";
             this.backBtn.UseVisualStyleBackColor = true;
+            this.backBtn.Click += new System.EventHandler(this.backBtn_Click);
             // 
             // DataBreachesHistory
             // 
