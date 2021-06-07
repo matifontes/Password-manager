@@ -33,5 +33,14 @@ namespace PasswordManagerTest
         {
             DataBreach dBreachTest = new DataBreach(creditCards, passwords);
         }
+
+        [TestMethod]
+        public void CheckDateofDataBreach()
+        {
+            DateTime nowDateTime = new DateTime();
+            DataBreach dBreachDateTest = new DataBreach(creditCards, passwords);
+            
+            Assert.AreEqual(nowDateTime, dBreachDateTest.date);
+        }
     }
 }
