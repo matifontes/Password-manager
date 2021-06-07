@@ -26,5 +26,10 @@ namespace PasswordManager.Controllers
             return this.dBreaches.IsEmpty();
         }
 
+        public List<DataBreach> ListDataBreaches()
+        {
+            return this.dBreaches.ListDataBreaches();
+        }
+
     }
 }
