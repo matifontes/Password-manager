@@ -25,7 +25,6 @@ namespace PasswordManager
         public Category(string name)
         {
             this.Name = name;
-            this.Profile = new Profile("default");
         }
 
         public Category(string name, Profile profile)
