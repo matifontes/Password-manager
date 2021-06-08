@@ -18,5 +18,10 @@ namespace PasswordManager
             this.passwords = passwords;
             this.Date = DateTime.Now;
         }
+        public override string ToString()
+        {
+            return String.Format("DataBreach: " + this.Date);
+        }
     }
+  
 }
