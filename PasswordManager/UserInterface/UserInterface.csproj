@@ -105,6 +105,18 @@
     <Compile Include="CreatePassword.Designer.cs">
       <DependentUpon>CreatePassword.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataBreachesHistory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataBreachesHistory.Designer.cs">
+      <DependentUpon>DataBreachesHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShowDataBreachesHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowDataBreachesHistory.Designer.cs">
+      <DependentUpon>ShowDataBreachesHistory.cs</DependentUpon>
+    </Compile>
     <Compile Include="ListCategories.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -161,11 +173,11 @@
     <Compile Include="ModifyCategory.Designer.cs">
       <DependentUpon>ModifyCategory.cs</DependentUpon>
     </Compile>
-    <Compile Include="DataBreach.cs">
+    <Compile Include="DataBreachPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="DataBreach.Designer.cs">
-      <DependentUpon>DataBreach.cs</DependentUpon>
+    <Compile Include="DataBreachPanel.Designer.cs">
+      <DependentUpon>DataBreachPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="ListDataBreaches.cs">
       <SubType>UserControl</SubType>
@@ -221,8 +233,11 @@
     <EmbeddedResource Include="CreatePassword.resx">
       <DependentUpon>CreatePassword.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DataBreach.resx">
-      <DependentUpon>DataBreach.cs</DependentUpon>
+    <EmbeddedResource Include="DataBreachPanel.resx">
+      <DependentUpon>DataBreachPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataBreachesHistory.resx">
+      <DependentUpon>DataBreachesHistory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ListCategories.resx">
       <DependentUpon>ListCategories.cs</DependentUpon>
@@ -268,6 +283,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ShowCreditCard.resx">
       <DependentUpon>ShowCreditCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShowDataBreachesHistory.resx">
+      <DependentUpon>ShowDataBreachesHistory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ShowPassword.resx">
       <DependentUpon>ShowPassword.cs</DependentUpon>

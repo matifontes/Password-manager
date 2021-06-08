@@ -8,15 +8,20 @@ namespace PasswordManager
 {
     public class DataBreach
     {
-        private List<CreditCard> creditCards;
-        private List<Password> passwords;
+        public List<CreditCard> creditCards;
+        public List<Password> passwords;
         public DateTime Date { get; set; }
 
         public DataBreach(List<CreditCard> creditCards, List<Password> passwords)
         {
-            this.creditCards = new List<CreditCard>();
-            this.passwords = new List<Password>();
+            this.creditCards = creditCards;
+            this.passwords = passwords;
             this.Date = DateTime.Now;
         }
+        public override string ToString()
+        {
+            return String.Format("DataBreach: " + this.Date);
+        }
     }
+  
 }

@@ -35,6 +35,7 @@ namespace UserInterface
             this.btnBreaches = new System.Windows.Forms.Button();
             this.btnPasswordStrangth = new System.Windows.Forms.Button();
             this.btnChangePassword = new System.Windows.Forms.Button();
+            this.dBreachesHistory = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnCategories
@@ -97,10 +98,21 @@ namespace UserInterface
             this.btnChangePassword.UseVisualStyleBackColor = true;
             this.btnChangePassword.Click += new System.EventHandler(this.BtnChangePassword_Click);
             // 
+            // dBreachesHistory
+            // 
+            this.dBreachesHistory.Location = new System.Drawing.Point(18, 308);
+            this.dBreachesHistory.Name = "dBreachesHistory";
+            this.dBreachesHistory.Size = new System.Drawing.Size(228, 42);
+            this.dBreachesHistory.TabIndex = 6;
+            this.dBreachesHistory.Text = "Historial de Data Breaches";
+            this.dBreachesHistory.UseVisualStyleBackColor = true;
+            this.dBreachesHistory.Click += new System.EventHandler(this.dBreachesHistory_Click);
+            // 
             // MenuPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.dBreachesHistory);
             this.Controls.Add(this.btnChangePassword);
             this.Controls.Add(this.btnPasswordStrangth);
             this.Controls.Add(this.btnBreaches);
@@ -108,7 +120,7 @@ namespace UserInterface
             this.Controls.Add(this.btnCreditCards);
             this.Controls.Add(this.btnCategories);
             this.Name = "MenuPanel";
-            this.Size = new System.Drawing.Size(265, 345);
+            this.Size = new System.Drawing.Size(267, 388);
             this.ResumeLayout(false);
 
         }
@@ -121,5 +133,6 @@ namespace UserInterface
         private System.Windows.Forms.Button btnBreaches;
         private System.Windows.Forms.Button btnPasswordStrangth;
         private System.Windows.Forms.Button btnChangePassword;
+        private System.Windows.Forms.Button dBreachesHistory;
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace UserInterface
 {
-    partial class DataBreach
+    partial class DataBreachPanel
     {
         /// <summary> 
         /// Variable del diseñador necesaria.

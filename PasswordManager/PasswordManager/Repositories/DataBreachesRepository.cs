@@ -22,5 +22,11 @@ namespace PasswordManager.Repositories
         {
            return this.dataBreaches.Count == 0;
         }
+
+        public List<DataBreach> ListDataBreaches()
+        {
+            return this.dataBreaches.OrderBy(dBreach => dBreach.Date).ToList();
+        }
+
     }
 }
