@@ -13,5 +13,6 @@ namespace PasswordManager
         T Get(int Id);
         IEnumerable<T> GetAll();
         void Delete(int id);
+        void Update(T entity);
     }
 }
