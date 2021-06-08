@@ -14,8 +14,8 @@ namespace PasswordManager
 
         public DataBreach(List<CreditCard> creditCards, List<Password> passwords)
         {
-            this.creditCards = new List<CreditCard>();
-            this.passwords = new List<Password>();
+            this.creditCards = creditCards;
+            this.passwords = passwords;
             this.Date = DateTime.Now;
         }
     }
