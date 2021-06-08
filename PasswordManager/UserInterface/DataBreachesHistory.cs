@@ -32,6 +32,7 @@ namespace UserInterface
 
         private void backBtn_Click(object sender, EventArgs e)
         {
+            DisposeChildForms();
             ChangeToMenu();
         }
 
