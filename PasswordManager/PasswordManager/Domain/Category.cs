@@ -4,8 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PasswordManager.Exceptions;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PasswordManager
 {
@@ -15,8 +13,6 @@ namespace PasswordManager
         const int MAX_LENGTH_FOR_VALID_NAME = 15;
         const int MIN_LENGTH_FOR_VALID_NAME = 3;
 
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public string Name 
         {
             get { return _name; }
@@ -26,15 +22,6 @@ namespace PasswordManager
         {
             this.Name = name;
         }
-
-        public Category(string name, Profile profile)
-        {
-            this.Name = name;
-            this.Profile = profile;
-        }
-
-        public Profile Profile{ get; set; }
-
         public void ChangeName(string name)
         {
             if (!IsValidName(name))

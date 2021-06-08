@@ -1,7 +1,5 @@
 ﻿using System;
 using PasswordManager.Exceptions;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PasswordManager
 {
@@ -23,15 +21,6 @@ namespace PasswordManager
             get { return _type; }
             set => SetType(value); 
         }
-
-        public Profile Profile 
-        {
-            get;
-            set;
-        }
-
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public long Number
         {
             get { return _number; }
@@ -61,18 +50,6 @@ namespace PasswordManager
         public CreditCard(Category category, string name, string type, long creditCardNumber, short ccvCode, DateTime expDate, string note) {
             this.Category = category;
             this.Name = name;
-            this.Type = type;
-            this.Number = creditCardNumber;
-            this.CCVCode = ccvCode;
-            this.ExpiryDate = expDate;
-            this.Note = note;
-        }
-
-        public CreditCard(Category category, string name, string type, long creditCardNumber, short ccvCode, DateTime expDate, string note, Profile profile)
-        {
-            this.Category = category;
-            this.Name = name;
-            this.Profile = profile;
             this.Type = type;
             this.Number = creditCardNumber;
             this.CCVCode = ccvCode;

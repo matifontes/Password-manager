@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PasswordManager.Exceptions;
-using System.ComponentModel.DataAnnotations;
 
 namespace PasswordManager
 {
@@ -31,15 +30,12 @@ namespace PasswordManager
         private string _site;
         private string _note;
 
-        public int PasswordId { get; set; }
         public Category Category { get; set; }
         public string Pass 
         {
             get { return _pass; }
             set => SetPassword(value);
         }
-
-        public Profile Profile { get; set; }
 
         public string Site {
             get { return _site; }
@@ -79,16 +75,6 @@ namespace PasswordManager
             this.User = user;
             this.Note = note;
         }
-        public Password(Category category, string password, string site, string user, string note, Profile profile)
-        {
-            this.Category = category;
-            this.Pass = password;
-            this.Profile = profile;
-            this.Site = site;
-            this.User = user;
-            this.Note = note;
-        }
-
 
         public bool IsEqual(Password password) 
         {

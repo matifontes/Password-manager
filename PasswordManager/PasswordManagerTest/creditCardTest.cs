@@ -38,15 +38,6 @@ namespace PasswordManagerTest
         }
 
         [TestMethod]
-        public void CreateCreditCardWithProfileReference()
-        {
-            long creditCardNumber = 2145321155556688;
-            Profile profile = new Profile("TESTS");
-            CreditCard creditCardTest = new CreditCard(category, name, type, creditCardNumber, ccvCode, expDate, note, profile);
-            Assert.AreEqual(profile,creditCardTest.Profile);
-        }
-
-        [TestMethod]
         public void CreateCreditCard()
         {
             Assert.IsNotNull(card);

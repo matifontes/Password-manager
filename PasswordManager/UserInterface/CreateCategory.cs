@@ -27,7 +27,7 @@ namespace UserInterface
             const string CATEGORY_CREATED_SUCCESFULLY = "Categoria creada con exito";
             try 
             {
-                categories.AddCategory(new Category(txtCategoryName.Text, this.profile.GetProfile()));
+                categories.AddCategory(new Category(txtCategoryName.Text));
                 ShowFeedbackMessage(System.Drawing.Color.Green, CATEGORY_CREATED_SUCCESFULLY);
                 PostCreated();
             }

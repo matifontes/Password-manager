@@ -82,7 +82,7 @@ namespace UserInterface
             try
             {
                 const string SUCCESSFUL_MSG = "Contraseña creada con exito";
-                passwords.AddPassword(new Password((Category)cbxCategories.SelectedItem, txtPassword.Text, txtSite.Text, txtUser.Text, txtNote.Text, this.profile.GetProfile()));
+                passwords.AddPassword(new Password((Category)cbxCategories.SelectedItem, txtPassword.Text, txtSite.Text, txtUser.Text, txtNote.Text));
                 ShowMSG(System.Drawing.Color.Green, SUCCESSFUL_MSG);
                 PostModification();
             }

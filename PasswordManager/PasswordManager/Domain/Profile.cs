@@ -11,7 +11,6 @@ namespace PasswordManager
 
         private string _password;
 
-        public int ProfileId { get; set; }
         public string password 
         {
             get { return this._password; }

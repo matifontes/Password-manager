@@ -8,81 +8,72 @@
         public override void Up()
         {
             CreateTable(
-                "dbo.Categories",
+                "dbo.CategoryEntities",
                 c => new
                     {
                         Name = c.String(nullable: false, maxLength: 128),
-                        Profile_ProfileId = c.Int(),
+                        Profile_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Name)
-                .ForeignKey("dbo.Profiles", t => t.Profile_ProfileId)
-                .Index(t => t.Profile_ProfileId);
+                .ForeignKey("dbo.ProfileEntities", t => t.Profile_Id)
+                .Index(t => t.Profile_Id);
             
             CreateTable(
-                "dbo.Profiles",
+                "dbo.ProfileEntities",
                 c => new
                     {
-                        ProfileId = c.Int(nullable: false, identity: true),
-                        password = c.String(),
+                        Id = c.Int(nullable: false, identity: true),
+                        Password = c.String(),
                     })
-                .PrimaryKey(t => t.ProfileId);
+                .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.CreditCards",
+                "dbo.CreditCardEntities",
                 c => new
                     {
                         Number = c.Long(nullable: false),
-                        Name = c.String(maxLength: 128),
+                        Name = c.String(),
                         Type = c.String(),
                         CCVCode = c.Short(nullable: false),
                         ExpiryDate = c.DateTime(nullable: false),
                         Note = c.String(),
-                        Profile_ProfileId = c.Int(),
+                        Profile_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Number)
-                .ForeignKey("dbo.Categories", t => t.Name)
-                .ForeignKey("dbo.Profiles", t => t.Profile_ProfileId)
-                .Index(t => t.Name)
-                .Index(t => t.Profile_ProfileId);
+                .ForeignKey("dbo.ProfileEntities", t => t.Profile_Id)
+                .Index(t => t.Profile_Id);
             
             CreateTable(
-                "dbo.Passwords",
+                "dbo.PasswordEntities",
                 c => new
                     {
-                        PasswordId = c.Int(nullable: false, identity: true),
-                        Pass = c.String(),
+                        Id = c.Int(nullable: false, identity: true),
                         Site = c.String(),
                         User = c.String(),
+                        Password = c.String(),
                         Note = c.String(),
                         Strength = c.String(),
                         LastModificationDate = c.DateTime(nullable: false),
-                        Category_Name = c.String(maxLength: 128),
-                        Profile_ProfileId = c.Int(),
+                        Profile_Id = c.Int(),
                     })
-                .PrimaryKey(t => t.PasswordId)
-                .ForeignKey("dbo.Categories", t => t.Category_Name)
-                .ForeignKey("dbo.Profiles", t => t.Profile_ProfileId)
-                .Index(t => t.Category_Name)
-                .Index(t => t.Profile_ProfileId);
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.ProfileEntities", t => t.Profile_Id)
+                .Index(t => t.Profile_Id);
             
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.Passwords", "Profile_ProfileId", "dbo.Profiles");
-            DropForeignKey("dbo.Passwords", "Category_Name", "dbo.Categories");
-            DropForeignKey("dbo.CreditCards", "Profile_ProfileId", "dbo.Profiles");
-            DropForeignKey("dbo.CreditCards", "Name", "dbo.Categories");
-            DropForeignKey("dbo.Categories", "Profile_ProfileId", "dbo.Profiles");
-            DropIndex("dbo.Passwords", new[] { "Profile_ProfileId" });
-            DropIndex("dbo.Passwords", new[] { "Category_Name" });
-            DropIndex("dbo.CreditCards", new[] { "Profile_ProfileId" });
-            DropIndex("dbo.CreditCards", new[] { "Name" });
-            DropIndex("dbo.Categories", new[] { "Profile_ProfileId" });
-            DropTable("dbo.Passwords");
-            DropTable("dbo.CreditCards");
-            DropTable("dbo.Profiles");
-            DropTable("dbo.Categories");
+            DropForeignKey("dbo.PasswordEntities", "Profile_Id", "dbo.ProfileEntities");
+            DropForeignKey("dbo.CreditCardEntities", "Profile_Id", "dbo.ProfileEntities");
+            DropForeignKey("dbo.CategoryEntities", "Profile_Id", "dbo.ProfileEntities");
+            DropIndex("dbo.PasswordEntities", new[] { "Profile_Id" });
+            DropIndex("dbo.CreditCardEntities", new[] { "Profile_Id" });
+            DropIndex("dbo.CategoryEntities", new[] { "Profile_Id" });
+            DropTable("dbo.PasswordEntities");
+            DropTable("dbo.CreditCardEntities");
+            DropTable("dbo.ProfileEntities");
+            DropTable("dbo.CategoryEntities");
         }
     }
 }

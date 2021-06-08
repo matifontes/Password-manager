@@ -86,7 +86,7 @@ namespace UserInterface
             {
                 const string SUCCSESSFUL_CREATED = "Tarjeta de credito creada correctamente";
                 string ccNumber = txtNumber.Text.Replace(" ", string.Empty);
-                CreditCard creditCard = new CreditCard((Category)cmbCategories.SelectedItem, txtName.Text, txtType.Text, long.Parse(ccNumber), short.Parse(txtCCVCode.Text), dtpExpiryDate.Value, txtNote.Text, this.profile.GetProfile());
+                CreditCard creditCard = new CreditCard((Category)cmbCategories.SelectedItem, txtName.Text, txtType.Text, long.Parse(ccNumber), short.Parse(txtCCVCode.Text), dtpExpiryDate.Value, txtNote.Text);
                 this.creditCards.AddCreditCard(creditCard);
                 ShowMSG(System.Drawing.Color.Green, SUCCSESSFUL_CREATED);
                 PostModification();

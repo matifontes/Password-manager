@@ -17,15 +17,6 @@ namespace PasswordManagerTest
         }
 
         [TestMethod]
-        public void CreateCategoryWithProfileAssociated()
-        {
-            string validName = "Personal";
-            Profile profile = new Profile("TEST012");
-            Category personal = new Category(validName, profile);
-            Assert.AreEqual(personal.Profile, profile);
-        }
-
-        [TestMethod]
         [ExpectedException(typeof(InvalidCategoryNameException))]
         public void CreateCategoryWithNameShorterThanTheMinimumValidLength()
         {
