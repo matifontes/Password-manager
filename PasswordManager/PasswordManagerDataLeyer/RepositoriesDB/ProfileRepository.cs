@@ -7,8 +7,10 @@ using PasswordManager;
 
 namespace PasswordManagerDataLeyer.RepositoriesDB
 {
-    class ProfileRepository : IRepository<Profile>
+    public class ProfileRepository : IRepository<Profile>
     {
+        private Mapper mapper = new Mapper();
+
         public void Add(Profile profile) 
         {
             using (PasswordManagerContext context = new PasswordManagerContext()) 
@@ -18,7 +20,7 @@ namespace PasswordManagerDataLeyer.RepositoriesDB
                     throw new ProfileAlreadyExistsExeption();
                 }
 
-                ProfileEntity entity = Mapper.ProfileToEntity(profile);
+                ProfileEntity entity = mapper.ProfileToEntity(profile);
                 context.Profiles.Add(entity);
                 context.SaveChanges();
                 profile.Id = entity.Id;
@@ -41,7 +43,7 @@ namespace PasswordManagerDataLeyer.RepositoriesDB
                     throw new ProfileNotFoundExeption();
                 }
 
-                Profile profile = Mapper.EntityToProfile(entity);
+                Profile profile = mapper.EntityToProfile(entity);
                 return profile;
             }
         }
@@ -54,7 +56,7 @@ namespace PasswordManagerDataLeyer.RepositoriesDB
             { 
                 foreach(ProfileEntity entity in context.Profiles.ToList()) 
                 {
-                    profiles.Add(Mapper.EntityToProfile(entity));
+                    profiles.Add(mapper.EntityToProfile(entity));
                 }
             }
             return profiles;

@@ -7,9 +7,9 @@ using PasswordManager;
 
 namespace PasswordManagerDataLeyer
 {
-    public static class Mapper
+    public class Mapper
     {
-        public static ProfileEntity ProfileToEntity(Profile profile) 
+        public ProfileEntity ProfileToEntity(Profile profile) 
         {
             ProfileEntity profileEntity = new ProfileEntity
             {
@@ -18,7 +18,7 @@ namespace PasswordManagerDataLeyer
             return profileEntity;
         }
 
-        public static Profile EntityToProfile(ProfileEntity profileEntity) 
+        public Profile EntityToProfile(ProfileEntity profileEntity) 
         {
             Profile profile = new Profile(profileEntity.Password)
             {
