@@ -13,6 +13,7 @@ namespace PasswordManager
         const int MAX_LENGTH_FOR_VALID_NAME = 15;
         const int MIN_LENGTH_FOR_VALID_NAME = 3;
 
+        public int Id { get; set; }
         public string Name 
         {
             get { return _name; }

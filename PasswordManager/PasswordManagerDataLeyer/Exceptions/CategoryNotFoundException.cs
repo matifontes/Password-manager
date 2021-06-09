@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 namespace PasswordManagerDataLeyer
 {
     [Serializable]
-    class CategoryNotFoundException : Exception
+    public class CategoryNotFoundException : Exception
     {
         public CategoryNotFoundException()
         {

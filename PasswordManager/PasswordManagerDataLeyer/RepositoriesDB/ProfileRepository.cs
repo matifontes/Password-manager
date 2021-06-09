@@ -7,7 +7,7 @@ using PasswordManager;
 
 namespace PasswordManagerDataLeyer.RepositoriesDB
 {
-    public class ProfileRepository : IRepository<Profile,int>
+    public class ProfileRepository : IRepository<Profile>
     {
         private Mapper mapper = new Mapper();
 
@@ -17,7 +17,7 @@ namespace PasswordManagerDataLeyer.RepositoriesDB
             {
                 if (context.Profiles.Any(p => p.Id == profile.Id)) 
                 {
-                    throw new ProfileAlreadyExistsExeption();
+                    throw new ProfileAlreadyExistsException();
                 }
 
                 ProfileEntity entity = mapper.ProfileToEntity(profile);
@@ -42,7 +42,7 @@ namespace PasswordManagerDataLeyer.RepositoriesDB
                 ProfileEntity entity = context.Profiles.Find(id);
                 if (entity == null) 
                 {
-                    throw new ProfileNotFoundExeption();
+                    throw new ProfileNotFoundException();
                 }
 
                 Profile profile = mapper.EntityToProfile(entity);
@@ -69,13 +69,11 @@ namespace PasswordManagerDataLeyer.RepositoriesDB
             using (PasswordManagerContext context = new PasswordManagerContext())
             {
                 ProfileEntity entity = context.Profiles.Find(id);
-                if (entity == null) 
+                if(entity != null) 
                 {
-                    throw new ProfileNotFoundExeption();
+                    context.Profiles.Remove(entity);
+                    context.SaveChanges();
                 }
-
-                context.Profiles.Remove(entity);
-                context.SaveChanges();
             }
         }
 
@@ -86,7 +84,7 @@ namespace PasswordManagerDataLeyer.RepositoriesDB
                 ProfileEntity entity = context.Profiles.Find(profile.Id);
                 if (entity == null)
                 {
-                    throw new ProfileNotFoundExeption();
+                    throw new ProfileNotFoundException();
                 }
                 entity.Password = profile.Password;
                 context.SaveChanges();

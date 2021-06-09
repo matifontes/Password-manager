@@ -38,7 +38,8 @@ namespace PasswordManagerDataLeyer
 
         public Category EntityToCategory(CategoryEntity categoryEntity) 
         {
-            Category category = new Category(categoryEntity.Name);
+            Category category = new Category(categoryEntity.Name)
+            { Id = categoryEntity.Id };
             return category;
         }
 

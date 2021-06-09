@@ -9,6 +9,7 @@ namespace PasswordManagerDataLeyer
     public class PasswordEntity
     {
         public int Id { get; set; }
+        public CategoryEntity Category { get; set; }
         public string Site { get; set; }
         public string User { get; set; }
         public string Password { get; set; }

@@ -11,10 +11,11 @@
                 "dbo.CategoryEntities",
                 c => new
                     {
-                        Name = c.String(nullable: false, maxLength: 128),
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(),
                         Profile_Id = c.Int(),
                     })
-                .PrimaryKey(t => t.Name)
+                .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.ProfileEntities", t => t.Profile_Id)
                 .Index(t => t.Profile_Id);
             
@@ -31,16 +32,20 @@
                 "dbo.CreditCardEntities",
                 c => new
                     {
+                        Id = c.Int(nullable: false, identity: true),
                         Number = c.Long(nullable: false),
                         Name = c.String(),
                         Type = c.String(),
                         CCVCode = c.Short(nullable: false),
                         ExpiryDate = c.DateTime(nullable: false),
                         Note = c.String(),
+                        Category_Id = c.Int(),
                         Profile_Id = c.Int(),
                     })
-                .PrimaryKey(t => t.Number)
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.CategoryEntities", t => t.Category_Id)
                 .ForeignKey("dbo.ProfileEntities", t => t.Profile_Id)
+                .Index(t => t.Category_Id)
                 .Index(t => t.Profile_Id);
             
             CreateTable(
@@ -54,10 +59,13 @@
                         Note = c.String(),
                         Strength = c.String(),
                         LastModificationDate = c.DateTime(nullable: false),
+                        Category_Id = c.Int(),
                         Profile_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.CategoryEntities", t => t.Category_Id)
                 .ForeignKey("dbo.ProfileEntities", t => t.Profile_Id)
+                .Index(t => t.Category_Id)
                 .Index(t => t.Profile_Id);
             
         }
@@ -65,10 +73,14 @@
         public override void Down()
         {
             DropForeignKey("dbo.PasswordEntities", "Profile_Id", "dbo.ProfileEntities");
+            DropForeignKey("dbo.PasswordEntities", "Category_Id", "dbo.CategoryEntities");
             DropForeignKey("dbo.CreditCardEntities", "Profile_Id", "dbo.ProfileEntities");
+            DropForeignKey("dbo.CreditCardEntities", "Category_Id", "dbo.CategoryEntities");
             DropForeignKey("dbo.CategoryEntities", "Profile_Id", "dbo.ProfileEntities");
             DropIndex("dbo.PasswordEntities", new[] { "Profile_Id" });
+            DropIndex("dbo.PasswordEntities", new[] { "Category_Id" });
             DropIndex("dbo.CreditCardEntities", new[] { "Profile_Id" });
+            DropIndex("dbo.CreditCardEntities", new[] { "Category_Id" });
             DropIndex("dbo.CategoryEntities", new[] { "Profile_Id" });
             DropTable("dbo.PasswordEntities");
             DropTable("dbo.CreditCardEntities");

@@ -3,16 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PasswordManagerDataLeyer
 {
     public class CreditCardEntity
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int Id { get; set; }
         public long Number { get; set; }
+        public CategoryEntity Category { get; set; }
         public string Name { get; set; }
         public string Type { get; set; }
         public short CCVCode { get; set; }
