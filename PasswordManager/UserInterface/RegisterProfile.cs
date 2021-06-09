@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Windows.Forms;
 using PasswordManager.Controllers;
+using PasswordManagerDataLeyer.RepositoriesDB;
+using PasswordManagerDataLeyer;
+using PasswordManager;
 
 namespace UserInterface
 {
@@ -24,7 +27,10 @@ namespace UserInterface
             {
                 try
                 {
+                    ProfileRepository profileRepository = new ProfileRepository();
                     ProfileController profile = new ProfileController(txtPassword.Text);
+                    profileRepository.Add(profile.GetProfile());
+                    Profile myprofile = profileRepository.Get(profile.GetId());
                     PostRegisterEvent(profile);
                 } 
                 catch(Exception exp)

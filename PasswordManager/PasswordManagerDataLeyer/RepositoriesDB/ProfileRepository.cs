@@ -29,8 +29,10 @@ namespace PasswordManagerDataLeyer.RepositoriesDB
 
         public bool IsEmpty()
         {
-            PasswordManagerContext context = new PasswordManagerContext();
-            return context.Profiles.Count() == 0;
+            using (PasswordManagerContext context = new PasswordManagerContext())
+            {
+                return context.Profiles.Count() == 0;
+            }
         }
 
         public Profile Get(int id) 
