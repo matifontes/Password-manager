@@ -27,6 +27,11 @@ namespace PasswordManager.Controllers
             return this.profile;
         }
 
+        public int GetId() 
+        {
+            return this.profile.Id;
+        }
+
         public CategoryRepository GetCategoryRepository() 
         {
             return this.profile.GetCategoryRepository();
