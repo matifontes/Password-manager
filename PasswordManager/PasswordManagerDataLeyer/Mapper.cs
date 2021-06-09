@@ -26,5 +26,43 @@ namespace PasswordManagerDataLeyer
             };
             return profile;
         }
+
+        public CategoryEntity CategoryToEntity(Category category)
+        {
+            CategoryEntity categoryEntity = new CategoryEntity() 
+            {
+                Name = category.Name
+            };
+            return categoryEntity;
+        }
+
+        public Category EntityToCategory(CategoryEntity categoryEntity) 
+        {
+            Category category = new Category(categoryEntity.Name);
+            return category;
+        }
+
+        public PasswordEntity PasswordToEntity(Password password) 
+        {
+            PasswordEntity passwordEntity = new PasswordEntity()
+            {
+                Site = password.Site,
+                User = password.User,
+                Password = password.Pass,
+                Note = password.Note,
+                Strength = password.Strength,
+                LastModificationDate = password.LastModificationDate
+
+            };
+
+            return passwordEntity;
+        }
+
+        /*
+        public Password EntityToPassword(PasswordEntity passwordEntity) 
+        {
+            Password password = new Password(passwordEntity.);
+        }*/
+
     }
 }

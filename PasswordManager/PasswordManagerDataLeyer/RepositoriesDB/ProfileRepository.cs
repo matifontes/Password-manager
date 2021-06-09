@@ -7,7 +7,7 @@ using PasswordManager;
 
 namespace PasswordManagerDataLeyer.RepositoriesDB
 {
-    public class ProfileRepository : IRepository<Profile>
+    public class ProfileRepository : IRepository<Profile,int>
     {
         private Mapper mapper = new Mapper();
 

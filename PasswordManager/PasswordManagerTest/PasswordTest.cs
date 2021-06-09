@@ -22,7 +22,6 @@ namespace PasswordManagerTest
             personal = new Category("Personal");
             passwordCreatedToday = new Password(personal, password, site, user, note);
             passwordCreatedYesterday = new Password(personal, password, site, user, note);
-            passwordCreatedYesterday.LastModificationDate = DateTime.Today.AddDays(-1);
         }
 
         [TestCleanup]
