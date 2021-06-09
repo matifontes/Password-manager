@@ -11,6 +11,10 @@ namespace PasswordManager.Controllers
         public ProfileController(string password) {
             this.profile = new Profile(password);
         }
+        public ProfileController(Profile profile)
+        {
+            this.profile = profile;
+        }
 
         public bool ValidatePassword(string password)
         {
