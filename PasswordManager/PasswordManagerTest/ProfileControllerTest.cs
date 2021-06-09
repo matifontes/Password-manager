@@ -30,6 +30,13 @@ namespace PasswordManagerTest
         }
 
         [TestMethod]
+        public void GetProfileId() 
+        {
+            profileController.GetProfile().Id = 1;
+            Assert.AreEqual(1, profileController.GetId());
+        }
+
+        [TestMethod]
         public void GetProfileCreated()
         {
             Assert.IsNotNull(profileController.GetProfile());
