@@ -3,18 +3,19 @@ using System.Windows.Forms;
 using PasswordManager.Controllers;
 using PasswordManager;
 using PasswordManager.Exceptions;
+using PasswordManagerDataLeyer.RepositoriesDB;
 
 namespace UserInterface
 {
     public partial class CreateModifyCreditCard : Form
     {
         const string INCORRECTFORMAT_EXPCEPTION_MSG = "Formato incorrecto de información";
-        private CategoriesController categories;
+        private CategoryRepository categories;
         private CreditCardsController creditCards;
         private CreditCard creditCard;
         private ProfileController profile;
         private event HandlePostModification PostModification;
-        public CreateModifyCreditCard(CategoriesController categories, CreditCardsController creditCards, ProfileController profile)
+        public CreateModifyCreditCard(CategoryRepository categories, CreditCardsController creditCards, ProfileController profile)
         {
             InitializeComponent();
             this.categories = categories;
@@ -24,7 +25,7 @@ namespace UserInterface
             CreateCreditCardPanel();
         }
 
-        public CreateModifyCreditCard(CategoriesController categories, CreditCardsController creditCards, CreditCard creditCard, ProfileController profile)
+        public CreateModifyCreditCard(CategoryRepository categories, CreditCardsController creditCards, CreditCard creditCard, ProfileController profile)
         {
             InitializeComponent();
             this.categories = categories;
@@ -57,7 +58,7 @@ namespace UserInterface
 
         private void LoadCategories() 
         {
-            foreach (Category category in this.categories.ListCategories()) 
+            foreach (Category category in this.categories.GetAll()) 
             {
                 cmbCategories.Items.Add(category);
             }

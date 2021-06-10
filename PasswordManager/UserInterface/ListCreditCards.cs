@@ -4,6 +4,7 @@ using System.Data;
 using System.Windows.Forms;
 using PasswordManager;
 using PasswordManager.Controllers;
+using PasswordManagerDataLeyer.RepositoriesDB;
 
 namespace UserInterface
 {
@@ -15,17 +16,17 @@ namespace UserInterface
         const string CCNUMBER_HEADER = "Tarjeta";
         const string EXPIRYDATE_HEADER = "Vencimiento";
         private CreditCardsController creditCards;
-        private CategoriesController categories;
         private ProfileController profile;
+        private CategoryRepository categories;
         private CreateModifyCreditCard creditCardForm;
         private event HandleBackToMenu ChangeToMenu;
         private ShowCreditCard showCreditCard;
-        public ListCreditCards(CreditCardsController creditCards, CategoriesController categories, ProfileController profile)
+        public ListCreditCards(CreditCardsController creditCards, ProfileController profile)
         {
             InitializeComponent();
             this.creditCards = creditCards;
-            this.categories = categories;
             this.profile = profile;
+            this.categories = new CategoryRepository(profile.GetProfile());
             EnableOption();
             LoadCreditCardsList();
         }
@@ -37,7 +38,7 @@ namespace UserInterface
 
         private void EnableOption() 
         {
-            if (creditCards.IsEmpty() && categories.IsEmpty())
+            if (this.creditCards.IsEmpty() && this.categories.IsEmpty())
             {
                 btnModify.Enabled = false;
                 btnRemove.Enabled = false;

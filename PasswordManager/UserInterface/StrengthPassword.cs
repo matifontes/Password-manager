@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using PasswordManager.Controllers;
+using PasswordManagerDataLeyer.RepositoriesDB;
 
 namespace UserInterface
 {
@@ -13,14 +14,16 @@ namespace UserInterface
         const string DARKGREEN_STRENGTH = "DarkGreen";
 
         private PasswordsController passwords;
-        private CategoriesController categories;
+        private ProfileController profile;
+        private CategoryRepository categories;
         private event HandleBackToMenu ChangeToMenu;
         private event HandleWindowChange ChangeWindow;
-        public StrengthPassword(PasswordsController passwords, CategoriesController categories)
+        public StrengthPassword(PasswordsController passwords, ProfileController profile)
         {
             InitializeComponent();
             this.passwords = passwords;
-            this.categories = categories;
+            this.profile = profile;
+            this.categories = new CategoryRepository(profile.GetProfile());
             LoadPasswordCount();
             EnableOptions();
         }

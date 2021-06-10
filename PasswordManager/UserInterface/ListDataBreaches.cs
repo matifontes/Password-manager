@@ -4,6 +4,7 @@ using System.Data;
 using System.Windows.Forms;
 using PasswordManager.Controllers;
 using PasswordManager;
+using PasswordManagerDataLeyer.RepositoriesDB;
 
 namespace UserInterface
 {
@@ -19,18 +20,20 @@ namespace UserInterface
         const string EXPIRYDATE_HEADER = "Vencimiento";
         private event HandleBackToMenu ChangeToDataBreach;
         private CreateModifyPassword passwordForm;
-        private CategoriesController categories;
         private PasswordsController passwordsController;
+        private ProfileController profile;
+        private CategoryRepository categories;
         private Password password;
         List<Password> passwords;
         List<CreditCard> creditCards;
 
 
-        public ListDataBreaches(List<Password> passwords, List<CreditCard> creditCards, CategoriesController categories, PasswordsController passwordsController)
+        public ListDataBreaches(List<Password> passwords, List<CreditCard> creditCards, PasswordsController passwordsController, ProfileController profile)
         {
             InitializeComponent();
             this.passwordsController = passwordsController;
-            this.categories = categories;
+            this.profile = profile;
+            this.categories = new CategoryRepository(profile.GetProfile());
             this.passwords = passwords;
             this.creditCards = creditCards;
             LoadListPasswords();

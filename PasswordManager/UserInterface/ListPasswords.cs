@@ -4,6 +4,7 @@ using System.Data;
 using System.Windows.Forms;
 using PasswordManager;
 using PasswordManager.Controllers;
+using PasswordManagerDataLeyer.RepositoriesDB;
 
 namespace UserInterface
 {
@@ -14,16 +15,16 @@ namespace UserInterface
         const string USER_HEADER = "Usuario";
         const string LASTMODIFICATION_DATE_HEADER = "Última Modificación";
         private PasswordsController passwords;
-        private CategoriesController categories;
+        private CategoryRepository categories;
         private ProfileController profile;
         private event HandleBackToMenu ChangeToMenu;
         private CreateModifyPassword passwordForm;
         private ShowPassword showPassword;
-        public ListPasswordsPanel(PasswordsController passwords, CategoriesController categories, ProfileController profile)
+        public ListPasswordsPanel(PasswordsController passwords, ProfileController profile)
         {
             InitializeComponent();
             this.passwords = passwords;
-            this.categories = categories;
+            this.categories = new CategoryRepository(profile.GetProfile());
             this.profile = profile;
             EnableOptions();
             LoadListPasswords();

@@ -9,6 +9,7 @@ namespace PasswordManagerDataLeyer.RepositoriesDB
 {
     public class CategoryRepository : IRepository<Category>
     {
+        const string CATEGORY_ALREADY_EXISTS = "Existe una categoria con ese nombre";
         private Mapper mapper = new Mapper();
         private Profile profile;
         private ProfileEntity profileEntity;
@@ -16,7 +17,10 @@ namespace PasswordManagerDataLeyer.RepositoriesDB
         public CategoryRepository(Profile profile) 
         {
             this.profile = profile;
-            this.LoadProfileEntity();
+            using (PasswordManagerContext context = new PasswordManagerContext())
+            {
+                this.profileEntity = context.Profiles.Find(this.profile.Id);
+            }  
         }
 
         public void Add(Category category)
@@ -25,7 +29,7 @@ namespace PasswordManagerDataLeyer.RepositoriesDB
             {
                 if(context.Categories.Any(c => c.Name == category.Name)) 
                 {
-                    throw new CategoryAlreadyExistsException();
+                    throw new CategoryAlreadyExistsException(CATEGORY_ALREADY_EXISTS);
                 }
 
                 CategoryEntity entity = mapper.CategoryToEntity(category);
@@ -91,7 +95,7 @@ namespace PasswordManagerDataLeyer.RepositoriesDB
             {
                 if (context.Categories.Any(c => c.Name == category.Name))
                 {
-                    throw new CategoryAlreadyExistsException();
+                    throw new CategoryAlreadyExistsException(CATEGORY_ALREADY_EXISTS);
                 }
                 CategoryEntity entity = context.Categories.Find(category.Id);
                 if (entity == null)
@@ -100,19 +104,6 @@ namespace PasswordManagerDataLeyer.RepositoriesDB
                 }
                 entity.Name = category.Name;
                 context.SaveChanges();
-            }
-        }
-
-        private void LoadProfileEntity() 
-        {
-            using (PasswordManagerContext context = new PasswordManagerContext())
-            {
-                ProfileEntity entity = context.Profiles.Find(this.profile.Id);
-                if (entity == null)
-                {
-                    throw new ProfileNotFoundException();
-                }
-                this.profileEntity = context.Profiles.Find(this.profile.Id);
             }
         }
     }

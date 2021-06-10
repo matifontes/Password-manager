@@ -1,5 +1,6 @@
 ﻿using PasswordManager;
 using PasswordManager.Controllers;
+using PasswordManagerDataLeyer.RepositoriesDB;
 using System;
 using System.Windows.Forms;
 
@@ -9,14 +10,14 @@ namespace UserInterface
     public partial class ListCategoriesPanel : UserControl
     {
         private event HandleBackToMenu ChangeToMenu;
-        private CategoriesController categories;
         private ProfileController profile;
+        private CategoryRepository categories;
         private CreateModifyCategory categoryForm;
-        public ListCategoriesPanel(CategoriesController categories, ProfileController profile)
+        public ListCategoriesPanel(ProfileController profile)
         {
             InitializeComponent();
-            this.categories = categories;
             this.profile = profile;
+            categories = new CategoryRepository(this.profile.GetProfile());
             EnableOptions();
             LoadCategoriesList();
         }
@@ -40,7 +41,8 @@ namespace UserInterface
 
         private void LoadCategoriesList()
         {
-            lbxCategories.DataSource = this.categories.ListCategories();
+            // Change this when implemented get all categories by profile
+            lbxCategories.DataSource = this.categories.GetAll();
         }
 
         private void BtnAddCategory_Click(object sender, EventArgs e)

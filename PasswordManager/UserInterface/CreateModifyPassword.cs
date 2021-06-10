@@ -3,17 +3,18 @@ using System.Windows.Forms;
 using PasswordManager;
 using PasswordManager.Controllers;
 using PasswordManager.Exceptions;
+using PasswordManagerDataLeyer.RepositoriesDB;
 
 namespace UserInterface
 {
     public partial class CreateModifyPassword : Form
     {
         private PasswordsController passwords;
-        private CategoriesController categories;
+        private CategoryRepository categories;
         private ProfileController profile;
         private event HandlePostModification PostModification;
         private Password password;
-        public CreateModifyPassword(PasswordsController passwords, CategoriesController categories, ProfileController profile)
+        public CreateModifyPassword(PasswordsController passwords, CategoryRepository categories, ProfileController profile)
         {
             InitializeComponent();
             CreatePasswordPanel();
@@ -23,7 +24,7 @@ namespace UserInterface
             LoadCategories();
         }
 
-        public CreateModifyPassword(PasswordsController passwords, CategoriesController categories, Password password) 
+        public CreateModifyPassword(PasswordsController passwords, CategoryRepository categories, Password password) 
         {
             InitializeComponent();
             CreateModifyPanel();
@@ -41,7 +42,7 @@ namespace UserInterface
 
         private void LoadCategories() 
         {
-            foreach (Category category in categories.ListCategories()) 
+            foreach (Category category in categories.GetAll()) 
             {
                 cbxCategories.Items.Add(category);
             }

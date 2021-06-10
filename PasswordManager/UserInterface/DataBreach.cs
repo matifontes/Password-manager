@@ -17,19 +17,19 @@ namespace UserInterface
     {
         private PasswordsController passwords;
         private CreditCardsController creditCards;
-        private CategoriesController categories;
+        private ProfileController profile;
         private event HandleBackToMenu ChangeToMenu;
         private event HandleWindowChange ChangeWindow;
         private List<Password> passwordsLine;
         private List<CreditCard> creditCardsLine;
         private string filePath;
         private string fileContent;
-        public DataBreach(PasswordsController passwords, CreditCardsController creditCards, CategoriesController categories)
+        public DataBreach(PasswordsController passwords, CreditCardsController creditCards, ProfileController profile)
         {
             InitializeComponent();
             this.creditCards = creditCards;
             this.passwords = passwords;
-            this.categories = categories;
+            this.profile = profile;
             this.passwordsLine = new List<Password>();
             this.creditCardsLine = new List<CreditCard>();
             this.filePath = String.Empty;
@@ -99,7 +99,7 @@ namespace UserInterface
             LoadList();
             List<Password> passwordsList = this.passwords.ListPasswordsMatching(this.passwordsLine);
             List<CreditCard> creditCardlist = this.creditCards.GetMatchingCreditCards(this.creditCardsLine);
-            ListDataBreaches listDataBreaches = new ListDataBreaches(passwordsList, creditCardlist, this.categories, this.passwords);
+            ListDataBreaches listDataBreaches = new ListDataBreaches(passwordsList, creditCardlist, this.passwords, this.profile);
             listDataBreaches.AddListener(ReturnToDataBreach);
             ChangeWindow(listDataBreaches);
         }
