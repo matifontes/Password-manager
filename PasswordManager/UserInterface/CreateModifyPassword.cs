@@ -115,6 +115,11 @@ namespace UserInterface
             }
         }
 
+        public void SuggestPasswordImprovement()
+        {
+
+        }
+
         private bool SiteOrUserChanged() 
         {
             return password.Site != txtSite.Text || password.User != txtUser.Text;

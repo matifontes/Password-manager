@@ -50,6 +50,9 @@ namespace UserInterface
             this.lblMsg = new System.Windows.Forms.Label();
             this.lblAutoGenerateError = new System.Windows.Forms.Label();
             this.btnShow = new System.Windows.Forms.Button();
+            this.lblDBreachExist = new System.Windows.Forms.Label();
+            this.lblPasswordDuplicated = new System.Windows.Forms.Label();
+            this.lblPasswordStrength = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.nudLarge)).BeginInit();
             this.SuspendLayout();
             // 
@@ -74,7 +77,7 @@ namespace UserInterface
             // 
             // operationPanel
             // 
-            this.operationPanel.Location = new System.Drawing.Point(2, 530);
+            this.operationPanel.Location = new System.Drawing.Point(3, 588);
             this.operationPanel.Name = "operationPanel";
             this.operationPanel.Size = new System.Drawing.Size(289, 39);
             this.operationPanel.TabIndex = 2;
@@ -265,11 +268,38 @@ namespace UserInterface
             this.btnShow.UseVisualStyleBackColor = true;
             this.btnShow.Click += new System.EventHandler(this.BtnShow_Click);
             // 
+            // lblDBreachExist
+            // 
+            this.lblDBreachExist.AutoSize = true;
+            this.lblDBreachExist.Location = new System.Drawing.Point(12, 518);
+            this.lblDBreachExist.Name = "lblDBreachExist";
+            this.lblDBreachExist.Size = new System.Drawing.Size(0, 13);
+            this.lblDBreachExist.TabIndex = 21;
+            // 
+            // lblPasswordDuplicated
+            // 
+            this.lblPasswordDuplicated.AutoSize = true;
+            this.lblPasswordDuplicated.Location = new System.Drawing.Point(3, 535);
+            this.lblPasswordDuplicated.Name = "lblPasswordDuplicated";
+            this.lblPasswordDuplicated.Size = new System.Drawing.Size(0, 13);
+            this.lblPasswordDuplicated.TabIndex = 22;
+            // 
+            // lblPasswordStrength
+            // 
+            this.lblPasswordStrength.AutoSize = true;
+            this.lblPasswordStrength.Location = new System.Drawing.Point(6, 554);
+            this.lblPasswordStrength.Name = "lblPasswordStrength";
+            this.lblPasswordStrength.Size = new System.Drawing.Size(0, 13);
+            this.lblPasswordStrength.TabIndex = 23;
+            // 
             // CreateModifyPassword
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(303, 581);
+            this.ClientSize = new System.Drawing.Size(288, 639);
+            this.Controls.Add(this.lblPasswordStrength);
+            this.Controls.Add(this.lblPasswordDuplicated);
+            this.Controls.Add(this.lblDBreachExist);
             this.Controls.Add(this.btnShow);
             this.Controls.Add(this.lblAutoGenerateError);
             this.Controls.Add(this.lblMsg);
@@ -323,5 +353,8 @@ namespace UserInterface
         private System.Windows.Forms.Label lblMsg;
         private System.Windows.Forms.Label lblAutoGenerateError;
         private System.Windows.Forms.Button btnShow;
+        private System.Windows.Forms.Label lblDBreachExist;
+        private System.Windows.Forms.Label lblPasswordDuplicated;
+        private System.Windows.Forms.Label lblPasswordStrength;
     }
 }
