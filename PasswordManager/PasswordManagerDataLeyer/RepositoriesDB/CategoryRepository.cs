@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,20 +8,15 @@ using PasswordManager;
 
 namespace PasswordManagerDataLeyer.RepositoriesDB
 {
-    public class CategoryRepository : IRepository<Category>
+    public class CategoryRepository : IRepository<Category>, ISearchable<Category>
     {
         const string CATEGORY_ALREADY_EXISTS = "Existe una categoria con ese nombre";
         private Mapper mapper = new Mapper();
         private Profile profile;
-        private ProfileEntity profileEntity;
 
         public CategoryRepository(Profile profile) 
         {
             this.profile = profile;
-            using (PasswordManagerContext context = new PasswordManagerContext())
-            {
-                this.profileEntity = context.Profiles.Find(this.profile.Id);
-            }  
         }
 
         public void Add(Category category)
@@ -33,7 +29,7 @@ namespace PasswordManagerDataLeyer.RepositoriesDB
                 }
 
                 CategoryEntity entity = mapper.CategoryToEntity(category);
-                entity.Profile = this.profileEntity;
+                entity.Profile = context.Profiles.Find(this.profile.Id);
                 context.Categories.Add(entity);
                 context.SaveChanges();
                 category.Id = entity.Id;
@@ -105,6 +101,21 @@ namespace PasswordManagerDataLeyer.RepositoriesDB
                 entity.Name = category.Name;
                 context.SaveChanges();
             }
+        }
+
+        public IEnumerable<Category> GetAllByProfile(int id) 
+        {
+            using (PasswordManagerContext context = new PasswordManagerContext())
+            {
+                List<Category> categories = new List<Category>();
+                List<CategoryEntity> entities = context.Categories.SqlQuery("SELECT * FROM CategoryEntities WHERE Profile_Id=@id ORDER By Name", new SqlParameter("@id", id)).ToList();
+                foreach (CategoryEntity entity in entities) 
+                {
+                    categories.Add(mapper.EntityToCategory(entity));
+                }
+                return categories;
+            }
+
         }
     }
 }

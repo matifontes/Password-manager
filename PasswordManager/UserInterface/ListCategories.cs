@@ -42,7 +42,7 @@ namespace UserInterface
         private void LoadCategoriesList()
         {
             // Change this when implemented get all categories by profile
-            lbxCategories.DataSource = this.categories.GetAll();
+            lbxCategories.DataSource = this.categories.GetAllByProfile(this.profile.GetId());
         }
 
         private void BtnAddCategory_Click(object sender, EventArgs e)
