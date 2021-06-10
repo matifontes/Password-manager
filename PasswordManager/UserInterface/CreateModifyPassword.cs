@@ -115,11 +115,51 @@ namespace UserInterface
             }
         }
 
-        public void SuggestPasswordImprovement()
+        public void SuggestPasswordImprovementEvent()
         {
+            if (!PasswordExistsOnDataBreaches())
+            {
+                this.lblDBreachExist.Text = "No aparece en un data breach conocido";
+            }
+            else
+            {
+                this.lblDBreachExist.Text = "La contraseña aparece en un data breach conocido";
+            }
+
+            if (DuplicatedPassword())
+            {
+                this.lblPasswordDuplicated.Text = "El mismo usuario ya tiene una contraseña igual";
+            }
+            else
+            {
+                this.lblPasswordDuplicated.Text = "El usuario no tiene ninguna contraseña igual";
+            }
+
+            if (SafePassword())
+            {
+                this.lblPasswordStrength.Text = "La contraseña es segura";
+            }
+            else
+            {
+                this.lblPasswordStrength.Text = "La contraseña no es segura";
+            }
 
         }
 
+        private bool PasswordExistsOnDataBreaches()
+        {
+            return false;
+        }
+
+        private bool DuplicatedPassword()
+        {
+            return false;
+        }
+
+        private bool SafePassword()
+        {
+            return false;
+        }
         private bool SiteOrUserChanged() 
         {
             return password.Site != txtSite.Text || password.User != txtUser.Text;
