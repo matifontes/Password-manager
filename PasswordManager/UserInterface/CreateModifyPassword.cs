@@ -120,7 +120,9 @@ namespace UserInterface
 
         public void SuggestPasswordImprovementEvent()
         {
-            if (PasswordExistsOnDataBreaches())
+            Password pass = new Password(this.txtPassword.Text);
+
+            if (PasswordExistsOnDataBreaches(pass))
             {
                 this.lblDBreachExist.Text = "La contraseña aparece en un data breach conocido";
             }
@@ -129,7 +131,7 @@ namespace UserInterface
                 this.lblDBreachExist.Text = "No aparece en un data breach conocido";
             }
 
-            if (DuplicatedPassword())
+            if (DuplicatedPassword(pass))
             {
                 this.lblPasswordDuplicated.Text = "El mismo usuario ya tiene una contraseña igual";
             }
@@ -138,7 +140,7 @@ namespace UserInterface
                 this.lblPasswordDuplicated.Text = "El usuario no tiene ninguna contraseña igual";
             }
 
-            if (SafePassword())
+            if (SafePassword(pass))
             {
                 this.lblPasswordStrength.Text = "La contraseña es segura";
             }
@@ -149,19 +151,24 @@ namespace UserInterface
 
         }
 
-        private bool PasswordExistsOnDataBreaches()
+        private bool PasswordExistsOnDataBreaches(Password pass)
+        {
+            return this.dBreachesController.PasswordExistOnDataBreaches(pass);
+        }
+
+        private bool DuplicatedPassword(Password pass)
         {
             return false;
         }
 
-        private bool DuplicatedPassword()
+        private bool SafePassword(Password pass)
         {
-            return false;
-        }
-
-        private bool SafePassword()
-        {
-            return false;
+            bool SafePass = false;
+            if(pass.Strength == "DarkGreen" || pass.Strength == "LightGreen")
+            {
+                SafePass = true;
+            }
+            return SafePass;
         }
 
         private bool SiteOrUserChanged() 
