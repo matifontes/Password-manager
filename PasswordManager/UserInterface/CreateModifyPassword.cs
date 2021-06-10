@@ -12,12 +12,14 @@ namespace UserInterface
         private CategoriesController categories;
         private event HandlePostModification PostModification;
         private Password password;
-        public CreateModifyPassword(PasswordsController passwords, CategoriesController categories)
+        private DataBreachesController dBreachesController;
+        public CreateModifyPassword(PasswordsController passwords, CategoriesController categories, DataBreachesController dBreachesController)
         {
             InitializeComponent();
             CreatePasswordPanel();
             this.passwords = passwords;
             this.categories = categories;
+            this.dBreachesController = dBreachesController;
             LoadCategories();
         }
 
@@ -72,6 +74,7 @@ namespace UserInterface
         {
             CreatePassword createPassword = new CreatePassword();
             createPassword.AddListener(CreatePasswordEvent);
+            //createPassword.AddListener(SuggestPasswordImprovementEvent);
             operationPanel.Controls.Add(createPassword);
         }
 
@@ -117,13 +120,13 @@ namespace UserInterface
 
         public void SuggestPasswordImprovementEvent()
         {
-            if (!PasswordExistsOnDataBreaches())
+            if (PasswordExistsOnDataBreaches())
             {
-                this.lblDBreachExist.Text = "No aparece en un data breach conocido";
+                this.lblDBreachExist.Text = "La contraseña aparece en un data breach conocido";
             }
             else
             {
-                this.lblDBreachExist.Text = "La contraseña aparece en un data breach conocido";
+                this.lblDBreachExist.Text = "No aparece en un data breach conocido";
             }
 
             if (DuplicatedPassword())
@@ -160,6 +163,7 @@ namespace UserInterface
         {
             return false;
         }
+
         private bool SiteOrUserChanged() 
         {
             return password.Site != txtSite.Text || password.User != txtUser.Text;
