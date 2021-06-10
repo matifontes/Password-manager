@@ -28,5 +28,21 @@ namespace PasswordManager.Repositories
             return this.dataBreaches.OrderBy(dBreach => dBreach.Date).ToList();
         }
 
+        public bool PasswordExistOnDataBreaches(Password pass)
+        {
+            bool PasswordExist = false;
+            foreach (DataBreach dBreach in this.dataBreaches)
+            {
+                foreach (Password dBreachPassword in dBreach.passwords)
+                {
+                    if(dBreachPassword.Pass == pass.Pass)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return PasswordExist;
+        }
+
     }
 }
