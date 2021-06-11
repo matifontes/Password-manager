@@ -20,12 +20,15 @@ namespace UserInterface
         private event HandleBackToMenu ChangeToMenu;
         private CreateModifyPassword passwordForm;
         private ShowPassword showPassword;
-        public ListPasswordsPanel(ProfileController profile)
+        private DataBreachesController dBreaches;
+
+        public ListPasswordsPanel(ProfileController profile, DataBreachesController dBreaches)
         {
             InitializeComponent();
             this.profile = profile;
             this.categories = new CategoryRepository(profile.GetProfile());
             this.passwords = new PasswordRepository(profile.GetProfile());
+            this.dBreaches = dBreaches;
             EnableOptions();
             LoadListPasswords();
         }
@@ -91,7 +94,7 @@ namespace UserInterface
         private void BtnAddPassword_Click(object sender, EventArgs e)
         {
             DisposeChildForms();
-            this.passwordForm = new CreateModifyPassword(this.passwords,this.categories, this.profile);
+            this.passwordForm = new CreateModifyPassword(this.passwords,this.categories, this.profile, this.dBreaches);
             passwordForm.AddListener(PostModification);
             passwordForm.Show();
         }
@@ -100,7 +103,7 @@ namespace UserInterface
         {
             DisposeChildForms();
             Password password = (Password)dgvPasswords.SelectedRows[0].Cells[2].Value;
-            this.passwordForm = new CreateModifyPassword(this.passwords,this.categories, password);
+            this.passwordForm = new CreateModifyPassword(this.passwords,this.categories, password, this.dBreaches);
             passwordForm.AddListener(PostModification);
             passwordForm.Show();
         }

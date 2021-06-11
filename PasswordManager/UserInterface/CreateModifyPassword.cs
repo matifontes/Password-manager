@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using PasswordManager;
 using PasswordManager.Controllers;
@@ -14,23 +15,27 @@ namespace UserInterface
         private ProfileController profile;
         private event HandlePostModification PostModification;
         private Password password;
-        public CreateModifyPassword(PasswordRepository passwords, CategoryRepository categories, ProfileController profile)
+		private DataBreachesController dBreachesController;
+
+        public CreateModifyPassword(PasswordRepository passwords, CategoryRepository categories, ProfileController profile, DataBreachesController dBreachesController)
         {
             InitializeComponent();
             CreatePasswordPanel();
             this.passwords = passwords;
             this.categories = categories;
+			this.dBreachesController = dBreachesController;
             this.profile = profile;
             LoadCategories();
         }
 
-        public CreateModifyPassword(PasswordRepository passwords, CategoryRepository categories, Password password) 
+        public CreateModifyPassword(PasswordRepository passwords, CategoryRepository categories, Password password, DataBreachesController dBreachesController) 
         {
             InitializeComponent();
             CreateModifyPanel();
             this.passwords = passwords;
             this.categories = categories;
             this.password = password;
+            this.dBreachesController = dBreachesController;
             LoadCategories();
             LoadPasswordOnFields();
         }
@@ -80,38 +85,111 @@ namespace UserInterface
 
         private void CreatePasswordEvent() 
         {
-            try
+            Password pass = new Password((Category)cbxCategories.SelectedItem, txtPassword.Text, txtSite.Text, txtUser.Text, txtNote.Text);
+
+            String msg = SuggestPasswordImprovement(pass);
+            const string DIALOG_ACTION = "Crear contraseña";
+            
+            if (ConfirmDialog(msg, DIALOG_ACTION))
             {
-                const string SUCCESSFUL_MSG = "Contraseña creada con exito";
-                passwords.Add(new Password((Category)cbxCategories.SelectedItem, txtPassword.Text, txtSite.Text, txtUser.Text, txtNote.Text));
-                ShowMSG(System.Drawing.Color.Green, SUCCESSFUL_MSG);
-                PostModification();
-            }
-            catch (Exception e) 
-            {
-                ShowMSG(System.Drawing.Color.Red,e.Message);
-            }
-                
+                try
+                {
+                    const string SUCCESSFUL_MSG = "Contraseña creada con exito";
+                    passwords.Add(new Password((Category)cbxCategories.SelectedItem, txtPassword.Text, txtSite.Text, txtUser.Text, txtNote.Text));
+                    ShowMSG(System.Drawing.Color.Green, SUCCESSFUL_MSG);
+                    PostModification();
+                }
+                catch (Exception e)
+                {
+                    ShowMSG(System.Drawing.Color.Red, e.Message);
+                }
+            }     
         }
 
         private void ModifyPasswordEvent() 
         {
-            try
-            {
-                const string SUCCESSFUL_MSG = "Contraseña modificada con exito";
-                password.Category = (Category)cbxCategories.SelectedItem;
-                password.Site = txtSite.Text;
-                password.User = txtUser.Text;
-                password.Pass = txtPassword.Text;
-                password.Note = txtNote.Text;
-                this.passwords.Update(password);
-                ShowMSG(System.Drawing.Color.Green, SUCCESSFUL_MSG);
-                PostModification();
+            Password pass = new Password((Category)cbxCategories.SelectedItem, txtPassword.Text, txtSite.Text, txtUser.Text, txtNote.Text);
+           
+            String msg = SuggestPasswordImprovement(pass);
+            const string DIALOG_ACTION = "Cambiar de contraseña";
+
+            if (ConfirmDialog(msg, DIALOG_ACTION)) {
+                try
+                {
+                    const string SUCCESSFUL_MSG = "Contraseña modificada con exito";
+                    password.Category = (Category)cbxCategories.SelectedItem;
+                    password.Site = txtSite.Text;
+                    password.User = txtUser.Text;
+                    password.Pass = txtPassword.Text;
+                    password.Note = txtNote.Text;
+                    this.passwords.Update(password);
+                    ShowMSG(System.Drawing.Color.Green, SUCCESSFUL_MSG);
+                    PostModification();
+
+                    PostModification();
+                }
+                catch (Exception e)
+                {
+                    ShowMSG(System.Drawing.Color.Red, e.Message);
+                }
             }
-            catch (Exception e) 
+           
+        }
+
+        public String SuggestPasswordImprovement(Password pass)
+        {
+            String suggestPasswordString = "";
+            suggestPasswordString += PasswordExistsOnDataBreaches(pass);
+            suggestPasswordString += Environment.NewLine;
+            suggestPasswordString += DuplicatePassword(pass);
+            suggestPasswordString += Environment.NewLine;
+            suggestPasswordString += SafePassword(pass);
+
+            return suggestPasswordString;
+
+        }
+
+        private String PasswordExistsOnDataBreaches(Password pass)
+        {
+            String passwordExist = "";
+            if (this.dBreachesController.PasswordExistOnDataBreaches(pass))
             {
-                ShowMSG(System.Drawing.Color.Red,e.Message);
+                passwordExist = "La contraseña aparece en un data breach conocido";
             }
+            else
+            {
+                passwordExist = "No aparece en un data breach conocido";
+            }
+            return passwordExist;
+        }
+
+        private String DuplicatePassword(Password pass)
+        {
+            String duplicatePasswordResult = "";
+            List<Password> passwordsWithSameUserAndPass = (List<Password>)this.passwords.GetAllWithSamePasswordAndUser(pass);
+            if (passwordsWithSameUserAndPass.Count > 0)
+            {
+                duplicatePasswordResult = "El mismo usuario ya tiene una contraseña igual";
+            }
+            else
+            {
+                duplicatePasswordResult = "El usuario no tiene ninguna contraseña igual";
+            }
+            return duplicatePasswordResult;
+        }
+
+        private String SafePassword(Password pass)
+        {
+            String safePasswordResult = "";
+            if (pass.Strength == "GreenLight" || pass.Strength == "DarkGreen")
+            {
+                safePasswordResult = "La contraseña es segura";
+            }
+            else
+            {
+                safePasswordResult = "La contraseña no es segura";
+            }
+            return safePasswordResult;
         }
 
         private void ShowMSG(System.Drawing.Color color, string message)
@@ -149,6 +227,12 @@ namespace UserInterface
         private void HidePassword(object sender, EventArgs e) 
         {
             txtPassword.UseSystemPasswordChar = true;
+        }
+
+        private bool ConfirmDialog(string message, string action)
+        {
+            DialogResult confirmDialog = MessageBox.Show(message, action, MessageBoxButtons.YesNo);
+            return confirmDialog == DialogResult.Yes;
         }
     }
 }

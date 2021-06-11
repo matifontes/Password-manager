@@ -150,5 +150,19 @@ namespace PasswordManagerDataLeyer.RepositoriesDB
                 return matchingPasswords;
             }
         }
+
+        public IEnumerable<Password> GetAllWithSamePasswordAndUser(Password password) 
+        {
+            using (PasswordManagerContext context = new PasswordManagerContext())
+            {
+                List<Password> matchingPasswords = new List<Password>();
+                List<PasswordEntity> entities = context.Passwords.SqlQuery("SELECT p.* FROM dbo.PasswordEntities p INNER JOIN CategoryEntities c ON p.CategoryEntity_Id = c.Id WHERE p.Profile_id=@id AND p.Password=@password AND User=@user ORDER BY c.Name", new SqlParameter("@id", this.profile.Id), new SqlParameter("@password", password.Pass), new SqlParameter("@user",password.User)).ToList();
+                foreach (PasswordEntity entity in entities)
+                {
+                    matchingPasswords.Add(mapper.EntityToPassword(entity));
+                }
+                return matchingPasswords;
+            }
+        }
     }
 }

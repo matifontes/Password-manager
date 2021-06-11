@@ -14,18 +14,20 @@ using PasswordManagerDataLeyer.RepositoriesDB;
 
 namespace UserInterface
 {
-    public partial class DataBreach : UserControl
+    public partial class DataBreachPanel : UserControl
     {
         private CreditCardRepository creditCards;
         private ProfileController profile;
         private PasswordRepository passwords;
+		private DataBreachesController dBreachesController;
         private event HandleBackToMenu ChangeToMenu;
         private event HandleWindowChange ChangeWindow;
         private List<Password> passwordsLine;
         private List<CreditCard> creditCardsLine;
         private string filePath;
         private string fileContent;
-        public DataBreach(ProfileController profile)
+
+        public DataBreachPanel(ProfileController profile, DataBreachesController dBreachesController)
         {
             InitializeComponent();
             this.profile = profile;
@@ -35,6 +37,7 @@ namespace UserInterface
             this.creditCardsLine = new List<CreditCard>();
             this.filePath = String.Empty;
             this.fileContent = String.Empty;
+            this.dBreachesController = dBreachesController;
         }
 
         public void AddListener(HandleBackToMenu del)
@@ -100,7 +103,8 @@ namespace UserInterface
             LoadList();
             List<Password> passwordsList = (List<Password>)this.passwords.GetAllWithSamePassword(this.passwordsLine);
             List<CreditCard> creditCardlist = (List<CreditCard>)this.creditCards.GetAllWithSameNumber(this.creditCardsLine);
-            ListDataBreaches listDataBreaches = new ListDataBreaches(passwordsList, creditCardlist, this.passwords, this.profile);
+			dBreachesController.AddDataBreach(new DataBreach(creditCardlist, passwordsList));
+            ListDataBreaches listDataBreaches = new ListDataBreaches(passwordsList, creditCardlist, this.passwords, this.profile, this.dBreachesController);
             listDataBreaches.AddListener(ReturnToDataBreach);
             ChangeWindow(listDataBreaches);
         }

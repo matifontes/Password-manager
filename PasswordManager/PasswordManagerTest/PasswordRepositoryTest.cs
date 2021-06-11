@@ -208,5 +208,23 @@ namespace PasswordManagerTest
 
             Assert.AreEqual(passwordsResult[0], password);
         }
+
+        [TestMethod]
+        public void ExistPasswordWithSameUserAndPassword()
+        {
+            Password pass = new Password(category, "Admin", "www.google.com", "Admin", "Prueba123");
+            passwordRepository.AddPassword(password);
+
+            Assert.IsTrue(passwordRepository.ExistPasswordWithSamePassAndUser(pass));
+        }
+
+        [TestMethod]
+        public void DoesntExistPasswordWithSameUserAndPassword()
+        {
+            Password pass = new Password(category, "Admin123", "www.google.com", "Admin", "Prueba123");
+            passwordRepository.AddPassword(password);
+
+            Assert.IsFalse(passwordRepository.ExistPasswordWithSamePassAndUser(pass));
+        }
     }
 }

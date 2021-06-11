@@ -10,12 +10,14 @@ namespace UserInterface
     public partial class MenuPanel : UserControl
     {
         private ProfileController profile;
+        private DataBreachesController dBreachesController;
         private event HandleWindowChange ChangeWindow;
 
-        public MenuPanel(ProfileController profile)
+        public MenuPanel(ProfileController profile, DataBreachesController dataBreachesController)
         {
             InitializeComponent();
             this.profile = profile;
+            this.dBreachesController = dataBreachesController;
         }
 
         public void AddListener(HandleWindowChange del) 
@@ -32,7 +34,7 @@ namespace UserInterface
 
         private void BtnPasswords_Click(object sender, EventArgs e)
         {
-            ListPasswordsPanel passwords = new ListPasswordsPanel(this.profile);
+            ListPasswordsPanel passwords = new ListPasswordsPanel(this.profile, this.dBreachesController);
             passwords.AddListener(ReturnToMenu);
             ChangeWindow(passwords);
         }
@@ -46,7 +48,7 @@ namespace UserInterface
 
         private void BtnBreaches_Click(object sender, EventArgs e)
         {
-            DataBreach dataBreaches = new DataBreach(this.profile);
+            DataBreachPanel dataBreaches = new DataBreachPanel(this.profile, this.dBreachesController);
             dataBreaches.AddListener(ReturnToMenu);
             dataBreaches.AddListener(ChangeWindow);
             ChangeWindow(dataBreaches);
@@ -54,7 +56,7 @@ namespace UserInterface
 
         private void BtnPasswordStrangth_Click(object sender, EventArgs e)
         {
-            StrengthPassword strengthPassword = new StrengthPassword(this.profile);
+            StrengthPassword strengthPassword = new StrengthPassword(this.profile, this.dBreachesController);
             strengthPassword.AddListener(ReturnToMenu);
             strengthPassword.AddListener(ChangeWindow);
             ChangeWindow(strengthPassword);
@@ -65,9 +67,18 @@ namespace UserInterface
             changePassword.AddListener(ReturnToMenu);
             ChangeWindow(changePassword);
         }
+
+        private void dBreachesHistory_Click(object sender, EventArgs e)
+        {
+            DataBreachesHistory dBreachesHistory = new DataBreachesHistory(dBreachesController);
+            dBreachesHistory.AddListener(ReturnToMenu);
+            ChangeWindow(dBreachesHistory);
+        }
+
         private void ReturnToMenu() 
         {
             ChangeWindow(this);
         }
+
     }
 }

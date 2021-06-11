@@ -23,12 +23,12 @@ namespace UserInterface
         private PasswordRepository passwordRepository;
         private ProfileController profile;
         private CategoryRepository categories;
+        private DataBreachesController dBreachesController;
         private Password password;
         List<Password> passwords;
         List<CreditCard> creditCards;
 
-
-        public ListDataBreaches(List<Password> passwords, List<CreditCard> creditCards, PasswordRepository passwordRepository, ProfileController profile)
+        public ListDataBreaches(List<Password> passwords, List<CreditCard> creditCards, PasswordRepository passwordRepository, ProfileController profile, DataBreachesController dBreaches)
         {
             InitializeComponent();
             this.passwordRepository = passwordRepository;
@@ -36,6 +36,7 @@ namespace UserInterface
             this.categories = new CategoryRepository(profile.GetProfile());
             this.passwords = passwords;
             this.creditCards = creditCards;
+            this.dBreachesController = dBreaches;
             LoadListPasswords();
             LoadCreditCardsList();
             EnableModifyOption();
@@ -122,7 +123,7 @@ namespace UserInterface
             DisposeChildForm();
             Password password = (Password)dgvPasswords.SelectedRows[0].Cells[2].Value;
             this.password = password;
-            this.passwordForm = new CreateModifyPassword(this.passwordRepository, this.categories, password);
+            this.passwordForm = new CreateModifyPassword(this.passwordRepository, this.categories, password, this.dBreachesController);
             passwordForm.AddListener(PostModification);
             passwordForm.Show();
         }
