@@ -225,7 +225,7 @@ namespace PasswordManagerTest
         [TestMethod]
         public void ExistPasswordWithSameUserAndPasswordst()
         {
-            Password pass = new Password(category, "Admin", "www.google.com", "Admin", "Prueba123");
+            Password pass = new Password(category, "admin", "www.google.com", "Ralph", "Prueba123");
             passwordsController.AddPassword(password);
 
             Assert.IsTrue(passwordsController.ExistPasswordWithSamePassAndUser(pass));

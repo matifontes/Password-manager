@@ -56,5 +56,10 @@ namespace PasswordManager.Controllers
             return listRet;
         }
 
+        public bool ExistPasswordWithSamePassAndUser(Password pass)
+        {
+            return this.passwords.ExistPasswordWithSamePassAndUser(pass);
+        }
+
     }
 }
