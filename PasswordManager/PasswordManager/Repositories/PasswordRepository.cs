@@ -96,5 +96,18 @@ namespace PasswordManager.Repositories
             }
             return ret;
         }
+
+        public bool ExistPasswordWithSamePassAndUser(Password pass)
+        {
+            bool existPass = false;
+            foreach(Password passAux in this.passwords)
+            {
+                if(passAux.User == pass.User && pass.Pass == passAux.Pass)
+                {
+                    return true;
+                }
+            }
+            return existPass;
+        }
     }
 }
