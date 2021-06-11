@@ -61,6 +61,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CategoryRepositoryTest.cs" />
     <Compile Include="PasswordRepositoryTest.cs" />
+    <Compile Include="CreditCardRepositoryTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

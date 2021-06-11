@@ -16,7 +16,7 @@ namespace UserInterface
 {
     public partial class DataBreach : UserControl
     {
-        private CreditCardsController creditCards;
+        private CreditCardRepository creditCards;
         private ProfileController profile;
         private PasswordRepository passwords;
         private event HandleBackToMenu ChangeToMenu;
@@ -25,12 +25,12 @@ namespace UserInterface
         private List<CreditCard> creditCardsLine;
         private string filePath;
         private string fileContent;
-        public DataBreach(CreditCardsController creditCards, ProfileController profile)
+        public DataBreach(ProfileController profile)
         {
             InitializeComponent();
-            this.creditCards = creditCards;
             this.profile = profile;
             this.passwords = new PasswordRepository(profile.GetProfile());
+            this.creditCards = new CreditCardRepository(profile.GetProfile());
             this.passwordsLine = new List<Password>();
             this.creditCardsLine = new List<CreditCard>();
             this.filePath = String.Empty;
@@ -99,7 +99,7 @@ namespace UserInterface
         {
             LoadList();
             List<Password> passwordsList = (List<Password>)this.passwords.GetAllWithSamePassword(this.passwordsLine);
-            List<CreditCard> creditCardlist = this.creditCards.GetMatchingCreditCards(this.creditCardsLine);
+            List<CreditCard> creditCardlist = (List<CreditCard>)this.creditCards.GetAllWithSameNumber(this.creditCardsLine);
             ListDataBreaches listDataBreaches = new ListDataBreaches(passwordsList, creditCardlist, this.passwords, this.profile);
             listDataBreaches.AddListener(ReturnToDataBreach);
             ChangeWindow(listDataBreaches);

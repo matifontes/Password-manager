@@ -15,17 +15,17 @@ namespace UserInterface
         const string TYPE_HEADER = "Tipo";
         const string CCNUMBER_HEADER = "Tarjeta";
         const string EXPIRYDATE_HEADER = "Vencimiento";
-        private CreditCardsController creditCards;
+        private CreditCardRepository creditCards;
         private ProfileController profile;
         private CategoryRepository categories;
         private CreateModifyCreditCard creditCardForm;
         private event HandleBackToMenu ChangeToMenu;
         private ShowCreditCard showCreditCard;
-        public ListCreditCards(CreditCardsController creditCards, ProfileController profile)
+        public ListCreditCards(ProfileController profile)
         {
             InitializeComponent();
-            this.creditCards = creditCards;
             this.profile = profile;
+            this.creditCards = new CreditCardRepository(profile.GetProfile());
             this.categories = new CategoryRepository(profile.GetProfile());
             EnableOption();
             LoadCreditCardsList();
@@ -66,7 +66,7 @@ namespace UserInterface
 
         private void LoadCreditCardsList() 
         {
-            List<CreditCard> orderedCreditCard = this.creditCards.ListCreditCards();
+            List<CreditCard> orderedCreditCard = (List<CreditCard>)this.creditCards.GetAllByProfile(this.profile.GetId());
             DataTable dataTable = InitializeDataTable();
 
             foreach (CreditCard creditCard in orderedCreditCard)
@@ -133,7 +133,7 @@ namespace UserInterface
             if (creditCardToRemove != null) 
             {
                 DisposeChildForm();
-                this.creditCards.RemoveCreditCard(creditCardToRemove);
+                this.creditCards.Delete(creditCardToRemove.Id);
                 PostModification();
             }
         }

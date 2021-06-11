@@ -48,9 +48,7 @@ namespace PasswordManagerDataLeyer.RepositoriesDB
         {
             using (PasswordManagerContext context = new PasswordManagerContext())
             {
-                //PasswordEntity entity = (PasswordEntity)context.Passwords.Where(p => p.Id == id);
                 var entity = context.Passwords.Include("CategoryEntity").Where(p => p.Id == id).FirstOrDefault<PasswordEntity>();
-                //CategoryEntity categoryEntity = 
                 if (entity == null)
                 {
                     throw new PasswordNotFoundException();

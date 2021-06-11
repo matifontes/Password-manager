@@ -10,14 +10,12 @@ namespace UserInterface
     public partial class MenuPanel : UserControl
     {
         private ProfileController profile;
-        private CreditCardsController creditCards;
         private event HandleWindowChange ChangeWindow;
 
-        public MenuPanel(ProfileController profile, CreditCardsController creditCards)
+        public MenuPanel(ProfileController profile)
         {
             InitializeComponent();
             this.profile = profile;
-            this.creditCards = creditCards;
         }
 
         public void AddListener(HandleWindowChange del) 
@@ -41,14 +39,14 @@ namespace UserInterface
 
         private void BtnCreditCards_Click(object sender, EventArgs e)
         {
-            ListCreditCards creditCards = new ListCreditCards(this.creditCards, this.profile);
+            ListCreditCards creditCards = new ListCreditCards(this.profile);
             creditCards.AddListener(ReturnToMenu);
             ChangeWindow(creditCards);
         }
 
         private void BtnBreaches_Click(object sender, EventArgs e)
         {
-            DataBreach dataBreaches = new DataBreach(this.creditCards, this.profile);
+            DataBreach dataBreaches = new DataBreach(this.profile);
             dataBreaches.AddListener(ReturnToMenu);
             dataBreaches.AddListener(ChangeWindow);
             ChangeWindow(dataBreaches);
