@@ -11,7 +11,8 @@ namespace PasswordManager
 
         private string _password;
 
-        public string password 
+        public int Id { get; set; }
+        public string Password 
         {
             get { return this._password; }
             set => SetPassword(value);
@@ -21,7 +22,7 @@ namespace PasswordManager
         private CreditCardRepository creditCards;
 
         public Profile(string password) {
-            this.password = password;
+            this.Password = password;
             categories = new CategoryRepository();
             passwords = new PasswordRepository();
             creditCards = new CreditCardRepository();
@@ -29,14 +30,14 @@ namespace PasswordManager
 
         public bool ValidatePassword(string password) 
         {
-            return password.Equals(this.password);
+            return password.Equals(this.Password);
         }
 
         public void ChangePassword(string actualPassword, string newPassword)
         {
             if (ValidatePassword(actualPassword))
             {
-                this.password = newPassword;
+                this.Password = newPassword;
             }
             else 
             {

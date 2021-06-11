@@ -16,5 +16,6 @@ namespace PasswordManagerDataLeyer
         public string Strength { get; set; }
         public DateTime LastModificationDate { get; set; }
         public ProfileEntity Profile {get; set;}
+        public virtual CategoryEntity CategoryEntity { get; set; }
     }
 }

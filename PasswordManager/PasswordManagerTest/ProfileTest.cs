@@ -36,7 +36,7 @@ namespace PasswordManagerTest
         [TestMethod]
         public void ValidatePasswordParameterOnUserCreation()
         {
-            Assert.AreEqual(profile.password, validPassword);
+            Assert.AreEqual(profile.Password, validPassword);
         }
 
         [TestMethod]
@@ -66,7 +66,7 @@ namespace PasswordManagerTest
         [TestMethod]
         public void CreateUserWithAPasswordUsingSpecialCharacters() 
         {
-            Assert.AreEqual(profileWithSpecialCharactersOnPassword.password, specialCharacterPsw);
+            Assert.AreEqual(profileWithSpecialCharactersOnPassword.Password, specialCharacterPsw);
         }
 
         [TestMethod]

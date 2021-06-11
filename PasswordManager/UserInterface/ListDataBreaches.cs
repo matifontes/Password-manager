@@ -4,6 +4,7 @@ using System.Data;
 using System.Windows.Forms;
 using PasswordManager.Controllers;
 using PasswordManager;
+using PasswordManagerDataLeyer.RepositoriesDB;
 
 namespace UserInterface
 {
@@ -19,18 +20,20 @@ namespace UserInterface
         const string EXPIRYDATE_HEADER = "Vencimiento";
         private event HandleBackToMenu ChangeToDataBreach;
         private CreateModifyPassword passwordForm;
-        private CategoriesController categories;
-        private PasswordsController passwordsController;
+        private PasswordRepository passwordRepository;
+        private ProfileController profile;
+        private CategoryRepository categories;
         private Password password;
         List<Password> passwords;
         List<CreditCard> creditCards;
 
 
-        public ListDataBreaches(List<Password> passwords, List<CreditCard> creditCards, CategoriesController categories, PasswordsController passwordsController)
+        public ListDataBreaches(List<Password> passwords, List<CreditCard> creditCards, PasswordRepository passwordRepository, ProfileController profile)
         {
             InitializeComponent();
-            this.passwordsController = passwordsController;
-            this.categories = categories;
+            this.passwordRepository = passwordRepository;
+            this.profile = profile;
+            this.categories = new CategoryRepository(profile.GetProfile());
             this.passwords = passwords;
             this.creditCards = creditCards;
             LoadListPasswords();
@@ -119,7 +122,7 @@ namespace UserInterface
             DisposeChildForm();
             Password password = (Password)dgvPasswords.SelectedRows[0].Cells[2].Value;
             this.password = password;
-            this.passwordForm = new CreateModifyPassword(this.passwordsController, this.categories, password);
+            this.passwordForm = new CreateModifyPassword(this.passwordRepository, this.categories, password);
             passwordForm.AddListener(PostModification);
             passwordForm.Show();
         }

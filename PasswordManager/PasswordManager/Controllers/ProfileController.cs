@@ -11,6 +11,10 @@ namespace PasswordManager.Controllers
         public ProfileController(string password) {
             this.profile = new Profile(password);
         }
+        public ProfileController(Profile profile)
+        {
+            this.profile = profile;
+        }
 
         public bool ValidatePassword(string password)
         {
@@ -25,6 +29,11 @@ namespace PasswordManager.Controllers
         public Profile GetProfile() 
         {
             return this.profile;
+        }
+
+        public int GetId() 
+        {
+            return this.profile.Id;
         }
 
         public CategoryRepository GetCategoryRepository() 

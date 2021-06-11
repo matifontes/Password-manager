@@ -1,16 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using PasswordManager.Controllers;
+using PasswordManagerDataLeyer.RepositoriesDB;
 
 namespace UserInterface
 {
     public partial class AppWindow : Form
     {
         private ProfileController profile;
-        private CategoriesController categories;
-        private PasswordsController passwords;
-        private CreditCardsController creditCards;
 
         public AppWindow()
         {
@@ -19,12 +18,17 @@ namespace UserInterface
 
         private void AppWindowLoader(object sender, EventArgs e)
         {
-            if (this.profile != null)
+            ProfileRepository profileRepository = new ProfileRepository();
+
+            if (profileRepository.IsEmpty()) 
             {
-                CreateLoginPanel();
-            }
-            else {
                 CreateRegisterPanel();
+            }
+            else 
+            {
+                List<PasswordManager.Profile> profiles = (List<PasswordManager.Profile>)profileRepository.GetAll();
+                profile = new ProfileController(profiles[0]);
+                CreateLoginPanel();
             }
         }
 
@@ -44,7 +48,7 @@ namespace UserInterface
 
         private void CreateMenuPanel()
         {
-            MenuPanel menuPanel = new MenuPanel(this.profile,this.categories,this.passwords,this.creditCards);
+            MenuPanel menuPanel = new MenuPanel(this.profile);
             menuPanel.AddListener(ChangeWindow);
             startPanel.Controls.Add(menuPanel);
             ReSizeForm(menuPanel.Width, menuPanel.Height);
@@ -63,9 +67,6 @@ namespace UserInterface
 
         private void PostRegister(ProfileController profile) {
             this.profile = profile;
-            this.categories = new CategoriesController(this.profile.GetCategoryRepository());
-            this.passwords = new PasswordsController(this.profile.GetPasswordRepository());
-            this.creditCards = new CreditCardsController(this.profile.GetCreditCardRepository());
             ClearPanel();
             CreateLoginPanel();
         }

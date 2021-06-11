@@ -3,18 +3,19 @@ using System.Windows.Forms;
 using PasswordManager.Controllers;
 using PasswordManager;
 using PasswordManager.Exceptions;
+using PasswordManagerDataLeyer.RepositoriesDB;
 
 namespace UserInterface
 {
     public partial class CreateModifyCreditCard : Form
     {
         const string INCORRECTFORMAT_EXPCEPTION_MSG = "Formato incorrecto de información";
-        private CategoriesController categories;
-        private CreditCardsController creditCards;
+        private CategoryRepository categories;
+        private CreditCardRepository creditCards;
         private CreditCard creditCard;
         private ProfileController profile;
         private event HandlePostModification PostModification;
-        public CreateModifyCreditCard(CategoriesController categories, CreditCardsController creditCards, ProfileController profile)
+        public CreateModifyCreditCard(CategoryRepository categories, CreditCardRepository creditCards, ProfileController profile)
         {
             InitializeComponent();
             this.categories = categories;
@@ -24,7 +25,7 @@ namespace UserInterface
             CreateCreditCardPanel();
         }
 
-        public CreateModifyCreditCard(CategoriesController categories, CreditCardsController creditCards, CreditCard creditCard, ProfileController profile)
+        public CreateModifyCreditCard(CategoryRepository categories, CreditCardRepository creditCards, CreditCard creditCard, ProfileController profile)
         {
             InitializeComponent();
             this.categories = categories;
@@ -57,7 +58,7 @@ namespace UserInterface
 
         private void LoadCategories() 
         {
-            foreach (Category category in this.categories.ListCategories()) 
+            foreach (Category category in this.categories.GetAll()) 
             {
                 cmbCategories.Items.Add(category);
             }
@@ -87,7 +88,7 @@ namespace UserInterface
                 const string SUCCSESSFUL_CREATED = "Tarjeta de credito creada correctamente";
                 string ccNumber = txtNumber.Text.Replace(" ", string.Empty);
                 CreditCard creditCard = new CreditCard((Category)cmbCategories.SelectedItem, txtName.Text, txtType.Text, long.Parse(ccNumber), short.Parse(txtCCVCode.Text), dtpExpiryDate.Value, txtNote.Text);
-                this.creditCards.AddCreditCard(creditCard);
+                this.creditCards.Add(creditCard);
                 ShowMSG(System.Drawing.Color.Green, SUCCSESSFUL_CREATED);
                 PostModification();
             }catch (System.FormatException)
@@ -103,11 +104,6 @@ namespace UserInterface
         {
             try
             {
-                if (CreditCardNumberChanged() && CheckExistenceOfCreditCardNumber()) 
-                {
-                    const string CCNUMBER_ALREADY_EXISTS = "Existe una tarjeta de credito con ese numero";
-                    throw new CreditCardAlreadyExistsException(CCNUMBER_ALREADY_EXISTS);
-                }
                 const string SUCCSESSFUL_MODIFY = "Tarjeta de credito modificada correctamente";
                 creditCard.Category = (Category)cmbCategories.SelectedItem;
                 creditCard.Name = txtName.Text;
@@ -117,6 +113,7 @@ namespace UserInterface
                 creditCard.CCVCode = short.Parse(txtCCVCode.Text);
                 creditCard.ExpiryDate = dtpExpiryDate.Value;
                 creditCard.Note = txtNote.Text;
+                this.creditCards.Update(creditCard);
                 ShowMSG(System.Drawing.Color.Green, SUCCSESSFUL_MODIFY);
                 PostModification();
             }catch(System.FormatException)
@@ -127,19 +124,6 @@ namespace UserInterface
                 ShowMSG(System.Drawing.Color.Red, e.Message);
             }
         }
-
-        private bool CreditCardNumberChanged() 
-        {
-            string ccNumber = txtNumber.Text.Replace(" ", string.Empty);
-            return this.creditCard.Number != long.Parse(ccNumber);
-        }
-
-        private bool CheckExistenceOfCreditCardNumber() 
-        {
-            string ccNumber = txtNumber.Text.Replace(" ", string.Empty);
-            return this.creditCards.ContainsCreditCard(new CreditCard(long.Parse(ccNumber)));
-        }
-
         private void ShowMSG(System.Drawing.Color color, string message) 
         {
             lblMsg.ForeColor = color;

@@ -2,15 +2,16 @@
 using System.Windows.Forms;
 using PasswordManager.Controllers;
 using PasswordManager;
+using PasswordManagerDataLeyer.RepositoriesDB;
 
 namespace UserInterface
 {
     public partial class CreateCategory : UserControl
     {
         private event HandleModification PostCreated;
-        private CategoriesController categories;
+        private CategoryRepository categories;
         private ProfileController profile;
-        public CreateCategory(CategoriesController categories, ProfileController profile)
+        public CreateCategory(CategoryRepository categories, ProfileController profile)
         {
             InitializeComponent();
             this.categories = categories;
@@ -27,7 +28,7 @@ namespace UserInterface
             const string CATEGORY_CREATED_SUCCESFULLY = "Categoria creada con exito";
             try 
             {
-                categories.AddCategory(new Category(txtCategoryName.Text));
+                categories.Add(new Category(txtCategoryName.Text.ToUpper()));
                 ShowFeedbackMessage(System.Drawing.Color.Green, CATEGORY_CREATED_SUCCESFULLY);
                 PostCreated();
             }

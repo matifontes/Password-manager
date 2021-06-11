@@ -3,16 +3,17 @@ using System.Drawing;
 using System.Windows.Forms;
 using PasswordManager;
 using PasswordManager.Controllers;
+using PasswordManagerDataLeyer.RepositoriesDB;
 
 namespace UserInterface
 {
     public partial class CreateModifyCategory : Form
     {
         private event HandleModification PostModified;
-        private CategoriesController categories;
+        private CategoryRepository categories;
         private ProfileController profile;
         private Category category;
-        public CreateModifyCategory(CategoriesController categories, ProfileController profile, HandleModification PostModified)
+        public CreateModifyCategory(CategoryRepository categories, ProfileController profile, HandleModification PostModified)
         {
             InitializeComponent();
             this.categories = categories;
@@ -21,7 +22,7 @@ namespace UserInterface
             CreateCategoryPanel();
         }
 
-        public CreateModifyCategory(CategoriesController categories, Category category , ProfileController profile, HandleModification PostModified)
+        public CreateModifyCategory(CategoryRepository categories, Category category , ProfileController profile, HandleModification PostModified)
         {
             InitializeComponent();
             this.categories = categories;
