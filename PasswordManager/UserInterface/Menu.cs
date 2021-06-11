@@ -10,15 +10,13 @@ namespace UserInterface
     public partial class MenuPanel : UserControl
     {
         private ProfileController profile;
-        private PasswordsController passwords;
         private CreditCardsController creditCards;
         private event HandleWindowChange ChangeWindow;
 
-        public MenuPanel(ProfileController profile, PasswordsController passwords, CreditCardsController creditCards)
+        public MenuPanel(ProfileController profile, CreditCardsController creditCards)
         {
             InitializeComponent();
             this.profile = profile;
-            this.passwords = passwords;
             this.creditCards = creditCards;
         }
 
@@ -36,7 +34,7 @@ namespace UserInterface
 
         private void BtnPasswords_Click(object sender, EventArgs e)
         {
-            ListPasswordsPanel passwords = new ListPasswordsPanel(this.passwords, this.profile);
+            ListPasswordsPanel passwords = new ListPasswordsPanel(this.profile);
             passwords.AddListener(ReturnToMenu);
             ChangeWindow(passwords);
         }
@@ -50,7 +48,7 @@ namespace UserInterface
 
         private void BtnBreaches_Click(object sender, EventArgs e)
         {
-            DataBreach dataBreaches = new DataBreach(this.passwords, this.creditCards, this.profile);
+            DataBreach dataBreaches = new DataBreach(this.creditCards, this.profile);
             dataBreaches.AddListener(ReturnToMenu);
             dataBreaches.AddListener(ChangeWindow);
             ChangeWindow(dataBreaches);
@@ -58,11 +56,10 @@ namespace UserInterface
 
         private void BtnPasswordStrangth_Click(object sender, EventArgs e)
         {
-            StrengthPassword strengthPassword = new StrengthPassword(passwords, this.profile);
+            StrengthPassword strengthPassword = new StrengthPassword(this.profile);
             strengthPassword.AddListener(ReturnToMenu);
             strengthPassword.AddListener(ChangeWindow);
             ChangeWindow(strengthPassword);
-
         }
         private void BtnChangePassword_Click(object sender, EventArgs e)
         {

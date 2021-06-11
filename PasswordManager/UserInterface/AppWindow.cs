@@ -10,7 +10,6 @@ namespace UserInterface
     public partial class AppWindow : Form
     {
         private ProfileController profile;
-        private PasswordsController passwords;
         private CreditCardsController creditCards;
 
         public AppWindow()
@@ -59,7 +58,7 @@ namespace UserInterface
 
         private void CreateMenuPanel()
         {
-            MenuPanel menuPanel = new MenuPanel(this.profile, this.passwords, this.creditCards);
+            MenuPanel menuPanel = new MenuPanel(this.profile, this.creditCards);
             menuPanel.AddListener(ChangeWindow);
             startPanel.Controls.Add(menuPanel);
             ReSizeForm(menuPanel.Width, menuPanel.Height);
@@ -78,7 +77,6 @@ namespace UserInterface
 
         private void PostRegister(ProfileController profile) {
             this.profile = profile;
-            this.passwords = new PasswordsController(this.profile.GetPasswordRepository());
             this.creditCards = new CreditCardsController(this.profile.GetCreditCardRepository());
             ClearPanel();
             CreateLoginPanel();

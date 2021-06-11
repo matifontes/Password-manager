@@ -9,7 +9,6 @@ namespace PasswordManagerDataLeyer
     public class PasswordEntity
     {
         public int Id { get; set; }
-        public CategoryEntity Category { get; set; }
         public string Site { get; set; }
         public string User { get; set; }
         public string Password { get; set; }
@@ -17,5 +16,6 @@ namespace PasswordManagerDataLeyer
         public string Strength { get; set; }
         public DateTime LastModificationDate { get; set; }
         public ProfileEntity Profile {get; set;}
+        public virtual CategoryEntity CategoryEntity { get; set; }
     }
 }

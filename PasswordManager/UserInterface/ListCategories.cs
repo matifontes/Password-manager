@@ -41,7 +41,6 @@ namespace UserInterface
 
         private void LoadCategoriesList()
         {
-            // Change this when implemented get all categories by profile
             lbxCategories.DataSource = this.categories.GetAllByProfile(this.profile.GetId());
         }
 

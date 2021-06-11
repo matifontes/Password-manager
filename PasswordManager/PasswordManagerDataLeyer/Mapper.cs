@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -45,25 +46,31 @@ namespace PasswordManagerDataLeyer
 
         public PasswordEntity PasswordToEntity(Password password) 
         {
-            PasswordEntity passwordEntity = new PasswordEntity()
+            PasswordEntity passwordEntity = new PasswordEntity();
+            using (PasswordManagerContext context = new PasswordManagerContext())
             {
-                Site = password.Site,
-                User = password.User,
-                Password = password.Pass,
-                Note = password.Note,
-                Strength = password.Strength,
-                LastModificationDate = password.LastModificationDate
-
-            };
-
+                passwordEntity.Site = password.Site;
+                passwordEntity.User = password.User;
+                passwordEntity.Password = password.Pass;
+                passwordEntity.Note = password.Note;
+                passwordEntity.Strength = password.Strength;
+                passwordEntity.LastModificationDate = password.LastModificationDate;
+            }
             return passwordEntity;
         }
 
-        /*
         public Password EntityToPassword(PasswordEntity passwordEntity) 
         {
-            Password password = new Password(passwordEntity.);
-        }*/
-
+            using (PasswordManagerContext context = new PasswordManagerContext())
+            {
+                CategoryEntity entity = passwordEntity.CategoryEntity;
+                Category category = EntityToCategory(entity);
+                Password password = new Password(category, passwordEntity.Password, passwordEntity.Site, passwordEntity.User, passwordEntity.Note);
+                {
+                    password.Id = passwordEntity.Id;
+                }
+                return password;
+            }
+        }
     }
 }

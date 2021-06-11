@@ -10,12 +10,12 @@ namespace PasswordManagerDataLeyer
     {
         public int Id { get; set; }
         public long Number { get; set; }
-        public CategoryEntity Category { get; set; }
         public string Name { get; set; }
         public string Type { get; set; }
         public short CCVCode { get; set; }
         public DateTime ExpiryDate { get; set; }
         public string Note { get; set; }
         public ProfileEntity Profile { get; set; }
+        public virtual CategoryEntity CategoryEntity { get; set; }
     }
 }

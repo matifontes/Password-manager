@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PasswordManager;
+using PasswordManager.Exceptions;
 
 namespace PasswordManagerDataLeyer.RepositoriesDB
 {
@@ -29,7 +30,7 @@ namespace PasswordManagerDataLeyer.RepositoriesDB
                 }
 
                 CategoryEntity entity = mapper.CategoryToEntity(category);
-                entity.Profile = context.Profiles.Find(this.profile.Id);
+                entity.ProfileEntity = context.Profiles.Find(this.profile.Id);
                 context.Categories.Add(entity);
                 context.SaveChanges();
                 category.Id = entity.Id;
@@ -48,7 +49,7 @@ namespace PasswordManagerDataLeyer.RepositoriesDB
         {
             using (PasswordManagerContext context = new PasswordManagerContext())
             {
-                CategoryEntity entity = context.Categories.Find(id);
+                CategoryEntity entity = context.Categories.Include("ProfileEntity").Where(p => p.Id == id).FirstOrDefault<CategoryEntity>();
                 if(entity == null) 
                 {
                     throw new CategoryNotFoundException();
@@ -93,7 +94,7 @@ namespace PasswordManagerDataLeyer.RepositoriesDB
                 {
                     throw new CategoryAlreadyExistsException(CATEGORY_ALREADY_EXISTS);
                 }
-                CategoryEntity entity = context.Categories.Find(category.Id);
+                CategoryEntity entity = context.Categories.Include("ProfileEntity").Where(p => p.Id == category.Id).FirstOrDefault<CategoryEntity>(); ;
                 if (entity == null)
                 {
                     throw new CategoryNotFoundException();
@@ -108,14 +109,13 @@ namespace PasswordManagerDataLeyer.RepositoriesDB
             using (PasswordManagerContext context = new PasswordManagerContext())
             {
                 List<Category> categories = new List<Category>();
-                List<CategoryEntity> entities = context.Categories.SqlQuery("SELECT * FROM CategoryEntities WHERE Profile_Id=@id ORDER By Name", new SqlParameter("@id", id)).ToList();
+                List<CategoryEntity> entities = context.Categories.SqlQuery("SELECT * FROM CategoryEntities WHERE ProfileEntity_Id=@id ORDER By Name", new SqlParameter("@id", id)).ToList();
                 foreach (CategoryEntity entity in entities) 
                 {
                     categories.Add(mapper.EntityToCategory(entity));
                 }
                 return categories;
             }
-
         }
     }
 }

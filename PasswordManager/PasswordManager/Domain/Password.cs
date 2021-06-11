@@ -30,6 +30,7 @@ namespace PasswordManager
         private string _site;
         private string _note;
 
+        public int Id { get; set; }
         public Category Category { get; set; }
         public string Pass 
         {

@@ -60,6 +60,7 @@
     <Compile Include="ProfileRepositoryTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CategoryRepositoryTest.cs" />
+    <Compile Include="PasswordRepositoryTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

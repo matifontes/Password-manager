@@ -20,7 +20,7 @@ namespace UserInterface
         const string EXPIRYDATE_HEADER = "Vencimiento";
         private event HandleBackToMenu ChangeToDataBreach;
         private CreateModifyPassword passwordForm;
-        private PasswordsController passwordsController;
+        private PasswordRepository passwordRepository;
         private ProfileController profile;
         private CategoryRepository categories;
         private Password password;
@@ -28,10 +28,10 @@ namespace UserInterface
         List<CreditCard> creditCards;
 
 
-        public ListDataBreaches(List<Password> passwords, List<CreditCard> creditCards, PasswordsController passwordsController, ProfileController profile)
+        public ListDataBreaches(List<Password> passwords, List<CreditCard> creditCards, PasswordRepository passwordRepository, ProfileController profile)
         {
             InitializeComponent();
-            this.passwordsController = passwordsController;
+            this.passwordRepository = passwordRepository;
             this.profile = profile;
             this.categories = new CategoryRepository(profile.GetProfile());
             this.passwords = passwords;
@@ -122,7 +122,7 @@ namespace UserInterface
             DisposeChildForm();
             Password password = (Password)dgvPasswords.SelectedRows[0].Cells[2].Value;
             this.password = password;
-            this.passwordForm = new CreateModifyPassword(this.passwordsController, this.categories, password);
+            this.passwordForm = new CreateModifyPassword(this.passwordRepository, this.categories, password);
             passwordForm.AddListener(PostModification);
             passwordForm.Show();
         }

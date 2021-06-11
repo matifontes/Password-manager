@@ -2,6 +2,7 @@
 using System;
 using PasswordManagerDataLeyer.RepositoriesDB;
 using PasswordManager;
+using PasswordManager.Exceptions;
 using PasswordManagerDataLeyer;
 
 namespace DataLeyer.Test
