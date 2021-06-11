@@ -212,9 +212,9 @@ namespace PasswordManagerTest
             string userForPassword3 = "Guest";
             Password password2 = new Password(category2, pass, site, userForPassword2, note);
             Password password3 = new Password(category3, pass, site, userForPassword3, note);
-            passwords.AddPassword(password);
-            passwords.AddPassword(password2);
-            passwords.AddPassword(password3);
+            passwordsController.AddPassword(password);
+            passwordsController.AddPassword(password2);
+            passwordsController.AddPassword(password3);
             List<Password> passwords2 = new List<Password>();
             passwords2.Add(password);
             List<Password> passwordsResult = passwordsController.ListPasswordsMatching(passwords2);
@@ -222,5 +222,22 @@ namespace PasswordManagerTest
             Assert.AreEqual(passwordsResult[0], password);
         }
 
+        [TestMethod]
+        public void ExistPasswordWithSameUserAndPasswordst()
+        {
+            Password pass = new Password(category, "admin", "www.google.com", "Ralph", "Prueba123");
+            passwordsController.AddPassword(password);
+
+            Assert.IsTrue(passwordsController.ExistPasswordWithSamePassAndUser(pass));
+        }
+
+        [TestMethod]
+        public void DoesntExistPasswordWithSameUserAndPasswordst()
+        {
+            Password pass = new Password(category, "Admin1234", "www.google.com", "Admin", "Prueba123");
+            passwordsController.AddPassword(password);
+
+            Assert.IsFalse(passwordsController.ExistPasswordWithSamePassAndUser(pass));
+        }
     }
 }

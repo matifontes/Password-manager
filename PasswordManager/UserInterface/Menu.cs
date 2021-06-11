@@ -40,7 +40,7 @@ namespace UserInterface
 
         private void BtnPasswords_Click(object sender, EventArgs e)
         {
-            ListPasswordsPanel passwords = new ListPasswordsPanel(this.passwords,this.categories);
+            ListPasswordsPanel passwords = new ListPasswordsPanel(this.passwords,this.categories, this.dBreachesController);
             passwords.AddListener(ReturnToMenu);
             ChangeWindow(passwords);
         }
@@ -62,7 +62,7 @@ namespace UserInterface
 
         private void BtnPasswordStrangth_Click(object sender, EventArgs e)
         {
-            StrengthPassword strengthPassword = new StrengthPassword(passwords, categories);
+            StrengthPassword strengthPassword = new StrengthPassword(passwords, categories, this.dBreachesController);
             strengthPassword.AddListener(ReturnToMenu);
             strengthPassword.AddListener(ChangeWindow);
             ChangeWindow(strengthPassword);

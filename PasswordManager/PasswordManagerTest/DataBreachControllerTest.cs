@@ -68,5 +68,28 @@ namespace PasswordManagerTest
             Assert.AreEqual(dBreach02, dBreachesList[1]);
         }
 
+        [TestMethod]
+        public void PasswordExistOnDataBreaches()
+        {
+            Password password = new Password("passTest123");
+            this.passwords.Add(password);
+            DataBreach dBreach01 = new DataBreach(cards, passwords);
+            DataBreach dBreach02 = new DataBreach(cards, passwords);
+            dBreachController.AddDataBreach(dBreach01);
+            dBreachController.AddDataBreach(dBreach02);
+            Assert.IsTrue(dBreachController.PasswordExistOnDataBreaches(password));
+        }
+
+        [TestMethod]
+        public void PasswordDoesntExistOnDataBreaches()
+        {
+            Password password = new Password("passTest123");
+            DataBreach dBreach01 = new DataBreach(cards, passwords);
+            DataBreach dBreach02 = new DataBreach(cards, passwords);
+            dBreachController.AddDataBreach(dBreach01);
+            dBreachController.AddDataBreach(dBreach02);
+            Assert.IsFalse(dBreachController.PasswordExistOnDataBreaches(password));
+        }
+
     }
 }

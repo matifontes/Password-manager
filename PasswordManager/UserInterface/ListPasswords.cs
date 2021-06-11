@@ -15,14 +15,16 @@ namespace UserInterface
         const string LASTMODIFICATION_DATE_HEADER = "Última Modificación";
         private PasswordsController passwords;
         private CategoriesController categories;
+        private DataBreachesController dBreaches;
         private event HandleBackToMenu ChangeToMenu;
         private CreateModifyPassword passwordForm;
         private ShowPassword showPassword;
-        public ListPasswordsPanel(PasswordsController passwords, CategoriesController categories)
+        public ListPasswordsPanel(PasswordsController passwords, CategoriesController categories, DataBreachesController dBreaches)
         {
             InitializeComponent();
             this.passwords = passwords;
             this.categories = categories;
+            this.dBreaches = dBreaches;
             EnableOptions();
             LoadListPasswords();
         }
@@ -88,7 +90,7 @@ namespace UserInterface
         private void BtnAddPassword_Click(object sender, EventArgs e)
         {
             DisposeChildForms();
-            this.passwordForm = new CreateModifyPassword(this.passwords,this.categories);
+            this.passwordForm = new CreateModifyPassword(this.passwords,this.categories, this.dBreaches);
             passwordForm.AddListener(PostModification);
             passwordForm.Show();
         }
@@ -97,7 +99,7 @@ namespace UserInterface
         {
             DisposeChildForms();
             Password password = (Password)dgvPasswords.SelectedRows[0].Cells[2].Value;
-            this.passwordForm = new CreateModifyPassword(this.passwords,this.categories, password);
+            this.passwordForm = new CreateModifyPassword(this.passwords,this.categories, password, this.dBreaches);
             passwordForm.AddListener(PostModification);
             passwordForm.Show();
         }

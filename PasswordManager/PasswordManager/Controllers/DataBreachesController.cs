@@ -31,5 +31,10 @@ namespace PasswordManager.Controllers
             return this.dBreaches.ListDataBreaches();
         }
 
+        public bool PasswordExistOnDataBreaches(Password pass)
+        {
+            return this.dBreaches.PasswordExistOnDataBreaches(pass);
+        }
+
     }
 }

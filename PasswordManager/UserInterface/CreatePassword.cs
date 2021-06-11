@@ -3,6 +3,7 @@ using System.Windows.Forms;
 
 namespace UserInterface
 {
+    public delegate void HandlePasswordSuggest();
     public delegate void HandlePasswordCreation();
     public partial class CreatePassword : UserControl
     {
