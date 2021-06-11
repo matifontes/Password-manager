@@ -4,6 +4,7 @@ using System.Data;
 using System.Windows.Forms;
 using PasswordManager;
 using PasswordManager.Controllers;
+using PasswordManagerDataLeyer.RepositoriesDB;
 
 namespace UserInterface
 {
@@ -14,16 +15,18 @@ namespace UserInterface
         const string TYPE_HEADER = "Tipo";
         const string CCNUMBER_HEADER = "Tarjeta";
         const string EXPIRYDATE_HEADER = "Vencimiento";
-        private CreditCardsController creditCards;
-        private CategoriesController categories;
+        private CreditCardRepository creditCards;
+        private ProfileController profile;
+        private CategoryRepository categories;
         private CreateModifyCreditCard creditCardForm;
         private event HandleBackToMenu ChangeToMenu;
         private ShowCreditCard showCreditCard;
-        public ListCreditCards(CreditCardsController creditCards, CategoriesController categories)
+        public ListCreditCards(ProfileController profile)
         {
             InitializeComponent();
-            this.creditCards = creditCards;
-            this.categories = categories;
+            this.profile = profile;
+            this.creditCards = new CreditCardRepository(profile.GetProfile());
+            this.categories = new CategoryRepository(profile.GetProfile());
             EnableOption();
             LoadCreditCardsList();
         }
@@ -35,7 +38,7 @@ namespace UserInterface
 
         private void EnableOption() 
         {
-            if (creditCards.IsEmpty() && categories.IsEmpty())
+            if (this.creditCards.IsEmpty() && this.categories.IsEmpty())
             {
                 btnModify.Enabled = false;
                 btnRemove.Enabled = false;
@@ -63,7 +66,7 @@ namespace UserInterface
 
         private void LoadCreditCardsList() 
         {
-            List<CreditCard> orderedCreditCard = this.creditCards.ListCreditCards();
+            List<CreditCard> orderedCreditCard = (List<CreditCard>)this.creditCards.GetAllByProfile(this.profile.GetId());
             DataTable dataTable = InitializeDataTable();
 
             foreach (CreditCard creditCard in orderedCreditCard)
@@ -96,7 +99,7 @@ namespace UserInterface
         private void BtnAddCreditCard_Click(object sender, EventArgs e)
         {
             DisposeChildForm();
-            CreateModifyCreditCard createCreditCard = new CreateModifyCreditCard(this.categories,this.creditCards);
+            CreateModifyCreditCard createCreditCard = new CreateModifyCreditCard(this.categories,this.creditCards, this.profile);
             createCreditCard.AddListener(PostModification);
             this.creditCardForm = createCreditCard;
             this.creditCardForm.Show();
@@ -106,7 +109,7 @@ namespace UserInterface
         {
             DisposeChildForm();
             CreditCard creditCard = (CreditCard)dgvCategories.SelectedRows[0].Cells[1].Value;
-            CreateModifyCreditCard modifyCreditCard = new CreateModifyCreditCard(this.categories, this.creditCards,creditCard);
+            CreateModifyCreditCard modifyCreditCard = new CreateModifyCreditCard(this.categories, this.creditCards,creditCard, this.profile);
             modifyCreditCard.AddListener(PostModification);
             this.creditCardForm = modifyCreditCard;
             this.creditCardForm.Show();
@@ -130,7 +133,7 @@ namespace UserInterface
             if (creditCardToRemove != null) 
             {
                 DisposeChildForm();
-                this.creditCards.RemoveCreditCard(creditCardToRemove);
+                this.creditCards.Delete(creditCardToRemove.Id);
                 PostModification();
             }
         }

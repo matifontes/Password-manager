@@ -13,16 +13,16 @@ namespace PasswordManager
         const int MAX_LENGTH_FOR_VALID_NAME = 15;
         const int MIN_LENGTH_FOR_VALID_NAME = 3;
 
-        public string Name {
+        public int Id { get; set; }
+        public string Name 
+        {
             get { return _name; }
             private set => ChangeName(value);
         }
-        
         public Category(string name)
         {
             this.Name = name;
         }
-
         public void ChangeName(string name)
         {
             if (!IsValidName(name))

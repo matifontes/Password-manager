@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using PasswordManager.Controllers;
 using PasswordManager.Exceptions;
+using PasswordManagerDataLeyer.RepositoriesDB;
 
 namespace UserInterface
 {
@@ -40,6 +41,8 @@ namespace UserInterface
                     try
                     {
                         profile.ChangePassword(txtActualPassword.Text, txtNewPassword.Text);
+                        ProfileRepository profileRepository = new ProfileRepository();
+                        profileRepository.Update(profile.GetProfile());
                         ShowMSG(System.Drawing.Color.Green, PASSWORD_CHANGED);
 
                     }

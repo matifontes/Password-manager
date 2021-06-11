@@ -3,34 +3,38 @@ using System.Drawing;
 using System.Windows.Forms;
 using PasswordManager;
 using PasswordManager.Controllers;
+using PasswordManagerDataLeyer.RepositoriesDB;
 
 namespace UserInterface
 {
     public partial class CreateModifyCategory : Form
     {
         private event HandleModification PostModified;
-        private CategoriesController categories;
+        private CategoryRepository categories;
+        private ProfileController profile;
         private Category category;
-        public CreateModifyCategory(CategoriesController categories, HandleModification del)
+        public CreateModifyCategory(CategoryRepository categories, ProfileController profile, HandleModification PostModified)
         {
             InitializeComponent();
             this.categories = categories;
-            PostModified += del;
+            this.profile = profile;
+            this.PostModified += PostModified;
             CreateCategoryPanel();
         }
 
-        public CreateModifyCategory(CategoriesController categories, Category category, HandleModification del)
+        public CreateModifyCategory(CategoryRepository categories, Category category , ProfileController profile, HandleModification PostModified)
         {
             InitializeComponent();
             this.categories = categories;
             this.category = category;
-            PostModified += del;
+            this.profile = profile;
+            this.PostModified += PostModified;
             CreateModifyPanel();
         }
 
         private void CreateCategoryPanel() 
         {
-            CreateCategory createCategoryPanel = new CreateCategory(categories);
+            CreateCategory createCategoryPanel = new CreateCategory(categories, this.profile);
             createCategoryPanel.AddListener(PostModified);
             optionPanel.Controls.Add(createCategoryPanel);
             ReSizeForm(createCategoryPanel.Width,createCategoryPanel.Height);

@@ -1,29 +1,34 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using PasswordManager;
 using PasswordManager.Controllers;
 using PasswordManager.Exceptions;
+using PasswordManagerDataLeyer.RepositoriesDB;
 
 namespace UserInterface
 {
     public partial class CreateModifyPassword : Form
     {
-        private PasswordsController passwords;
-        private CategoriesController categories;
+        private PasswordRepository passwords;
+        private CategoryRepository categories;
+        private ProfileController profile;
         private event HandlePostModification PostModification;
         private Password password;
-        private DataBreachesController dBreachesController;
-        public CreateModifyPassword(PasswordsController passwords, CategoriesController categories, DataBreachesController dBreachesController)
+		private DataBreachesController dBreachesController;
+
+        public CreateModifyPassword(PasswordRepository passwords, CategoryRepository categories, ProfileController profile, DataBreachesController dBreachesController)
         {
             InitializeComponent();
             CreatePasswordPanel();
             this.passwords = passwords;
             this.categories = categories;
-            this.dBreachesController = dBreachesController;
+			this.dBreachesController = dBreachesController;
+            this.profile = profile;
             LoadCategories();
         }
 
-        public CreateModifyPassword(PasswordsController passwords, CategoriesController categories, Password password, DataBreachesController dBreachesController) 
+        public CreateModifyPassword(PasswordRepository passwords, CategoryRepository categories, Password password, DataBreachesController dBreachesController) 
         {
             InitializeComponent();
             CreateModifyPanel();
@@ -42,7 +47,7 @@ namespace UserInterface
 
         private void LoadCategories() 
         {
-            foreach (Category category in categories.ListCategories()) 
+            foreach (Category category in categories.GetAll()) 
             {
                 cbxCategories.Items.Add(category);
             }
@@ -90,7 +95,7 @@ namespace UserInterface
                 try
                 {
                     const string SUCCESSFUL_MSG = "Contraseña creada con exito";
-                    passwords.AddPassword(new Password((Category)cbxCategories.SelectedItem, txtPassword.Text, txtSite.Text, txtUser.Text, txtNote.Text));
+                    passwords.Add(new Password((Category)cbxCategories.SelectedItem, txtPassword.Text, txtSite.Text, txtUser.Text, txtNote.Text));
                     ShowMSG(System.Drawing.Color.Green, SUCCESSFUL_MSG);
                     PostModification();
                 }
@@ -111,18 +116,15 @@ namespace UserInterface
             if (ConfirmDialog(msg, DIALOG_ACTION)) {
                 try
                 {
-                    if (SiteOrUserChanged() && CheckForPairSiteUserOnPasswords())
-                    {
-                        const string PASSWORD_WITH_PAIR_USER_SITE_ALREADY_EXISTS = "Existe una contraseña con el par definido de Sitio/Usuario";
-                        throw new PasswordAlreadyExistsException(PASSWORD_WITH_PAIR_USER_SITE_ALREADY_EXISTS);
-                    }
                     const string SUCCESSFUL_MSG = "Contraseña modificada con exito";
                     password.Category = (Category)cbxCategories.SelectedItem;
                     password.Site = txtSite.Text;
                     password.User = txtUser.Text;
                     password.Pass = txtPassword.Text;
                     password.Note = txtNote.Text;
+                    this.passwords.Update(password);
                     ShowMSG(System.Drawing.Color.Green, SUCCESSFUL_MSG);
+                    PostModification();
 
                     PostModification();
                 }
@@ -164,7 +166,8 @@ namespace UserInterface
         private String DuplicatePassword(Password pass)
         {
             String duplicatePasswordResult = "";
-            if (this.passwords.ExistPasswordWithSamePassAndUser(pass))
+            List<Password> passwordsWithSameUserAndPass = (List<Password>)this.passwords.GetAllWithSamePasswordAndUser(pass);
+            if (passwordsWithSameUserAndPass.Count > 0)
             {
                 duplicatePasswordResult = "El mismo usuario ya tiene una contraseña igual";
             }
@@ -187,16 +190,6 @@ namespace UserInterface
                 safePasswordResult = "La contraseña no es segura";
             }
             return safePasswordResult;
-        }
-
-        private bool SiteOrUserChanged() 
-        {
-            return password.Site != txtSite.Text || password.User != txtUser.Text;
-        }
-
-        private bool CheckForPairSiteUserOnPasswords() 
-        {
-            return this.passwords.ContainsPassword(new Password((Category)cbxCategories.SelectedItem, txtPassword.Text, txtSite.Text, txtUser.Text, txtNote.Text));
         }
 
         private void ShowMSG(System.Drawing.Color color, string message)

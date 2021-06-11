@@ -111,11 +111,11 @@
     <Compile Include="DataBreachesHistory.Designer.cs">
       <DependentUpon>DataBreachesHistory.cs</DependentUpon>
     </Compile>
-    <Compile Include="ShowDataBreachesHistory.cs">
-      <SubType>Form</SubType>
+    <Compile Include="DataBreachPanel.cs">
+      <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ShowDataBreachesHistory.Designer.cs">
-      <DependentUpon>ShowDataBreachesHistory.cs</DependentUpon>
+    <Compile Include="DataBreachPanel.Designer.cs">
+      <DependentUpon>DataBreachPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="ListCategories.cs">
       <SubType>UserControl</SubType>
@@ -173,12 +173,6 @@
     <Compile Include="ModifyCategory.Designer.cs">
       <DependentUpon>ModifyCategory.cs</DependentUpon>
     </Compile>
-    <Compile Include="DataBreachPanel.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="DataBreachPanel.Designer.cs">
-      <DependentUpon>DataBreachPanel.cs</DependentUpon>
-    </Compile>
     <Compile Include="ListDataBreaches.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -190,6 +184,12 @@
     </Compile>
     <Compile Include="ShowCreditCard.Designer.cs">
       <DependentUpon>ShowCreditCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShowDataBreachesHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowDataBreachesHistory.Designer.cs">
+      <DependentUpon>ShowDataBreachesHistory.cs</DependentUpon>
     </Compile>
     <Compile Include="ShowPassword.cs">
       <SubType>Form</SubType>
@@ -233,11 +233,11 @@
     <EmbeddedResource Include="CreatePassword.resx">
       <DependentUpon>CreatePassword.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DataBreachPanel.resx">
-      <DependentUpon>DataBreachPanel.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="DataBreachesHistory.resx">
       <DependentUpon>DataBreachesHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataBreachPanel.resx">
+      <DependentUpon>DataBreachPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ListCategories.resx">
       <DependentUpon>ListCategories.cs</DependentUpon>
@@ -308,6 +308,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\PasswordManagerDataLeyer\PasswordManagerDataLeyer.csproj">
+      <Project>{c65892f9-3a52-45c8-856a-33f3e17a303f}</Project>
+      <Name>PasswordManagerDataLeyer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PasswordManager\PasswordManager.csproj">
       <Project>{cbeffdab-3c1e-43a0-8006-838b61b54ccb}</Project>
       <Name>PasswordManager</Name>

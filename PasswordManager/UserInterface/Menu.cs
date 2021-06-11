@@ -10,19 +10,13 @@ namespace UserInterface
     public partial class MenuPanel : UserControl
     {
         private ProfileController profile;
-        private CategoriesController categories;
-        private PasswordsController passwords;
-        private CreditCardsController creditCards;
         private DataBreachesController dBreachesController;
         private event HandleWindowChange ChangeWindow;
 
-        public MenuPanel(ProfileController profile,CategoriesController categories, PasswordsController passwords, CreditCardsController creditCards, DataBreachesController dataBreachesController)
+        public MenuPanel(ProfileController profile, DataBreachesController dataBreachesController)
         {
             InitializeComponent();
             this.profile = profile;
-            this.categories = categories;
-            this.passwords = passwords;
-            this.creditCards = creditCards;
             this.dBreachesController = dataBreachesController;
         }
 
@@ -33,28 +27,28 @@ namespace UserInterface
 
         private void BtnCategories_Click(object sender, EventArgs e)
         {
-            ListCategoriesPanel categories = new ListCategoriesPanel(this.categories);
+            ListCategoriesPanel categories = new ListCategoriesPanel(this.profile);
             categories.AddListener(ReturnToMenu);
             ChangeWindow(categories);
         }
 
         private void BtnPasswords_Click(object sender, EventArgs e)
         {
-            ListPasswordsPanel passwords = new ListPasswordsPanel(this.passwords,this.categories, this.dBreachesController);
+            ListPasswordsPanel passwords = new ListPasswordsPanel(this.profile, this.dBreachesController);
             passwords.AddListener(ReturnToMenu);
             ChangeWindow(passwords);
         }
 
         private void BtnCreditCards_Click(object sender, EventArgs e)
         {
-            ListCreditCards creditCards = new ListCreditCards(this.creditCards,this.categories);
+            ListCreditCards creditCards = new ListCreditCards(this.profile);
             creditCards.AddListener(ReturnToMenu);
             ChangeWindow(creditCards);
         }
 
         private void BtnBreaches_Click(object sender, EventArgs e)
         {
-            DataBreachPanel dataBreaches = new DataBreachPanel(this.passwords, this.creditCards, this.categories, this.dBreachesController);
+            DataBreachPanel dataBreaches = new DataBreachPanel(this.profile, this.dBreachesController);
             dataBreaches.AddListener(ReturnToMenu);
             dataBreaches.AddListener(ChangeWindow);
             ChangeWindow(dataBreaches);
@@ -62,11 +56,10 @@ namespace UserInterface
 
         private void BtnPasswordStrangth_Click(object sender, EventArgs e)
         {
-            StrengthPassword strengthPassword = new StrengthPassword(passwords, categories, this.dBreachesController);
+            StrengthPassword strengthPassword = new StrengthPassword(this.profile, this.dBreachesController);
             strengthPassword.AddListener(ReturnToMenu);
             strengthPassword.AddListener(ChangeWindow);
             ChangeWindow(strengthPassword);
-
         }
         private void BtnChangePassword_Click(object sender, EventArgs e)
         {

@@ -10,27 +10,29 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using PasswordManager.Controllers;
 using PasswordManager;
+using PasswordManagerDataLeyer.RepositoriesDB;
 
 namespace UserInterface
 {
     public partial class DataBreachPanel : UserControl
     {
-        private PasswordsController passwords;
-        private CreditCardsController creditCards;
-        private CategoriesController categories;
-        private DataBreachesController dBreachesController;
+        private CreditCardRepository creditCards;
+        private ProfileController profile;
+        private PasswordRepository passwords;
+		private DataBreachesController dBreachesController;
         private event HandleBackToMenu ChangeToMenu;
         private event HandleWindowChange ChangeWindow;
         private List<Password> passwordsLine;
         private List<CreditCard> creditCardsLine;
         private string filePath;
         private string fileContent;
-        public DataBreachPanel(PasswordsController passwords, CreditCardsController creditCards, CategoriesController categories, DataBreachesController dBreachesController)
+
+        public DataBreachPanel(ProfileController profile, DataBreachesController dBreachesController)
         {
             InitializeComponent();
-            this.creditCards = creditCards;
-            this.passwords = passwords;
-            this.categories = categories;
+            this.profile = profile;
+            this.passwords = new PasswordRepository(profile.GetProfile());
+            this.creditCards = new CreditCardRepository(profile.GetProfile());
             this.passwordsLine = new List<Password>();
             this.creditCardsLine = new List<CreditCard>();
             this.filePath = String.Empty;
@@ -99,12 +101,10 @@ namespace UserInterface
         private void BtnVerify_Click(object sender, EventArgs e)
         {
             LoadList();
-            List<Password> passwordsList = this.passwords.ListPasswordsMatching(this.passwordsLine);
-            List<CreditCard> creditCardlist = this.creditCards.GetMatchingCreditCards(this.creditCardsLine);
-
-            dBreachesController.AddDataBreach(new DataBreach(creditCardlist, passwordsList));
-
-            ListDataBreaches listDataBreaches = new ListDataBreaches(passwordsList, creditCardlist, this.categories, this.passwords, this.dBreachesController);
+            List<Password> passwordsList = (List<Password>)this.passwords.GetAllWithSamePassword(this.passwordsLine);
+            List<CreditCard> creditCardlist = (List<CreditCard>)this.creditCards.GetAllWithSameNumber(this.creditCardsLine);
+			dBreachesController.AddDataBreach(new DataBreach(creditCardlist, passwordsList));
+            ListDataBreaches listDataBreaches = new ListDataBreaches(passwordsList, creditCardlist, this.passwords, this.profile, this.dBreachesController);
             listDataBreaches.AddListener(ReturnToDataBreach);
             ChangeWindow(listDataBreaches);
         }

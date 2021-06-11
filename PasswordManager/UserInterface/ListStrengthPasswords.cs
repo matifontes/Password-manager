@@ -5,6 +5,7 @@ using System.Linq;
 using System.Windows.Forms;
 using PasswordManager.Controllers;
 using PasswordManager;
+using PasswordManagerDataLeyer.RepositoriesDB;
 
 namespace UserInterface
 {
@@ -14,21 +15,22 @@ namespace UserInterface
         const string SITE_HEADER = "Sitio";
         const string USER_HEADER = "Usuario";
         const string LASTMODIFICATION_DATE_HEADER = "Última Modificación";
-        private PasswordsController passwords;
-        private CategoriesController categories;
+        private PasswordRepository passwords;
+        private CategoryRepository categories;
         private event HandleBackToMenu ChangeToPasswordStrenght;
         private CreateModifyPassword passwordForm;
         private List<Password> passList;
         private Password modifyPassword;
         private DataBreachesController dBreachesController;
         private string strength;
-        public ListStrengthPasswords(PasswordsController passwords, CategoriesController categories, List<Password> list, DataBreachesController dBreachesController)
+
+        public ListStrengthPasswords(PasswordRepository passwords, CategoryRepository categories, string strength, DataBreachesController dBreachesController)
         {
             InitializeComponent();
             this.categories = categories;
-            this.passList = list;
-            this.strength = list[0].Strength;
             this.passwords = passwords;
+            this.passList = (List<Password>)passwords.GetPasswordsByStrength(strength);
+            this.strength = strength;
             this.dBreachesController = dBreachesController;
             EnableOptions();
             LoadTitle();

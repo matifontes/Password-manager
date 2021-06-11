@@ -29,6 +29,8 @@ namespace PasswordManager
         private string _pass;
         private string _site;
         private string _note;
+
+        public int Id { get; set; }
         public Category Category { get; set; }
         public string Pass 
         {
@@ -52,8 +54,8 @@ namespace PasswordManager
             set => SetNote(value);
         }
         
-        public string Strength { get; set; }
-        public DateTime LastModificationDate { get; set; }
+        public string Strength { get; private set; }
+        public DateTime LastModificationDate { get; private set; }
 
         public Password(string password)
         {

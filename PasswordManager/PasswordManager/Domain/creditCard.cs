@@ -11,6 +11,8 @@ namespace PasswordManager
         private string _type;
         private long _number;
         private short _ccvCode;
+
+        public int Id { get; set; }
         public string Name
         {
             get { return _name; }
