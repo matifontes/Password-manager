@@ -21,18 +21,20 @@ namespace UserInterface
         private CreateModifyPassword passwordForm;
         private CategoriesController categories;
         private PasswordsController passwordsController;
+        private DataBreachesController dBreachesController;
         private Password password;
         List<Password> passwords;
         List<CreditCard> creditCards;
 
 
-        public ListDataBreaches(List<Password> passwords, List<CreditCard> creditCards, CategoriesController categories, PasswordsController passwordsController)
+        public ListDataBreaches(List<Password> passwords, List<CreditCard> creditCards, CategoriesController categories, PasswordsController passwordsController, DataBreachesController dBreaches)
         {
             InitializeComponent();
             this.passwordsController = passwordsController;
             this.categories = categories;
             this.passwords = passwords;
             this.creditCards = creditCards;
+            this.dBreachesController = dBreaches;
             LoadListPasswords();
             LoadCreditCardsList();
             EnableModifyOption();
@@ -119,7 +121,7 @@ namespace UserInterface
             DisposeChildForm();
             Password password = (Password)dgvPasswords.SelectedRows[0].Cells[2].Value;
             this.password = password;
-            this.passwordForm = new CreateModifyPassword(this.passwordsController, this.categories, password);
+            this.passwordForm = new CreateModifyPassword(this.passwordsController, this.categories, password, this.dBreachesController);
             passwordForm.AddListener(PostModification);
             passwordForm.Show();
         }

@@ -104,7 +104,7 @@ namespace UserInterface
 
             dBreachesController.AddDataBreach(new DataBreach(creditCardlist, passwordsList));
 
-            ListDataBreaches listDataBreaches = new ListDataBreaches(passwordsList, creditCardlist, this.categories, this.passwords);
+            ListDataBreaches listDataBreaches = new ListDataBreaches(passwordsList, creditCardlist, this.categories, this.passwords, this.dBreachesController);
             listDataBreaches.AddListener(ReturnToDataBreach);
             ChangeWindow(listDataBreaches);
         }

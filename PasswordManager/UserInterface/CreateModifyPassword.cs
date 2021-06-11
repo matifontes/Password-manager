@@ -23,13 +23,14 @@ namespace UserInterface
             LoadCategories();
         }
 
-        public CreateModifyPassword(PasswordsController passwords, CategoriesController categories, Password password) 
+        public CreateModifyPassword(PasswordsController passwords, CategoriesController categories, Password password, DataBreachesController dBreachesController) 
         {
             InitializeComponent();
             CreateModifyPanel();
             this.passwords = passwords;
             this.categories = categories;
             this.password = password;
+            this.dBreachesController = dBreachesController;
             LoadCategories();
             LoadPasswordOnFields();
         }
@@ -149,7 +150,7 @@ namespace UserInterface
         private String PasswordExistsOnDataBreaches(Password pass)
         {
             String passwordExist = "";
-            if (this.dBreachesController != null && this.dBreachesController.PasswordExistOnDataBreaches(pass))
+            if (this.dBreachesController.PasswordExistOnDataBreaches(pass))
             {
                 passwordExist = "La contraseña aparece en un data breach conocido";
             }

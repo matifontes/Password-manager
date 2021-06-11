@@ -99,7 +99,7 @@ namespace UserInterface
         {
             DisposeChildForms();
             Password password = (Password)dgvPasswords.SelectedRows[0].Cells[2].Value;
-            this.passwordForm = new CreateModifyPassword(this.passwords,this.categories, password);
+            this.passwordForm = new CreateModifyPassword(this.passwords,this.categories, password, this.dBreaches);
             passwordForm.AddListener(PostModification);
             passwordForm.Show();
         }

@@ -30,18 +30,19 @@ namespace PasswordManager.Repositories
 
         public bool PasswordExistOnDataBreaches(Password pass)
         {
-            bool PasswordExist = false;
+            bool passwordExist = false;
+
             foreach (DataBreach dBreach in this.dataBreaches)
             {
                 foreach (Password dBreachPassword in dBreach.passwords)
                 {
-                    if(dBreachPassword.Pass == pass.Pass)
+                    if (dBreachPassword.Pass == pass.Pass)
                     {
                         return true;
                     }
                 }
             }
-            return PasswordExist;
+            return passwordExist;
         }
 
     }
