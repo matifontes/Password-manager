@@ -18,6 +18,6 @@ namespace PasswordManagerDataLeyer
         public DbSet<CategoryEntity> Categories { get; set; }
         public DbSet<PasswordEntity> Passwords { get; set; }
         public DbSet<CreditCardEntity> CreditCards { get; set; }
-
+        public DbSet<DataBreachEntity> DataBreaches { get; set; }
     }
 }
