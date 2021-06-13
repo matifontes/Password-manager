@@ -12,13 +12,13 @@ namespace PasswordManagerDataLeyer
         public DataBreachEntity() 
         {
             this.PasswordsEntity = new HashSet<PasswordEntity>();
-            this.CreditCardEntities = new HashSet<CreditCardEntity>();
+            this.CreditCardEntity = new HashSet<CreditCardEntity>();
         }
 
         public int Id { get; set; }
         public DateTime Date { get; set; }
         public virtual ICollection<PasswordEntity> PasswordsEntity { get; set; }
-        public virtual ICollection<CreditCardEntity> CreditCardEntities { get; set; }
+        public virtual ICollection<CreditCardEntity> CreditCardEntity { get; set; }
         public ProfileEntity Profile { get; set; }
     }
 }

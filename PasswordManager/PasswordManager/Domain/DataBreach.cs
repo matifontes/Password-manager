@@ -8,6 +8,7 @@ namespace PasswordManager
 {
     public class DataBreach
     {
+        public int Id { get; set; }
         public List<CreditCard> creditCards;
         public List<Password> passwords;
         public DateTime Date { get; set; }
