@@ -35,23 +35,5 @@ namespace PasswordManager.Controllers
         {
             return this.profile.Id;
         }
-
-        public CategoryRepository GetCategoryRepository() 
-        {
-            return this.profile.GetCategoryRepository();
-        }
-        public PasswordRepository GetPasswordRepository()
-        {
-            return this.profile.GetPasswordRepository();
-        }
-        public CreditCardRepository GetCreditCardRepository()
-        {
-            return this.profile.GetCreditCardRepository();
-        }
-
-        public DataBreachesRepository GetDataBreachesRepository()
-        {
-            return this.profile.GetDataBreachesRepository();
-        }
     }
 }

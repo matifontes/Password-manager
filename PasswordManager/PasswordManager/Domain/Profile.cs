@@ -17,17 +17,9 @@ namespace PasswordManager
             get { return this._password; }
             set => SetPassword(value);
         }
-        private CategoryRepository categories;
-        private PasswordRepository passwords;
-        private CreditCardRepository creditCards;
-        private DataBreachesRepository dBreaches;
 
         public Profile(string password) {
             this.Password = password;
-            categories = new CategoryRepository();
-            passwords = new PasswordRepository();
-            creditCards = new CreditCardRepository();
-            dBreaches = new DataBreachesRepository();
         }
 
         public bool ValidatePassword(string password) 
@@ -46,26 +38,6 @@ namespace PasswordManager
                 const string FAIL_TO_VALIDATE_PASSWORD = "Error al validar la contraseña actual";
                 throw new FailToValidatePasswordException(FAIL_TO_VALIDATE_PASSWORD);
             }
-        }
-
-        public CategoryRepository GetCategoryRepository() 
-        {
-            return this.categories;
-        }
-
-        public PasswordRepository GetPasswordRepository() 
-        {
-            return this.passwords;
-        }
-
-        public CreditCardRepository GetCreditCardRepository() 
-        {
-            return this.creditCards;
-        }
-
-        public DataBreachesRepository GetDataBreachesRepository()
-        {
-            return this.dBreaches;
         }
 
         private void SetPassword(string password) 
