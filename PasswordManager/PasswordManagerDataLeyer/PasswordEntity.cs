@@ -8,6 +8,11 @@ namespace PasswordManagerDataLeyer
 {
     public class PasswordEntity
     {
+        public PasswordEntity() 
+        {
+            this.DataBreachEntities = new HashSet<DataBreachEntity>();
+        }
+
         public int Id { get; set; }
         public string Site { get; set; }
         public string User { get; set; }
@@ -17,5 +22,6 @@ namespace PasswordManagerDataLeyer
         public DateTime LastModificationDate { get; set; }
         public ProfileEntity Profile {get; set;}
         public virtual CategoryEntity CategoryEntity { get; set; }
+        public virtual ICollection<DataBreachEntity> DataBreachEntities { get; set; }
     }
 }

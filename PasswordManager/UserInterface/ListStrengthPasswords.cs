@@ -21,17 +21,17 @@ namespace UserInterface
         private CreateModifyPassword passwordForm;
         private List<Password> passList;
         private Password modifyPassword;
-        private DataBreachesController dBreachesController;
+        private DataBreachRepository dBreaches;
         private string strength;
 
-        public ListStrengthPasswords(PasswordRepository passwords, CategoryRepository categories, string strength, DataBreachesController dBreachesController)
+        public ListStrengthPasswords(PasswordRepository passwords, CategoryRepository categories, string strength, DataBreachRepository dBreaches)
         {
             InitializeComponent();
             this.categories = categories;
             this.passwords = passwords;
             this.passList = (List<Password>)passwords.GetPasswordsByStrength(strength);
             this.strength = strength;
-            this.dBreachesController = dBreachesController;
+            this.dBreaches = dBreaches;
             EnableOptions();
             LoadTitle();
             LoadListPasswords();
@@ -98,7 +98,7 @@ namespace UserInterface
             DisposeChildForms();
             Password password = (Password)dgvList.SelectedRows[0].Cells[2].Value;
             this.modifyPassword = password;
-            this.passwordForm = new CreateModifyPassword(this.passwords,this.categories, password, this.dBreachesController);
+            this.passwordForm = new CreateModifyPassword(this.passwords,this.categories, password, this.dBreaches);
             passwordForm.AddListener(PostModification);
             passwordForm.Show();
         }

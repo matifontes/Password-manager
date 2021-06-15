@@ -47,6 +47,7 @@ namespace PasswordManagerDataLeyer
         public PasswordEntity PasswordToEntity(Password password)
         {
             PasswordEntity passwordEntity = new PasswordEntity() {
+                Id = password.Id,
                 Site = password.Site,
                 User = password.User,
                 Password = password.Pass,
@@ -72,6 +73,7 @@ namespace PasswordManagerDataLeyer
         {
             CreditCardEntity entity = new CreditCardEntity()
             {
+                Id = creditCard.Id,
                 Name = creditCard.Name,
                 Type = creditCard.Type,
                 Number = creditCard.Number,
@@ -91,6 +93,38 @@ namespace PasswordManagerDataLeyer
                 Id = creditCardEntity.Id
             };
             return creditCard;
+        }
+
+        public DataBreach EntityToDataBreach(DataBreachEntity dataBreachEntity) 
+        {
+            List<Password> passwords = new List<Password>();
+            List<CreditCard> cards = new List<CreditCard>();
+            List<PasswordEntity> passwordsEntity = (List<PasswordEntity>)dataBreachEntity.PasswordsEntity.ToList();
+            List<CreditCardEntity> creditCardsEntity = (List<CreditCardEntity>)dataBreachEntity.CreditCardEntity.ToList();
+            foreach (PasswordEntity password in passwordsEntity) 
+            {
+                passwords.Add(EntityToPassword(password));
+            }
+            foreach (CreditCardEntity creditCard in creditCardsEntity) 
+            {
+                cards.Add(EntityToCreditCard(creditCard));
+            }
+            DataBreach dataBreach = new DataBreach(cards, passwords)
+            {
+                Date = dataBreachEntity.Date,
+                Id = dataBreachEntity.Id
+            };
+            return dataBreach;
+        }
+
+        public DataBreachEntity DataBreachToEntity(DataBreach dataBreach) 
+        {
+            DataBreachEntity dataBreachEntity = new DataBreachEntity() 
+            {
+                Id = dataBreach.Id,
+                Date = dataBreach.Date
+            };
+             return dataBreachEntity;
         }
     }
 }
