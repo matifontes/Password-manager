@@ -12,6 +12,9 @@ namespace UserInterface
     {
         const string LIGHTGREEN_STRENGTH = "LightGreen";
         const string DARKGREEN_STRENGTH = "DarkGreen";
+        const string RED_STRENGTH = "Red";
+        const string ORANGE_STRENGTH = "Orange";
+        const string YELLOW_STRENGTH = "Yellow";
         private PasswordRepository passwords;
         private CategoryRepository categories;
         private ProfileController profile;
@@ -185,13 +188,41 @@ namespace UserInterface
             String safePasswordResult = "";
             if (pass.Strength == LIGHTGREEN_STRENGTH || pass.Strength == DARKGREEN_STRENGTH)
             {
-                safePasswordResult = "La contraseña es segura";
+                safePasswordResult = "La contraseña es segura, fortaleza: " + StrengthPasswordString(pass.Strength);
             }
             else
             {
-                safePasswordResult = "La contraseña no es segura";
+                safePasswordResult = "La contraseña no es segura, fortaleza: " + StrengthPasswordString(pass.Strength);
             }
             return safePasswordResult;
+        }
+
+        private String StrengthPasswordString(string passStrength)
+        {
+            string strength = "";
+           
+            if (passStrength == LIGHTGREEN_STRENGTH)
+            {
+                strength = "Verde claro";
+            }
+            else if(passStrength == DARKGREEN_STRENGTH)
+            {
+                strength = "Verde oscuro";
+            }
+            else if(passStrength == ORANGE_STRENGTH)
+            {
+                strength = "Naranja";
+            }
+            else if(passStrength == RED_STRENGTH)
+            {
+                strength = "Rojo";
+            }
+            else
+            {
+                strength = "Amarillo";
+            }
+
+            return strength;
         }
 
         private void ShowMSG(System.Drawing.Color color, string message)
