@@ -20,6 +20,7 @@ namespace PasswordManagerDataLeyer
         public string Note { get; set; }
         public string Strength { get; set; }
         public DateTime LastModificationDate { get; set; }
+        public DateTime LastPasswordChange { get; set; }
         public ProfileEntity Profile {get; set;}
         public virtual CategoryEntity CategoryEntity { get; set; }
         public virtual ICollection<DataBreachEntity> DataBreachEntities { get; set; }

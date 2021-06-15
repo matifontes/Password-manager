@@ -71,6 +71,7 @@
                         Note = c.String(),
                         Strength = c.String(),
                         LastModificationDate = c.DateTime(nullable: false),
+                        LastPasswordChange = c.DateTime(nullable: false),
                         CategoryEntity_Id = c.Int(),
                         Profile_Id = c.Int(),
                     })

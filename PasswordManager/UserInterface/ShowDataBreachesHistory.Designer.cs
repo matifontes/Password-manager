@@ -33,6 +33,8 @@
             this.dgvPasswords = new System.Windows.Forms.DataGridView();
             this.lblCreditCards = new System.Windows.Forms.Label();
             this.dgvCreditCards = new System.Windows.Forms.DataGridView();
+            this.btnModify = new System.Windows.Forms.Button();
+            this.lblMsg = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPasswords)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCreditCards)).BeginInit();
             this.SuspendLayout();
@@ -66,6 +68,7 @@
             this.dgvPasswords.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvPasswords.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPasswords.Location = new System.Drawing.Point(34, 111);
+            this.dgvPasswords.MultiSelect = false;
             this.dgvPasswords.Name = "dgvPasswords";
             this.dgvPasswords.ReadOnly = true;
             this.dgvPasswords.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -91,24 +94,45 @@
             this.dgvCreditCards.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvCreditCards.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCreditCards.Location = new System.Drawing.Point(34, 313);
+            this.dgvCreditCards.MultiSelect = false;
             this.dgvCreditCards.Name = "dgvCreditCards";
             this.dgvCreditCards.ReadOnly = true;
             this.dgvCreditCards.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCreditCards.Size = new System.Drawing.Size(464, 128);
             this.dgvCreditCards.TabIndex = 9;
             // 
+            // btnModify
+            // 
+            this.btnModify.Location = new System.Drawing.Point(423, 247);
+            this.btnModify.Name = "btnModify";
+            this.btnModify.Size = new System.Drawing.Size(75, 23);
+            this.btnModify.TabIndex = 10;
+            this.btnModify.Text = "Modificar";
+            this.btnModify.UseVisualStyleBackColor = true;
+            this.btnModify.Click += new System.EventHandler(this.btnModify_Click);
+            // 
+            // lblMsg
+            // 
+            this.lblMsg.AutoSize = true;
+            this.lblMsg.Location = new System.Drawing.Point(31, 252);
+            this.lblMsg.Name = "lblMsg";
+            this.lblMsg.Size = new System.Drawing.Size(0, 13);
+            this.lblMsg.TabIndex = 11;
+            // 
             // ShowDataBreachesHistory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(585, 489);
+            this.ClientSize = new System.Drawing.Size(538, 489);
+            this.Controls.Add(this.lblMsg);
+            this.Controls.Add(this.btnModify);
             this.Controls.Add(this.dgvCreditCards);
             this.Controls.Add(this.lblCreditCards);
             this.Controls.Add(this.dgvPasswords);
             this.Controls.Add(this.lblPasswords);
             this.Controls.Add(this.lblTitle);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "ShowDataBreachesHistory";
-            this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.dgvPasswords)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCreditCards)).EndInit();
             this.ResumeLayout(false);
@@ -123,5 +147,7 @@
         private System.Windows.Forms.DataGridView dgvPasswords;
         private System.Windows.Forms.Label lblCreditCards;
         private System.Windows.Forms.DataGridView dgvCreditCards;
+        private System.Windows.Forms.Button btnModify;
+        private System.Windows.Forms.Label lblMsg;
     }
 }

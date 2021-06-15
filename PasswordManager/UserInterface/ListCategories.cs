@@ -79,6 +79,7 @@ namespace UserInterface
         {
             EnableOptions();
             LoadCategoriesList();
+            RemoveChildForms();
         }
 
         private void RemoveChildForms() 

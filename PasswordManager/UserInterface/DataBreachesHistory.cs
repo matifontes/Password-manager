@@ -45,7 +45,7 @@ namespace UserInterface
             if(dBreach != null)
             {
                 DisposeChildForms();
-                this.showDataBreaches = new ShowDataBreachesHistory(dBreach);
+                this.showDataBreaches = new ShowDataBreachesHistory(this.profile, dBreach);
                 this.showDataBreaches.Show();
             }
         }
