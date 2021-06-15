@@ -10,7 +10,6 @@ namespace UserInterface
     public partial class AppWindow : Form
     {
         private ProfileController profile;
-        private DataBreachesController dBreachesController;
         public AppWindow()
         {
             InitializeComponent();
@@ -48,7 +47,7 @@ namespace UserInterface
 
         private void CreateMenuPanel()
         {
-            MenuPanel menuPanel = new MenuPanel(this.profile, this.dBreachesController);
+            MenuPanel menuPanel = new MenuPanel(this.profile);
             menuPanel.AddListener(ChangeWindow);
             startPanel.Controls.Add(menuPanel);
             ReSizeForm(menuPanel.Width, menuPanel.Height);
@@ -67,7 +66,6 @@ namespace UserInterface
 
         private void PostRegister(ProfileController profile) {
             this.profile = profile;
-            this.dBreachesController = new DataBreachesController(this.profile.GetDataBreachesRepository());
             ClearPanel();
             CreateLoginPanel();
         }

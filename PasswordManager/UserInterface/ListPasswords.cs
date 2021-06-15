@@ -20,15 +20,15 @@ namespace UserInterface
         private event HandleBackToMenu ChangeToMenu;
         private CreateModifyPassword passwordForm;
         private ShowPassword showPassword;
-        private DataBreachesController dBreaches;
+        private DataBreachRepository dBreaches;
 
-        public ListPasswordsPanel(ProfileController profile, DataBreachesController dBreaches)
+        public ListPasswordsPanel(ProfileController profile)
         {
             InitializeComponent();
             this.profile = profile;
             this.categories = new CategoryRepository(profile.GetProfile());
             this.passwords = new PasswordRepository(profile.GetProfile());
-            this.dBreaches = dBreaches;
+            this.dBreaches = new DataBreachRepository(profile.GetProfile());
             EnableOptions();
             LoadListPasswords();
         }

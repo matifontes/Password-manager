@@ -86,5 +86,24 @@ namespace PasswordManagerDataLeyer.RepositoriesDB
         {
             throw new NotImplementedException();
         }
+
+        public bool PasswordExistsOnDataBreach(Password password) 
+        {
+            using (PasswordManagerContext context = new PasswordManagerContext())
+            {
+                foreach (DataBreachEntity dataBreach in context.DataBreaches.ToList()) 
+                {
+                    foreach (PasswordEntity passwordEntity in dataBreach.PasswordsEntity) 
+                    {
+                        if(passwordEntity.Password == password.Pass) 
+                        {
+                            return true;
+                        }
+                    }
+                }
+                return false;
+            }
+        }
+
     }
 }

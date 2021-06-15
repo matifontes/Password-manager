@@ -4,19 +4,22 @@ using System.Data;
 using System.Windows.Forms;
 using PasswordManager;
 using PasswordManager.Controllers;
+using PasswordManagerDataLeyer.RepositoriesDB;
 
 namespace UserInterface
 {
     public partial class DataBreachesHistory : UserControl
     {
-        private DataBreachesController dBreachesController;
+        private DataBreachRepository dBreaches;
+        private ProfileController profile;
         private event HandleBackToMenu ChangeToMenu;
         private event HandleWindowChange ChangeWindow;
         private ShowDataBreachesHistory showDataBreaches;
-        public DataBreachesHistory(DataBreachesController dBreachesController)
+        public DataBreachesHistory(ProfileController profile)
         {
             InitializeComponent();
-            this.dBreachesController = dBreachesController;
+            this.profile = profile;
+            this.dBreaches = new DataBreachRepository(profile.GetProfile());
             LoadDataBreaches();
         }
 
@@ -27,7 +30,7 @@ namespace UserInterface
 
         public void LoadDataBreaches()
         {
-            this.dBreachList.DataSource = this.dBreachesController.ListDataBreaches();
+            this.dBreachList.DataSource = this.dBreaches.GetAll();
         }
 
         private void backBtn_Click(object sender, EventArgs e)

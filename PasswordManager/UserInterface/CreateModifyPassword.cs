@@ -10,32 +10,34 @@ namespace UserInterface
 {
     public partial class CreateModifyPassword : Form
     {
+        const string LIGHTGREEN_STRENGTH = "LightGreen";
+        const string DARKGREEN_STRENGTH = "DarkGreen";
         private PasswordRepository passwords;
         private CategoryRepository categories;
         private ProfileController profile;
         private event HandlePostModification PostModification;
         private Password password;
-		private DataBreachesController dBreachesController;
+		private DataBreachRepository dataBreach;
 
-        public CreateModifyPassword(PasswordRepository passwords, CategoryRepository categories, ProfileController profile, DataBreachesController dBreachesController)
+        public CreateModifyPassword(PasswordRepository passwords, CategoryRepository categories, ProfileController profile, DataBreachRepository dataBreach)
         {
             InitializeComponent();
             CreatePasswordPanel();
             this.passwords = passwords;
             this.categories = categories;
-			this.dBreachesController = dBreachesController;
+			this.dataBreach = dataBreach;
             this.profile = profile;
             LoadCategories();
         }
 
-        public CreateModifyPassword(PasswordRepository passwords, CategoryRepository categories, Password password, DataBreachesController dBreachesController) 
+        public CreateModifyPassword(PasswordRepository passwords, CategoryRepository categories, Password password, DataBreachRepository dataBreach) 
         {
             InitializeComponent();
             CreateModifyPanel();
             this.passwords = passwords;
             this.categories = categories;
             this.password = password;
-            this.dBreachesController = dBreachesController;
+            this.dataBreach = dataBreach;
             LoadCategories();
             LoadPasswordOnFields();
         }
@@ -152,7 +154,7 @@ namespace UserInterface
         private String PasswordExistsOnDataBreaches(Password pass)
         {
             String passwordExist = "";
-            if (this.dBreachesController.PasswordExistOnDataBreaches(pass))
+            if (this.dataBreach.PasswordExistsOnDataBreach(pass))
             {
                 passwordExist = "La contraseña aparece en un data breach conocido";
             }
@@ -181,7 +183,7 @@ namespace UserInterface
         private String SafePassword(Password pass)
         {
             String safePasswordResult = "";
-            if (pass.Strength == "GreenLight" || pass.Strength == "DarkGreen")
+            if (pass.Strength == LIGHTGREEN_STRENGTH || pass.Strength == DARKGREEN_STRENGTH)
             {
                 safePasswordResult = "La contraseña es segura";
             }

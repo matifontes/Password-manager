@@ -19,7 +19,7 @@ namespace UserInterface
         private CreditCardRepository creditCards;
         private ProfileController profile;
         private PasswordRepository passwords;
-		private DataBreachesController dBreachesController;
+		private DataBreachRepository dBreachesController;
         private event HandleBackToMenu ChangeToMenu;
         private event HandleWindowChange ChangeWindow;
         private List<Password> passwordsLine;
@@ -27,17 +27,17 @@ namespace UserInterface
         private string filePath;
         private string fileContent;
 
-        public DataBreachPanel(ProfileController profile, DataBreachesController dBreachesController)
+        public DataBreachPanel(ProfileController profile)
         {
             InitializeComponent();
             this.profile = profile;
             this.passwords = new PasswordRepository(profile.GetProfile());
             this.creditCards = new CreditCardRepository(profile.GetProfile());
+            this.dBreachesController = new DataBreachRepository(profile.GetProfile());
             this.passwordsLine = new List<Password>();
             this.creditCardsLine = new List<CreditCard>();
             this.filePath = String.Empty;
             this.fileContent = String.Empty;
-            this.dBreachesController = dBreachesController;
         }
 
         public void AddListener(HandleBackToMenu del)
@@ -103,8 +103,9 @@ namespace UserInterface
             LoadList();
             List<Password> passwordsList = (List<Password>)this.passwords.GetAllWithSamePassword(this.passwordsLine);
             List<CreditCard> creditCardlist = (List<CreditCard>)this.creditCards.GetAllWithSameNumber(this.creditCardsLine);
-			dBreachesController.AddDataBreach(new DataBreach(creditCardlist, passwordsList));
-            ListDataBreaches listDataBreaches = new ListDataBreaches(passwordsList, creditCardlist, this.passwords, this.profile, this.dBreachesController);
+            DataBreach dataBreach = new DataBreach(creditCardlist, passwordsList);
+            dBreachesController.Add(dataBreach);
+            ListDataBreaches listDataBreaches = new ListDataBreaches(dataBreach, this.passwords, this.profile, this.dBreachesController);
             listDataBreaches.AddListener(ReturnToDataBreach);
             ChangeWindow(listDataBreaches);
         }

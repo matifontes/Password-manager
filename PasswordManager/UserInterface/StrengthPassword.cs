@@ -18,16 +18,16 @@ namespace UserInterface
         private PasswordRepository passwords;
         private ProfileController profile;
         private CategoryRepository categories;
-        private DataBreachesController dBreachesController;
+        private DataBreachRepository dBreaches;
         private event HandleBackToMenu ChangeToMenu;
         private event HandleWindowChange ChangeWindow;
-        public StrengthPassword(ProfileController profile, DataBreachesController dBreaches)
+        public StrengthPassword(ProfileController profile)
         {
             InitializeComponent();
             this.profile = profile;
             this.categories = new CategoryRepository(profile.GetProfile());
             this.passwords = new PasswordRepository(profile.GetProfile());
-            this.dBreachesController = dBreaches;
+            this.dBreaches = new DataBreachRepository(profile.GetProfile());
             LoadPasswordCount();
             EnableOptions();
         }
@@ -73,7 +73,7 @@ namespace UserInterface
 
         private void BtnRedPassword_Click(object sender, EventArgs e)
         {
-            ListStrengthPasswords redPasswords = new ListStrengthPasswords(this.passwords, categories, RED_STRENGTH, this.dBreachesController);
+            ListStrengthPasswords redPasswords = new ListStrengthPasswords(this.passwords, categories, RED_STRENGTH, this.dBreaches);
             redPasswords.AddListener(ReturnToPasswordStrengh);
             ChangeWindow(redPasswords);
         }
@@ -81,28 +81,28 @@ namespace UserInterface
 
         private void BtnOrangePassword_Click(object sender, EventArgs e)
         {
-            ListStrengthPasswords orangePasswords = new ListStrengthPasswords(this.passwords, categories, ORANGE_STRENGTH, this.dBreachesController);
+            ListStrengthPasswords orangePasswords = new ListStrengthPasswords(this.passwords, categories, ORANGE_STRENGTH, this.dBreaches);
             orangePasswords.AddListener(ReturnToPasswordStrengh);
             ChangeWindow(orangePasswords);
         }
 
         private void BtnYellowPassword_Click(object sender, EventArgs e)
         {
-            ListStrengthPasswords yellowPasswords = new ListStrengthPasswords(this.passwords, categories, YELLOW_STRENGTH, this.dBreachesController);
+            ListStrengthPasswords yellowPasswords = new ListStrengthPasswords(this.passwords, categories, YELLOW_STRENGTH, this.dBreaches);
             yellowPasswords.AddListener(ReturnToPasswordStrengh);
             ChangeWindow(yellowPasswords);
         }
 
         private void BtnLightGreenPassword_Click(object sender, EventArgs e)
         {
-            ListStrengthPasswords lightGreenPasswords = new ListStrengthPasswords(this.passwords, categories, LIGHTGREEN_STRENGTH, this.dBreachesController);
+            ListStrengthPasswords lightGreenPasswords = new ListStrengthPasswords(this.passwords, categories, LIGHTGREEN_STRENGTH, this.dBreaches);
             lightGreenPasswords.AddListener(ReturnToPasswordStrengh);
             ChangeWindow(lightGreenPasswords);
         }
 
         private void BtnDarkGreenPassword_Click(object sender, EventArgs e)
         {
-            ListStrengthPasswords darkGreenPasswords = new ListStrengthPasswords(this.passwords, categories, DARKGREEN_STRENGTH, this.dBreachesController);
+            ListStrengthPasswords darkGreenPasswords = new ListStrengthPasswords(this.passwords, categories, DARKGREEN_STRENGTH, this.dBreaches);
             darkGreenPasswords.AddListener(ReturnToPasswordStrengh);
             ChangeWindow(darkGreenPasswords);
         }
