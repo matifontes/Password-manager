@@ -53,9 +53,10 @@ namespace PasswordManager
             get { return _note; }
             set => SetNote(value);
         }
-        
+        public DateTime LastPasswordChange { get; set; }
+
         public string Strength { get; private set; }
-        public DateTime LastModificationDate { get; private set; }
+        public DateTime LastModificationDate { get; set; }
 
         public Password(string password)
         {
@@ -107,6 +108,7 @@ namespace PasswordManager
             {
                 this._pass = value;
                 this.LastModificationDate = DateTime.Now;
+                this.LastPasswordChange = DateTime.Now;
                 this.Strength = PasswordStrength(value);
             }
         }

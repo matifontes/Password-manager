@@ -101,6 +101,7 @@ namespace PasswordManagerDataLeyer.RepositoriesDB
                 entity.Password = password.Pass;
                 entity.Note = password.Note;
                 entity.LastModificationDate = password.LastModificationDate;
+                entity.LastPasswordChange = password.LastPasswordChange;
                 entity.Strength = password.Strength;
                 context.SaveChanges();
             }

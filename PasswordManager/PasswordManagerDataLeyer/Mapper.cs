@@ -53,7 +53,8 @@ namespace PasswordManagerDataLeyer
                 Password = password.Pass,
                 Note = password.Note,
                 Strength = password.Strength,
-                LastModificationDate = password.LastModificationDate
+                LastModificationDate = password.LastModificationDate,
+                LastPasswordChange = password.LastPasswordChange
             };
             return passwordEntity;
         }
@@ -65,6 +66,8 @@ namespace PasswordManagerDataLeyer
             Password password = new Password(category, passwordEntity.Password, passwordEntity.Site, passwordEntity.User, passwordEntity.Note);
             {
                 password.Id = passwordEntity.Id;
+                password.LastPasswordChange = passwordEntity.LastPasswordChange;
+                password.LastModificationDate = passwordEntity.LastModificationDate;
             }
             return password;
         }
