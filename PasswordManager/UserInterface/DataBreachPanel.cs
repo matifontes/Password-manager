@@ -19,7 +19,7 @@ namespace UserInterface
         private CreditCardRepository creditCards;
         private ProfileController profile;
         private PasswordRepository passwords;
-		private DataBreachRepository dBreachesController;
+		private DataBreachRepository dBreaches;
         private event HandleBackToMenu ChangeToMenu;
         private event HandleWindowChange ChangeWindow;
         private List<Password> passwordsLine;
@@ -33,7 +33,7 @@ namespace UserInterface
             this.profile = profile;
             this.passwords = new PasswordRepository(profile.GetProfile());
             this.creditCards = new CreditCardRepository(profile.GetProfile());
-            this.dBreachesController = new DataBreachRepository(profile.GetProfile());
+            this.dBreaches = new DataBreachRepository(profile.GetProfile());
             this.passwordsLine = new List<Password>();
             this.creditCardsLine = new List<CreditCard>();
             this.filePath = String.Empty;
@@ -104,8 +104,8 @@ namespace UserInterface
             List<Password> passwordsList = (List<Password>)this.passwords.GetAllWithSamePassword(this.passwordsLine);
             List<CreditCard> creditCardlist = (List<CreditCard>)this.creditCards.GetAllWithSameNumber(this.creditCardsLine);
             DataBreach dataBreach = new DataBreach(creditCardlist, passwordsList);
-            dBreachesController.Add(dataBreach);
-            ListDataBreaches listDataBreaches = new ListDataBreaches(dataBreach, this.passwords, this.profile, this.dBreachesController);
+            dBreaches.Add(dataBreach);
+            ListDataBreaches listDataBreaches = new ListDataBreaches(dataBreach, this.passwords, this.profile, this.dBreaches);
             listDataBreaches.AddListener(ReturnToDataBreach);
             ChangeWindow(listDataBreaches);
         }
