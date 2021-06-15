@@ -68,6 +68,7 @@ namespace PasswordManagerDataLeyer.RepositoriesDB
                 return dataBreaches;
             }
         }
+
         public void Delete(int id) 
         {
             using (PasswordManagerContext context = new PasswordManagerContext())
@@ -80,6 +81,7 @@ namespace PasswordManagerDataLeyer.RepositoriesDB
                 }
             }
         }
+
         public void Update(DataBreach entity) 
         {
             throw new NotImplementedException();

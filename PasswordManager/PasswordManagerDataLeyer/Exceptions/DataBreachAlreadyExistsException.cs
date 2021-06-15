@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 namespace PasswordManagerDataLeyer
 {
     [Serializable]
-    class DataBreachAlreadyExistsException : Exception
+    public class DataBreachAlreadyExistsException : Exception
     {
         public DataBreachAlreadyExistsException()
         {

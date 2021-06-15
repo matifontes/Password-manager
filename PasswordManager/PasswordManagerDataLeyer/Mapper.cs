@@ -99,8 +99,8 @@ namespace PasswordManagerDataLeyer
         {
             List<Password> passwords = new List<Password>();
             List<CreditCard> cards = new List<CreditCard>();
-            List<PasswordEntity> passwordsEntity = (List<PasswordEntity>)dataBreachEntity.PasswordsEntity;
-            List<CreditCardEntity> creditCardsEntity = (List<CreditCardEntity>)dataBreachEntity.CreditCardEntity;
+            List<PasswordEntity> passwordsEntity = (List<PasswordEntity>)dataBreachEntity.PasswordsEntity.ToList();
+            List<CreditCardEntity> creditCardsEntity = (List<CreditCardEntity>)dataBreachEntity.CreditCardEntity.ToList();
             foreach (PasswordEntity password in passwordsEntity) 
             {
                 passwords.Add(EntityToPassword(password));
