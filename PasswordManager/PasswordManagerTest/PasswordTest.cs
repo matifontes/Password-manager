@@ -296,5 +296,13 @@ namespace PasswordManagerTest
             Assert.IsFalse(passwordCreatedToday.Equals(samePassword));
         }
 
+        [TestMethod]
+        public void VerifyPasswordId()
+        {
+            passwordCreatedToday.Id = 1;
+
+            Assert.AreEqual(1, passwordCreatedToday.Id);
+        }
+
     }
 }

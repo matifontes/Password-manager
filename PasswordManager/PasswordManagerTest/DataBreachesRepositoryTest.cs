@@ -14,11 +14,13 @@ namespace PasswordManagerTest
         List<Password> passwords;
         DataBreach dBreach;
         DataBreachesRepository dataBreachesRepository;
+        Password password;
 
         [TestInitialize]
         public void Setup() {
             cards = new List<CreditCard>();
             passwords = new List<Password>();
+            password = new Password("Passtest123");
             dBreach = new DataBreach(cards, passwords);
             dataBreachesRepository = new DataBreachesRepository();
         }
@@ -29,6 +31,7 @@ namespace PasswordManagerTest
             cards = null;
             passwords = null;
             dBreach = null;
+            password = null;
             dataBreachesRepository = null;
         }
     
@@ -75,7 +78,6 @@ namespace PasswordManagerTest
         [TestMethod]
         public void PasswordExistOnDataBreaches()
         {
-            Password password = new Password("Passtest123");
             this.passwords.Add(password);
             DataBreach dBreach01 = new DataBreach(cards, passwords);
             DataBreach dBreach02 = new DataBreach(cards, passwords);
@@ -86,12 +88,17 @@ namespace PasswordManagerTest
         [TestMethod]
         public void PasswordDoesntExistOnDataBreaches()
         {
-            Password password = new Password("Passtest123");
             DataBreach dBreach01 = new DataBreach(cards, passwords);
             DataBreach dBreach02 = new DataBreach(cards, passwords);
             dataBreachesRepository.AddDataBreach(dBreach01);
             dataBreachesRepository.AddDataBreach(dBreach02);
             Assert.IsFalse(dataBreachesRepository.PasswordExistOnDataBreaches(password));
+        }
+
+        public void CheckEquals()
+        {
+            string passString = password.Pass;
+            Assert.IsTrue(password.Pass.Equals(passString));
         }
 
     }

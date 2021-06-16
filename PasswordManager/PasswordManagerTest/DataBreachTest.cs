@@ -13,12 +13,16 @@ namespace PasswordManagerTest
     {
         List<CreditCard> creditCards;
         List<Password> passwords;
+        DataBreach dBreachTest;
+        DateTime nowDateTime;
 
         [TestInitialize]
         public void Setup()
         {
             creditCards = new List<CreditCard>();
             passwords = new List<Password>();
+            nowDateTime = DateTime.Now;
+            dBreachTest = new DataBreach(creditCards, passwords);
         }
 
         [TestCleanup]
@@ -26,22 +30,35 @@ namespace PasswordManagerTest
         {
             creditCards = null;
             passwords = null;
+            dBreachTest = null;
         }
 
         [TestMethod]
         public void CreateDataBreach()
         {
-            DataBreach dBreachTest = new DataBreach(creditCards, passwords);
             Assert.IsNotNull(dBreachTest);
         }
 
         [TestMethod]
         public void CheckDateofDataBreach()
         {
-            DateTime nowDateTime = DateTime.Now;
-            DataBreach dBreachDateTest = new DataBreach(creditCards, passwords);
+            Assert.AreEqual(nowDateTime, dBreachTest.Date);
+        }
+
+        [TestMethod]
+        public void CheckToString()
+        {
+            string toStringTest = "DataBreach: " + dBreachTest.Date;
             
-            Assert.AreEqual(nowDateTime, dBreachDateTest.Date);
+            Assert.AreEqual(toStringTest, dBreachTest.ToString());
+        }
+
+        [TestMethod]
+        public void VerifyDataBreachId()
+        {
+            dBreachTest.Id = 1;
+
+            Assert.AreEqual(1, dBreachTest.Id);
         }
     }
 }
