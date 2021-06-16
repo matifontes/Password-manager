@@ -65,5 +65,14 @@ namespace PasswordManagerTest
             Category categoryWithSameName = new Category("PERSONAL");
             Assert.IsTrue(category.IsEqual(categoryWithSameName));
         }
+
+        [TestMethod]
+        public void VerifyCategoryId()
+        {
+            Category category = new Category("Personal");
+            category.Id = 1;
+
+            Assert.AreEqual(1, category.Id);
+        }
     }
 }
