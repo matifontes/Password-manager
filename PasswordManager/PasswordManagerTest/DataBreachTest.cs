@@ -43,5 +43,23 @@ namespace PasswordManagerTest
             
             Assert.AreEqual(nowDateTime, dBreachDateTest.Date);
         }
+
+        [TestMethod]
+        public void CheckToString()
+        {
+            DateTime nowDateTime = DateTime.Now;
+            DataBreach dBreach = new DataBreach(creditCards, passwords);
+            string toStringTest = "DataBreach: " + dBreach.Date;
+            
+            Assert.AreEqual(toStringTest, dBreach.ToString());
+        }
+
+        [TestMethod]
+        public void VerifyDataBreachId()
+        {
+            DataBreach dBreach = new DataBreach(creditCards, passwords);
+            dBreach.Id = 1;
+            Assert.AreEqual(1, dBreach.Id);
+        }
     }
 }
