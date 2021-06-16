@@ -88,27 +88,26 @@ namespace UserInterface
             operationPanel.Controls.Add(createPassword);
         }
 
-        private void CreatePasswordEvent() 
+        private void CreatePasswordEvent()
         {
-            Password pass = new Password((Category)cbxCategories.SelectedItem, txtPassword.Text, txtSite.Text, txtUser.Text, txtNote.Text);
-
-            String msg = SuggestPasswordImprovement(pass);
-            const string DIALOG_ACTION = "Crear contraseña";
-            
-            if (ConfirmDialog(msg, DIALOG_ACTION))
+            try
             {
-                try
+                Password pass = new Password((Category)cbxCategories.SelectedItem, txtPassword.Text, txtSite.Text, txtUser.Text, txtNote.Text);
+
+                String msg = SuggestPasswordImprovement(pass);
+                const string DIALOG_ACTION = "Crear contraseña";
+
+                if (ConfirmDialog(msg, DIALOG_ACTION))
                 {
                     const string SUCCESSFUL_MSG = "Contraseña creada con exito";
-                    passwords.Add(new Password((Category)cbxCategories.SelectedItem, txtPassword.Text, txtSite.Text, txtUser.Text, txtNote.Text));
+                    passwords.Add(pass);
                     ShowMSG(System.Drawing.Color.Green, SUCCESSFUL_MSG);
                     PostModification();
                 }
-                catch (Exception e)
-                {
-                    ShowMSG(System.Drawing.Color.Red, e.Message);
-                }
-            }     
+            }catch (Exception e)
+            {
+                ShowMSG(System.Drawing.Color.Red, e.Message);
+            }
         }
 
         private void ModifyPasswordEvent() 
