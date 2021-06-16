@@ -32,6 +32,14 @@ namespace UserInterface
             InitializeComponent();
             this.profile = profile;
             this.dBreach = dBreach;
+            if(dBreach.passwords.Count > 0)
+            {
+                btnModify.Enabled = true;
+            }
+            else
+            {
+                btnModify.Enabled = false;
+            }
             LoadListPasswords();
             LoadCreditCardsList();
         }
