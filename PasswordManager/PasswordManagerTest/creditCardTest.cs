@@ -141,5 +141,13 @@ namespace PasswordManagerTest
             CreditCard sameCard = new CreditCard(category, name, type, creditCardNumber, ccvCode, expDate, note);
             Assert.IsFalse(card.IsEqual(sameCard));
         }
+
+        [TestMethod]
+        public void VerifyCreditCardId()
+        {
+            card.Id = 1;
+
+            Assert.AreEqual(1, card.Id);
+        }
     }
 }
