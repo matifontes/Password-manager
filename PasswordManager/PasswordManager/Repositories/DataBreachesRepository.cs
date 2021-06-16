@@ -36,7 +36,7 @@ namespace PasswordManager.Repositories
             {
                 foreach (Password dBreachPassword in dBreach.passwords)
                 {
-                    if (dBreachPassword.Pass == pass.Pass)
+                    if (dBreachPassword.Pass.Equals(pass.Pass))
                     {
                         return true;
                     }
