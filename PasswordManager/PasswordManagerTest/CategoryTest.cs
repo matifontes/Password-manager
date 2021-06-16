@@ -8,12 +8,25 @@ namespace PasswordManagerTest
     [TestClass]
     public class CategoryTest
     {
+        Category personalCategory;
+
+        [TestInitialize]
+        public void Setup()
+        {
+            personalCategory = new Category("Personal");
+        }
+
+        [TestCleanup]
+        public void Cleanup()
+        {
+            personalCategory = null;
+        }
+
         [TestMethod]
         public void CreateCategoryWithValidName()
         {
             string validName = "Personal";
-            Category personal = new Category(validName);
-            Assert.AreEqual(personal.Name,validName);
+            Assert.AreEqual(personalCategory.Name,validName);
         }
 
         [TestMethod]
@@ -21,7 +34,7 @@ namespace PasswordManagerTest
         public void CreateCategoryWithNameShorterThanTheMinimumValidLength()
         {
             string invalidName = "NA";
-            Category personal = new Category(invalidName);
+            Category invalidNameCategory = new Category(invalidName);
         }
 
         [TestMethod]
@@ -29,41 +42,44 @@ namespace PasswordManagerTest
         public void CreateCategoryWithNameLongerThanTheMaximumValidLength()
         {
             string invalidName = "0123456789ABCDEF";
-            Category personal = new Category(invalidName);
+            Category invalidNameCategory = new Category(invalidName);
         }
 
         [TestMethod]
         public void CategoryObjectToStringShouldSayItsName() 
         {
             string validName = "Personal";
-            Category personal = new Category(validName);
-            Assert.AreEqual(personal.ToString(), validName);
+            Assert.AreEqual(personalCategory.ToString(), validName);
         }
 
         [TestMethod]
         public void ChangeCategoryNameWithValidName() 
         {
-            Category category = new Category("Personal");
             string newName = "Trabajo";
-            category.ChangeName(newName);
-            Assert.AreEqual(category.Name, newName);
+            personalCategory.ChangeName(newName);
+            Assert.AreEqual(personalCategory.Name, newName);
         }
 
         [TestMethod]
         [ExpectedException(typeof(InvalidCategoryNameException))]
         public void ChangeCategoryNameWithInvalidName()
         {
-            Category category = new Category("Personal");
             string invalidNewName = "PC";
-            category.ChangeName(invalidNewName);
+            personalCategory.ChangeName(invalidNewName);
         }
 
         [TestMethod]
         public void CategorysWithSameNameAreEqual() 
         {
-            Category category = new Category("Personal");
             Category categoryWithSameName = new Category("PERSONAL");
-            Assert.IsTrue(category.IsEqual(categoryWithSameName));
+            Assert.IsTrue(personalCategory.IsEqual(categoryWithSameName));
+        }
+
+        [TestMethod]
+        public void VerifyCategoryId()
+        {
+            personalCategory.Id = 1;
+            Assert.AreEqual(1, personalCategory.Id);
         }
     }
 }
