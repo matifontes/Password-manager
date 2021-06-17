@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using PasswordManager.Controllers;
 using PasswordManager;
 using PasswordManager.Exceptions;
+using PasswordManager.Repositories;
 
 namespace PasswordManagerTest
 {
@@ -134,7 +135,7 @@ namespace PasswordManagerTest
 
             List<CreditCard> creditCards = new List<CreditCard>();
             creditCards.Add(card2);
-            List<CreditCard> creditCardsResult = creditCardsController.GetMatchingCreditCardsList(creditCards);
+            List<CreditCard> creditCardsResult = creditCardsController.GetMatchingCreditCards(creditCards);
             Assert.AreEqual(card2.Number, creditCardsResult[0].Number);
         }
 

@@ -1,37 +1,37 @@
 ﻿using System.Collections.Generic;
 using PasswordManager.Exceptions;
+using PasswordManager.Repositories;
 
 namespace PasswordManager
 {
     public class Profile
     {
+        const string INVALID_PASSWORD_LENGTH = "Contraseña Invalida, debe tener entre 5 a 25 caracteres";
+        const string EMPTY_PASSWORD = "Contraseña Invalida, no puede ser vacia";
+
         private string _password;
-        public string password 
+
+        public int Id { get; set; }
+        public string Password 
         {
             get { return this._password; }
             set => SetPassword(value);
         }
-        private CategoryRepository categories;
-        private PasswordRepository passwords;
-        private CreditCardRepository creditCards;
 
         public Profile(string password) {
-            this.password = password;
-            categories = new CategoryRepository();
-            passwords = new PasswordRepository();
-            creditCards = new CreditCardRepository();
+            this.Password = password;
         }
 
         public bool ValidatePassword(string password) 
         {
-            return password.Equals(this.password);
+            return password.Equals(this.Password);
         }
 
         public void ChangePassword(string actualPassword, string newPassword)
         {
             if (ValidatePassword(actualPassword))
             {
-                this.password = newPassword;
+                this.Password = newPassword;
             }
             else 
             {
@@ -40,27 +40,16 @@ namespace PasswordManager
             }
         }
 
-        public CategoryRepository GetCategoryRepository() 
-        {
-            return this.categories;
-        }
-
-        public PasswordRepository GetPasswordRepository() 
-        {
-            return this.passwords;
-        }
-
-        public CreditCardRepository GetCreditCardRepository() 
-        {
-            return this.creditCards;
-        }
-
         private void SetPassword(string password) 
         {
             if (!IsValidPassword(password)) 
             {
-                const string INVALID_PASSWORD = "La contraseña debe tener entre 5 a 25 caracteres";
-                throw new InvalidPasswordException(INVALID_PASSWORD);
+                
+                throw new InvalidPasswordException(EMPTY_PASSWORD);
+            }
+            else if (!IsValidLength(password)) 
+            {
+                throw new InvalidPasswordException(INVALID_PASSWORD_LENGTH);
             }
             else
             {
@@ -69,6 +58,16 @@ namespace PasswordManager
         }
 
         private bool IsValidPassword(string password) 
+        {
+            string emptyPassword = "";
+            for(int i = 0; i < password.Length; i++)
+            {
+                emptyPassword += " ";
+            }
+            return password != emptyPassword;
+        }
+
+        private bool IsValidLength(string password) 
         {
             return password.Length >= 5 && password.Length <= 25;
         }

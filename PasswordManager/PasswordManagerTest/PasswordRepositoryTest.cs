@@ -3,12 +3,20 @@ using System;
 using PasswordManager;
 using System.Collections.Generic;
 using PasswordManager.Exceptions;
+using PasswordManager.Repositories;
 
 namespace PasswordManagerTest
 {
     [TestClass]
     public class PasswordRepositoryTest
     {
+
+        const string RED_STRENGTH = "Red";
+        const string ORANGE_STRENGTH = "Orange";
+        const string YELLOW_STRENGTH = "Yellow";
+        const string LIGHTGREEN_STRENGTH = "LightGreen";
+        const string DARKGREEN_STRENGTH = "DarkGreen";
+
         private PasswordRepository passwordRepository;
         private Category category;
         private Password password;
@@ -135,50 +143,50 @@ namespace PasswordManagerTest
         }
 
         [TestMethod]
-        public void ListPasswordsRedStrength()
+        public void ListPasswordsByStrengthRED() 
         {
             passwordRepository.AddPassword(password);
-            List<Password> redPasswords = passwordRepository.ListRedPasswords();
+            List<Password> redPasswords = passwordRepository.ListPasswordsByStrength(RED_STRENGTH);
             Assert.IsFalse(passwordRepository.IsEmptyList(redPasswords));
         }
 
         [TestMethod]
-        public void ListPasswordsOrangeStrength()
+        public void ListPasswordsByStrengthORANGE()
         {
             string passOr = "testOrange";
             Password passOrange = new Password(category, passOr, site, user, note);
             passwordRepository.AddPassword(passOrange);
-            List<Password> orangePasswords = passwordRepository.ListOrangePasswords();
+            List<Password> orangePasswords = passwordRepository.ListPasswordsByStrength(ORANGE_STRENGTH);
             Assert.IsFalse(passwordRepository.IsEmptyList(orangePasswords));
         }
 
         [TestMethod]
-        public void ListPasswordsYellowStrength()
+        public void ListPasswordsByStrengthYELLOW()
         {
             string passY = "testyellowyellowwwww";
             Password passYellow = new Password(category, passY, site, user, note);
             passwordRepository.AddPassword(passYellow);
-            List<Password> yellowPasswords = passwordRepository.ListYellowPasswords();
+            List<Password> yellowPasswords = passwordRepository.ListPasswordsByStrength(YELLOW_STRENGTH);
             Assert.IsFalse(passwordRepository.IsEmptyList(yellowPasswords));
         }
 
         [TestMethod]
-        public void ListPasswordsLightGreenStrength()
+        public void ListPasswordsByStrengthLIGHTGREEN()
         {
             string passLG = "testGreenGreenGR";
             Password passLGreen = new Password(category, passLG, site, user, note);
             passwordRepository.AddPassword(passLGreen);
-            List<Password> lGreenPasswords = passwordRepository.ListLGreenPasswords();
+            List<Password> lGreenPasswords = passwordRepository.ListPasswordsByStrength(LIGHTGREEN_STRENGTH);
             Assert.IsFalse(passwordRepository.IsEmptyList(lGreenPasswords));
         }
 
         [TestMethod]
-        public void ListPasswordsDarkGreenStrength()
+        public void ListPasswordsByStrengthDARKGREEN()
         {
             string passDG = "testGreenGreen.13";
             Password passDGreen = new Password(category, passDG, site, user, note);
             passwordRepository.AddPassword(passDGreen);
-            List<Password> dGreenPasswords = passwordRepository.ListDGreenPasswords();
+            List<Password> dGreenPasswords = passwordRepository.ListPasswordsByStrength(DARKGREEN_STRENGTH);
             Assert.IsFalse(passwordRepository.IsEmptyList(dGreenPasswords));
         }
 
@@ -199,6 +207,24 @@ namespace PasswordManagerTest
             List<Password> passwordsResult = passwordRepository.GetPasswordMatching(passwords2);
 
             Assert.AreEqual(passwordsResult[0], password);
+        }
+
+        [TestMethod]
+        public void ExistPasswordWithSameUserAndPassword()
+        {
+            Password pass = new Password(category, "Admin", "www.google.com", "Admin", "Prueba123");
+            passwordRepository.AddPassword(password);
+
+            Assert.IsTrue(passwordRepository.ExistPasswordWithSamePassAndUser(pass));
+        }
+
+        [TestMethod]
+        public void DoesntExistPasswordWithSameUserAndPassword()
+        {
+            Password pass = new Password(category, "Admin123", "www.google.com", "Admin", "Prueba123");
+            passwordRepository.AddPassword(password);
+
+            Assert.IsFalse(passwordRepository.ExistPasswordWithSamePassAndUser(pass));
         }
     }
 }

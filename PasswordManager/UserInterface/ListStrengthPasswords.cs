@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using PasswordManager.Controllers;
 using PasswordManager;
+using PasswordManagerDataLeyer.RepositoriesDB;
 
 namespace UserInterface
 {
@@ -18,20 +15,23 @@ namespace UserInterface
         const string SITE_HEADER = "Sitio";
         const string USER_HEADER = "Usuario";
         const string LASTMODIFICATION_DATE_HEADER = "Última Modificación";
-        private PasswordsController passwords;
-        private CategoriesController categories;
+        private PasswordRepository passwords;
+        private CategoryRepository categories;
         private event HandleBackToMenu ChangeToPasswordStrenght;
         private CreateModifyPassword passwordForm;
-        private List<Password> passList;
+        private List<Password> passwordByStrength;
         private Password modifyPassword;
+        private DataBreachRepository dBreaches;
         private string strength;
-        public ListStrengthPasswords(PasswordsController passwords, CategoriesController categories, List<Password> list, string strength)
+
+        public ListStrengthPasswords(PasswordRepository passwords, CategoryRepository categories, string strength, DataBreachRepository dBreaches)
         {
             InitializeComponent();
             this.categories = categories;
-            this.passList = list;
-            this.strength = strength;
             this.passwords = passwords;
+            this.passwordByStrength = (List<Password>)passwords.GetPasswordsByStrength(strength);
+            this.strength = strength;
+            this.dBreaches = dBreaches;
             EnableOptions();
             LoadTitle();
             LoadListPasswords();
@@ -44,17 +44,17 @@ namespace UserInterface
 
         private void LoadTitle()
         {
-            if(this.passList.Count > 0)
+            if(this.passwordByStrength.Count > 0)
             {
                 string title = "Contraseñas con fortaleza ";
-                title += this.passList[0].Strength;
+                title += this.passwordByStrength[0].Strength;
                 lblTitle.Text = title;
             }
         }
 
         private void EnableOptions()
         {
-            if (this.passList.Count() == 0)
+            if (this.passwordByStrength.Count() == 0)
             {
                 btnModify.Enabled = false;
             }
@@ -68,7 +68,7 @@ namespace UserInterface
         {
             DataTable dataTable = InitializeTable();
 
-            foreach (Password password in passList)
+            foreach (Password password in passwordByStrength)
             {
 
                 DataRow row = dataTable.NewRow();
@@ -98,7 +98,7 @@ namespace UserInterface
             DisposeChildForms();
             Password password = (Password)dgvList.SelectedRows[0].Cells[2].Value;
             this.modifyPassword = password;
-            this.passwordForm = new CreateModifyPassword(this.passwords,this.categories, password);
+            this.passwordForm = new CreateModifyPassword(this.passwords,this.categories, password, this.dBreaches);
             passwordForm.AddListener(PostModification);
             passwordForm.Show();
         }
@@ -108,7 +108,7 @@ namespace UserInterface
             if (this.modifyPassword.Strength != this.strength) 
             {
                 const string SUCCESSFUL_MODIFY = "Contraseña modificada correctamente, a cambiado su nivel de fortaleza";
-                this.passList.Remove(this.modifyPassword);
+                this.passwordByStrength.Remove(this.modifyPassword);
                 DisposeChildForms();
                 DisposeModifyPassword();
                 ShowMSG(System.Drawing.Color.Green, SUCCESSFUL_MODIFY);

@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using PasswordManager.Controllers;
 using PasswordManager;
+using PasswordManagerDataLeyer.RepositoriesDB;
 
 namespace UserInterface
 {
@@ -24,20 +20,22 @@ namespace UserInterface
         const string EXPIRYDATE_HEADER = "Vencimiento";
         private event HandleBackToMenu ChangeToDataBreach;
         private CreateModifyPassword passwordForm;
-        private CategoriesController categories;
-        private PasswordsController passwordsController;
+        private PasswordRepository passwordRepository;
+        private ProfileController profile;
+        private CategoryRepository categories;
+        private DataBreachRepository dBreaches;
         private Password password;
-        List<Password> passwords;
-        List<CreditCard> creditCards;
+        private DataBreach dataBreach;
 
 
-        public ListDataBreaches(List<Password> passwords, List<CreditCard> creditCards, CategoriesController categories, PasswordsController passwordsController)
+        public ListDataBreaches(DataBreach dataBreach,PasswordRepository passwordRepository, ProfileController profile, DataBreachRepository dBreaches)
         {
             InitializeComponent();
-            this.passwordsController = passwordsController;
-            this.categories = categories;
-            this.passwords = passwords;
-            this.creditCards = creditCards;
+            this.passwordRepository = passwordRepository;
+            this.profile = profile;
+            this.categories = new CategoryRepository(profile.GetProfile());
+            this.dBreaches = dBreaches;
+            this.dataBreach = dataBreach;
             LoadListPasswords();
             LoadCreditCardsList();
             EnableModifyOption();
@@ -52,7 +50,7 @@ namespace UserInterface
         {
             DataTable dataTable = InitializeTablePassword();
 
-            foreach (Password password in this.passwords)
+            foreach (Password password in this.dataBreach.passwords)
             {
                 DataRow row = dataTable.NewRow();
                 row[CATEGORY_HEADER] = password.Category;
@@ -79,7 +77,7 @@ namespace UserInterface
         {
             DataTable dataTable = InitializeDataTableCreditCard();
 
-            foreach (CreditCard creditCard in this.creditCards)
+            foreach (CreditCard creditCard in this.dataBreach.creditCards)
             {
                 DataRow row = dataTable.NewRow();
                 row[CATEGORY_HEADER] = creditCard.Category;
@@ -108,8 +106,8 @@ namespace UserInterface
 
         private void EnableModifyOption()
         {
-            btnModify.Enabled = this.passwords.Count > 0;
-            if (this.creditCards.Count == 0)
+            btnModify.Enabled = this.dataBreach.passwords.Count > 0;
+            if (this.dataBreach.creditCards.Count == 0)
             {
                 dgvCreditCards.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             }
@@ -124,7 +122,7 @@ namespace UserInterface
             DisposeChildForm();
             Password password = (Password)dgvPasswords.SelectedRows[0].Cells[2].Value;
             this.password = password;
-            this.passwordForm = new CreateModifyPassword(this.passwordsController, this.categories, password);
+            this.passwordForm = new CreateModifyPassword(this.passwordRepository, this.categories, password, this.dBreaches);
             passwordForm.AddListener(PostModification);
             passwordForm.Show();
         }

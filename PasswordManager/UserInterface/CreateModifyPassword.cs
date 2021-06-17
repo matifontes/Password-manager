@@ -1,40 +1,46 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using PasswordManager;
 using PasswordManager.Controllers;
 using PasswordManager.Exceptions;
+using PasswordManagerDataLeyer.RepositoriesDB;
 
 namespace UserInterface
 {
     public partial class CreateModifyPassword : Form
     {
-        private PasswordsController passwords;
-        private CategoriesController categories;
+        const string LIGHTGREEN_STRENGTH = "LightGreen";
+        const string DARKGREEN_STRENGTH = "DarkGreen";
+        const string RED_STRENGTH = "Red";
+        const string ORANGE_STRENGTH = "Orange";
+        const string YELLOW_STRENGTH = "Yellow";
+        private PasswordRepository passwords;
+        private CategoryRepository categories;
+        private ProfileController profile;
         private event HandlePostModification PostModification;
         private Password password;
-        public CreateModifyPassword(PasswordsController passwords, CategoriesController categories)
+		private DataBreachRepository dataBreach;
+
+        public CreateModifyPassword(PasswordRepository passwords, CategoryRepository categories, ProfileController profile, DataBreachRepository dataBreach)
         {
             InitializeComponent();
             CreatePasswordPanel();
             this.passwords = passwords;
             this.categories = categories;
+			this.dataBreach = dataBreach;
+            this.profile = profile;
             LoadCategories();
         }
 
-        public CreateModifyPassword(PasswordsController passwords, CategoriesController categories, Password password) 
+        public CreateModifyPassword(PasswordRepository passwords, CategoryRepository categories, Password password, DataBreachRepository dataBreach) 
         {
             InitializeComponent();
             CreateModifyPanel();
             this.passwords = passwords;
             this.categories = categories;
             this.password = password;
+            this.dataBreach = dataBreach;
             LoadCategories();
             LoadPasswordOnFields();
         }
@@ -46,7 +52,7 @@ namespace UserInterface
 
         private void LoadCategories() 
         {
-            foreach (Category category in categories.ListCategories()) 
+            foreach (Category category in categories.GetAll()) 
             {
                 cbxCategories.Items.Add(category);
             }
@@ -82,54 +88,140 @@ namespace UserInterface
             operationPanel.Controls.Add(createPassword);
         }
 
-        private void CreatePasswordEvent() 
+        private void CreatePasswordEvent()
         {
             try
             {
-                const string SUCCESSFUL_MSG = "Contraseña creada con exito";
-                passwords.AddPassword(new Password((Category)cbxCategories.SelectedItem, txtPassword.Text, txtSite.Text, txtUser.Text, txtNote.Text));
-                ShowMSG(System.Drawing.Color.Green, SUCCESSFUL_MSG);
-                PostModification();
-            }
-            catch (Exception e) 
+                Password pass = new Password((Category)cbxCategories.SelectedItem, txtPassword.Text, txtSite.Text, txtUser.Text, txtNote.Text);
+
+                String msg = SuggestPasswordImprovement(pass);
+                const string DIALOG_ACTION = "Crear contraseña";
+
+                if (ConfirmDialog(msg, DIALOG_ACTION))
+                {
+                    const string SUCCESSFUL_MSG = "Contraseña creada con exito";
+                    passwords.Add(pass);
+                    ShowMSG(System.Drawing.Color.Green, SUCCESSFUL_MSG);
+                    PostModification();
+                }
+            }catch (Exception e)
             {
-                ShowMSG(System.Drawing.Color.Red,e.Message);
+                ShowMSG(System.Drawing.Color.Red, e.Message);
             }
-                
         }
 
         private void ModifyPasswordEvent() 
         {
-            try
-            {
-                if (SiteOrUserChanged() && CheckForPairSiteUserOnPasswords()) 
+            Password pass = new Password((Category)cbxCategories.SelectedItem, txtPassword.Text, txtSite.Text, txtUser.Text, txtNote.Text);
+           
+            String msg = SuggestPasswordImprovement(pass);
+            const string DIALOG_ACTION = "Cambiar de contraseña";
+
+            if (ConfirmDialog(msg, DIALOG_ACTION)) {
+                try
                 {
-                    const string PASSWORD_WITH_PAIR_USER_SITE_ALREADY_EXISTS = "Existe una contraseña con el par definido de Sitio/Usuario";
-                    throw new PasswordAlreadyExistsException(PASSWORD_WITH_PAIR_USER_SITE_ALREADY_EXISTS);
+                    const string SUCCESSFUL_MSG = "Contraseña modificada con exito";
+                    password.Category = (Category)cbxCategories.SelectedItem;
+                    password.Site = txtSite.Text;
+                    password.User = txtUser.Text;
+                    password.Pass = txtPassword.Text;
+                    password.Note = txtNote.Text;
+                    this.passwords.Update(password);
+                    ShowMSG(System.Drawing.Color.Green, SUCCESSFUL_MSG);
+                    PostModification();
+
+                    PostModification();
                 }
-                const string SUCCESSFUL_MSG = "Contraseña modificada con exito";
-                password.Category = (Category)cbxCategories.SelectedItem;
-                password.Site = txtSite.Text;
-                password.User = txtUser.Text;
-                password.Pass = txtPassword.Text;
-                password.Note = txtNote.Text;
-                ShowMSG(System.Drawing.Color.Green, SUCCESSFUL_MSG);
-                PostModification();
+                catch (Exception e)
+                {
+                    ShowMSG(System.Drawing.Color.Red, e.Message);
+                }
             }
-            catch (Exception e) 
+           
+        }
+
+        public String SuggestPasswordImprovement(Password pass)
+        {
+            String suggestPasswordString = "";
+            suggestPasswordString += PasswordExistsOnDataBreaches(pass);
+            suggestPasswordString += Environment.NewLine;
+            suggestPasswordString += DuplicatePassword(pass);
+            suggestPasswordString += Environment.NewLine;
+            suggestPasswordString += SafePassword(pass);
+
+            return suggestPasswordString;
+
+        }
+
+        private String PasswordExistsOnDataBreaches(Password pass)
+        {
+            String passwordExist = "";
+            if (this.dataBreach.PasswordExistsOnDataBreach(pass))
             {
-                ShowMSG(System.Drawing.Color.Red,e.Message);
+                passwordExist = "La contraseña aparece en un data breach conocido";
             }
+            else
+            {
+                passwordExist = "No aparece en un data breach conocido";
+            }
+            return passwordExist;
         }
 
-        private bool SiteOrUserChanged() 
+        private String DuplicatePassword(Password pass)
         {
-            return password.Site != txtSite.Text || password.User != txtUser.Text;
+            String duplicatePasswordResult = "";
+            List<Password> passwordsWithSameUserAndPass = (List<Password>)this.passwords.GetAllWithSamePasswordAndUser(pass);
+            if (passwordsWithSameUserAndPass.Count > 0)
+            {
+                duplicatePasswordResult = "El mismo usuario ya tiene una contraseña igual";
+            }
+            else
+            {
+                duplicatePasswordResult = "El usuario no tiene ninguna contraseña igual";
+            }
+            return duplicatePasswordResult;
         }
 
-        private bool CheckForPairSiteUserOnPasswords() 
+        private String SafePassword(Password pass)
         {
-            return this.passwords.ContainsPassword(new Password((Category)cbxCategories.SelectedItem, txtPassword.Text, txtSite.Text, txtUser.Text, txtNote.Text));
+            String safePasswordResult = "";
+            if (pass.Strength == LIGHTGREEN_STRENGTH || pass.Strength == DARKGREEN_STRENGTH)
+            {
+                safePasswordResult = "La contraseña es segura, fortaleza: " + StrengthPasswordString(pass.Strength);
+            }
+            else
+            {
+                safePasswordResult = "La contraseña no es segura, fortaleza: " + StrengthPasswordString(pass.Strength);
+            }
+            return safePasswordResult;
+        }
+
+        private String StrengthPasswordString(string passStrength)
+        {
+            string strength = "";
+           
+            if (passStrength == LIGHTGREEN_STRENGTH)
+            {
+                strength = "Verde claro";
+            }
+            else if(passStrength == DARKGREEN_STRENGTH)
+            {
+                strength = "Verde oscuro";
+            }
+            else if(passStrength == ORANGE_STRENGTH)
+            {
+                strength = "Naranja";
+            }
+            else if(passStrength == RED_STRENGTH)
+            {
+                strength = "Rojo";
+            }
+            else
+            {
+                strength = "Amarillo";
+            }
+
+            return strength;
         }
 
         private void ShowMSG(System.Drawing.Color color, string message)
@@ -143,7 +235,7 @@ namespace UserInterface
             try
             {
                 int large = Convert.ToInt32(nudLarge.Value);
-                GeneratePasswordSettings settings = new GeneratePasswordSettings(large, cbxMinus.Checked, cbxMayus.Checked, cbxDigits.Checked, cbxSpecialChar.Checked);
+                PasswordSettings settings = new PasswordSettings(large, cbxMinus.Checked, cbxMayus.Checked, cbxDigits.Checked, cbxSpecialChar.Checked);
                 string password = PasswordGenerator.GeneratePassword(settings);
                 txtPassword.Text = password;
             }
@@ -167,6 +259,12 @@ namespace UserInterface
         private void HidePassword(object sender, EventArgs e) 
         {
             txtPassword.UseSystemPasswordChar = true;
+        }
+
+        private bool ConfirmDialog(string message, string action)
+        {
+            DialogResult confirmDialog = MessageBox.Show(message, action, MessageBoxButtons.YesNo);
+            return confirmDialog == DialogResult.Yes;
         }
     }
 }

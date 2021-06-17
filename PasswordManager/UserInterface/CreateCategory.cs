@@ -1,26 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using PasswordManager.Exceptions;
 using PasswordManager.Controllers;
 using PasswordManager;
+using PasswordManagerDataLeyer.RepositoriesDB;
 
 namespace UserInterface
 {
     public partial class CreateCategory : UserControl
     {
         private event HandleModification PostCreated;
-        private CategoriesController categories;
-        public CreateCategory(CategoriesController categories)
+        private CategoryRepository categories;
+        private ProfileController profile;
+        public CreateCategory(CategoryRepository categories, ProfileController profile)
         {
             InitializeComponent();
             this.categories = categories;
+            this.profile = profile;
         }
 
         public void AddListener(HandleModification del) 
@@ -33,7 +28,7 @@ namespace UserInterface
             const string CATEGORY_CREATED_SUCCESFULLY = "Categoria creada con exito";
             try 
             {
-                categories.AddCategory(new Category(txtCategoryName.Text));
+                categories.Add(new Category(txtCategoryName.Text.ToUpper()));
                 ShowFeedbackMessage(System.Drawing.Color.Green, CATEGORY_CREATED_SUCCESFULLY);
                 PostCreated();
             }

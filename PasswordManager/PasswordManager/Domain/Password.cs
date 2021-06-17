@@ -13,10 +13,24 @@ namespace PasswordManager
         const string UPPERCASE_CHARACTERS = @"[A-Z]";
         const string NUMERIC_CHARACTERS = @"[\d]";
         const string SPECIAL_CHARACTERS = @"([!#$%&.*@\\,:;\[\])(}{^\|¿\?=~< >¡¨´-])+";
+        const string RED_STRENGTH = "Red";
+        const string ORANGE_STRENGTH = "Orange";
+        const string YELLOW_STRENGTH = "Yellow";
+        const string LIGHTGREEN_STRENGTH = "LightGreen";
+        const string DARKGREEN_STRENGTH = "DarkGreen";
+        const string INVALID_PASSWORD_LENGTH = "Contraseña Invalida, debe tener entre 5 a 25 caracteres";
+        const string EMPTY_PASSWORD = "Contraseña Invalida, no puede ser vacia";
+        const string INVALID_USER_LENGTH = "Largo de usuario incorrecto";
+        const string INVALID_SITE_LENGTH = "Largo de sitio incorrecto";
+        const string INVALID_NOTE_LENGTH = "Largo de nota incorrecto";
+
+
         private string _user;
         private string _pass;
         private string _site;
         private string _note;
+
+        public int Id { get; set; }
         public Category Category { get; set; }
         public string Pass 
         {
@@ -39,8 +53,9 @@ namespace PasswordManager
             get { return _note; }
             set => SetNote(value);
         }
-        
-        public string Strength { get; set; }
+        public DateTime LastPasswordChange { get; set; }
+
+        public string Strength { get; private set; }
         public DateTime LastModificationDate { get; set; }
 
         public Password(string password)
@@ -83,12 +98,17 @@ namespace PasswordManager
         {
             if (!IsValidLength(value))
             {
-                throw new InvalidPasswordException("Largo de contraseña incorrecto");
+                throw new InvalidPasswordException(INVALID_PASSWORD_LENGTH);
+            }
+            else if (!IsValidPassword(value))
+            {
+                throw new InvalidPasswordException(EMPTY_PASSWORD);
             }
             else
             {
                 this._pass = value;
                 this.LastModificationDate = DateTime.Now;
+                this.LastPasswordChange = DateTime.Now;
                 this.Strength = PasswordStrength(value);
             }
         }
@@ -96,7 +116,7 @@ namespace PasswordManager
         {
             if (!IsValidLength(value))
             {
-                throw new InvalidPasswordUserException("Largo de usuario incorrecto");
+                throw new InvalidPasswordUserException(INVALID_USER_LENGTH);
             }
             else
             {
@@ -109,7 +129,7 @@ namespace PasswordManager
         {
             if (!IsValidSiteLength(value))
             {
-                throw new InvalidPasswordSiteException("Largo de sitio incorrecto");
+                throw new InvalidPasswordSiteException(INVALID_SITE_LENGTH);
             }
             else
             {
@@ -122,7 +142,7 @@ namespace PasswordManager
         {
             if (!IsValidNoteLength(value))
             {
-                throw new InvalidPasswordNoteException("Largo de nota incorrecto");
+                throw new InvalidPasswordNoteException(INVALID_NOTE_LENGTH);
             }
             else
             {
@@ -134,6 +154,16 @@ namespace PasswordManager
         public override string ToString()
         {
             return this.User;
+        }
+
+        private bool IsValidPassword(string password)
+        {
+            string emptyPassword = "";
+            for(int i = 0; i < password.Length; i++)
+            {
+                emptyPassword += " ";
+            }
+            return emptyPassword != password;
         }
 
         private bool IsValidLength(string toCheck)
@@ -160,27 +190,27 @@ namespace PasswordManager
            
             if (PasswordIsRed(password))
             {
-                strength = "Red";
+                strength = RED_STRENGTH;
             }
 
             if (PasswordIsOrange(password))
             {
-                strength = "Orange";
+                strength = ORANGE_STRENGTH;
             }
 
             if (PasswordIsYellow(password))
             {
-                strength = "Yellow";
+                strength = YELLOW_STRENGTH;
             }
 
             if (PasswordIsLightGreen(password))
             {
-                strength = "LightGreen";
+                strength = LIGHTGREEN_STRENGTH;
             }
 
             if (PasswordIsDarkGreen(password))
             {
-                strength = "DarkGreen";
+                strength = DARKGREEN_STRENGTH;
             }
             return strength;
         }
@@ -198,39 +228,24 @@ namespace PasswordManager
 
         private bool PasswordIsYellow(string password)
         {
-            bool ret = false;
-            if (password.Length > 14)
-            {
-                ret = (PasswordIncludeLowerCase(password) && !PasswordIncludeUpperCase(password));
-                ret = ret || (!PasswordIncludeLowerCase(password) && PasswordIncludeUpperCase(password));
-            }
-            return ret;
+            return (password.Length > 14 && !PasswordIncludeLowerCase(password)) || (password.Length > 14 && !PasswordIncludeUpperCase(password));
         }
 
         private bool PasswordIsLightGreen(string password)
         {
-            bool ret = false;
-            if (password.Length > 14)
-            {
-                ret = (PasswordIncludeLowerCase(password) && PasswordIncludeUpperCase(password));
-                bool onlySpecialChar = (PasswordIncludeSpecialCharacters(password) && !PasswordIncludeNumbers(password));
-                bool onlyNumber =  (!PasswordIncludeSpecialCharacters(password) && PasswordIncludeNumbers(password));
-                ret = ret || (ret && (onlySpecialChar || onlyNumber));
-            }
-            return ret;
+            bool onlySpecialChar = (PasswordIncludeSpecialCharacters(password) && !PasswordIncludeNumbers(password));
+            bool onlyNumber = (!PasswordIncludeSpecialCharacters(password) && PasswordIncludeNumbers(password));
+            bool isLargerThan14AndHasMayusAndMinus = (password.Length > 14 && (PasswordIncludeLowerCase(password) && PasswordIncludeUpperCase(password)));
+            return isLargerThan14AndHasMayusAndMinus || (isLargerThan14AndHasMayusAndMinus && (onlySpecialChar || onlyNumber));
         }
 
         private bool PasswordIsDarkGreen(string password)
         {
-            bool ret = false;
-            if (password.Length > 14)
-            {
-                ret = PasswordIncludeLowerCase(password);
-                ret = ret && PasswordIncludeUpperCase(password);
-                ret = ret && PasswordIncludeNumbers(password);
-                ret = ret && PasswordIncludeSpecialCharacters(password);
-            }
-            return ret;
+            return password.Length > 14 &&
+                PasswordIncludeLowerCase(password) &&
+                PasswordIncludeUpperCase(password) &&
+                PasswordIncludeNumbers(password) &&
+                PasswordIncludeSpecialCharacters(password);
         }
 
         private bool PasswordIncludeSpecialCharacters(string password)

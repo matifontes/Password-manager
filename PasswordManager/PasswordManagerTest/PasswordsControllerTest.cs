@@ -4,12 +4,19 @@ using PasswordManager;
 using PasswordManager.Controllers;
 using PasswordManager.Exceptions;
 using System.Collections.Generic;
+using PasswordManager.Repositories;
 
 namespace PasswordManagerTest
 {
     [TestClass]
     public class PasswordsControllerTest
     {
+        const string RED_STRENGTH = "Red";
+        const string ORANGE_STRENGTH = "Orange";
+        const string YELLOW_STRENGTH = "Yellow";
+        const string LIGHTGREEN_STRENGTH = "LightGreen";
+        const string DARKGREEN_STRENGTH = "DarkGreen";
+
         private PasswordRepository passwords;
         private PasswordsController passwordsController;
         private Category category;
@@ -127,7 +134,7 @@ namespace PasswordManagerTest
             passwordsController.AddPassword(password1);
             passwordsController.AddPassword(password2);
 
-            List<Password> orderedRedPasswords = passwordsController.ListRedPasswords();
+            List<Password> orderedRedPasswords = passwordsController.ListPasswordsByStrength(RED_STRENGTH);
             Assert.AreEqual(category2, orderedRedPasswords[0].Category);
             Assert.AreEqual(category, orderedRedPasswords[1].Category);
         }
@@ -143,7 +150,7 @@ namespace PasswordManagerTest
             passwordsController.AddPassword(password1);
             passwordsController.AddPassword(password2);
 
-            List<Password> orderedOrangePasswords = passwordsController.ListOrangePasswords();
+            List<Password> orderedOrangePasswords = passwordsController.ListPasswordsByStrength(ORANGE_STRENGTH);
             Assert.AreEqual(category2, orderedOrangePasswords[0].Category);
             Assert.AreEqual(category, orderedOrangePasswords[1].Category);
         }
@@ -159,7 +166,7 @@ namespace PasswordManagerTest
             passwordsController.AddPassword(password);
             passwordsController.AddPassword(password2);
 
-            List<Password> orderedYellowPasswords = passwordsController.ListYellowPasswords();
+            List<Password> orderedYellowPasswords = passwordsController.ListPasswordsByStrength(YELLOW_STRENGTH);
             Assert.AreEqual(category2, orderedYellowPasswords[0].Category);
             Assert.AreEqual(category, orderedYellowPasswords[1].Category);
         }
@@ -175,7 +182,7 @@ namespace PasswordManagerTest
             passwordsController.AddPassword(password);
             passwordsController.AddPassword(password2);
 
-            List<Password> orderedLightGreenPasswords = passwordsController.ListLightGreenPasswords();
+            List<Password> orderedLightGreenPasswords = passwordsController.ListPasswordsByStrength(LIGHTGREEN_STRENGTH);
             Assert.AreEqual(category2, orderedLightGreenPasswords[0].Category);
             Assert.AreEqual(category, orderedLightGreenPasswords[1].Category);
         }
@@ -191,7 +198,7 @@ namespace PasswordManagerTest
             passwordsController.AddPassword(password);
             passwordsController.AddPassword(password2);
 
-            List<Password> orderedDarkGreenPasswords = passwordsController.ListDarkGreenPasswords();
+            List<Password> orderedDarkGreenPasswords = passwordsController.ListPasswordsByStrength(DARKGREEN_STRENGTH);
             Assert.AreEqual(category2, orderedDarkGreenPasswords[0].Category);
             Assert.AreEqual(category, orderedDarkGreenPasswords[1].Category);
         }
@@ -205,9 +212,9 @@ namespace PasswordManagerTest
             string userForPassword3 = "Guest";
             Password password2 = new Password(category2, pass, site, userForPassword2, note);
             Password password3 = new Password(category3, pass, site, userForPassword3, note);
-            passwords.AddPassword(password);
-            passwords.AddPassword(password2);
-            passwords.AddPassword(password3);
+            passwordsController.AddPassword(password);
+            passwordsController.AddPassword(password2);
+            passwordsController.AddPassword(password3);
             List<Password> passwords2 = new List<Password>();
             passwords2.Add(password);
             List<Password> passwordsResult = passwordsController.ListPasswordsMatching(passwords2);
@@ -215,5 +222,22 @@ namespace PasswordManagerTest
             Assert.AreEqual(passwordsResult[0], password);
         }
 
+        [TestMethod]
+        public void ExistPasswordWithSameUserAndPasswordst()
+        {
+            Password pass = new Password(category, "admin", "www.google.com", "Ralph", "Prueba123");
+            passwordsController.AddPassword(password);
+
+            Assert.IsTrue(passwordsController.ExistPasswordWithSamePassAndUser(pass));
+        }
+
+        [TestMethod]
+        public void DoesntExistPasswordWithSameUserAndPasswordst()
+        {
+            Password pass = new Password(category, "Admin1234", "www.google.com", "Admin", "Prueba123");
+            passwordsController.AddPassword(password);
+
+            Assert.IsFalse(passwordsController.ExistPasswordWithSamePassAndUser(pass));
+        }
     }
 }

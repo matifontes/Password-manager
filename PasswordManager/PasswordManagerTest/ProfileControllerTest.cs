@@ -2,6 +2,7 @@
 using PasswordManager.Controllers;
 using PasswordManager.Exceptions;
 using System;
+using PasswordManager;
 
 namespace PasswordManagerTest
 {
@@ -27,6 +28,27 @@ namespace PasswordManagerTest
         public void CreateProfileWithPassword()
         {
             Assert.IsTrue(profileController.ValidatePassword(password));
+        }
+
+        [TestMethod]
+        public void CreateControllerWithProfile() 
+        {
+            Profile profile = new Profile("TESTS");
+            ProfileController profileController = new ProfileController(profile);
+            Assert.AreEqual(profile,profileController.GetProfile());
+        }
+
+        [TestMethod]
+        public void GetProfileId() 
+        {
+            profileController.GetProfile().Id = 1;
+            Assert.AreEqual(1, profileController.GetId());
+        }
+
+        [TestMethod]
+        public void GetProfileCreated()
+        {
+            Assert.IsNotNull(profileController.GetProfile());
         }
 
         [TestMethod]
@@ -68,24 +90,6 @@ namespace PasswordManagerTest
             string newpassword = "Barto@1234";
 
             profileController.ChangePassword(invalidActualPassword, newpassword);
-        }
-
-        [TestMethod]
-        public void GetCategoryRepository() 
-        {
-            Assert.IsNotNull(profileController.GetCategoryRepository());
-        }
-
-        [TestMethod]
-        public void GetPasswordRepository()
-        {
-            Assert.IsNotNull(profileController.GetPasswordRepository());
-        }
-
-        [TestMethod]
-        public void GetCreditCardRepository()
-        {
-            Assert.IsNotNull(profileController.GetCreditCardRepository());
         }
     }
 }

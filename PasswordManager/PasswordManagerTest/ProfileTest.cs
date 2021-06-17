@@ -36,12 +36,12 @@ namespace PasswordManagerTest
         [TestMethod]
         public void ValidatePasswordParameterOnUserCreation()
         {
-            Assert.AreEqual(profile.password, validPassword);
+            Assert.AreEqual(profile.Password, validPassword);
         }
 
         [TestMethod]
         [ExpectedException(typeof(InvalidPasswordException))]
-        public void InValidPassworLenghtLongerThen25OnUserCreation() 
+        public void InValidPassworLenghtLongerThen25OnProfileCreation() 
         {
             string invalidPassowrd = "1234567890ABCDEFGHTYUGFASDFDD";
             Profile profile = new PasswordManager.Profile(invalidPassowrd);
@@ -49,17 +49,24 @@ namespace PasswordManagerTest
 
         [TestMethod]
         [ExpectedException(typeof(InvalidPasswordException))]
-        public void InValidPassworLenghtShorterThen5OnUserCreation()
+        public void InValidPassworLenghtShorterThen5OnProfileCreation()
         {
             string invalidPassowrd = "1234";
             Profile profile = new PasswordManager.Profile(invalidPassowrd);
         }
 
+        [TestMethod]
+        [ExpectedException(typeof(InvalidPasswordException))]
+        public void EmptyPasswordOnProfileCreation() 
+        {
+            string invalidPassowrd = "      ";
+            Profile profile = new PasswordManager.Profile(invalidPassowrd);
+        }
 
         [TestMethod]
         public void CreateUserWithAPasswordUsingSpecialCharacters() 
         {
-            Assert.AreEqual(profileWithSpecialCharactersOnPassword.password, specialCharacterPsw);
+            Assert.AreEqual(profileWithSpecialCharactersOnPassword.Password, specialCharacterPsw);
         }
 
         [TestMethod]
@@ -104,24 +111,5 @@ namespace PasswordManagerTest
             string invalidActualPassword = "adm123";
             profile.ChangePassword(invalidActualPassword, newPassword);
         }
-
-        [TestMethod]
-        public void CreateProfileIntilizeAnEmptyCategoryRepository() 
-        {
-            Assert.IsNotNull(profile.GetCategoryRepository());
-        }
-
-        [TestMethod]
-        public void CreateProfileIntilizeAnEmptyPasswordRepository()
-        {
-            Assert.IsNotNull(profile.GetPasswordRepository());
-        }
-
-        [TestMethod]
-        public void CreateProfileIntilizeAnEmptyCreditCardRepository()
-        {
-            Assert.IsNotNull(profile.GetCreditCardRepository());
-        }
-
     }
 }
