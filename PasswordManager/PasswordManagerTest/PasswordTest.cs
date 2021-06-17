@@ -22,7 +22,6 @@ namespace PasswordManagerTest
             personal = new Category("Personal");
             passwordCreatedToday = new Password(personal, password, site, user, note);
             passwordCreatedYesterday = new Password(personal, password, site, user, note);
-            passwordCreatedYesterday.LastModificationDate = DateTime.Today.AddDays(-1);
         }
 
         [TestCleanup]
@@ -51,14 +50,14 @@ namespace PasswordManagerTest
         [TestMethod]
         public void ValidateSetPassword()
         {
-            Assert.AreEqual(passwordCreatedToday.Pass, password);
+            Assert.AreEqual(password, passwordCreatedToday.Pass);
         }
 
         [TestMethod]
         public void VerifyLastModificationDateAfterCreatingPassword() 
         {
             DateTime currentDate = DateTime.Now;
-            Assert.AreEqual(passwordCreatedToday.LastModificationDate,currentDate);
+            Assert.AreEqual(currentDate, passwordCreatedToday.LastModificationDate);
         }
 
         [TestMethod]
@@ -68,7 +67,7 @@ namespace PasswordManagerTest
 
             passwordCreatedYesterday.Pass = newPassword;
             DateTime currentDate = DateTime.Now;
-            Assert.AreEqual(passwordCreatedYesterday.LastModificationDate, currentDate);    
+            Assert.AreEqual(currentDate, passwordCreatedYesterday.LastModificationDate);    
         }
 
         [TestMethod]
@@ -84,7 +83,7 @@ namespace PasswordManagerTest
             string invalidUser = "Leo";
             string passTest = "TestInvalidUser";
 
-            Password passInvalid = new Password(personal, passTest, site, invalidUser, note);
+            new Password(personal, passTest, site, invalidUser, note);
         }
 
         [TestMethod]
@@ -94,7 +93,7 @@ namespace PasswordManagerTest
             string invalidUser = "Leo123456789123456789123456789";
             string passTest = "TestInvalidUser";
 
-            Password passInvalid = new Password(personal, passTest, site, invalidUser, note);
+            new Password(personal, passTest, site, invalidUser, note);
         }
 
 
@@ -103,7 +102,7 @@ namespace PasswordManagerTest
         public void CreatePasswordWithLenghtLessThanFive()
         {
             string passTest = "1234";
-            Password passInvalid = new Password(personal, passTest, site, user, note);
+            new Password(personal, passTest, site, user, note);
         }
 
         [TestMethod]
@@ -111,7 +110,15 @@ namespace PasswordManagerTest
         public void CreatePasswordWithLenghtLongerThanTwentyFive()
         {
             string passTest = "TestInvalid123456789123456789123456789";
-            Password passInvalid = new Password(personal, passTest, site, user, note);
+            new Password(personal, passTest, site, user, note);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidPasswordException))]
+        public void CreateEmptyPassword() 
+        {
+            string passTest = "      ";
+            new Password(personal, passTest, site, user, note);
         }
 
         [TestMethod]
@@ -119,7 +126,7 @@ namespace PasswordManagerTest
         public void CreatePasswordSiteWithLenghtLessThanThree()
         {
             string site = "ww";
-            Password passInvalid = new Password(personal, password, site, user, note);
+            new Password(personal, password, site, user, note);
         }
 
         [TestMethod]
@@ -127,7 +134,7 @@ namespace PasswordManagerTest
         public void CreatePasswordSiteWithLenghtLongerThanTwentyFive()
         {
             string site = "www.TestInvalid123124124124124124124.com";
-            Password passInvalid = new Password(personal, password, site, user, note);
+            new Password(personal, password, site, user, note);
         }
 
         [TestMethod]
@@ -140,7 +147,7 @@ namespace PasswordManagerTest
                 invalidNote += "a";
             }
 
-            Password passInvalid = new Password(personal, password, site, user, invalidNote);
+            new Password(personal, password, site, user, invalidNote);
         }
 
         [TestMethod]
@@ -149,7 +156,7 @@ namespace PasswordManagerTest
             string passR = "testR";
             Password passRed = new Password(personal, passR, site, user, note);
 
-            Assert.AreEqual(passRed.Strength, "Red");
+            Assert.AreEqual("Red", passRed.Strength);
         }
 
         [TestMethod]
@@ -158,7 +165,16 @@ namespace PasswordManagerTest
             string passOr = "testOrange";
             Password passOrange = new Password(personal, passOr, site, user, note);
 
-            Assert.AreEqual(passOrange.Strength, "Orange");
+            Assert.AreEqual("Orange", passOrange.Strength);
+        }
+
+        [TestMethod]
+        public void PasswordLargerThan14WithoutMayusAndMinusShouldBeYellow() 
+        {
+            string passY = "1234567890111213";
+            Password passYellow = new Password(personal, passY, site, user, note);
+
+            Assert.AreEqual("Yellow", passYellow.Strength);
         }
 
         [TestMethod]
@@ -167,7 +183,7 @@ namespace PasswordManagerTest
             string passY = "testyellowyellowwwww";
             Password passYellow = new Password(personal, passY, site, user, note);
 
-            Assert.AreEqual(passYellow.Strength, "Yellow");
+            Assert.AreEqual("Yellow", passYellow.Strength);
         }
 
         [TestMethod]
@@ -176,7 +192,7 @@ namespace PasswordManagerTest
             string passY = "TESTYELLOWTELLOWWWWW";
             Password passYellow = new Password(personal, passY, site, user, note);
 
-            Assert.AreEqual(passYellow.Strength, "Yellow");
+            Assert.AreEqual("Yellow", passYellow.Strength );
         }
 
         [TestMethod]
@@ -185,7 +201,7 @@ namespace PasswordManagerTest
             string passY = "TESTYELLOWTELLOWWW.WW@";
             Password passYellow = new Password(personal, passY, site, user, note);
 
-            Assert.AreEqual(passYellow.Strength, "Yellow");
+            Assert.AreEqual("Yellow", passYellow.Strength);
         }
 
         [TestMethod]
@@ -194,7 +210,7 @@ namespace PasswordManagerTest
             string passY = "TESTYELLOWTELLOWWWWW231";
             Password passYellow = new Password(personal, passY, site, user, note);
 
-            Assert.AreEqual(passYellow.Strength, "Yellow");
+            Assert.AreEqual("Yellow", passYellow.Strength);
         }
 
         [TestMethod]
@@ -203,7 +219,7 @@ namespace PasswordManagerTest
             string passY = "testyellowyellow@wwww";
             Password passYellow = new Password(personal, passY, site, user, note);
 
-            Assert.AreEqual(passYellow.Strength, "Yellow");
+            Assert.AreEqual("Yellow", passYellow.Strength);
         }
 
         [TestMethod]
@@ -212,7 +228,7 @@ namespace PasswordManagerTest
             string passY = "testyellowyelloww123www";
             Password passYellow = new Password(personal, passY, site, user, note);
 
-            Assert.AreEqual(passYellow.Strength, "Yellow");
+            Assert.AreEqual("Yellow", passYellow.Strength);
         }
 
         [TestMethod]
@@ -221,7 +237,7 @@ namespace PasswordManagerTest
             string passLG = "testGreenGreenGR";
             Password passLGreen = new Password(personal, passLG, site, user, note);
 
-            Assert.AreEqual(passLGreen.Strength, "LightGreen");
+            Assert.AreEqual("LightGreen", passLGreen.Strength);
         }
 
         [TestMethod]
@@ -230,7 +246,7 @@ namespace PasswordManagerTest
             string passLG = "test@GreenGreenGR";
             Password passLGreen = new Password(personal, passLG, site, user, note);
 
-            Assert.AreEqual(passLGreen.Strength, "LightGreen");
+            Assert.AreEqual("LightGreen", passLGreen.Strength);
         }
 
         [TestMethod]
@@ -239,7 +255,7 @@ namespace PasswordManagerTest
             string passLG = "test@GreenGreenGR";
             Password passLGreen = new Password(personal, passLG, site, user, note);
 
-            Assert.AreEqual(passLGreen.Strength, "LightGreen");
+            Assert.AreEqual("LightGreen", passLGreen.Strength);
         }
 
         [TestMethod]
@@ -248,13 +264,13 @@ namespace PasswordManagerTest
             string passDG = "testGreenGreen.13";
             Password passDGreen = new Password(personal, passDG, site, user, note);
 
-            Assert.AreEqual(passDGreen.Strength, "DarkGreen");
+            Assert.AreEqual("DarkGreen", passDGreen.Strength);
         }
 
         [TestMethod]
         public void PasswordToStringShowTheUser() 
         {
-            Assert.AreEqual(passwordCreatedToday.ToString(), user);
+            Assert.AreEqual(user, passwordCreatedToday.ToString());
         }
 
         [TestMethod]
@@ -278,6 +294,14 @@ namespace PasswordManagerTest
             string site = "steam";
             Password samePassword = new Password(personal, password, site, user, note);
             Assert.IsFalse(passwordCreatedToday.Equals(samePassword));
+        }
+
+        [TestMethod]
+        public void VerifyPasswordId()
+        {
+            passwordCreatedToday.Id = 1;
+
+            Assert.AreEqual(1, passwordCreatedToday.Id);
         }
 
     }

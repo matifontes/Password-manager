@@ -1,4 +1,5 @@
 ﻿using System;
+using PasswordManager.Repositories;
 
 namespace PasswordManager.Controllers
 {
@@ -9,6 +10,10 @@ namespace PasswordManager.Controllers
 
         public ProfileController(string password) {
             this.profile = new Profile(password);
+        }
+        public ProfileController(Profile profile)
+        {
+            this.profile = profile;
         }
 
         public bool ValidatePassword(string password)
@@ -21,17 +26,14 @@ namespace PasswordManager.Controllers
             this.profile.ChangePassword(actualpassword, newpassword);
         }
 
-        public CategoryRepository GetCategoryRepository() 
+        public Profile GetProfile() 
         {
-            return this.profile.GetCategoryRepository();
+            return this.profile;
         }
-        public PasswordRepository GetPasswordRepository()
+
+        public int GetId() 
         {
-            return this.profile.GetPasswordRepository();
-        }
-        public CreditCardRepository GetCreditCardRepository()
-        {
-            return this.profile.GetCreditCardRepository();
+            return this.profile.Id;
         }
     }
 }

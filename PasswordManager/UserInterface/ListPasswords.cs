@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using PasswordManager;
 using PasswordManager.Controllers;
+using PasswordManagerDataLeyer.RepositoriesDB;
 
 namespace UserInterface
 {
@@ -18,16 +14,21 @@ namespace UserInterface
         const string SITE_HEADER = "Sitio";
         const string USER_HEADER = "Usuario";
         const string LASTMODIFICATION_DATE_HEADER = "Última Modificación";
-        private PasswordsController passwords;
-        private CategoriesController categories;
+        private PasswordRepository passwords;
+        private CategoryRepository categories;
+        private ProfileController profile;
         private event HandleBackToMenu ChangeToMenu;
         private CreateModifyPassword passwordForm;
         private ShowPassword showPassword;
-        public ListPasswordsPanel(PasswordsController passwords, CategoriesController categories)
+        private DataBreachRepository dBreaches;
+
+        public ListPasswordsPanel(ProfileController profile)
         {
             InitializeComponent();
-            this.passwords = passwords;
-            this.categories = categories;
+            this.profile = profile;
+            this.categories = new CategoryRepository(profile.GetProfile());
+            this.passwords = new PasswordRepository(profile.GetProfile());
+            this.dBreaches = new DataBreachRepository(profile.GetProfile());
             EnableOptions();
             LoadListPasswords();
         }
@@ -64,7 +65,7 @@ namespace UserInterface
 
         private void LoadListPasswords() 
         {
-            List<Password> orderedPasswords = passwords.ListPasswords();
+            List<Password> orderedPasswords = (List<Password>)passwords.GetAllByProfile(profile.GetId());
             DataTable dataTable = InitializeDataTable();
 
             foreach (Password password in orderedPasswords) 
@@ -93,7 +94,7 @@ namespace UserInterface
         private void BtnAddPassword_Click(object sender, EventArgs e)
         {
             DisposeChildForms();
-            this.passwordForm = new CreateModifyPassword(this.passwords,this.categories);
+            this.passwordForm = new CreateModifyPassword(this.passwords,this.categories, this.profile, this.dBreaches);
             passwordForm.AddListener(PostModification);
             passwordForm.Show();
         }
@@ -102,7 +103,7 @@ namespace UserInterface
         {
             DisposeChildForms();
             Password password = (Password)dgvPasswords.SelectedRows[0].Cells[2].Value;
-            this.passwordForm = new CreateModifyPassword(this.passwords,this.categories, password);
+            this.passwordForm = new CreateModifyPassword(this.passwords,this.categories, password, this.dBreaches);
             passwordForm.AddListener(PostModification);
             passwordForm.Show();
         }
@@ -124,7 +125,7 @@ namespace UserInterface
             if (selectedPassword != null) 
             {
                 DisposeChildForms();
-                passwords.RemovePassword(selectedPassword);
+                passwords.Delete(selectedPassword.Id);
                 PostModification();
             }
         }
@@ -133,6 +134,7 @@ namespace UserInterface
         {
             EnableOptions();
             LoadListPasswords();
+            DisposeChildForms();
         }
 
         private void BtnBack_Click(object sender, EventArgs e)

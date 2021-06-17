@@ -74,7 +74,7 @@ namespace UserInterface
             // 
             // operationPanel
             // 
-            this.operationPanel.Location = new System.Drawing.Point(2, 530);
+            this.operationPanel.Location = new System.Drawing.Point(6, 532);
             this.operationPanel.Name = "operationPanel";
             this.operationPanel.Size = new System.Drawing.Size(289, 39);
             this.operationPanel.TabIndex = 2;
@@ -269,7 +269,7 @@ namespace UserInterface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(303, 581);
+            this.ClientSize = new System.Drawing.Size(307, 604);
             this.Controls.Add(this.btnShow);
             this.Controls.Add(this.lblAutoGenerateError);
             this.Controls.Add(this.lblMsg);

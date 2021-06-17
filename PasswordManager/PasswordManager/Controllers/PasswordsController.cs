@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using PasswordManager.Repositories;
 
 namespace PasswordManager.Controllers
 {
@@ -41,37 +42,11 @@ namespace PasswordManager.Controllers
             return this.passwords.ListPasswords();
         }
 
-        public List<Password> ListRedPasswords()
+        public List<Password> ListPasswordsByStrength(string strength) 
         {
-            List<Password> listRedPasswords = this.passwords.ListRedPasswords();
-            this.passwords.SortListByCategoryName(listRedPasswords);
-            return listRedPasswords;
-        }
-
-        public List<Password> ListOrangePasswords()
-        {
-            List<Password> listOrangePasswords = this.passwords.ListOrangePasswords();
-            this.passwords.SortListByCategoryName(listOrangePasswords);
-            return listOrangePasswords;
-        }
-        public List<Password> ListYellowPasswords()
-        {
-            List<Password> listYellowPasswords = this.passwords.ListYellowPasswords();
-            this.passwords.SortListByCategoryName(listYellowPasswords);
-            return listYellowPasswords;
-        }
-        public List<Password> ListLightGreenPasswords()
-        {
-            List<Password> listLightGreenPasswords = this.passwords.ListLGreenPasswords();
-            this.passwords.SortListByCategoryName(listLightGreenPasswords);
-            return listLightGreenPasswords;
-        }
-
-        public List<Password> ListDarkGreenPasswords()
-        {
-            List<Password> listDarkGreenPasswords = this.passwords.ListDGreenPasswords();
-            this.passwords.SortListByCategoryName(listDarkGreenPasswords);
-            return listDarkGreenPasswords;
+            List<Password> passwords = this.passwords.ListPasswordsByStrength(strength);
+            this.passwords.SortListByCategoryName(passwords);
+            return passwords;
         }
 
         public List<Password> ListPasswordsMatching(List<Password> pass)
@@ -79,6 +54,11 @@ namespace PasswordManager.Controllers
             List<Password> listRet = this.passwords.GetPasswordMatching(pass);
             this.passwords.SortListByCategoryName(pass);
             return listRet;
+        }
+
+        public bool ExistPasswordWithSamePassAndUser(Password pass)
+        {
+            return this.passwords.ExistPasswordWithSamePassAndUser(pass);
         }
 
     }
