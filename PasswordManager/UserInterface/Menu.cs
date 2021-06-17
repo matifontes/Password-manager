@@ -66,7 +66,7 @@ namespace UserInterface
             ChangeWindow(changePassword);
         }
 
-        private void dBreachesHistory_Click(object sender, EventArgs e)
+        private void DBreachesHistory_Click(object sender, EventArgs e)
         {
             DataBreachesHistory dBreachesHistory = new DataBreachesHistory(this.profile);
             dBreachesHistory.AddListener(ReturnToMenu);

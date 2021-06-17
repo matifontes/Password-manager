@@ -106,7 +106,7 @@ namespace UserInterface
             this.dBreachesHistory.TabIndex = 6;
             this.dBreachesHistory.Text = "Historial de Data Breaches";
             this.dBreachesHistory.UseVisualStyleBackColor = true;
-            this.dBreachesHistory.Click += new System.EventHandler(this.dBreachesHistory_Click);
+            this.dBreachesHistory.Click += new System.EventHandler(this.DBreachesHistory_Click);
             // 
             // MenuPanel
             // 
