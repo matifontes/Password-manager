@@ -13,7 +13,6 @@ namespace UserInterface
         private DataBreachRepository dBreaches;
         private ProfileController profile;
         private event HandleBackToMenu ChangeToMenu;
-        private event HandleWindowChange ChangeWindow;
         private ShowDataBreachesHistory showDataBreaches;
         public DataBreachesHistory(ProfileController profile)
         {
@@ -33,13 +32,13 @@ namespace UserInterface
             this.dBreachList.DataSource = this.dBreaches.GetAll();
         }
 
-        private void backBtn_Click(object sender, EventArgs e)
+        private void BtnBack_Click(object sender, EventArgs e)
         {
             DisposeChildForms();
             ChangeToMenu();
         }
 
-        private void showBtn_Click(object sender, EventArgs e)
+        private void BtnShow_Click(object sender, EventArgs e)
         {
             DataBreach dBreach = (DataBreach)dBreachList.SelectedItem;
             if(dBreach != null)

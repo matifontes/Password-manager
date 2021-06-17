@@ -19,7 +19,7 @@ namespace UserInterface
         private CategoryRepository categories;
         private event HandleBackToMenu ChangeToPasswordStrenght;
         private CreateModifyPassword passwordForm;
-        private List<Password> passList;
+        private List<Password> passwordByStrength;
         private Password modifyPassword;
         private DataBreachRepository dBreaches;
         private string strength;
@@ -29,7 +29,7 @@ namespace UserInterface
             InitializeComponent();
             this.categories = categories;
             this.passwords = passwords;
-            this.passList = (List<Password>)passwords.GetPasswordsByStrength(strength);
+            this.passwordByStrength = (List<Password>)passwords.GetPasswordsByStrength(strength);
             this.strength = strength;
             this.dBreaches = dBreaches;
             EnableOptions();
@@ -44,17 +44,17 @@ namespace UserInterface
 
         private void LoadTitle()
         {
-            if(this.passList.Count > 0)
+            if(this.passwordByStrength.Count > 0)
             {
                 string title = "Contraseñas con fortaleza ";
-                title += this.passList[0].Strength;
+                title += this.passwordByStrength[0].Strength;
                 lblTitle.Text = title;
             }
         }
 
         private void EnableOptions()
         {
-            if (this.passList.Count() == 0)
+            if (this.passwordByStrength.Count() == 0)
             {
                 btnModify.Enabled = false;
             }
@@ -68,7 +68,7 @@ namespace UserInterface
         {
             DataTable dataTable = InitializeTable();
 
-            foreach (Password password in passList)
+            foreach (Password password in passwordByStrength)
             {
 
                 DataRow row = dataTable.NewRow();
@@ -108,7 +108,7 @@ namespace UserInterface
             if (this.modifyPassword.Strength != this.strength) 
             {
                 const string SUCCESSFUL_MODIFY = "Contraseña modificada correctamente, a cambiado su nivel de fortaleza";
-                this.passList.Remove(this.modifyPassword);
+                this.passwordByStrength.Remove(this.modifyPassword);
                 DisposeChildForms();
                 DisposeModifyPassword();
                 ShowMSG(System.Drawing.Color.Green, SUCCESSFUL_MODIFY);
