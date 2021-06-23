@@ -26,3 +26,6 @@ específicas.
 en algún data breach.
 
 6 - Se debe ver un reporte que indique el nivel de seguridad de las contraseñas guardadas.
+
+
+.
